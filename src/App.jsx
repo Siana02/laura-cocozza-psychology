@@ -1682,12 +1682,12 @@ function SupportAreasSection({ t }) {
     regulation: <RegulationAtmosphere reduceMotion={reduceMotion} />,
     relational: <RelationalAtmosphere reduceMotion={reduceMotion} />,
   }), [reduceMotion])
-
-  const supportIconMap = useMemo(() => ({
-    anxiety: ShieldCheck,
-    mood: HeartHandshake,
-    ocd: Brain,
-    regulation: Sparkles,
+  const supportPngIconMap = useMemo(() => ({
+    anxiety: '/anxiety.png',
+    mood: '/emotion.png',
+    ocd: '/ocd.png',
+    regulation: '/fear.png',
+    relational: '/conflict.png',
   }), [])
 
   return (
@@ -1709,7 +1709,7 @@ function SupportAreasSection({ t }) {
       <div className="support-story-panels">
         {support.panels.map((panel, index) => {
           const isReversed = index % 2 === 1
-          const SupportIcon = supportIconMap[panel.key]
+          const panelIconSrc = supportPngIconMap[panel.key] ?? panel.icon
           return (
             <motion.article
               key={panel.key}
@@ -1724,17 +1724,8 @@ function SupportAreasSection({ t }) {
 
               {/* Visual zone: large sculptural icon from panel data */}
               <div className="support-story-visual" aria-hidden="true">
-                {SupportIcon ? (
-                  <>
-                    <SupportIcon className="support-story-lucide--blur" strokeWidth={1.4} />
-                    <SupportIcon className="support-story-lucide--main" strokeWidth={1.5} />
-                  </>
-                ) : (
-                  <>
-                    <img src={panel.icon} alt="" className="support-story-icon--blur" />
-                    <img src={panel.icon} alt="" className="support-story-icon--main" />
-                  </>
-                )}
+                <img src={panelIconSrc} alt="" className="support-story-icon--blur" />
+                <img src={panelIconSrc} alt="" className="support-story-icon--main" />
                 <div className="support-story-icon-glow" />
               </div>
 
