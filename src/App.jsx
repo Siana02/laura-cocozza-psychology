@@ -42,6 +42,35 @@ const content = {
       logoAriaLabel: 'Monogramma LC – torna alla home',
       ctaSecondary: 'Esplora Area Clinica',
       trust: ['Terapia Cognitivo Comportamentale', 'Approccio Integrato', 'Online & in Presenza', 'Supporto Multidisciplinare'],
+      trustSection: {
+        identityName: 'Dr Laura Cocozza',
+        identitySubtitle: 'Studio di Psicoterapia e Psicologia Forense',
+        positioning:
+          'Helping people rebuild emotional balance through structured, evidence-based psychological support and forensic expertise when needed.',
+        roleTitle: 'Dott.ssa Laura Cocozza',
+        roleDetails:
+          'Psicologa • Psicoterapeuta Cognitivo Comportamentale • Consulente in Psicologia Forense (CTU & CTP)',
+        roleDescription:
+          'Un approccio integrato clinico e forense, orientato a chiarezza, stabilità emotiva e benessere psicologico duraturo.',
+        cards: [
+          {
+            title: 'Psicoterapia Clinica',
+            text: 'Trattamento psicologico evidence-based con CBT e ACT per difficoltà emotive e comportamentali.',
+          },
+          {
+            title: 'Psicologia Forense',
+            text: 'Valutazioni psicologiche CTU/CTP, consulenze in diritto di famiglia e supporto tecnico in procedimenti civili.',
+          },
+          {
+            title: 'Modello di Cura Integrata',
+            text: 'Lavoro multidisciplinare con psichiatri, neuropsichiatri e professionisti legali per un supporto completo.',
+          },
+          {
+            title: 'Trattamento Personalizzato',
+            text: 'Percorsi psicologici su misura costruiti sui bisogni emotivi, relazionali e contestuali di ogni persona.',
+          },
+        ],
+      },
     },
     sections: {
       clinicalPreview: 'Area Clinica',
@@ -86,6 +115,35 @@ const content = {
       logoAriaLabel: 'LC monogram – back to home',
       ctaSecondary: 'Explore Clinical Area',
       trust: ['Cognitive Behavioral Therapy', 'Integrated Approach', 'Online & In-Person', 'Multidisciplinary Support'],
+      trustSection: {
+        identityName: 'Dr Laura Cocozza',
+        identitySubtitle: 'Psychotherapy and Forensic Psychology Practice',
+        positioning:
+          'Helping people rebuild emotional balance through structured, evidence-based psychological support and forensic expertise when needed.',
+        roleTitle: 'Dr. Laura Cocozza',
+        roleDetails:
+          'Psychologist • Cognitive-Behavioral Psychotherapist • Court-Appointed Expert (CTU) • Technical Consultant (CTP)',
+        roleDescription:
+          'An integrative clinical and forensic approach focused on clarity, emotional stability, and long-term psychological well-being.',
+        cards: [
+          {
+            title: 'Clinical Psychotherapy',
+            text: 'Evidence-based treatment using CBT and ACT for emotional and behavioral difficulties.',
+          },
+          {
+            title: 'Forensic Psychology',
+            text: 'Court-appointed evaluations (CTU/CTP), family law assessments, and legal expert consultancy.',
+          },
+          {
+            title: 'Integrated Care Model',
+            text: 'Collaborative multidisciplinary work with psychiatrists, neuropsychiatrists, and legal professionals.',
+          },
+          {
+            title: 'Individualized Treatment',
+            text: 'Tailored psychological pathways based on each person’s emotional, relational, and contextual needs.',
+          },
+        ],
+      },
     },
     sections: {
       clinicalPreview: 'Clinical Area',
@@ -247,8 +305,9 @@ function LanguageSwitch({ lang, setLang, className }) {
   )
 }
 
-function MobileMenu({ open, onClose, t, lang, setLang }) {
+function MobileMenu({ open, onClose, t }) {
   const reduceMotion = useReducedMotion()
+  // Language switching is intentionally in the header actions for mobile/tablet.
   return (
     <AnimatePresence>
       {open && (
@@ -292,30 +351,6 @@ function MobileMenu({ open, onClose, t, lang, setLang }) {
               ))}
             </motion.nav>
 
-            <div className="mobile-menu-footer">
-              <Link to="/contact" className="book-pill mobile-menu-book-pill" onClick={onClose}>
-                {t.nav.book}
-                <span className="book-pill-icon" aria-hidden="true">
-                  <ArrowUpRight size={16} />
-                </span>
-              </Link>
-              <div className="mobile-menu-lang">
-                <button
-                  type="button"
-                  className={`mobile-lang-btn${lang === 'it' ? ' active' : ''}`}
-                  onClick={() => setLang('it')}
-                >
-                  IT
-                </button>
-                <button
-                  type="button"
-                  className={`mobile-lang-btn${lang === 'en' ? ' active' : ''}`}
-                  onClick={() => setLang('en')}
-                >
-                  EN
-                </button>
-              </div>
-            </div>
           </div>
         </motion.div>
       )}
@@ -336,8 +371,8 @@ function SiteHeader({ t, lang, setLang, isLanding, menuOpen, setMenuOpen, preloa
           transition={{ layout: { duration: 0.78, ease: [0.22, 1, 0.36, 1] } }}
           className="lc-logo-wrap"
         >
-          <span className="material-symbols-outlined lc-logo-balance" aria-hidden="true">
-            balance
+          <span className="lc-logo-icon-holder" aria-hidden="true">
+            <img src="/logo-or-icon.png" className="lc-logo-mark-bg" alt="" />
           </span>
           <svg viewBox="0 0 240 200" className="lc-logo-svg" role="presentation" aria-hidden="true">
             <text x="6" y="114" fontSize="162" fontFamily="'Cinzel', serif" fontWeight="500" fill="currentColor">
@@ -372,6 +407,7 @@ function SiteHeader({ t, lang, setLang, isLanding, menuOpen, setMenuOpen, preloa
 
       {/* Mobile / tablet — right */}
       <div className="site-header-mobile">
+        <LanguageSwitch lang={lang} setLang={setLang} className="mobile-header-lang-switch" />
         <Link to="/contact" className="header-book-btn">
           {t.nav.book}
         </Link>
@@ -389,6 +425,47 @@ function SiteHeader({ t, lang, setLang, isLanding, menuOpen, setMenuOpen, preloa
         </button>
       </div>
     </header>
+  )
+}
+
+function WordByWordText({ text, className, as = 'p', delay = 0 }) {
+  const reduceMotion = useReducedMotion()
+  const Tag = motion[as]
+  // Keep whitespace tokens so animated copy preserves natural spacing and wraps.
+  const tokens = (text.match(/(\p{White_Space}+|[^\p{White_Space}]+)/gu) ?? []).map((value, index) => ({
+    value,
+    isWhitespace: /^\p{White_Space}+$/u.test(value),
+    key: `${index}-${value.length}`,
+  }))
+
+  return (
+    <Tag
+      className={className}
+      variants={{
+        hidden: {},
+        visible: {
+          transition: {
+            staggerChildren: reduceMotion ? 0 : 0.045,
+            delayChildren: delay,
+          },
+        },
+      }}
+    >
+      {tokens.map((token) => (
+        <motion.span
+          key={token.key}
+          className={`word-fade-item${token.isWhitespace ? ' word-fade-space' : ''}`}
+          variants={{
+            hidden: reduceMotion ? { opacity: 0, y: 0 } : { opacity: 0, y: 8, filter: 'blur(3px)' },
+            visible: reduceMotion
+              ? { opacity: 1, y: 0, transition: { duration: 0.01 } }
+              : { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } },
+          }}
+        >
+          {token.value}
+        </motion.span>
+      ))}
+    </Tag>
   )
 }
 
@@ -431,12 +508,8 @@ function LandingHero({ t }) {
           animate="visible"
           variants={{ hidden: {}, visible: { transition: { staggerChildren: reduceMotion ? 0.04 : 0.1, delayChildren: reduceMotion ? 0 : 0.38 } } }}
         >
-          <motion.p className="landing-headline" variants={textVariants}>
-            {t.home.title}
-          </motion.p>
-          <motion.p className="landing-desc" variants={textVariants}>
-            {t.home.description}
-          </motion.p>
+          <WordByWordText text={t.home.title} className="landing-headline" delay={reduceMotion ? 0 : 0.06} />
+          <WordByWordText text={t.home.description} className="landing-desc" delay={reduceMotion ? 0 : 0.24} />
           <motion.div className="landing-cta-row" variants={textVariants}>
             <Link to="/contact" className="book-pill">
               {t.home.ctaPrimary}
@@ -446,6 +519,46 @@ function LandingHero({ t }) {
             </Link>
           </motion.div>
         </motion.div>
+      </div>
+    </section>
+  )
+}
+
+function TrustBuildingSection({ t }) {
+  const trustCards = [Brain, Scale, Users, HeartHandshake].map((icon, index) => ({
+    icon,
+    ...t.home.trustSection.cards[index],
+  }))
+
+  return (
+    <section className="trust-intro-section">
+      <div className="trust-intro-top">
+        <div className="trust-intro-identity">
+          <div className="trust-intro-photo-wrap">
+            <img src="/dr-laura-cocozza-professional-headshot.png" alt={`${t.home.trustSection.identityName} professional headshot`} className="trust-intro-photo" />
+          </div>
+          <div className="trust-intro-identity-copy">
+            <p>{t.home.trustSection.identityName}</p>
+            <p>{t.home.trustSection.identitySubtitle}</p>
+          </div>
+        </div>
+
+        <p className="trust-intro-positioning">{t.home.trustSection.positioning}</p>
+      </div>
+
+      <div className="trust-intro-role-block">
+        <p className="trust-intro-role-badge">{t.home.trustSection.roleDetails}</p>
+        <p className="trust-intro-role-description">{t.home.trustSection.roleDescription}</p>
+      </div>
+
+      <div className="trust-intro-cards">
+        {trustCards.map((item) => (
+          <article key={item.title} className="trust-intro-card">
+            <item.icon size={30} />
+            <h4>{item.title}</h4>
+            <p>{item.text}</p>
+          </article>
+        ))}
       </div>
     </section>
   )
@@ -493,6 +606,8 @@ function Home({ t }) {
       <LandingHero t={t} />
 
       <div className="app-shell">
+        <TrustBuildingSection t={t} />
+
         <section className="trust-bar glass">
           {t.home.trust.map((item) => (
             <p key={item}>{item}</p>
@@ -769,8 +884,6 @@ function AppShell() {
           open={menuOpen}
           onClose={() => setMenuOpen(false)}
           t={t}
-          lang={lang}
-          setLang={setLang}
         />
 
         <AnimatePresence mode="wait" initial={false}>
