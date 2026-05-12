@@ -624,14 +624,15 @@ a {
 .landing-secondary {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: min(760px, calc(100% - 2.8rem));
+  justify-content: flex-end;
   align-items: center;
   text-align: center;
-  padding-top: clamp(2rem, 5vw, 4rem);
-  padding-right: clamp(1.4rem, 3.8vw, 3.2rem);
-  padding-bottom: clamp(2rem, 6vh, 4rem);
-  padding-left: clamp(1.4rem, 3.8vw, 3.2rem);
+  padding: 4rem clamp(1.4rem, 3.8vw, 3.2rem) clamp(4rem, 8vh, 6rem);
   min-height: 115vh;
+  padding-top: calc(100vh + 5rem);
 }
 
 .landing-headline {
@@ -1203,6 +1204,9 @@ h3 {
   }
 
   .landing-secondary {
+    grid-column: auto;
+    justify-self: stretch;
+    width: auto;
     min-height: auto;
     padding: 2.5rem clamp(1.4rem, 5vw, 2.4rem) 4rem;
     margin-top: 5%; /* extra breathing room between primary and secondary */
