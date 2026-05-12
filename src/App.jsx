@@ -114,6 +114,7 @@ const content = {
         ],
       },
       therapeuticApproach: {
+        eyebrow: 'Il processo terapeutico',
         title: 'Approccio terapeutico',
         subheading: 'Metodi terapeutici basati sull\'evidenza,\nintegrati con strumenti innovativi\ne approcci multidisciplinari.',
         editorial: 'Ogni percorso è costruito su metodi scientificamente validati, adattati alle esigenze individuali.',
@@ -132,6 +133,35 @@ const content = {
             label: 'VR',
             title: 'Realtà Virtuale',
             description: 'Tecnologie immersive utilizzate come supporto nei percorsi terapeutici e nella gestione di specifiche difficoltà emotive e comportamentali.',
+          },
+        ],
+      },
+      editorialQuote: {
+        quote: 'La psicoterapia non consiste nel cambiare chi siamo, ma nel comprendere con maggiore chiarezza il modo in cui viviamo emozioni, relazioni ed esperienze.',
+        attribution: '— Dott.ssa Laura Cocozza',
+      },
+      whoIsItFor: {
+        eyebrow: 'Per chi è pensato',
+        title: 'Percorsi costruiti attorno\nalle diverse fasi della vita\ne alle esigenze individuali',
+        subtext: 'Ogni percorso terapeutico viene sviluppato considerando il contesto personale, relazionale ed emotivo di ciascuna persona.',
+        panels: [
+          {
+            key: 'adolescents',
+            icon: '/youth.png',
+            title: 'Adolescenti',
+            description: 'Percorsi dedicati agli adolescenti che affrontano cambiamenti emotivi, difficoltà relazionali, ansia, stress o fasi di crescita complesse.',
+          },
+          {
+            key: 'adults',
+            icon: '/plus-18-movie.png',
+            title: 'Adulti',
+            description: 'Supporto psicologico e psicoterapia per affrontare stress, ansia, difficoltà emotive, relazionali e momenti di transizione personale.',
+          },
+          {
+            key: 'families',
+            icon: '/family.png',
+            title: 'Famiglie',
+            description: 'Consulenze e percorsi di supporto per dinamiche familiari complesse, genitorialità e momenti di cambiamento.',
           },
         ],
       },
@@ -250,6 +280,7 @@ const content = {
         ],
       },
       therapeuticApproach: {
+        eyebrow: 'About the process',
         title: 'Therapeutic Approach',
         subheading: 'Evidence-based therapeutic methods,\nintegrated with innovative tools\nand multidisciplinary approaches.',
         editorial: 'Every pathway is built on scientifically validated methods, adapted to individual needs.',
@@ -268,6 +299,35 @@ const content = {
             label: 'VR',
             title: 'Virtual Reality',
             description: 'Immersive technologies used as support in therapeutic pathways and the management of specific emotional and behavioral difficulties.',
+          },
+        ],
+      },
+      editorialQuote: {
+        quote: 'Psychotherapy is not about changing who we are, but about understanding with greater clarity how we experience emotions, relationships, and life itself.',
+        attribution: '— Dr. Laura Cocozza',
+      },
+      whoIsItFor: {
+        eyebrow: 'Who it is for',
+        title: 'Pathways built around\nthe different stages of life\nand individual needs',
+        subtext: 'Each therapeutic pathway is developed considering the personal, relational, and emotional context of every individual.',
+        panels: [
+          {
+            key: 'adolescents',
+            icon: '/youth.png',
+            title: 'Adolescents',
+            description: 'Dedicated pathways for adolescents navigating emotional changes, relational difficulties, anxiety, stress, or complex developmental stages.',
+          },
+          {
+            key: 'adults',
+            icon: '/plus-18-movie.png',
+            title: 'Adults',
+            description: 'Psychological support and psychotherapy for managing stress, anxiety, emotional and relational difficulties, and personal life transitions.',
+          },
+          {
+            key: 'families',
+            icon: '/family.png',
+            title: 'Families',
+            description: 'Consultations and support pathways for complex family dynamics, parenthood, and moments of significant change.',
           },
         ],
       },
@@ -1036,12 +1096,22 @@ function TherapeuticApproachSection({ t }) {
     <section className="therapeutic-approach-section">
       <div className="therapeutic-approach-inner">
         <div className="therapeutic-approach-header">
+          <motion.p
+            className="therapeutic-approach-eyebrow"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {ta.eyebrow}
+          </motion.p>
+
           <motion.h2
             className="therapeutic-approach-heading"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
           >
             {ta.title}
           </motion.h2>
@@ -1110,6 +1180,120 @@ function TherapeuticApproachSection({ t }) {
   )
 }
 
+function EditorialQuoteStripSection({ t }) {
+  const reduceMotion = useReducedMotion()
+  const eq = t.home.editorialQuote
+
+  return (
+    <section className="editorial-quote-section" aria-label="Reflective quote">
+      {/* Atmospheric background movement */}
+      {!reduceMotion && (
+        <>
+          <motion.div
+            className="eq-orb eq-orb--1"
+            animate={{ x: [0, 18, 0], y: [0, -12, 0] }}
+            transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
+            aria-hidden="true"
+          />
+          <motion.div
+            className="eq-orb eq-orb--2"
+            animate={{ x: [0, -14, 0], y: [0, 16, 0] }}
+            transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut', delay: 3 }}
+            aria-hidden="true"
+          />
+        </>
+      )}
+
+      <div className="eq-inner">
+        <motion.blockquote
+          className="eq-blockquote"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className="eq-mark" aria-hidden="true">&ldquo;</span>
+          <p className="eq-quote-text">{eq.quote}</p>
+          <motion.footer
+            className="eq-attribution"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.45 }}
+          >
+            {eq.attribution}
+          </motion.footer>
+        </motion.blockquote>
+      </div>
+    </section>
+  )
+}
+
+function WhoIsItForSection({ t }) {
+  const reduceMotion = useReducedMotion()
+  const wf = t.home.whoIsItFor
+
+  return (
+    <section className="who-section">
+      {/* Subtle atmospheric orbs */}
+      <div className="who-bg" aria-hidden="true">
+        <div className="who-orb who-orb--1" />
+        <div className="who-orb who-orb--2" />
+      </div>
+
+      <div className="who-inner">
+        {/* Header */}
+        <motion.div
+          className="who-header"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className="who-eyebrow">{wf.eyebrow}</span>
+          <h2 className="who-title">{wf.title}</h2>
+          <p className="who-subtext">{wf.subtext}</p>
+        </motion.div>
+
+        {/* Arrow panels */}
+        <div className="who-panels">
+          {wf.panels.map((panel, i) => (
+            <motion.article
+              key={panel.key}
+              className={`who-panel who-panel--${panel.key}`}
+              initial={{ opacity: 0, x: i % 2 === 0 ? -28 : 28, y: 20 }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              viewport={{ once: true, amount: 0.18 }}
+              transition={{ duration: 0.82, ease: [0.22, 1, 0.36, 1], delay: i * 0.15 }}
+              whileHover={reduceMotion ? {} : { y: -4, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } }}
+            >
+              {/* Background icon — atmospheric, oversized */}
+              <div className="who-panel-icon-bg" aria-hidden="true">
+                <img src={panel.icon} alt="" className="who-panel-icon-img" />
+              </div>
+
+              {/* Directional arrow shape overlay */}
+              <div className="who-panel-arrow" aria-hidden="true" />
+
+              {/* Light sweep on hover */}
+              <div className="who-panel-sweep" aria-hidden="true" />
+
+              {/* Content */}
+              <div className="who-panel-content">
+                <div className="who-panel-icon-inline" aria-hidden="true">
+                  <img src={panel.icon} alt="" />
+                </div>
+                <h3 className="who-panel-title">{panel.title}</h3>
+                <p className="who-panel-description">{panel.description}</p>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function Section({ title, subtitle, items }) {
   return (
     <section className="section-block">
@@ -1147,6 +1331,8 @@ function Home({ t }) {
         <ClinicalAreaIntroductionSection t={t} />
         <IntegratedCareProcessSection t={t} />
         <TherapeuticApproachSection t={t} />
+        <EditorialQuoteStripSection t={t} />
+        <WhoIsItForSection t={t} />
 
         <blockquote className="quote">{t.sections.testimonials}</blockquote>
         <section className="contact-strip card">
