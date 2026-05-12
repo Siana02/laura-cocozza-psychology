@@ -166,7 +166,7 @@ const content = {
         ],
       },
       clinicalAreaTransition: {
-        eyebrow: 'Area Clinica',
+        eyebrow: 'Percorso Clinico',
         title: 'Un percorso terapeutico\ncostruito attorno\nalla persona',
         paragraph:
           'Approfondisci le aree di supporto,\ngli approcci terapeutici\ne le modalità di intervento\ndella pratica clinica.',
@@ -180,28 +180,28 @@ const content = {
         panels: [
           {
             key: 'anxiety',
-            icon: '/brain.png',
+            icon: '/anxiety.png',
             title: 'Ansia e gestione dello stress',
             description:
               'Percorsi di supporto dedicati alla gestione dell’ansia, dello stress emotivo, delle paure persistenti e del sovraccarico mentale.',
           },
           {
             key: 'mood',
-            icon: '/self-acceptance.png',
+            icon: '/emotion.png',
             title: 'Difficoltà emotive e dell’umore',
             description:
               'Supporto psicologico per periodi di vulnerabilità emotiva, demotivazione, tristezza persistente e difficoltà nel mantenere equilibrio emotivo.',
           },
           {
             key: 'ocd',
-            icon: '/cognitive-behavior.png',
+            icon: '/ocd.png',
             title: 'Pensieri intrusivi e comportamenti compulsivi',
             description:
               'Interventi orientati alla gestione di pensieri ricorrenti, compulsioni, controllo dell’ansia e rigidità cognitive.',
           },
           {
             key: 'regulation',
-            icon: '/virtual-reality.png',
+            icon: '/fear.png',
             title: 'Regolazione emotiva',
             description:
               'Percorsi focalizzati sullo sviluppo della consapevolezza emotiva, della gestione dello stress e dell’equilibrio psicologico quotidiano.',
@@ -382,7 +382,7 @@ const content = {
         ],
       },
       clinicalAreaTransition: {
-        eyebrow: 'Clinical Area',
+        eyebrow: 'Clinical Pathways',
         title: 'A therapeutic pathway\nbuilt around\nthe person',
         paragraph:
           'Explore the support areas,\ntherapeutic approaches,\nand intervention models\nof the clinical practice.',
@@ -396,28 +396,28 @@ const content = {
         panels: [
           {
             key: 'anxiety',
-            icon: '/brain.png',
+            icon: '/anxiety.png',
             title: 'Anxiety and stress management',
             description:
               'Support pathways focused on anxiety, emotional stress, persistent fears, and mental overload.',
           },
           {
             key: 'mood',
-            icon: '/self-acceptance.png',
+            icon: '/emotion.png',
             title: 'Emotional and mood difficulties',
             description:
               'Psychological support for periods of emotional vulnerability, low motivation, persistent sadness, and difficulty maintaining emotional balance.',
           },
           {
             key: 'ocd',
-            icon: '/cognitive-behavior.png',
+            icon: '/ocd.png',
             title: 'Intrusive thoughts and compulsive behaviors',
             description:
               'Interventions focused on recurring thoughts, compulsions, anxiety management, and cognitive rigidity.',
           },
           {
             key: 'regulation',
-            icon: '/virtual-reality.png',
+            icon: '/fear.png',
             title: 'Emotional regulation',
             description:
               'Pathways focused on emotional awareness, stress management, and everyday psychological balance.',
@@ -1461,24 +1461,29 @@ function SupportAreasSection({ t }) {
           {support.panels.map((panel, index) => (
             <motion.article
               key={panel.key}
-              className={`support-area-panel support-area-panel--${panel.key}`}
+              className={`support-area-panel support-area-panel--${panel.key} ${index % 2 === 1 ? 'support-area-panel--reverse' : ''}`}
               initial={{ opacity: 0, x: index % 2 === 0 ? -24 : 24, y: 22 }}
               whileInView={{ opacity: 1, x: 0, y: 0 }}
               viewport={{ once: true, amount: 0.16 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: index * 0.08 }}
               whileHover={panelLiftInteraction}
             >
-              <div className="support-area-icon-env" aria-hidden="true">
+              <div className="support-area-icon-zone" aria-hidden="true">
                 <img src={panel.icon} alt="" className="support-area-icon-bg" />
-                <span className="support-area-light support-area-light--1" />
-                <span className="support-area-light support-area-light--2" />
-                <span className="support-area-line support-area-line--1" />
-                <span className="support-area-line support-area-line--2" />
+                <img src={panel.icon} alt="" className="support-area-icon-float" />
               </div>
 
               <div className="support-area-content">
                 <h3 className="support-area-title">{panel.title}</h3>
                 <p className="support-area-description">{panel.description}</p>
+              </div>
+
+              <div className="support-area-ambient" aria-hidden="true">
+                <span className="support-area-light support-area-light--1" />
+                <span className="support-area-light support-area-light--2" />
+                <span className="support-area-line support-area-line--1" />
+                <span className="support-area-line support-area-line--2" />
+                <span className="support-area-shine" />
               </div>
             </motion.article>
           ))}

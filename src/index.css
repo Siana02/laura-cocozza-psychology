@@ -2492,83 +2492,113 @@ h3 {
 
 .support-areas-panels {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: clamp(1rem, 1.9vw, 1.55rem);
+  grid-template-columns: 1fr;
+  gap: clamp(1rem, 1.8vw, 1.4rem);
 }
 
 .support-area-panel {
   position: relative;
   overflow: hidden;
-  min-height: clamp(290px, 33vw, 390px);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  min-height: clamp(220px, 22vw, 270px);
+  display: grid;
+  grid-template-columns: clamp(120px, 14vw, 170px) minmax(0, 1fr) clamp(140px, 18vw, 220px);
+  align-items: stretch;
   border: 1px solid rgba(183, 244, 255, 0.12);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.42);
-  transition: box-shadow 0.55s ease, border-color 0.55s ease;
+  clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 28px, 100% 100%, 24px 100%, 0 calc(100% - 22px));
+  box-shadow:
+    0 24px 55px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    inset 0 -1px 0 rgba(183, 244, 255, 0.08);
+  transition: box-shadow 0.55s ease, border-color 0.55s ease, transform 0.42s ease;
 }
 
 .support-area-panel:hover {
   border-color: rgba(183, 244, 255, 0.34);
   box-shadow:
+    0 0 0 1px rgba(183, 244, 255, 0.1),
     0 0 40px rgba(183, 244, 255, 0.08),
     0 28px 62px rgba(0, 0, 0, 0.5);
 }
 
 .support-area-panel--anxiety {
-  grid-column: 1 / span 7;
-  border-radius: 8px 28px 8px 24px;
-  background: linear-gradient(150deg, rgba(8, 31, 42, 0.95), rgba(10, 45, 58, 0.85));
+  background:
+    radial-gradient(ellipse 38% 60% at 14% 50%, rgba(183, 244, 255, 0.11), transparent 78%),
+    linear-gradient(150deg, rgba(8, 31, 42, 0.95), rgba(10, 45, 58, 0.85));
 }
 
 .support-area-panel--mood {
-  grid-column: 8 / span 5;
-  transform: translateY(1.4rem);
-  border-radius: 24px 8px 24px 8px;
-  background: linear-gradient(150deg, rgba(10, 36, 46, 0.95), rgba(8, 28, 36, 0.84));
+  background:
+    radial-gradient(ellipse 36% 56% at 84% 36%, rgba(247, 243, 238, 0.08), transparent 78%),
+    linear-gradient(150deg, rgba(10, 36, 46, 0.95), rgba(8, 28, 36, 0.84));
 }
 
 .support-area-panel--ocd {
-  grid-column: 2 / span 5;
-  border-radius: 6px 26px 6px 20px;
-  background: linear-gradient(152deg, rgba(8, 30, 40, 0.96), rgba(9, 37, 48, 0.84));
+  background:
+    radial-gradient(ellipse 34% 54% at 18% 72%, rgba(183, 244, 255, 0.08), transparent 78%),
+    linear-gradient(152deg, rgba(8, 30, 40, 0.96), rgba(9, 37, 48, 0.84));
 }
 
 .support-area-panel--regulation {
-  grid-column: 7 / span 6;
-  transform: translateY(-1.2rem);
-  border-radius: 22px 8px 24px 8px;
-  background: linear-gradient(152deg, rgba(8, 25, 33, 0.96), rgba(9, 42, 54, 0.82));
+  background:
+    radial-gradient(ellipse 34% 54% at 88% 60%, rgba(183, 244, 255, 0.1), transparent 78%),
+    linear-gradient(152deg, rgba(8, 25, 33, 0.96), rgba(9, 42, 54, 0.82));
 }
 
 .support-area-panel--relational {
-  grid-column: 3 / span 8;
-  min-height: clamp(260px, 28vw, 340px);
-  border-radius: 8px 30px 8px 26px;
-  background: linear-gradient(148deg, rgba(8, 28, 37, 0.98), rgba(10, 40, 50, 0.84));
+  background:
+    radial-gradient(ellipse 34% 54% at 24% 30%, rgba(183, 244, 255, 0.09), transparent 78%),
+    linear-gradient(148deg, rgba(8, 28, 37, 0.98), rgba(10, 40, 50, 0.84));
 }
 
-.support-area-icon-env {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
+.support-area-panel--reverse {
+  grid-template-columns: clamp(140px, 18vw, 220px) minmax(0, 1fr) clamp(120px, 14vw, 170px);
+}
+
+.support-area-icon-zone {
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid rgba(183, 244, 255, 0.1);
+  background: linear-gradient(to right, rgba(183, 244, 255, 0.05), transparent);
+}
+
+.support-area-panel--reverse .support-area-icon-zone {
+  order: 3;
+  border-right: 0;
+  border-left: 1px solid rgba(183, 244, 255, 0.1);
+  background: linear-gradient(to left, rgba(183, 244, 255, 0.05), transparent);
 }
 
 .support-area-icon-bg {
   position: absolute;
-  top: 7%;
-  right: -4%;
-  width: 48%;
-  max-width: 220px;
+  inset: 50% auto auto 50%;
+  width: clamp(112px, 11vw, 140px);
+  transform: translate(-50%, -50%);
   opacity: 0.16;
   filter:
     brightness(1.65)
     saturate(1.22)
     hue-rotate(160deg)
     drop-shadow(0 0 20px rgba(183, 244, 255, 0.42));
-  transform-origin: center;
+}
+
+.support-area-icon-float {
+  position: absolute;
+  bottom: 10%;
+  right: 8%;
+  width: clamp(72px, 8vw, 102px);
+  opacity: 0.2;
+  filter:
+    brightness(1.5)
+    saturate(1.2)
+    hue-rotate(150deg)
+    drop-shadow(0 0 14px rgba(183, 244, 255, 0.3));
+}
+
+.support-area-panel--reverse .support-area-icon-float {
+  right: auto;
+  left: 8%;
 }
 
 .support-area-light {
@@ -2612,16 +2642,36 @@ h3 {
   width: 46%;
 }
 
+.support-area-ambient {
+  position: relative;
+  overflow: hidden;
+}
+
+.support-area-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(130deg, transparent 32%, rgba(183, 244, 255, 0.12) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.9s ease;
+}
+
+.support-area-panel:hover .support-area-shine {
+  transform: translateX(120%);
+}
+
 .support-area-content {
   position: relative;
-  z-index: 2;
-  padding: clamp(1.25rem, 2vw, 1.8rem);
-  background: linear-gradient(to top, rgba(5, 15, 21, 0.9) 0%, rgba(5, 15, 21, 0.6) 56%, transparent 100%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.3rem, 2vw, 1.9rem);
+  background: linear-gradient(to right, rgba(5, 15, 21, 0.72), rgba(5, 15, 21, 0.45));
 }
 
 .support-area-title {
   margin: 0 0 0.62rem;
-  max-width: 30ch;
+  max-width: 34ch;
   font-family: 'Playfair Display', serif;
   font-size: clamp(1rem, 1.4vw, 1.3rem);
   line-height: 1.26;
@@ -2630,23 +2680,23 @@ h3 {
 
 .support-area-description {
   margin: 0;
-  max-width: 52ch;
+  max-width: 62ch;
   font-family: 'DM Sans', sans-serif;
   font-size: clamp(0.82rem, 1vw, 0.92rem);
-  line-height: 1.76;
+  line-height: 1.8;
   color: rgba(247, 243, 238, 0.62);
 }
 
 .support-area-panel--anxiety .support-area-icon-bg {
-  animation: support-wave-flow 6.5s ease-in-out infinite;
+  animation: support-wave-flow 7s ease-in-out infinite;
 }
 
 .support-area-panel--mood .support-area-icon-bg {
-  animation: support-breath-glow 6.2s ease-in-out infinite;
+  animation: support-breath-glow 6.8s ease-in-out infinite;
 }
 
 .support-area-panel--ocd .support-area-line {
-  animation: support-precision-lines 4.8s linear infinite;
+  animation: support-precision-lines 5.2s linear infinite;
 }
 
 .support-area-panel--regulation .support-area-light--1 {
@@ -2690,23 +2740,16 @@ h3 {
 
 @media (max-width: 1024px) {
   .support-areas-panels {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
+    gap: 0.9rem;
   }
 
   .support-area-panel {
-    grid-column: auto;
-    min-height: 270px;
-    transform: none;
+    min-height: 230px;
+    grid-template-columns: 110px minmax(0, 1fr) 130px;
   }
 
-  .support-area-panel--mood,
-  .support-area-panel--regulation {
-    transform: translateY(0.7rem);
-  }
-
-  .support-area-panel--relational {
-    grid-column: 1 / -1;
+  .support-area-panel--reverse {
+    grid-template-columns: 130px minmax(0, 1fr) 110px;
   }
 }
 
@@ -2720,26 +2763,34 @@ h3 {
   }
 
   .support-area-panel {
-    min-height: 250px;
-    width: min(100%, 560px);
+    min-height: 230px;
+    width: 100%;
+    grid-template-columns: 1fr;
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 22px, 100% 100%, 18px 100%, 0 calc(100% - 16px));
   }
 
-  .support-area-panel:nth-child(odd) {
-    margin-right: auto;
+  .support-area-panel--reverse {
+    grid-template-columns: 1fr;
   }
 
-  .support-area-panel:nth-child(even) {
-    margin-left: auto;
+  .support-area-icon-zone,
+  .support-area-panel--reverse .support-area-icon-zone {
+    order: 1;
+    min-height: 92px;
+    border-right: 0;
+    border-left: 0;
+    border-bottom: 1px solid rgba(183, 244, 255, 0.1);
+    background: linear-gradient(to bottom, rgba(183, 244, 255, 0.05), transparent);
   }
 
-  .support-area-panel--mood,
-  .support-area-panel--regulation {
-    transform: none;
+  .support-area-content {
+    order: 2;
+    background: linear-gradient(to top, rgba(5, 15, 21, 0.72), rgba(5, 15, 21, 0.42));
   }
 
-  .support-area-panel:nth-child(2),
-  .support-area-panel:nth-child(4) {
-    transform: translateY(0.5rem);
+  .support-area-ambient {
+    order: 3;
+    min-height: 84px;
   }
 }
 
