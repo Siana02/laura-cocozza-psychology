@@ -630,7 +630,6 @@ a {
   justify-content: flex-end;
   align-items: center;
   text-align: center;
-  padding-top: 4rem;
   padding-right: clamp(1.4rem, 3.8vw, 3.2rem);
   padding-bottom: clamp(4rem, 8vh, 6rem);
   padding-left: clamp(1.4rem, 3.8vw, 3.2rem);
@@ -1208,6 +1207,7 @@ h3 {
   }
 
   .landing-secondary {
+    /* Reset the desktop spanning/centering rules once the layout collapses to one column. */
     grid-column: auto;
     justify-self: stretch;
     width: auto;
