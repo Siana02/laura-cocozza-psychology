@@ -3,6 +3,7 @@
 :root {
   --color-primary: #0f4c5c;
   --color-primary-dark: #0b3b46;
+  --color-deep-teal: #071e26;
   --color-ivory: #f7f3ee;
   --color-cream: #efe7dc;
   --color-sand: #dccfc0;
@@ -39,35 +40,56 @@ a {
 .preloader {
   position: fixed;
   inset: 0;
-  z-index: 110;
+  z-index: 140;
   display: grid;
   place-items: center;
-  background: linear-gradient(145deg, #052b34, var(--color-primary-dark));
+  overflow: hidden;
+  background: radial-gradient(circle at 72% 15%, color-mix(in srgb, var(--color-primary) 24%, transparent), transparent 42%),
+    linear-gradient(150deg, var(--color-deep-teal), var(--color-primary-dark));
+  will-change: opacity;
 }
 
 .preloader-bg {
   position: absolute;
-  color: rgba(252, 250, 247, 0.09);
+  inset: -8%;
+  display: grid;
+  place-items: center;
+  color: color-mix(in srgb, var(--color-ivory) 20%, transparent);
+  pointer-events: none;
+  will-change: transform, opacity, filter;
 }
 
 .libra-icon {
-  width: min(56vw, 420px);
+  width: clamp(320px, 62vw, 820px);
   height: auto;
+  opacity: 0.9;
 }
 
 .lc-wrap {
   position: relative;
+  z-index: 2;
+  will-change: transform, opacity, filter;
 }
 
 .lc-mark {
-  width: 180px;
-  color: var(--color-white);
+  width: clamp(136px, 20vw, 228px);
+  color: var(--color-ivory);
+  overflow: visible;
+  filter: drop-shadow(0 0 18px color-mix(in srgb, var(--color-ivory) 16%, transparent));
+}
+
+.lc-mark-stroke {
+  vector-effect: non-scaling-stroke;
 }
 
 .app-shell {
   width: min(1200px, 100% - 2rem);
   margin: 0 auto;
   padding: 1rem 0 2rem;
+}
+
+.app-content {
+  will-change: transform, opacity, filter;
 }
 
 .glass {
@@ -238,6 +260,11 @@ h3 {
   position: relative;
 }
 
+.hero-visual-mask {
+  position: absolute;
+  inset: 0;
+}
+
 .hero-orb {
   position: absolute;
   width: 220px;
@@ -381,6 +408,26 @@ h3 {
 
   .trust-bar {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .preloader-bg {
+    inset: -18%;
+  }
+
+  .libra-icon {
+    width: min(120vw, 620px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader,
+  .preloader-bg,
+  .lc-wrap,
+  .app-content {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
   }
 }
 
