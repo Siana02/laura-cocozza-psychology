@@ -1703,7 +1703,7 @@ function SupportAreasSection({ t }) {
           const isReversed = index % 2 === 1
           const panelIconSrc = panel.icon
           if (!panelIconSrc) {
-            throw new Error(`Missing support icon for panel key "${panel.key}"`)
+            throw new Error(`Missing support icon for panel key "${panel.key || `index-${index}`}"`)
           }
           return (
             <motion.article
