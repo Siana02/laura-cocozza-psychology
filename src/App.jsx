@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from 'framer-motion'
 import {
   ArrowRight,
@@ -1437,10 +1437,251 @@ function ClinicalAreaTransitionSection({ t }) {
   )
 }
 
+// ─── SUPPORT AREA ATMOSPHERIC BACKGROUNDS ────────────────────────────────────
+
+function AnxietyAtmosphere({ reduceMotion }) {
+  return (
+    <div className="support-atm support-atm--anxiety" aria-hidden="true">
+      <svg viewBox="0 0 900 480" className="support-atm-svg" preserveAspectRatio="xMidYMid slice" fill="none">
+        <defs>
+          <linearGradient id="anx-g1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="rgba(183,244,255,0)" />
+            <stop offset="45%" stopColor="rgba(183,244,255,0.22)" />
+            <stop offset="100%" stopColor="rgba(183,244,255,0)" />
+          </linearGradient>
+          <linearGradient id="anx-g2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="rgba(183,244,255,0)" />
+            <stop offset="50%" stopColor="rgba(183,244,255,0.12)" />
+            <stop offset="100%" stopColor="rgba(183,244,255,0)" />
+          </linearGradient>
+        </defs>
+        <motion.path
+          d="M0 240 C200 190 360 290 540 230 C700 175 820 258 900 240"
+          stroke="url(#anx-g1)" strokeWidth="1.8" fill="none"
+          animate={reduceMotion ? {} : {
+            d: [
+              'M0 240 C200 190 360 290 540 230 C700 175 820 258 900 240',
+              'M0 258 C200 228 360 255 540 268 C700 282 820 234 900 258',
+              'M0 240 C200 190 360 290 540 230 C700 175 820 258 900 240',
+            ],
+          }}
+          transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <motion.path
+          d="M0 298 C180 258 340 338 540 278 C700 224 830 306 900 288"
+          stroke="url(#anx-g2)" strokeWidth="1.2" fill="none"
+          animate={reduceMotion ? {} : {
+            d: [
+              'M0 298 C180 258 340 338 540 278 C700 224 830 306 900 288',
+              'M0 314 C180 292 340 306 540 318 C700 330 830 288 900 308',
+              'M0 298 C180 258 340 338 540 278 C700 224 830 306 900 288',
+            ],
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+        />
+        <motion.path
+          d="M0 182 C220 154 380 228 540 184 C680 146 800 198 900 188"
+          stroke="rgba(183,244,255,0.06)" strokeWidth="0.9" fill="none"
+          animate={reduceMotion ? {} : {
+            d: [
+              'M0 182 C220 154 380 228 540 184 C680 146 800 198 900 188',
+              'M0 196 C220 176 380 196 540 200 C680 206 800 184 900 194',
+              'M0 182 C220 154 380 228 540 184 C680 146 800 198 900 188',
+            ],
+          }}
+          transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut', delay: 4 }}
+        />
+        <motion.circle
+          cx="450" cy="240" r="180" fill="none"
+          stroke="rgba(183,244,255,0.04)" strokeWidth="1"
+          animate={reduceMotion ? {} : { r: [180, 220, 180], opacity: [0.04, 0.1, 0.04] }}
+          transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
+        />
+      </svg>
+    </div>
+  )
+}
+
+function MoodAtmosphere({ reduceMotion }) {
+  return (
+    <div className="support-atm support-atm--mood" aria-hidden="true">
+      <svg viewBox="0 0 900 480" className="support-atm-svg" preserveAspectRatio="xMidYMid slice" fill="none">
+        {[200, 152, 104, 58].map((r, i) => (
+          <motion.circle
+            key={i} cx="450" cy="240" r={r} fill="none"
+            stroke={`rgba(${i % 2 === 0 ? '183,244,255' : '247,243,238'},${0.11 - i * 0.02})`}
+            strokeWidth="1"
+            animate={reduceMotion ? {} : {
+              r: [r, r + 20, r],
+              opacity: [0.11 - i * 0.02, (0.11 - i * 0.02) * 1.9, 0.11 - i * 0.02],
+            }}
+            transition={{ duration: 8 + i * 2, repeat: Infinity, ease: 'easeInOut', delay: i * 1.2 }}
+          />
+        ))}
+        <motion.ellipse
+          cx="450" cy="240" rx="300" ry="175" fill="none"
+          stroke="rgba(247,243,238,0.05)" strokeWidth="0.8"
+          animate={reduceMotion ? {} : { rx: [300, 322, 300], ry: [175, 192, 175] }}
+          transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+        />
+        <motion.circle
+          cx="450" cy="240" r="76" fill="rgba(247,243,238,0.03)" stroke="none"
+          animate={reduceMotion ? {} : { r: [76, 108, 76] }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+        />
+      </svg>
+    </div>
+  )
+}
+
+function OcdAtmosphere({ reduceMotion }) {
+  const gridLinesH = Array.from({ length: 7 }, (_, i) => 54 + i * 62)
+  const gridLinesV = Array.from({ length: 10 }, (_, i) => 45 + i * 90)
+  const corners = [[-1, -1], [1, -1], [1, 1], [-1, 1]]
+  return (
+    <div className="support-atm support-atm--ocd" aria-hidden="true">
+      <svg viewBox="0 0 900 480" className="support-atm-svg" preserveAspectRatio="xMidYMid slice" fill="none">
+        {gridLinesH.map((y, i) => (
+          <line key={`gh${i}`} x1="0" y1={y} x2="900" y2={y} stroke="rgba(183,244,255,0.045)" strokeWidth="0.7" />
+        ))}
+        {gridLinesV.map((x, i) => (
+          <line key={`gv${i}`} x1={x} y1="0" x2={x} y2="480" stroke="rgba(183,244,255,0.035)" strokeWidth="0.6" />
+        ))}
+        {[195, 150, 105, 62].map((half, i) => (
+          <motion.rect
+            key={i} x={450 - half * 2} y={240 - half} width={half * 4} height={half * 2}
+            fill="none" stroke={`rgba(183,244,255,${0.14 - i * 0.03})`} strokeWidth="0.9"
+            animate={reduceMotion ? {} : { opacity: [0.4 + i * 0.1, 0.85 + i * 0.05, 0.4 + i * 0.1] }}
+            transition={{ duration: 5 + i * 0.8, repeat: Infinity, ease: 'easeInOut', delay: i * 0.6 }}
+          />
+        ))}
+        {corners.map(([sx, sy], i) => (
+          <motion.path
+            key={i}
+            d={`M ${450 + sx * 62} ${240 + sy * 62} L ${450 + sx * 62} ${240 + sy * 41} M ${450 + sx * 62} ${240 + sy * 62} L ${450 + sx * 41} ${240 + sy * 62}`}
+            stroke="rgba(183,244,255,0.48)" strokeWidth="1.2" fill="none"
+            animate={reduceMotion ? {} : { opacity: [0.48, 0.9, 0.48] }}
+            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: i * 0.5 }}
+          />
+        ))}
+      </svg>
+    </div>
+  )
+}
+
+function RegulationAtmosphere({ reduceMotion }) {
+  const spokes = Array.from({ length: 8 }, (_, i) => {
+    const angle = (i * Math.PI * 2) / 8
+    return { x2: 450 + Math.cos(angle) * 218, y2: 240 + Math.sin(angle) * 218 }
+  })
+  return (
+    <div className="support-atm support-atm--regulation" aria-hidden="true">
+      <svg viewBox="0 0 900 480" className="support-atm-svg" preserveAspectRatio="xMidYMid slice" fill="none">
+        {[218, 172, 128, 84, 40].map((r, i) => (
+          <motion.circle
+            key={i} cx="450" cy="240" r={r} fill="none"
+            stroke={`rgba(183,244,255,${0.13 - i * 0.02})`} strokeWidth="0.9"
+            animate={reduceMotion ? {} : {
+              r: [r, r + 14, r],
+              opacity: [0.13 - i * 0.02, (0.13 - i * 0.02) * 2, 0.13 - i * 0.02],
+            }}
+            transition={{ duration: 7 + i * 1.8, repeat: Infinity, ease: 'easeInOut', delay: i * 0.9 }}
+          />
+        ))}
+        {spokes.map((sp, i) => (
+          <motion.line
+            key={i} x1="450" y1="240" x2={sp.x2} y2={sp.y2}
+            stroke="rgba(183,244,255,0.06)" strokeWidth="0.7" strokeDasharray="4 8"
+            animate={reduceMotion ? {} : { strokeDashoffset: [0, -36], opacity: [0.06, 0.18, 0.06] }}
+            transition={{ duration: 4 + i * 0.4, repeat: Infinity, ease: 'linear', delay: i * 0.3 }}
+          />
+        ))}
+        <motion.circle
+          cx="450" cy="240" r="6" fill="rgba(183,244,255,0.44)"
+          animate={reduceMotion ? {} : { r: [5, 9, 5], opacity: [0.38, 0.82, 0.38] }}
+          transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+        />
+      </svg>
+    </div>
+  )
+}
+
+function RelationalAtmosphere({ reduceMotion }) {
+  return (
+    <div className="support-atm support-atm--relational" aria-hidden="true">
+      <svg viewBox="0 0 900 480" className="support-atm-svg" preserveAspectRatio="xMidYMid slice" fill="none">
+        <defs>
+          <linearGradient id="rel-g1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="rgba(183,244,255,0)" />
+            <stop offset="45%" stopColor="rgba(183,244,255,0.2)" />
+            <stop offset="100%" stopColor="rgba(183,244,255,0)" />
+          </linearGradient>
+          <linearGradient id="rel-g2" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="rgba(247,243,238,0)" />
+            <stop offset="50%" stopColor="rgba(247,243,238,0.14)" />
+            <stop offset="100%" stopColor="rgba(247,243,238,0)" />
+          </linearGradient>
+        </defs>
+        <motion.path
+          d="M0 80 C240 118 480 218 600 298 C720 378 820 398 900 418"
+          stroke="url(#rel-g1)" strokeWidth="1.6" fill="none"
+          animate={reduceMotion ? {} : {
+            d: [
+              'M0 80 C240 118 480 218 600 298 C720 378 820 398 900 418',
+              'M0 98 C222 128 458 208 578 288 C698 366 818 384 900 402',
+              'M0 80 C240 118 480 218 600 298 C720 378 820 398 900 418',
+            ],
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <motion.path
+          d="M0 398 C200 358 380 278 520 198 C660 118 780 88 900 58"
+          stroke="url(#rel-g2)" strokeWidth="1.4" fill="none"
+          animate={reduceMotion ? {} : {
+            d: [
+              'M0 398 C200 358 380 278 520 198 C660 118 780 88 900 58',
+              'M0 413 C200 376 374 294 518 216 C658 138 774 106 900 76',
+              'M0 398 C200 358 380 278 520 198 C660 118 780 88 900 58',
+            ],
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 2.5 }}
+        />
+        <motion.circle
+          cx="450" cy="240" r="28" fill="rgba(183,244,255,0.06)"
+          stroke="rgba(183,244,255,0.14)" strokeWidth="0.8"
+          animate={reduceMotion ? {} : { r: [28, 46, 28], opacity: [0.6, 1, 0.6] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
+        />
+        <motion.path
+          d="M0 138 C200 158 420 238 558 318 C698 398 818 418 900 438"
+          stroke="rgba(183,244,255,0.04)" strokeWidth="0.8" fill="none"
+          animate={reduceMotion ? {} : {
+            d: [
+              'M0 138 C200 158 420 238 558 318 C698 398 818 418 900 438',
+              'M0 152 C200 174 416 252 554 330 C694 410 816 428 900 450',
+              'M0 138 C200 158 420 238 558 318 C698 398 818 418 900 438',
+            ],
+          }}
+          transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut', delay: 5 }}
+        />
+      </svg>
+    </div>
+  )
+}
+
+// ─── SUPPORT AREAS SECTION ────────────────────────────────────────────────────
+
 function SupportAreasSection({ t }) {
   const reduceMotion = useReducedMotion()
   const support = t.home.supportAreas
-  const panelLiftInteraction = reduceMotion ? {} : { y: -4, transition: { duration: 0.42, ease: [0.22, 1, 0.36, 1] } }
+
+  const atmosphereMap = useMemo(() => ({
+    anxiety:    <AnxietyAtmosphere    reduceMotion={reduceMotion} />,
+    mood:       <MoodAtmosphere       reduceMotion={reduceMotion} />,
+    ocd:        <OcdAtmosphere        reduceMotion={reduceMotion} />,
+    regulation: <RegulationAtmosphere reduceMotion={reduceMotion} />,
+    relational: <RelationalAtmosphere reduceMotion={reduceMotion} />,
+  }), [reduceMotion])
 
   return (
     <section className="support-areas-section">
@@ -1456,38 +1697,46 @@ function SupportAreasSection({ t }) {
           <h2 className="support-areas-title">{support.title}</h2>
           <p className="support-areas-subtext">{support.subtext}</p>
         </motion.div>
+      </div>
 
-        <div className="support-areas-panels">
-          {support.panels.map((panel, index) => (
+      <div className="support-story-panels">
+        {support.panels.map((panel, index) => {
+          const isReversed = index % 2 === 1
+          return (
             <motion.article
               key={panel.key}
-              className={`support-area-panel support-area-panel--${panel.key} ${index % 2 === 1 ? 'support-area-panel--reverse' : ''}`}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -24 : 24, y: 22 }}
-              whileInView={{ opacity: 1, x: 0, y: 0 }}
-              viewport={{ once: true, amount: 0.16 }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: index * 0.08 }}
-              whileHover={panelLiftInteraction}
+              className={`support-story-panel support-story-panel--${panel.key}${isReversed ? ' support-story-panel--reverse' : ''}`}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="support-area-icon-zone" aria-hidden="true">
-                <img src={panel.icon} alt="" className="support-area-icon-bg" />
-                <img src={panel.icon} alt="" className="support-area-icon-float" />
+              {/* Per-panel atmospheric SVG layer */}
+              {atmosphereMap[panel.key]}
+
+              {/* Visual zone: large sculptural icon from panel data */}
+              <div className="support-story-visual" aria-hidden="true">
+                <img src={panel.icon} alt="" className="support-story-icon--blur" />
+                <img src={panel.icon} alt="" className="support-story-icon--main" />
+                <div className="support-story-icon-glow" />
               </div>
 
-              <div className="support-area-content">
-                <h3 className="support-area-title">{panel.title}</h3>
-                <p className="support-area-description">{panel.description}</p>
-              </div>
-
-              <div className="support-area-ambient" aria-hidden="true">
-                <span className="support-area-light support-area-light--1" />
-                <span className="support-area-light support-area-light--2" />
-                <span className="support-area-line support-area-line--1" />
-                <span className="support-area-line support-area-line--2" />
-                <span className="support-area-shine" />
-              </div>
+              {/* Editorial content zone */}
+              <motion.div
+                className="support-story-content"
+                initial={{ opacity: 0, x: isReversed ? -24 : 24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.14 }}
+                transition={{ duration: 0.78, ease: [0.22, 1, 0.36, 1], delay: 0.18 }}
+              >
+                <span className="support-story-index" aria-hidden="true">0{index + 1}</span>
+                <h3 className="support-story-title">{panel.title}</h3>
+                <div className="support-story-rule" aria-hidden="true" />
+                <p className="support-story-description">{panel.description}</p>
+              </motion.div>
             </motion.article>
-          ))}
-        </div>
+          )
+        })}
       </div>
     </section>
   )
