@@ -1054,6 +1054,16 @@ a {
   width: 100%;
 }
 
+.app-shell--home > .clinical-intro-section {
+  /* Full-bleed editorial section — matches trust section treatment. */
+  width: 100%;
+}
+
+.app-shell--home > .care-process-section {
+  /* Full-bleed immersive process section. */
+  width: 100%;
+}
+
 .app-shell--home > .therapeutic-approach-section {
   /* Full-bleed immersive treatment — matches trust section approach. */
   width: 100%;
@@ -1873,5 +1883,432 @@ h3 {
 
   .therapeutic-panels-grid {
     max-width: 100%;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   SECTION 03 — CLINICAL AREA INTRODUCTION
+   ══════════════════════════════════════════════════════════ */
+
+.clinical-intro-section {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(5rem, 10vh, 8rem) 0 0;
+  /* Warmer tonal shift from the trust section — emotionally softer */
+  background:
+    radial-gradient(ellipse 64% 58% at 12% 38%, rgba(15, 76, 92, 0.52) 0%, transparent 62%),
+    radial-gradient(ellipse 48% 44% at 88% 62%, rgba(11, 59, 70, 0.38) 0%, transparent 58%),
+    linear-gradient(168deg, #0e2c34 0%, #112d31 52%, #0b242b 100%);
+}
+
+/* ── Floating atmospheric orbs ─────────────────────────── */
+
+.clinical-intro-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.clinical-intro-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+
+.clinical-intro-orb--1 {
+  width: clamp(320px, 42vw, 560px);
+  height: clamp(320px, 42vw, 560px);
+  top: -100px;
+  left: -80px;
+  background: radial-gradient(circle, rgba(15, 76, 92, 0.38), transparent 70%);
+  animation: ci-orb-float-1 13s ease-in-out infinite;
+}
+
+.clinical-intro-orb--2 {
+  width: clamp(220px, 30vw, 380px);
+  height: clamp(220px, 30vw, 380px);
+  bottom: 0;
+  right: 8%;
+  background: radial-gradient(circle, rgba(168, 181, 162, 0.16), transparent 70%);
+  animation: ci-orb-float-2 17s ease-in-out infinite;
+}
+
+.clinical-intro-orb--3 {
+  width: clamp(180px, 22vw, 280px);
+  height: clamp(180px, 22vw, 280px);
+  top: 42%;
+  left: 42%;
+  background: radial-gradient(circle, rgba(247, 243, 238, 0.055), transparent 70%);
+  animation: ci-orb-float-3 10s ease-in-out infinite;
+}
+
+@keyframes ci-orb-float-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  35% { transform: translate(44px, 28px) scale(1.06); }
+  68% { transform: translate(-18px, 52px) scale(0.96); }
+}
+
+@keyframes ci-orb-float-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  38% { transform: translate(-46px, -28px) scale(1.09); }
+  72% { transform: translate(28px, -14px) scale(0.94); }
+}
+
+@keyframes ci-orb-float-3 {
+  0%, 100% { transform: translate(0, 0); opacity: 0.75; }
+  50% { transform: translate(22px, -28px); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clinical-intro-orb { animation: none; }
+}
+
+/* ── Inner layout ──────────────────────────────────────── */
+
+.clinical-intro-inner {
+  position: relative;
+  z-index: 1;
+  max-width: min(1200px, 100% - 2rem);
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 3vw, 2rem);
+}
+
+.clinical-intro-split {
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  align-items: start;
+  padding-bottom: clamp(4rem, 8vh, 6.5rem);
+}
+
+/* ── Left column — large editorial title ───────────────── */
+
+.clinical-intro-left {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2vh, 1.6rem);
+}
+
+.clinical-intro-eyebrow {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.64rem, 0.88vw, 0.74rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(183, 244, 255, 0.52);
+  font-weight: 600;
+}
+
+.clinical-intro-title {
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4.2vw, 3.9rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-ivory);
+  white-space: pre-line;
+  letter-spacing: -0.015em;
+}
+
+/* ── Right column — supporting paragraphs ──────────────── */
+
+.clinical-intro-right {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.2rem, 2.5vh, 1.8rem);
+  padding-top: clamp(0.4rem, 1.2vh, 1.2rem);
+}
+
+.clinical-intro-paragraph {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.95rem, 1.18vw, 1.07rem);
+  line-height: 1.88;
+  color: rgba(247, 243, 238, 0.82);
+}
+
+.clinical-intro-secondary {
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(0.9rem, 1.08vw, 1rem);
+  line-height: 1.78;
+  color: rgba(247, 243, 238, 0.44);
+  font-style: italic;
+}
+
+/* ── Transition divider to Section 04 ─────────────────── */
+
+.clinical-intro-divider {
+  position: relative;
+  height: clamp(2.5rem, 5vh, 4rem);
+  background: linear-gradient(to bottom, transparent, rgba(7, 24, 32, 0.55));
+}
+
+.clinical-intro-divider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(72px, 10vw, 140px);
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(183, 244, 255, 0.32), transparent);
+}
+
+/* ── Section 03 responsive ──────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .clinical-intro-split {
+    grid-template-columns: 1fr;
+    gap: clamp(1.4rem, 4vh, 2.4rem);
+  }
+}
+
+@media (max-width: 560px) {
+  .clinical-intro-title {
+    font-size: clamp(1.9rem, 8.5vw, 2.5rem);
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   SECTION 04 — INTEGRATED CARE PROCESS
+   ══════════════════════════════════════════════════════════ */
+
+.care-process-section {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(4.5rem, 9vh, 7rem) 0 clamp(5rem, 10vh, 8rem);
+  /* Deepening tonal shift — bridges toward the dark therapeutic approach */
+  background:
+    radial-gradient(ellipse 55% 52% at 18% 28%, rgba(11, 59, 70, 0.44) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 52% at 82% 72%, rgba(7, 30, 38, 0.55) 0%, transparent 65%),
+    linear-gradient(180deg, #0b242b 0%, #071e26 62%, #091d24 100%);
+}
+
+/* Subtle vertical grid texture */
+.care-process-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 82px,
+    rgba(183, 244, 255, 0.007) 82px,
+    rgba(183, 244, 255, 0.007) 83px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.care-process-inner {
+  position: relative;
+  z-index: 1;
+  max-width: min(1200px, 100% - 2rem);
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 3vw, 2rem);
+}
+
+/* ── Section header ────────────────────────────────────── */
+
+.care-process-header {
+  text-align: center;
+  margin-bottom: clamp(3rem, 6.5vh, 5.5rem);
+}
+
+.care-process-eyebrow {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.64rem, 0.88vw, 0.74rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(183, 244, 255, 0.48);
+  font-weight: 600;
+  margin-bottom: 0.9rem;
+}
+
+.care-process-title {
+  margin: 0;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+  font-weight: 500;
+  color: var(--color-ivory);
+  letter-spacing: 0.04em;
+}
+
+/* ── Steps container — horizontal 4-column grid ─────────── */
+
+.care-process-steps {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  align-items: start;
+}
+
+/* Continuous horizontal connecting line behind all nodes */
+.care-process-steps::before {
+  content: '';
+  position: absolute;
+  /* 12.5% = center of first column (25% / 2) */
+  top: 27px;
+  left: 12.5%;
+  right: 12.5%;
+  height: 1px;
+  z-index: 0;
+  background: linear-gradient(
+    to right,
+    rgba(183, 244, 255, 0.06),
+    rgba(183, 244, 255, 0.32) 22%,
+    rgba(183, 244, 255, 0.32) 78%,
+    rgba(183, 244, 255, 0.06)
+  );
+  animation: cp-line-glow 4.2s ease-in-out infinite;
+}
+
+@keyframes cp-line-glow {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .care-process-steps::before { animation: none; }
+}
+
+/* ── Individual step ───────────────────────────────────── */
+
+.care-process-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 clamp(0.5rem, 1.5vw, 1.2rem);
+}
+
+/* ── Glowing node ──────────────────────────────────────── */
+
+.care-process-node-wrap {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  margin-bottom: clamp(1.2rem, 2.6vh, 1.9rem);
+  flex-shrink: 0;
+}
+
+.care-process-node {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(15, 76, 92, 0.88), rgba(7, 30, 38, 0.96));
+  border: 1.5px solid rgba(183, 244, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  box-shadow: 0 0 18px rgba(183, 244, 255, 0.18), 0 4px 12px rgba(0, 0, 0, 0.42);
+}
+
+.care-process-node span {
+  font-family: 'Cinzel', serif;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: rgba(183, 244, 255, 0.82);
+  letter-spacing: 0.08em;
+}
+
+.care-process-node-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(183, 244, 255, 0.16);
+  z-index: 1;
+}
+
+/* ── Step text ─────────────────────────────────────────── */
+
+.care-process-step-content {
+  padding: 0 0.3rem;
+}
+
+.care-process-step-title {
+  margin: 0 0 0.65rem;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(0.92rem, 1.15vw, 1.06rem);
+  font-weight: 600;
+  color: var(--color-ivory);
+  line-height: 1.32;
+}
+
+.care-process-step-desc {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.8rem, 0.92vw, 0.88rem);
+  line-height: 1.78;
+  color: rgba(247, 243, 238, 0.58);
+}
+
+/* ── Gradient transition toward therapeutic approach ──── */
+
+.care-process-transition {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 90px;
+  background: linear-gradient(to bottom, transparent, rgba(7, 20, 28, 0.6));
+  pointer-events: none;
+}
+
+/* ── Section 04 responsive ──────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .care-process-steps {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+    margin-inline: auto;
+    gap: 2.5rem;
+  }
+
+  /* Hide horizontal connecting line */
+  .care-process-steps::before {
+    display: none;
+  }
+
+  .care-process-step {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding: 0;
+  }
+
+  .care-process-node-wrap {
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  /* Vertical connector line below each node (except last) */
+  .care-process-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 54px;
+    left: 27px;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 2.5rem;
+    background: linear-gradient(to bottom, rgba(183, 244, 255, 0.32), rgba(183, 244, 255, 0.04));
+  }
+}
+
+@media (max-width: 560px) {
+  .care-process-steps {
+    max-width: 100%;
+  }
+
+  .care-process-title {
+    font-size: clamp(1.65rem, 8vw, 2.2rem);
   }
 }
