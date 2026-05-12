@@ -85,7 +85,7 @@ a {
 }
 
 .lc-mark {
-  width: clamp(192px, 25vw, 280px);
+  width: clamp(160px, 21vw, 240px);
   color: var(--color-ivory);
   overflow: visible;
   font-family: 'Abril Fatface', serif;
@@ -430,7 +430,7 @@ h3 {
   }
 
   .lc-mark {
-    width: clamp(178px, 52vw, 238px);
+    width: clamp(148px, 44vw, 200px);
   }
 }
 

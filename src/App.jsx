@@ -177,7 +177,7 @@ function Preloader({ visible, ariaLabel }) {
             <motion.svg viewBox="0 0 240 200" className="lc-mark" role="img" aria-label={ariaLabel}>
               <motion.text
                 x="6"
-                y="172"
+                y="114"
                 fontSize="162"
                 fontFamily="'Abril Fatface', serif"
                 fill="currentColor"
@@ -188,7 +188,7 @@ function Preloader({ visible, ariaLabel }) {
                 L
               </motion.text>
               <motion.text
-                x="92"
+                x="88"
                 y="172"
                 fontSize="162"
                 fontFamily="'Abril Fatface', serif"
