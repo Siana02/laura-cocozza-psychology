@@ -13,7 +13,7 @@ import {
   ShieldCheck,
   Sparkles,
   Stethoscope,
-  Target,
+  UserStar,
   Users,
 } from 'lucide-react'
 import { BrowserRouter, Link, NavLink, Navigate, Route, Routes, useLocation } from 'react-router-dom'
@@ -524,7 +524,7 @@ function LandingHero({ t }) {
 }
 
 function TrustBuildingSection({ t }) {
-  const trustCards = [Brain, Scale, Users, Target].map((icon, index) => ({
+  const trustCards = [Brain, Scale, Users, UserStar].map((icon, index) => ({
     icon,
     ...t.home.trustSection.cards[index],
   }))
@@ -567,6 +567,15 @@ function TrustBuildingSection({ t }) {
             <p>{item.text}</p>
           </article>
         ))}
+      </div>
+
+      <div className="trust-intro-cta-row">
+        <Link to="/contact" className="book-pill">
+          {t.home.ctaPrimary}
+          <span className="book-pill-icon" aria-hidden="true">
+            <ArrowUpRight size={22} />
+          </span>
+        </Link>
       </div>
     </section>
   )

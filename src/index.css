@@ -173,9 +173,11 @@ a {
 }
 
 .lc-logo-mark-bg {
-  width: 115%;
-  height: 115%;
-  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transform: scale(1.04);
   user-select: none;
   pointer-events: none;
   opacity: 1;
@@ -623,6 +625,7 @@ a {
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+  text-align: center;
   padding: 4rem clamp(1.4rem, 3.8vw, 3.2rem) clamp(4rem, 8vh, 6rem) clamp(0.5rem, 1.4vw, 1rem);
   min-height: 115vh;
   /* content anchored to the bottom of the extended section */
@@ -637,6 +640,7 @@ a {
   line-height: 1.18;
   color: var(--color-ivory);
   max-width: 24ch;
+  margin-inline: auto;
 }
 
 .landing-desc {
@@ -646,6 +650,7 @@ a {
   line-height: 1.65;
   color: rgba(247, 243, 238, 0.78);
   max-width: 38ch;
+  margin-inline: auto;
 }
 
 .landing-cta-row {
@@ -915,6 +920,12 @@ a {
   gap: clamp(1rem, 2vw, 1.4rem);
 }
 
+.trust-intro-cta-row {
+  margin-top: clamp(1.2rem, 3vh, 2rem);
+  display: flex;
+  justify-content: center;
+}
+
 .trust-intro-card {
   position: relative;
   border-radius: 30px;
@@ -1008,6 +1019,10 @@ a {
 .app-shell--home > * {
   width: min(1200px, 100% - 2rem);
   margin-inline: auto;
+}
+
+.app-shell--home > .trust-intro-section {
+  width: 100%;
 }
 
 .glass {
@@ -1275,6 +1290,10 @@ h3 {
   .trust-intro-section {
     padding: 1.2rem;
     border-radius: 0;
+  }
+
+  .app-shell--home > .trust-intro-section {
+    margin-inline: 0;
   }
 
   .trust-intro-identity {
