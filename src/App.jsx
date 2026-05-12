@@ -13,6 +13,7 @@ import {
   ShieldCheck,
   Sparkles,
   Stethoscope,
+  Target,
   Users,
 } from 'lucide-react'
 import { BrowserRouter, Link, NavLink, Navigate, Route, Routes, useLocation } from 'react-router-dom'
@@ -29,6 +30,7 @@ const content = {
       about: 'Chi Sono',
       contact: 'Contatti',
       book: 'Prenota un Colloquio',
+      bookShort: 'Prenota un Colloquio',
       bookSession: 'Prenota una Seduta',
     },
     home: {
@@ -47,7 +49,7 @@ const content = {
         identitySubtitle: 'Studio di Psicoterapia e Psicologia Forense',
         positioning:
           'Helping people rebuild emotional balance through structured, evidence-based psychological support and forensic expertise when needed.',
-        roleTitle: 'Dott.ssa Laura Cocozza',
+        roleTitle: 'Competenza, Metodo e Cura',
         roleDetails:
           'Psicologa • Psicoterapeuta Cognitivo Comportamentale • Consulente in Psicologia Forense (CTU & CTP)',
         roleDescription:
@@ -102,6 +104,7 @@ const content = {
       about: 'About',
       contact: 'Contact',
       book: 'Book a Consultation',
+      bookShort: 'Book a Consultation',
       bookSession: 'Book a Session',
     },
     home: {
@@ -120,7 +123,7 @@ const content = {
         identitySubtitle: 'Psychotherapy and Forensic Psychology Practice',
         positioning:
           'Helping people rebuild emotional balance through structured, evidence-based psychological support and forensic expertise when needed.',
-        roleTitle: 'Dr. Laura Cocozza',
+        roleTitle: 'Competence, Method and Care',
         roleDetails:
           'Psychologist • Cognitive-Behavioral Psychotherapist • Court-Appointed Expert (CTU) • Technical Consultant (CTP)',
         roleDescription:
@@ -194,11 +197,7 @@ function markPreloaderAsShown() {
 }
 
 function BalanceWatermark() {
-  return (
-    <span className="material-symbols-outlined balance-watermark" aria-hidden="true">
-      balance
-    </span>
-  )
+  return <Scale className="balance-watermark" aria-hidden="true" strokeWidth={1.2} />
 }
 
 function Preloader({ visible, ariaLabel }) {
@@ -371,9 +370,6 @@ function SiteHeader({ t, lang, setLang, isLanding, menuOpen, setMenuOpen, preloa
           transition={{ layout: { duration: 0.78, ease: [0.22, 1, 0.36, 1] } }}
           className="lc-logo-wrap"
         >
-          <span className="lc-logo-icon-holder" aria-hidden="true">
-            <img src="/logo-or-icon.png" className="lc-logo-mark-bg" alt="" />
-          </span>
           <svg viewBox="0 0 240 200" className="lc-logo-svg" role="presentation" aria-hidden="true">
             <text x="6" y="114" fontSize="162" fontFamily="'Cinzel', serif" fontWeight="500" fill="currentColor">
               L
@@ -382,6 +378,9 @@ function SiteHeader({ t, lang, setLang, isLanding, menuOpen, setMenuOpen, preloa
               C
             </text>
           </svg>
+          <span className="lc-logo-icon-holder" aria-hidden="true">
+            <img src="/logo-or-icon.png" className="lc-logo-mark-bg" alt="" />
+          </span>
         </motion.div>
       </Link>
 
@@ -409,7 +408,7 @@ function SiteHeader({ t, lang, setLang, isLanding, menuOpen, setMenuOpen, preloa
       <div className="site-header-mobile">
         <LanguageSwitch lang={lang} setLang={setLang} className="mobile-header-lang-switch" />
         <Link to="/contact" className="header-book-btn">
-          {t.nav.book}
+          {t.nav.bookShort}
         </Link>
         <button
           type="button"
@@ -514,7 +513,7 @@ function LandingHero({ t }) {
             <Link to="/contact" className="book-pill">
               {t.home.ctaPrimary}
               <span className="book-pill-icon" aria-hidden="true">
-                <ArrowUpRight size={16} />
+                <ArrowUpRight size={22} />
               </span>
             </Link>
           </motion.div>
@@ -525,7 +524,7 @@ function LandingHero({ t }) {
 }
 
 function TrustBuildingSection({ t }) {
-  const trustCards = [Brain, Scale, Users, HeartHandshake].map((icon, index) => ({
+  const trustCards = [Brain, Scale, Users, Target].map((icon, index) => ({
     icon,
     ...t.home.trustSection.cards[index],
   }))
@@ -547,13 +546,22 @@ function TrustBuildingSection({ t }) {
       </div>
 
       <div className="trust-intro-role-block">
+        <h3 className="trust-intro-role-title">{t.home.trustSection.roleTitle}</h3>
+        <div className="icon-divider" aria-hidden="true">
+          <span className="icon-divider__line icon-divider__line--left" />
+          <span className="icon-divider__icon">
+            <HeartHandshake size={20} />
+          </span>
+          <span className="icon-divider__line icon-divider__line--right" />
+        </div>
         <p className="trust-intro-role-badge">{t.home.trustSection.roleDetails}</p>
         <p className="trust-intro-role-description">{t.home.trustSection.roleDescription}</p>
       </div>
 
       <div className="trust-intro-cards">
-        {trustCards.map((item) => (
+        {trustCards.map((item, index) => (
           <article key={item.title} className="trust-intro-card">
+            <span className="trust-intro-card-number">{String(index + 1).padStart(2, '0')}</span>
             <item.icon size={30} />
             <h4>{item.title}</h4>
             <p>{item.text}</p>
@@ -605,7 +613,7 @@ function Home({ t }) {
     <>
       <LandingHero t={t} />
 
-      <div className="app-shell">
+      <div className="app-shell app-shell--home">
         <TrustBuildingSection t={t} />
 
         <section className="trust-bar glass">
