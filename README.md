@@ -1,2 +1,17 @@
-# laura-cocozza-psychology
-Elegant and modern osychology &amp; forensic psychology website for Dott.ssa Laura Cocozza, featuring clinical services, forensic psychology, PsyLex integration, and a refined user-focused experience.
+# Studio di Psicoterapia e Psicologia Forense – Laura Cocozza
+
+Premium, bilingual (IT/EN) React + Vite website for the clinical and forensic psychology practice.
+
+## Run locally
+
+```bash
+npm install
+npm run dev
+```
+
+## Build and lint
+
+```bash
+npm run lint
+npm run build
+```
