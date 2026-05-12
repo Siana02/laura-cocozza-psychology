@@ -242,7 +242,8 @@ a {
   text-decoration-color: rgba(247, 243, 238, 0.55);
 }
 
-.site-header--landing .site-nav-frosted a:active {
+.site-header--landing .site-nav-frosted a:active,
+.site-header--landing .site-nav-frosted a.active {
   background: var(--color-ivory);
   color: var(--color-landing);
   text-decoration-color: transparent;
@@ -257,7 +258,8 @@ a {
   text-decoration-color: rgba(15, 76, 92, 0.55);
 }
 
-.site-header--default .site-nav-frosted a:active {
+.site-header--default .site-nav-frosted a:active,
+.site-header--default .site-nav-frosted a.active {
   background: var(--color-primary-dark);
   color: var(--color-white);
   text-decoration-color: transparent;
@@ -468,24 +470,10 @@ a {
   padding-top: 1.2rem;
 }
 
-.mobile-menu-cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  background: rgba(247, 243, 238, 0.95);
-  color: var(--color-landing);
-  border-radius: 999px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 0.85rem 2rem;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.mobile-menu-cta:hover {
-  background: #ffffff;
-  transform: translateY(-1px);
+/* Mobile menu CTA — reuses .book-pill; this override makes it full-width */
+.mobile-menu-book-pill {
+  width: 100%;
+  justify-content: space-between;
 }
 
 .mobile-menu-lang {
@@ -639,20 +627,20 @@ a {
 .landing-headline {
   margin: 0;
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.65rem, 2.6vw, 2.4rem);
+  font-size: clamp(2rem, 3.2vw, 3rem);
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.18;
   color: var(--color-ivory);
-  max-width: 42ch;
+  max-width: 38ch;
 }
 
 .landing-desc {
-  margin: clamp(0.8rem, 2vh, 1.2rem) 0 0;
+  margin: clamp(0.9rem, 2.2vh, 1.4rem) 0 0;
   font-family: 'DM Sans', sans-serif;
-  font-size: clamp(0.98rem, 1.3vw, 1.12rem);
+  font-size: clamp(1.08rem, 1.5vw, 1.22rem);
   line-height: 1.65;
-  color: rgba(247, 243, 238, 0.7);
-  max-width: 46ch;
+  color: rgba(247, 243, 238, 0.78);
+  max-width: 44ch;
 }
 
 .landing-cta-row {
@@ -953,6 +941,6 @@ h3 {
   }
 
   .landing-headline {
-    font-size: clamp(1.3rem, 5.5vw, 1.8rem);
+    font-size: clamp(1.65rem, 6.5vw, 2.2rem);
   }
 }

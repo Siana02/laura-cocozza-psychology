@@ -15,7 +15,7 @@ import {
   Stethoscope,
   Users,
 } from 'lucide-react'
-import { BrowserRouter, Link, Navigate, Route, Routes, useLocation } from 'react-router-dom'
+import { BrowserRouter, Link, NavLink, Navigate, Route, Routes, useLocation } from 'react-router-dom'
 
 const content = {
   it: {
@@ -293,9 +293,11 @@ function MobileMenu({ open, onClose, t, lang, setLang }) {
             </motion.nav>
 
             <div className="mobile-menu-footer">
-              <Link to="/contact" className="mobile-menu-cta" onClick={onClose}>
+              <Link to="/contact" className="book-pill mobile-menu-book-pill" onClick={onClose}>
                 {t.nav.book}
-                <ArrowUpRight size={16} />
+                <span className="book-pill-icon" aria-hidden="true">
+                  <ArrowUpRight size={16} />
+                </span>
               </Link>
               <div className="mobile-menu-lang">
                 <button
@@ -351,12 +353,12 @@ function SiteHeader({ t, lang, setLang, isLanding, menuOpen, setMenuOpen, preloa
       {/* Desktop nav — center */}
       <nav className="site-nav-desktop" aria-label="Main navigation">
         <div className="site-nav-frosted">
-          <Link to="/home">{t.nav.home}</Link>
-          <Link to="/clinical">{t.nav.clinical}</Link>
-          <Link to="/forensic">{t.nav.forensic}</Link>
-          <Link to="/forensic/psylex">{t.nav.psylex}</Link>
-          <Link to="/about">{t.nav.about}</Link>
-          <Link to="/contact">{t.nav.contact}</Link>
+          <NavLink to="/home" end>{t.nav.home}</NavLink>
+          <NavLink to="/clinical" end>{t.nav.clinical}</NavLink>
+          <NavLink to="/forensic" end>{t.nav.forensic}</NavLink>
+          <NavLink to="/forensic/psylex">{t.nav.psylex}</NavLink>
+          <NavLink to="/about" end>{t.nav.about}</NavLink>
+          <NavLink to="/contact" end>{t.nav.contact}</NavLink>
         </div>
       </nav>
 
