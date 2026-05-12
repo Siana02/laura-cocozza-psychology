@@ -44,8 +44,8 @@ a {
   display: grid;
   place-items: center;
   overflow: hidden;
-  background: radial-gradient(circle at 72% 15%, color-mix(in srgb, var(--color-primary) 24%, transparent), transparent 42%),
-    linear-gradient(150deg, var(--color-deep-teal), var(--color-primary-dark));
+  background: radial-gradient(circle at 70% 16%, color-mix(in srgb, var(--color-primary) 22%, transparent), transparent 44%),
+    linear-gradient(150deg, var(--color-deep-teal), color-mix(in srgb, var(--color-primary-dark) 86%, var(--color-deep-teal)));
   will-change: opacity;
 }
 
@@ -54,15 +54,15 @@ a {
   inset: -8%;
   display: grid;
   place-items: center;
-  color: color-mix(in srgb, var(--color-ivory) 20%, transparent);
+  color: color-mix(in srgb, var(--color-ivory) 32%, transparent);
   pointer-events: none;
   will-change: transform, opacity, filter;
 }
 
 .libra-icon {
-  width: clamp(320px, 62vw, 820px);
+  width: clamp(440px, 74vw, 980px);
   height: auto;
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
 .lc-wrap {
@@ -74,15 +74,15 @@ a {
 .lc-wrap::before {
   content: '';
   position: absolute;
-  inset: 18% 22%;
+  inset: 17% 22%;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--color-ivory) 18%, transparent);
-  filter: blur(14px);
+  background: color-mix(in srgb, var(--color-ivory) 22%, transparent);
+  filter: blur(18px);
   pointer-events: none;
 }
 
 .lc-mark {
-  width: clamp(136px, 20vw, 228px);
+  width: clamp(192px, 25vw, 280px);
   color: var(--color-ivory);
   overflow: visible;
 }
@@ -422,11 +422,15 @@ h3 {
 
 @media (max-width: 560px) {
   .preloader-bg {
-    inset: -18%;
+    inset: -16%;
   }
 
   .libra-icon {
-    width: min(100vw, 620px);
+    width: min(135vw, 700px);
+  }
+
+  .lc-mark {
+    width: clamp(178px, 52vw, 238px);
   }
 }
 

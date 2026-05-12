@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import {
   ArrowRight,
@@ -104,43 +104,51 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 },
 }
 
-const PRELOADER_INITIAL_DURATION_MS = 2400
-const PRELOADER_ROUTE_DURATION_MS = 1700
-const PRELOADER_INITIAL_REDUCED_MOTION_DURATION_MS = 500
-const PRELOADER_ROUTE_REDUCED_MOTION_DURATION_MS = 280
-const LC_CIRCLE_PATH_LENGTH = 352
-const LC_L_PATH_LENGTH = 320
+const PRELOADER_INITIAL_DURATION_MS = 4700
+const PRELOADER_INITIAL_REDUCED_MOTION_DURATION_MS = 900
+const LC_CIRCLE_PATH_LENGTH = 390
+const LC_L_PATH_LENGTH = 338
 const HERO_ORB_Y_REST = -4
 const HERO_ORB_Y_PEAK = -18
+const PRELOADER_SESSION_KEY = 'lc-preloader-played'
 
 function LibraWatermark() {
   return (
-    <svg viewBox="0 0 120 120" aria-hidden="true" className="libra-icon">
-      <path d="M25 34h70M60 34v52M44 86h32M22 48h20l-10 18-10-18Zm56 0h20L88 66 78 48Z" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+    <svg viewBox="0 0 240 240" aria-hidden="true" className="libra-icon">
+      <path
+        d="M48 74h144M120 74v92M88 166h64M56 90h56l-28 48-28-48Zm72 0h56l-28 48-28-48Z"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="4.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   )
 }
 
-function Preloader({ visible, mode, cycle, ariaLabel }) {
+function Preloader({ visible, ariaLabel }) {
   const reduceMotion = useReducedMotion()
-  const drawDuration = reduceMotion ? 0.6 : mode === 'route' ? 1.55 : 2.15
-  const bgDuration = reduceMotion ? 0.8 : mode === 'route' ? 1.7 : 2.35
+  const drawDuration = reduceMotion ? 0.5 : 3.1
+  const holdDuration = reduceMotion ? 0.1 : 1
+  const bgDuration = drawDuration + holdDuration + (reduceMotion ? 0.2 : 0.45)
+  const preloaderKey = reduceMotion ? 'preloader-reduced' : 'preloader-default'
 
   return (
     <AnimatePresence mode="wait">
       {visible && (
         <motion.div
-          key={`preloader-${mode}-${cycle}`}
+          key={preloaderKey}
           className="preloader"
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { duration: reduceMotion ? 0.3 : 0.7, ease: [0.4, 0, 0.2, 1], delay: reduceMotion ? 0.05 : 0.16 } }}
+          exit={{ opacity: 0, transition: { duration: reduceMotion ? 0.25 : 0.85, ease: [0.4, 0, 0.2, 1], delay: reduceMotion ? 0 : 0.42 } }}
         >
           <motion.div
             className="preloader-bg"
-            initial={{ opacity: 0, scale: 0.98, filter: 'blur(10px)' }}
-            animate={{ opacity: 1, scale: [1, 1.08, 1.08], filter: ['blur(8px)', 'blur(3px)', 'blur(3px)'] }}
-            exit={{ opacity: 0, transition: { duration: reduceMotion ? 0.25 : 0.45, delay: reduceMotion ? 0.02 : 0.16 } }}
+            initial={{ opacity: 0, scale: 0.98, filter: 'blur(9px)' }}
+            animate={{ opacity: 1, scale: reduceMotion ? 1 : 1.06, filter: reduceMotion ? 'blur(5px)' : 'blur(2px)' }}
+            exit={{ opacity: 0, transition: { duration: reduceMotion ? 0.2 : 0.65, delay: reduceMotion ? 0 : 0.24 } }}
             transition={{ duration: bgDuration, ease: [0.33, 1, 0.68, 1] }}
           >
             <LibraWatermark />
@@ -148,35 +156,35 @@ function Preloader({ visible, mode, cycle, ariaLabel }) {
 
           <motion.div
             className="lc-wrap"
-            initial={{ opacity: 0, y: 12, filter: 'blur(6px)' }}
-            animate={{ opacity: [0.82, 1, 0.96], y: [4, 0, -1], filter: ['blur(5px)', 'blur(0px)', 'blur(0px)'] }}
+            initial={{ opacity: 0, y: 8, filter: 'blur(5px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ duration: drawDuration, ease: [0.22, 1, 0.36, 1] }}
-            exit={{ opacity: 0, transition: { duration: reduceMotion ? 0.2 : 0.36, ease: [0.4, 0, 1, 1] } }}
+            exit={{ opacity: 0, transition: { duration: reduceMotion ? 0.15 : 0.45, ease: [0.4, 0, 1, 1] } }}
           >
-            <motion.svg viewBox="0 0 220 220" className="lc-mark" role="img" aria-label={ariaLabel}>
+            <motion.svg viewBox="0 0 240 240" className="lc-mark" role="img" aria-label={ariaLabel}>
               <motion.path
                 className="lc-mark-stroke"
-                d="M150 66a56 56 0 1 0 0 112"
+                d="M166 62a62 62 0 1 0 0 124"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="7"
+                strokeWidth="9"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 initial={{ strokeDasharray: LC_CIRCLE_PATH_LENGTH, strokeDashoffset: LC_CIRCLE_PATH_LENGTH }}
-                animate={{ strokeDasharray: LC_CIRCLE_PATH_LENGTH, strokeDashoffset: 0 }}
-                transition={{ duration: drawDuration, ease: [0.22, 1, 0.36, 1] }}
+                animate={{ strokeDasharray: LC_CIRCLE_PATH_LENGTH, strokeDashoffset: 0, opacity: [0.74, 1, 1] }}
+                transition={{ duration: drawDuration, ease: [0.38, 0, 0.2, 1], times: [0, 0.78, 1] }}
               />
               <motion.path
                 className="lc-mark-stroke"
-                d="M90 42v108h50"
+                d="M92 40v116h46"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="7"
+                strokeWidth="9"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 initial={{ strokeDasharray: LC_L_PATH_LENGTH, strokeDashoffset: LC_L_PATH_LENGTH }}
-                animate={{ strokeDasharray: LC_L_PATH_LENGTH, strokeDashoffset: 0 }}
-                transition={{ duration: reduceMotion ? drawDuration : drawDuration * 0.88, ease: [0.22, 1, 0.36, 1], delay: reduceMotion ? 0 : 0.08 }}
+                animate={{ strokeDasharray: LC_L_PATH_LENGTH, strokeDashoffset: 0, opacity: [0.74, 1, 1] }}
+                transition={{ duration: drawDuration, ease: [0.38, 0, 0.2, 1], times: [0, 0.78, 1] }}
               />
               <defs>
                 <linearGradient id="maskSweep" x1="0" y1="0" x2="1" y2="0">
@@ -190,10 +198,10 @@ function Preloader({ visible, mode, cycle, ariaLabel }) {
                   x="-120"
                   y="0"
                   width="100"
-                  height="220"
+                  height="240"
                   fill="url(#maskSweep)"
-                  animate={{ x: [0, 330] }}
-                  transition={{ duration: drawDuration, ease: [0.35, 0, 0.65, 1], delay: 0.15 }}
+                  animate={{ x: 350, opacity: [0, 0.5, 0.1, 0] }}
+                  transition={{ duration: drawDuration, ease: [0.35, 0, 0.65, 1], delay: 0.18, times: [0, 0.3, 0.75, 1] }}
                 />
               )}
             </motion.svg>
@@ -558,41 +566,29 @@ function Footer({ t }) {
 
 function AppShell() {
   const [lang, setLang] = useState('it')
-  const [preloaderVisible, setPreloaderVisible] = useState(true)
-  const [preloaderMode, setPreloaderMode] = useState('initial')
-  const [preloaderCycle, setPreloaderCycle] = useState(0)
-  const firstRouteRender = useRef(true)
+  const [preloaderVisible, setPreloaderVisible] = useState(() => {
+    if (typeof window === 'undefined') return true
+    const hasPlayed = window.sessionStorage.getItem(PRELOADER_SESSION_KEY) === 'true'
+    if (!hasPlayed) window.sessionStorage.setItem(PRELOADER_SESSION_KEY, 'true')
+    return !hasPlayed
+  })
   const location = useLocation()
   const reduceMotion = useReducedMotion()
   const t = content[lang]
   const preloaderAriaLabel = lang === 'it' ? 'Monogramma Laura Cocozza' : 'Laura Cocozza monogram'
 
   useEffect(() => {
+    if (!preloaderVisible) return
     const timer = setTimeout(
       () => setPreloaderVisible(false),
       reduceMotion ? PRELOADER_INITIAL_REDUCED_MOTION_DURATION_MS : PRELOADER_INITIAL_DURATION_MS,
     )
     return () => clearTimeout(timer)
-  }, [reduceMotion])
-
-  useEffect(() => {
-    if (firstRouteRender.current) {
-      firstRouteRender.current = false
-      return
-    }
-    setPreloaderMode('route')
-    setPreloaderCycle((prev) => prev + 1)
-    setPreloaderVisible(true)
-    const timer = setTimeout(
-      () => setPreloaderVisible(false),
-      reduceMotion ? PRELOADER_ROUTE_REDUCED_MOTION_DURATION_MS : PRELOADER_ROUTE_DURATION_MS,
-    )
-    return () => clearTimeout(timer)
-  }, [location.pathname, reduceMotion])
+  }, [preloaderVisible, reduceMotion])
 
   return (
     <>
-      <Preloader visible={preloaderVisible} mode={preloaderMode} cycle={preloaderCycle} ariaLabel={preloaderAriaLabel} />
+      <Preloader visible={preloaderVisible} ariaLabel={preloaderAriaLabel} />
       <motion.div
         className="app-shell app-content"
         initial={false}
