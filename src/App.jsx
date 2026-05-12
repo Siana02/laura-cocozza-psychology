@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from 'framer-motion'
 import {
   ArrowRight,
@@ -1441,8 +1441,8 @@ function ClinicalAreaTransitionSection({ t }) {
 
 function AnxietyAtmosphere({ reduceMotion }) {
   return (
-    <div className="spa spa--anxiety" aria-hidden="true">
-      <svg viewBox="0 0 900 480" className="spa-svg" preserveAspectRatio="xMidYMid slice" fill="none">
+    <div className="support-atm support-atm--anxiety" aria-hidden="true">
+      <svg viewBox="0 0 900 480" className="support-atm-svg" preserveAspectRatio="xMidYMid slice" fill="none">
         <defs>
           <linearGradient id="anx-g1" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="rgba(183,244,255,0)" />
@@ -1504,8 +1504,8 @@ function AnxietyAtmosphere({ reduceMotion }) {
 
 function MoodAtmosphere({ reduceMotion }) {
   return (
-    <div className="spa spa--mood" aria-hidden="true">
-      <svg viewBox="0 0 900 480" className="spa-svg" preserveAspectRatio="xMidYMid slice" fill="none">
+    <div className="support-atm support-atm--mood" aria-hidden="true">
+      <svg viewBox="0 0 900 480" className="support-atm-svg" preserveAspectRatio="xMidYMid slice" fill="none">
         {[200, 152, 104, 58].map((r, i) => (
           <motion.circle
             key={i} cx="450" cy="240" r={r} fill="none"
@@ -1539,8 +1539,8 @@ function OcdAtmosphere({ reduceMotion }) {
   const gridLinesV = Array.from({ length: 10 }, (_, i) => 45 + i * 90)
   const corners = [[-1, -1], [1, -1], [1, 1], [-1, 1]]
   return (
-    <div className="spa spa--ocd" aria-hidden="true">
-      <svg viewBox="0 0 900 480" className="spa-svg" preserveAspectRatio="xMidYMid slice" fill="none">
+    <div className="support-atm support-atm--ocd" aria-hidden="true">
+      <svg viewBox="0 0 900 480" className="support-atm-svg" preserveAspectRatio="xMidYMid slice" fill="none">
         {gridLinesH.map((y, i) => (
           <line key={`gh${i}`} x1="0" y1={y} x2="900" y2={y} stroke="rgba(183,244,255,0.045)" strokeWidth="0.7" />
         ))}
@@ -1575,8 +1575,8 @@ function RegulationAtmosphere({ reduceMotion }) {
     return { x2: 450 + Math.cos(angle) * 218, y2: 240 + Math.sin(angle) * 218 }
   })
   return (
-    <div className="spa spa--regulation" aria-hidden="true">
-      <svg viewBox="0 0 900 480" className="spa-svg" preserveAspectRatio="xMidYMid slice" fill="none">
+    <div className="support-atm support-atm--regulation" aria-hidden="true">
+      <svg viewBox="0 0 900 480" className="support-atm-svg" preserveAspectRatio="xMidYMid slice" fill="none">
         {[218, 172, 128, 84, 40].map((r, i) => (
           <motion.circle
             key={i} cx="450" cy="240" r={r} fill="none"
@@ -1608,8 +1608,8 @@ function RegulationAtmosphere({ reduceMotion }) {
 
 function RelationalAtmosphere({ reduceMotion }) {
   return (
-    <div className="spa spa--relational" aria-hidden="true">
-      <svg viewBox="0 0 900 480" className="spa-svg" preserveAspectRatio="xMidYMid slice" fill="none">
+    <div className="support-atm support-atm--relational" aria-hidden="true">
+      <svg viewBox="0 0 900 480" className="support-atm-svg" preserveAspectRatio="xMidYMid slice" fill="none">
         <defs>
           <linearGradient id="rel-g1" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="rgba(183,244,255,0)" />
@@ -1675,13 +1675,13 @@ function SupportAreasSection({ t }) {
   const reduceMotion = useReducedMotion()
   const support = t.home.supportAreas
 
-  const atmosphereMap = {
+  const atmosphereMap = useMemo(() => ({
     anxiety:    <AnxietyAtmosphere    reduceMotion={reduceMotion} />,
     mood:       <MoodAtmosphere       reduceMotion={reduceMotion} />,
     ocd:        <OcdAtmosphere        reduceMotion={reduceMotion} />,
     regulation: <RegulationAtmosphere reduceMotion={reduceMotion} />,
     relational: <RelationalAtmosphere reduceMotion={reduceMotion} />,
-  }
+  }), [reduceMotion])
 
   return (
     <section className="support-areas-section">

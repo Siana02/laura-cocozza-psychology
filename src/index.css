@@ -2560,7 +2560,7 @@ h3 {
 
 /* ── Atmospheric SVG layer ───────────────────────────────────────────────── */
 
-.spa {
+.support-atm {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -2568,7 +2568,7 @@ h3 {
   overflow: hidden;
 }
 
-.spa-svg {
+.support-atm-svg {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -2709,7 +2709,7 @@ h3 {
 
 @media (prefers-reduced-motion: reduce) {
   .clinical-transition-orb,
-  .spa-svg * {
+  .support-atm-svg * {
     animation: none !important;
   }
 }
