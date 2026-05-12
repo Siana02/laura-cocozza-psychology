@@ -2517,6 +2517,15 @@ h3 {
     0 28px 62px rgba(0, 0, 0, 0.5);
 }
 
+.support-area-panel:focus-visible {
+  outline: none;
+  border-color: rgba(183, 244, 255, 0.44);
+  box-shadow:
+    0 0 0 2px rgba(183, 244, 255, 0.24),
+    0 0 40px rgba(183, 244, 255, 0.08),
+    0 28px 62px rgba(0, 0, 0, 0.5);
+}
+
 .support-area-panel--anxiety {
   grid-column: 1 / span 7;
   border-radius: 8px 28px 8px 24px;
@@ -2744,7 +2753,7 @@ h3 {
 }
 
 /* ══════════════════════════════════════════════════════════
-   SECTION 03 — CLINICAL AREA INTRODUCTION
+   SECTION 10 — CLINICAL AREA INTRODUCTION
    ══════════════════════════════════════════════════════════ */
 
 .clinical-intro-section {
