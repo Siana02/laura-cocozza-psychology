@@ -180,35 +180,35 @@ const content = {
         panels: [
           {
             key: 'anxiety',
-            icon: 'https://www.flaticon.com/free-icons/anxiety',
+            icon: '/anxiety.png',
             title: 'Ansia e gestione dello stress',
             description:
               'Percorsi di supporto dedicati alla gestione dell’ansia, dello stress emotivo, delle paure persistenti e del sovraccarico mentale.',
           },
           {
             key: 'mood',
-            icon: 'https://www.flaticon.com/free-icons/mood',
+            icon: '/emotion.png',
             title: 'Difficoltà emotive e dell’umore',
             description:
               'Supporto psicologico per periodi di vulnerabilità emotiva, demotivazione, tristezza persistente e difficoltà nel mantenere equilibrio emotivo.',
           },
           {
             key: 'ocd',
-            icon: 'https://www.flaticon.com/free-icons/ocd',
+            icon: '/ocd.png',
             title: 'Pensieri intrusivi e comportamenti compulsivi',
             description:
               'Interventi orientati alla gestione di pensieri ricorrenti, compulsioni, controllo dell’ansia e rigidità cognitive.',
           },
           {
             key: 'regulation',
-            icon: 'https://www.flaticon.com/free-icons/stress',
+            icon: '/fear.png',
             title: 'Regolazione emotiva',
             description:
               'Percorsi focalizzati sullo sviluppo della consapevolezza emotiva, della gestione dello stress e dell’equilibrio psicologico quotidiano.',
           },
           {
             key: 'relational',
-            icon: 'https://www.flaticon.com/free-icons/conflict',
+            icon: '/conflict.png',
             title: 'Difficoltà relazionali',
             description:
               'Supporto psicologico per dinamiche relazionali complesse, conflitti emotivi, difficoltà comunicative e relazioni personali difficili.',
@@ -396,35 +396,35 @@ const content = {
         panels: [
           {
             key: 'anxiety',
-            icon: 'https://www.flaticon.com/free-icons/anxiety',
+            icon: '/anxiety.png',
             title: 'Anxiety and stress management',
             description:
               'Support pathways focused on anxiety, emotional stress, persistent fears, and mental overload.',
           },
           {
             key: 'mood',
-            icon: 'https://www.flaticon.com/free-icons/mood',
+            icon: '/emotion.png',
             title: 'Emotional and mood difficulties',
             description:
               'Psychological support for periods of emotional vulnerability, low motivation, persistent sadness, and difficulty maintaining emotional balance.',
           },
           {
             key: 'ocd',
-            icon: 'https://www.flaticon.com/free-icons/ocd',
+            icon: '/ocd.png',
             title: 'Intrusive thoughts and compulsive behaviors',
             description:
               'Interventions focused on recurring thoughts, compulsions, anxiety management, and cognitive rigidity.',
           },
           {
             key: 'regulation',
-            icon: 'https://www.flaticon.com/free-icons/stress',
+            icon: '/fear.png',
             title: 'Emotional regulation',
             description:
               'Pathways focused on emotional awareness, stress management, and everyday psychological balance.',
           },
           {
             key: 'relational',
-            icon: 'https://www.flaticon.com/free-icons/conflict',
+            icon: '/conflict.png',
             title: 'Relational difficulties',
             description:
               'Psychological support for complex relational dynamics, emotional conflict, communication difficulties, and challenging personal relationships.',
