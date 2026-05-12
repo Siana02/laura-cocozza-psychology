@@ -122,7 +122,7 @@ const content = {
           'Helping people rebuild emotional balance through structured, evidence-based psychological support and forensic expertise when needed.',
         roleTitle: 'Dr. Laura Cocozza',
         roleDetails:
-          'Psychologist • Cognitive Behavioral Psychotherapist • Forensic Psychology Consultant (CTU & CTP)',
+          'Psychologist • Cognitive-Behavioral Psychotherapist • Court-Appointed Expert (CTU) • Technical Consultant (CTP)',
         roleDescription:
           'An integrative clinical and forensic approach focused on clarity, emotional stability, and long-term psychological well-being.',
         cards: [
@@ -370,7 +370,9 @@ function SiteHeader({ t, lang, setLang, isLanding, menuOpen, setMenuOpen, preloa
           transition={{ layout: { duration: 0.78, ease: [0.22, 1, 0.36, 1] } }}
           className="lc-logo-wrap"
         >
-          <img src="/logo-or-icon.png" className="lc-logo-mark-bg" alt="" aria-hidden="true" />
+          <span className="lc-logo-icon-holder" aria-hidden="true">
+            <img src="/logo-or-icon.png" className="lc-logo-mark-bg" alt="" />
+          </span>
           <svg viewBox="0 0 240 200" className="lc-logo-svg" role="presentation" aria-hidden="true">
             <text x="6" y="114" fontSize="162" fontFamily="'Cinzel', serif" fontWeight="500" fill="currentColor">
               L
@@ -446,7 +448,7 @@ function WordByWordText({ text, className, as = 'p', delay = 0 }) {
         },
       }}
     >
-      {words.map((word, index) => (
+      {words.map((word) => (
         <motion.span
           key={word.key}
           className="word-fade-item"
@@ -456,7 +458,6 @@ function WordByWordText({ text, className, as = 'p', delay = 0 }) {
           }}
         >
           {word.value}
-          {index < words.length - 1 ? ' ' : ''}
         </motion.span>
       ))}
     </Tag>
@@ -541,9 +542,8 @@ function TrustBuildingSection({ t }) {
       </div>
 
       <div className="trust-intro-role-block">
-        <h2>{t.home.trustSection.roleTitle}</h2>
-        <h3>{t.home.trustSection.roleDetails}</h3>
-        <p>{t.home.trustSection.roleDescription}</p>
+        <p className="trust-intro-role-badge">{t.home.trustSection.roleDetails}</p>
+        <p className="trust-intro-role-description">{t.home.trustSection.roleDescription}</p>
       </div>
 
       <div className="trust-intro-cards">
