@@ -618,7 +618,7 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 4rem clamp(2rem, 5vw, 4.5rem) clamp(4rem, 8vh, 6rem) clamp(0.5rem, 2vw, 1.2rem);
+  padding: 4rem clamp(2rem, 5vw, 4.5rem) clamp(4rem, 8vh, 6rem) clamp(1rem, 2vw, 1.4rem);
   min-height: 115vh;
   /* content anchored to the bottom of the extended section */
   padding-top: calc(100vh + 5rem);
@@ -653,11 +653,11 @@ a {
 
 .word-fade-item {
   display: inline-block;
-  margin-right: 0.3ch;
+  white-space: pre-wrap;
 }
 
-.word-fade-item:last-child {
-  margin-right: 0;
+.word-fade-space {
+  min-width: 0.25ch;
 }
 
 /* Pill CTA — text + integrated arrow icon in one element */
@@ -732,6 +732,9 @@ a {
   margin-top: -1px;
   padding: clamp(1.4rem, 2.8vw, 2.8rem);
   border-radius: 30px;
+  /* Fallback close to color-mix(in srgb, var(--color-landing) 94%, #000) */
+  background: linear-gradient(160deg, #0f2930, var(--color-landing-soft));
+  /* Preferred blend with dynamic landing tone */
   background: linear-gradient(160deg, color-mix(in srgb, var(--color-landing) 94%, #000), var(--color-landing-soft));
   border: 1px solid rgba(247, 243, 238, 0.14);
   box-shadow: 0 20px 46px rgba(0, 0, 0, 0.34);

@@ -307,6 +307,7 @@ function LanguageSwitch({ lang, setLang, className }) {
 
 function MobileMenu({ open, onClose, t }) {
   const reduceMotion = useReducedMotion()
+  // Language switching is intentionally in the header actions for mobile/tablet.
   return (
     <AnimatePresence>
       {open && (
@@ -430,9 +431,11 @@ function SiteHeader({ t, lang, setLang, isLanding, menuOpen, setMenuOpen, preloa
 function WordByWordText({ text, className, as = 'p', delay = 0 }) {
   const reduceMotion = useReducedMotion()
   const Tag = motion[as]
-  const words = [...text.matchAll(/\S+/g)].map((match, index) => ({
-    value: match[0],
-    key: String(match.index ?? `fallback-${index}`),
+  // Keep whitespace tokens so animated copy preserves natural spacing and wraps.
+  const tokens = (text.match(/(\p{White_Space}+|[^\p{White_Space}]+)/gu) ?? []).map((value, index) => ({
+    value,
+    isWhitespace: /^\p{White_Space}+$/u.test(value),
+    key: `${index}-${value.length}`,
   }))
 
   return (
@@ -448,16 +451,18 @@ function WordByWordText({ text, className, as = 'p', delay = 0 }) {
         },
       }}
     >
-      {words.map((word) => (
+      {tokens.map((token) => (
         <motion.span
-          key={word.key}
-          className="word-fade-item"
+          key={token.key}
+          className={`word-fade-item${token.isWhitespace ? ' word-fade-space' : ''}`}
           variants={{
-            hidden: { opacity: 0, y: reduceMotion ? 0 : 8, filter: reduceMotion ? 'none' : 'blur(3px)' },
-            visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: reduceMotion ? 0.01 : 0.4, ease: [0.22, 1, 0.36, 1] } },
+            hidden: reduceMotion ? { opacity: 0, y: 0 } : { opacity: 0, y: 8, filter: 'blur(3px)' },
+            visible: reduceMotion
+              ? { opacity: 1, y: 0, transition: { duration: 0.01 } }
+              : { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } },
           }}
         >
-          {word.value}
+          {token.value}
         </motion.span>
       ))}
     </Tag>
