@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import {
   ArrowRight,
+  ArrowUpRight,
   BookOpen,
   Brain,
   BriefcaseBusiness,
@@ -46,7 +47,7 @@ const content = {
       philosophy: 'Filosofia Terapeutica',
       process: 'Come Funziona',
       network: 'Rete e Collaborazioni',
-      testimonials: '“Un approccio capace di coniugare ascolto, metodo e direzione concreta.”',
+      testimonials: '"Un approccio capace di coniugare ascolto, metodo e direzione concreta."',
       contactCta: 'Inizia oggi un percorso fondato su fiducia, chiarezza e competenza.',
     },
     pages: {
@@ -86,7 +87,7 @@ const content = {
       philosophy: 'Therapeutic Philosophy',
       process: 'How It Works',
       network: 'Network & Collaborations',
-      testimonials: '“A method that combines empathic listening, structure, and practical direction.”',
+      testimonials: '"A method that combines empathic listening, structure, and practical direction."',
       contactCta: 'Start today with a path built on trust, clarity, and expertise.',
     },
     pages: {
@@ -106,13 +107,7 @@ const fadeUp = {
 
 const PRELOADER_DURATION_MS = 4700
 const PRELOADER_REDUCED_MOTION_DURATION_MS = 900
-const HERO_ORB_Y_REST = -4
-const HERO_ORB_Y_PEAK = -18
 const PRELOADER_SESSION_KEY = 'lc-preloader-played'
-const HERO_ORB_ANIMATION = { y: [HERO_ORB_Y_REST, HERO_ORB_Y_PEAK, HERO_ORB_Y_REST] }
-const HERO_ORB_REDUCED_ANIMATION = { y: 0 }
-const HERO_ORB_TRANSITION = { duration: 4, repeat: Infinity, ease: 'easeInOut' }
-const HERO_ORB_REDUCED_TRANSITION = { duration: 0.01, repeat: 0, ease: 'linear' }
 
 function shouldShowPreloader() {
   if (typeof window === 'undefined') return true
@@ -167,19 +162,21 @@ function Preloader({ visible, ariaLabel }) {
             <BalanceWatermark />
           </motion.div>
 
+          {/* layoutId ties this element to the header LC — framer-motion will fly it there on exit */}
           <motion.div
             className="lc-wrap"
+            layoutId="lc-monogram"
             initial={{ opacity: 0, y: 8, filter: 'blur(5px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ duration: monogramDrawDuration, ease: [0.22, 1, 0.36, 1] }}
-            exit={{ opacity: 0, transition: { duration: reduceMotion ? 0.15 : 0.45, ease: [0.4, 0, 1, 1] } }}
           >
             <motion.svg viewBox="0 0 240 200" className="lc-mark" role="img" aria-label={ariaLabel}>
               <motion.text
                 x="6"
                 y="114"
                 fontSize="162"
-                fontFamily="'Abril Fatface', serif"
+                fontFamily="'Cinzel', serif"
+                fontWeight="500"
                 fill="currentColor"
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -191,7 +188,8 @@ function Preloader({ visible, ariaLabel }) {
                 x="88"
                 y="172"
                 fontSize="162"
-                fontFamily="'Abril Fatface', serif"
+                fontFamily="'Cinzel', serif"
+                fontWeight="500"
                 fill="currentColor"
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -233,103 +231,208 @@ function ScrollToTop() {
   return null
 }
 
-function LanguageSwitch({ lang, setLang }) {
+function LanguageSwitch({ lang, setLang, className }) {
   return (
-    <button type="button" className="lang-switch" onClick={() => setLang(lang === 'it' ? 'en' : 'it')}>
+    <button type="button" className={`lang-switch${className ? ` ${className}` : ''}`} onClick={() => setLang(lang === 'it' ? 'en' : 'it')}>
       {lang === 'it' ? 'EN' : 'IT'}
     </button>
   )
 }
 
-function Header({ t, lang, setLang }) {
+function MobileMenu({ open, onClose, t, lang, setLang }) {
+  const reduceMotion = useReducedMotion()
   return (
-    <header className="topbar glass">
-      <Link to="/home" className="brand">
-        <span>{t.brand}</span>
-        <strong>{t.doctor}</strong>
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          className="mobile-menu-overlay"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: reduceMotion ? 0.15 : 0.32, ease: [0.22, 1, 0.36, 1] }}
+          aria-modal="true"
+          role="dialog"
+        >
+          <div className="mobile-menu-inner">
+            <motion.nav
+              className="mobile-menu-nav"
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: {},
+                visible: { transition: { staggerChildren: reduceMotion ? 0.03 : 0.07, delayChildren: reduceMotion ? 0 : 0.1 } },
+              }}
+              aria-label="Mobile navigation"
+            >
+              {[
+                { to: '/home', label: t.nav.home },
+                { to: '/clinical', label: t.nav.clinical },
+                { to: '/forensic', label: t.nav.forensic },
+                { to: '/forensic/psylex', label: t.nav.psylex },
+                { to: '/about', label: t.nav.about },
+                { to: '/contact', label: t.nav.contact },
+              ].map(({ to, label }) => (
+                <motion.div
+                  key={to}
+                  variants={{ hidden: { opacity: 0, x: -18 }, visible: { opacity: 1, x: 0 } }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <Link to={to} onClick={onClose}>
+                    {label}
+                  </Link>
+                </motion.div>
+              ))}
+            </motion.nav>
+
+            <div className="mobile-menu-footer">
+              <Link to="/contact" className="mobile-menu-cta" onClick={onClose}>
+                {t.nav.book}
+                <ArrowUpRight size={16} />
+              </Link>
+              <div className="mobile-menu-lang">
+                <button
+                  type="button"
+                  className={`mobile-lang-btn${lang === 'it' ? ' active' : ''}`}
+                  onClick={() => setLang('it')}
+                >
+                  IT
+                </button>
+                <button
+                  type="button"
+                  className={`mobile-lang-btn${lang === 'en' ? ' active' : ''}`}
+                  onClick={() => setLang('en')}
+                >
+                  EN
+                </button>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  )
+}
+
+function SiteHeader({ t, lang, setLang, isLanding, menuOpen, setMenuOpen }) {
+  const headerClass = `site-header ${isLanding ? 'site-header--landing' : 'site-header--default'}`
+  const ariaLabel = lang === 'it' ? 'Monogramma LC – torna alla home' : 'LC monogram – back to home'
+
+  return (
+    <header className={headerClass}>
+      {/* LC logo — layoutId target: framer-motion flies it from the preloader */}
+      <Link to="/home" className="lc-logo-link" aria-label={ariaLabel}>
+        <motion.div layoutId="lc-monogram" className="lc-logo-wrap">
+          <span className="material-symbols-outlined lc-logo-balance" aria-hidden="true">
+            balance
+          </span>
+          <svg viewBox="0 0 240 200" className="lc-logo-svg" role="presentation" aria-hidden="true">
+            <text x="6" y="114" fontSize="162" fontFamily="'Cinzel', serif" fontWeight="500" fill="currentColor">
+              L
+            </text>
+            <text x="88" y="172" fontSize="162" fontFamily="'Cinzel', serif" fontWeight="500" fill="currentColor">
+              C
+            </text>
+          </svg>
+        </motion.div>
       </Link>
-      <nav>
-        <Link to="/home">{t.nav.home}</Link>
-        <Link to="/clinical">{t.nav.clinical}</Link>
-        <Link to="/forensic">{t.nav.forensic}</Link>
-        <Link to="/forensic/psylex">{t.nav.psylex}</Link>
-        <Link to="/about">{t.nav.about}</Link>
-        <Link to="/contact">{t.nav.contact}</Link>
+
+      {/* Desktop nav — center */}
+      <nav className="site-nav-desktop" aria-label="Main navigation">
+        <div className="site-nav-frosted">
+          <Link to="/home">{t.nav.home}</Link>
+          <Link to="/clinical">{t.nav.clinical}</Link>
+          <Link to="/forensic">{t.nav.forensic}</Link>
+          <Link to="/forensic/psylex">{t.nav.psylex}</Link>
+          <Link to="/about">{t.nav.about}</Link>
+          <Link to="/contact">{t.nav.contact}</Link>
+        </div>
       </nav>
-      <div className="actions">
+
+      {/* Desktop CTA — right */}
+      <div className="site-header-end">
         <LanguageSwitch lang={lang} setLang={setLang} />
-        <Link to="/contact" className="btn btn-primary">{t.nav.book}</Link>
+        <Link to="/contact" className="header-book-btn">
+          Book a Session
+        </Link>
+      </div>
+
+      {/* Mobile / tablet — right */}
+      <div className="site-header-mobile">
+        <Link to="/contact" className="header-book-btn">
+          Book a Consultation
+        </Link>
+        <button
+          type="button"
+          className={`hamburger-btn${menuOpen ? ' is-open' : ''}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
+        >
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
+        </button>
       </div>
     </header>
   )
 }
 
-function Hero({ t }) {
+function LandingHero({ t }) {
   const reduceMotion = useReducedMotion()
-  const heroStagger = {
-    hidden: { opacity: 0, y: reduceMotion ? 0 : 18 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: reduceMotion ? 0.3 : 0.62,
-        ease: [0.22, 1, 0.36, 1],
-      },
-    },
+
+  const textVariants = {
+    hidden: { opacity: 0, y: reduceMotion ? 0 : 22 },
+    visible: { opacity: 1, y: 0, transition: { duration: reduceMotion ? 0.3 : 0.7, ease: [0.22, 1, 0.36, 1] } },
   }
-  const heroVisualTransition = { duration: reduceMotion ? 0.3 : 0.85, ease: [0.22, 1, 0.36, 1] }
-  const heroMaskInitial = { clipPath: reduceMotion ? 'inset(0% 0% 0% 0%)' : 'inset(100% 0% 0% 0%)' }
-  const heroMaskTransition = { duration: reduceMotion ? 0.2 : 0.8, ease: [0.22, 1, 0.36, 1], delay: reduceMotion ? 0 : 0.08 }
-  const heroOrbAnimation = reduceMotion ? HERO_ORB_REDUCED_ANIMATION : HERO_ORB_ANIMATION
-  const heroOrbTransition = reduceMotion ? HERO_ORB_REDUCED_TRANSITION : HERO_ORB_TRANSITION
 
   return (
-    <section className="hero-section">
-      <motion.div
-        className="hero-copy"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={{
-          hidden: {},
-          visible: {
-            transition: {
-              staggerChildren: reduceMotion ? 0.04 : 0.09,
-              delayChildren: reduceMotion ? 0 : 0.06,
-            },
-          },
-        }}
-      >
-        <motion.p className="eyebrow" variants={heroStagger}>{t.home.eyebrow}</motion.p>
-        <motion.h1 variants={heroStagger}>{t.home.title}</motion.h1>
-        <motion.p className="lede" variants={heroStagger}>{t.home.description}</motion.p>
-        <motion.div className="cta-row" variants={heroStagger}>
-          <Link className="btn btn-primary" to="/contact">{t.home.ctaPrimary}</Link>
-          <Link className="btn btn-ghost" to="/clinical">{t.home.ctaSecondary}</Link>
-        </motion.div>
-      </motion.div>
-      <motion.div
-        className="hero-visual card"
-        initial={{ opacity: 0, x: reduceMotion ? 0 : 24 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={heroVisualTransition}
-      >
+    <section className="landing-section" aria-label="Hero">
+      {/* Painterly hero image — right side, bleeds left */}
+      <div className="landing-hero-img" role="presentation" aria-hidden="true" />
+
+      <div className="landing-inner">
+        {/* Left column — primary identity text, centred within first 100 vh */}
         <motion.div
-          className="hero-visual-mask"
-          initial={heroMaskInitial}
-          whileInView={{ clipPath: 'inset(0% 0% 0% 0%)' }}
-          viewport={{ once: true }}
-          transition={heroMaskTransition}
+          className="landing-primary"
+          initial="hidden"
+          animate="visible"
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: reduceMotion ? 0.04 : 0.12, delayChildren: reduceMotion ? 0 : 0.18 } } }}
         >
-          <motion.div className="hero-orb" animate={heroOrbAnimation} transition={heroOrbTransition} />
-          <div className="hero-points">
-            <p><ShieldCheck size={16} />Clinical and forensic integration</p>
-            <p><HeartHandshake size={16} />Empathic and evidence-based care</p>
-            <p><Landmark size={16} />Court-aligned professional support</p>
-          </div>
+          <motion.p className="landing-eyebrow" variants={textVariants}>
+            {t.home.eyebrow}
+          </motion.p>
+          <motion.p className="landing-by" variants={textVariants}>
+            BY
+          </motion.p>
+          <motion.h1 className="landing-name" variants={textVariants}>
+            Dr. Laura Cocozza
+          </motion.h1>
         </motion.div>
-      </motion.div>
+
+        {/* Right column — secondary copy + CTA, positioned below the 100 vh fold */}
+        <motion.div
+          className="landing-secondary"
+          initial="hidden"
+          animate="visible"
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: reduceMotion ? 0.04 : 0.1, delayChildren: reduceMotion ? 0 : 0.38 } } }}
+        >
+          <motion.p className="landing-headline" variants={textVariants}>
+            A professional, human, and authoritative space for your wellbeing.
+          </motion.p>
+          <motion.p className="landing-desc" variants={textVariants}>
+            Tailored pathways for adolescents, adults, and families, integrating clinical and forensic expertise with multidisciplinary support.
+          </motion.p>
+          <motion.div className="landing-cta-row" variants={textVariants}>
+            <Link to="/contact" className="book-pill">
+              book a consultation
+            </Link>
+            <Link to="/contact" className="book-pill-arrow" aria-label="Book a consultation">
+              <ArrowUpRight size={18} />
+            </Link>
+          </motion.div>
+        </motion.div>
+      </div>
     </section>
   )
 }
@@ -373,41 +476,54 @@ function Home({ t }) {
 
   return (
     <>
-      <Hero t={t} />
+      <LandingHero t={t} />
 
-      <section className="trust-bar glass">
-        {t.home.trust.map((item) => (
-          <p key={item}>{item}</p>
-        ))}
-      </section>
+      <div className="app-shell">
+        <section className="trust-bar glass">
+          {t.home.trust.map((item) => (
+            <p key={item}>{item}</p>
+          ))}
+        </section>
 
-      <Section title={t.sections.clinicalPreview} items={previews.slice(0, 2)} />
-      <Section title={t.sections.psylexPreview} items={previews.slice(2, 4)} />
-      <Section
-        title={t.sections.philosophy}
-        items={[
-          { icon: Brain, title: 'CBT', text: 'Structured cognitive work for practical change.' },
-          { icon: Sparkles, title: 'ACT', text: 'Acceptance, values, and psychological flexibility.' },
-          { icon: Stethoscope, title: 'Virtual Reality Support', text: 'Innovative protocols for graded exposure and emotional regulation.' },
-          { icon: Users, title: 'Integrated Care', text: 'Shared planning with psychiatrists, neuropsychiatrists, and legal professionals.' },
-        ]}
-      />
-      <Section
-        title={t.sections.process}
-        items={[
-          { icon: Phone, title: 'First Contact', text: 'An initial listening phase with clear objectives.' },
-          { icon: BookOpen, title: 'Evaluation', text: 'A clinical or forensic assessment tailored to context.' },
-          { icon: HeartHandshake, title: 'Personalized Pathway', text: 'A bespoke plan balancing evidence and person-centered care.' },
-          { icon: ShieldCheck, title: 'Ongoing Support', text: 'Progress review, adaptations, and continuity.' },
-        ]}
-      />
+        <Section title={t.sections.clinicalPreview} items={previews.slice(0, 2)} />
+        <Section title={t.sections.psylexPreview} items={previews.slice(2, 4)} />
+        <Section
+          title={t.sections.philosophy}
+          items={[
+            { icon: Brain, title: 'CBT', text: 'Structured cognitive work for practical change.' },
+            { icon: Sparkles, title: 'ACT', text: 'Acceptance, values, and psychological flexibility.' },
+            { icon: Stethoscope, title: 'Virtual Reality Support', text: 'Innovative protocols for graded exposure and emotional regulation.' },
+            { icon: Users, title: 'Integrated Care', text: 'Shared planning with psychiatrists, neuropsychiatrists, and legal professionals.' },
+          ]}
+        />
+        <Section
+          title={t.sections.process}
+          items={[
+            { icon: Phone, title: 'First Contact', text: 'An initial listening phase with clear objectives.' },
+            { icon: BookOpen, title: 'Evaluation', text: 'A clinical or forensic assessment tailored to context.' },
+            { icon: HeartHandshake, title: 'Personalized Pathway', text: 'A bespoke plan balancing evidence and person-centered care.' },
+            { icon: ShieldCheck, title: 'Ongoing Support', text: 'Progress review, adaptations, and continuity.' },
+          ]}
+        />
 
-      <blockquote className="quote">{t.sections.testimonials}</blockquote>
-      <section className="contact-strip card">
-        <p>{t.sections.contactCta}</p>
-        <Link to="/contact" className="btn btn-primary">{t.nav.book}</Link>
-      </section>
+        <blockquote className="quote">{t.sections.testimonials}</blockquote>
+        <section className="contact-strip card">
+          <p>{t.sections.contactCta}</p>
+          <Link to="/contact" className="btn btn-primary">{t.nav.book}</Link>
+        </section>
+      </div>
     </>
+  )
+}
+
+/* ── Inner page wrapper ─────────────────────────────────── */
+
+function PageWrapper({ children, t }) {
+  return (
+    <div className="app-shell">
+      <main style={{ paddingTop: '1.5rem', paddingBottom: '2rem' }}>{children}</main>
+      <Footer t={t} />
+    </div>
   )
 }
 
@@ -574,10 +690,12 @@ function Footer({ t }) {
 function AppShell() {
   const [lang, setLang] = useState('it')
   const [preloaderVisible, setPreloaderVisible] = useState(() => shouldShowPreloader())
+  const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
   const reduceMotion = useReducedMotion()
   const t = content[lang]
   const preloaderAriaLabel = lang === 'it' ? 'Monogramma Laura Cocozza' : 'Laura Cocozza monogram'
+  const isHome = location.pathname === '/home' || location.pathname === '/'
 
   useEffect(() => {
     if (!preloaderVisible) return
@@ -596,8 +714,9 @@ function AppShell() {
   return (
     <>
       <Preloader visible={preloaderVisible} ariaLabel={preloaderAriaLabel} />
+
       <motion.div
-        className="app-shell app-content"
+        className="app-content"
         initial={false}
         animate={preloaderVisible ? 'covered' : 'visible'}
         variants={{
@@ -615,35 +734,48 @@ function AppShell() {
           },
         }}
       >
-        <Header t={t} lang={lang} setLang={setLang} />
-        <main>
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={location.pathname}
-              initial={{ opacity: 0, y: reduceMotion ? 0 : 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: reduceMotion ? 0 : -8 }}
-              transition={{ duration: reduceMotion ? 0.18 : 0.52, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <Routes location={location}>
-                <Route path="/" element={<Navigate to="/home" replace />} />
-                <Route path="/home" element={<Home t={t} />} />
-                <Route path="/clinical" element={<Clinical t={t} />} />
-                <Route path="/clinical/approach" element={<ClinicalApproach />} />
-                <Route path="/clinical/individual-psychotherapy" element={<ClinicalIndividual />} />
-                <Route path="/clinical/family-support" element={<ClinicalFamily />} />
-                <Route path="/clinical/network" element={<ClinicalNetwork />} />
-                <Route path="/forensic" element={<Forensic t={t} />} />
-                <Route path="/forensic/services" element={<ForensicServices />} />
-                <Route path="/forensic/psylex" element={<PsyLexPreview />} />
-                <Route path="/about" element={<About t={t} />} />
-                <Route path="/contact" element={<Contact t={t} />} />
-                <Route path="*" element={<Navigate to="/home" replace />} />
-              </Routes>
-            </motion.div>
-          </AnimatePresence>
-        </main>
-        <Footer t={t} />
+        <SiteHeader
+          t={t}
+          lang={lang}
+          setLang={setLang}
+          isLanding={isHome}
+          menuOpen={menuOpen}
+          setMenuOpen={setMenuOpen}
+        />
+
+        <MobileMenu
+          open={menuOpen}
+          onClose={() => setMenuOpen(false)}
+          t={t}
+          lang={lang}
+          setLang={setLang}
+        />
+
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={location.pathname}
+            initial={{ opacity: 0, y: reduceMotion ? 0 : 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: reduceMotion ? 0 : -8 }}
+            transition={{ duration: reduceMotion ? 0.18 : 0.52, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <Routes location={location}>
+              <Route path="/" element={<Navigate to="/home" replace />} />
+              <Route path="/home" element={<Home t={t} />} />
+              <Route path="/clinical" element={<PageWrapper t={t}><Clinical t={t} /></PageWrapper>} />
+              <Route path="/clinical/approach" element={<PageWrapper t={t}><ClinicalApproach /></PageWrapper>} />
+              <Route path="/clinical/individual-psychotherapy" element={<PageWrapper t={t}><ClinicalIndividual /></PageWrapper>} />
+              <Route path="/clinical/family-support" element={<PageWrapper t={t}><ClinicalFamily /></PageWrapper>} />
+              <Route path="/clinical/network" element={<PageWrapper t={t}><ClinicalNetwork /></PageWrapper>} />
+              <Route path="/forensic" element={<PageWrapper t={t}><Forensic t={t} /></PageWrapper>} />
+              <Route path="/forensic/services" element={<PageWrapper t={t}><ForensicServices /></PageWrapper>} />
+              <Route path="/forensic/psylex" element={<PageWrapper t={t}><PsyLexPreview /></PageWrapper>} />
+              <Route path="/about" element={<PageWrapper t={t}><About t={t} /></PageWrapper>} />
+              <Route path="/contact" element={<PageWrapper t={t}><Contact t={t} /></PageWrapper>} />
+              <Route path="*" element={<Navigate to="/home" replace />} />
+            </Routes>
+          </motion.div>
+        </AnimatePresence>
       </motion.div>
     </>
   )
