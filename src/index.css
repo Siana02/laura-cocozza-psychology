@@ -2260,7 +2260,542 @@ h3 {
 }
 
 /* ══════════════════════════════════════════════════════════
-   SECTION 03 — CLINICAL AREA INTRODUCTION
+   CLINICAL AREA CTA TRANSITION
+   ══════════════════════════════════════════════════════════ */
+
+.clinical-transition-section {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  position: relative;
+  overflow: hidden;
+  padding: clamp(6.5rem, 16vh, 11rem) 0 clamp(7rem, 18vh, 12rem);
+  background:
+    radial-gradient(ellipse 65% 56% at 20% 30%, rgba(11, 59, 70, 0.44) 0%, transparent 65%),
+    radial-gradient(ellipse 58% 46% at 78% 68%, rgba(15, 76, 92, 0.3) 0%, transparent 60%),
+    linear-gradient(178deg, #0d2831 0%, #0a1f27 56%, #07161d 100%);
+}
+
+.clinical-transition-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.clinical-transition-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+}
+
+.clinical-transition-orb--1 {
+  width: clamp(300px, 40vw, 520px);
+  height: clamp(300px, 40vw, 520px);
+  top: -12%;
+  left: -8%;
+  background: radial-gradient(circle, rgba(183, 244, 255, 0.16) 0%, transparent 70%);
+}
+
+.clinical-transition-orb--2 {
+  width: clamp(260px, 34vw, 460px);
+  height: clamp(260px, 34vw, 460px);
+  bottom: -18%;
+  right: -9%;
+  background: radial-gradient(circle, rgba(168, 181, 162, 0.16) 0%, transparent 72%);
+}
+
+.clinical-transition-inner {
+  position: relative;
+  z-index: 1;
+  max-width: min(980px, 100% - 2.2rem);
+  margin: 0 auto;
+  text-align: center;
+  display: grid;
+  justify-items: center;
+  gap: clamp(1rem, 2.2vh, 1.5rem);
+}
+
+.clinical-transition-eyebrow {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.66rem, 0.92vw, 0.78rem);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(183, 244, 255, 0.56);
+}
+
+.clinical-transition-title {
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.1rem, 5vw, 4.2rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.012em;
+  white-space: pre-line;
+  color: var(--color-ivory);
+}
+
+.clinical-transition-paragraph {
+  margin: 0;
+  max-width: 36ch;
+  white-space: pre-line;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.9rem, 1.1vw, 1rem);
+  line-height: 1.85;
+  color: rgba(247, 243, 238, 0.72);
+}
+
+.clinical-transition-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.95rem;
+  margin-top: clamp(0.6rem, 1.6vh, 1rem);
+  padding: 0.86rem 1.18rem 0.86rem 1.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(183, 244, 255, 0.24);
+  background: linear-gradient(120deg, rgba(8, 31, 40, 0.88), rgba(10, 42, 53, 0.72));
+  color: rgba(247, 243, 238, 0.94);
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.78rem, 1.05vw, 0.9rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: transform 0.5s ease, box-shadow 0.55s ease, border-color 0.55s ease;
+  overflow: hidden;
+}
+
+.clinical-transition-cta::before {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+}
+
+.clinical-transition-cta-text {
+  position: relative;
+  z-index: 2;
+}
+
+.clinical-transition-cta-arrow {
+  width: 31px;
+  height: 31px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(183, 244, 255, 0.85);
+  background: rgba(183, 244, 255, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(183, 244, 255, 0.18);
+  position: relative;
+  z-index: 2;
+  transition: transform 0.42s ease;
+}
+
+.clinical-transition-cta-sweep {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 35%, rgba(183, 244, 255, 0.14) 52%, transparent 68%);
+  transform: translateX(-120%);
+  transition: transform 0.8s ease;
+}
+
+.clinical-transition-cta:hover {
+  border-color: rgba(183, 244, 255, 0.44);
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 1px rgba(183, 244, 255, 0.12),
+    0 0 42px rgba(183, 244, 255, 0.13),
+    0 20px 38px rgba(0, 0, 0, 0.45);
+}
+
+.clinical-transition-cta:hover .clinical-transition-cta-sweep {
+  transform: translateX(120%);
+}
+
+.clinical-transition-cta:hover .clinical-transition-cta-arrow {
+  transform: translateX(3px);
+}
+
+.clinical-transition-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(140px, 20vh, 260px);
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent 0%, rgba(6, 16, 22, 0.84) 92%);
+}
+
+/* ══════════════════════════════════════════════════════════
+   AREAS OF SUPPORT
+   ══════════════════════════════════════════════════════════ */
+
+.support-areas-section {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  position: relative;
+  overflow: hidden;
+  padding: clamp(4.8rem, 11vh, 8.4rem) 0 clamp(6rem, 14vh, 10rem);
+  background:
+    radial-gradient(ellipse 62% 56% at 16% 28%, rgba(11, 59, 70, 0.48) 0%, transparent 62%),
+    radial-gradient(ellipse 55% 50% at 84% 72%, rgba(15, 76, 92, 0.34) 0%, transparent 60%),
+    linear-gradient(170deg, #081820 0%, #0b2129 52%, #0a1b22 100%);
+}
+
+.support-areas-inner {
+  max-width: min(1240px, 100% - 2rem);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  padding: 0 clamp(1rem, 3vw, 2rem);
+}
+
+.support-areas-header {
+  text-align: center;
+  margin-bottom: clamp(2.8rem, 7vh, 5.2rem);
+}
+
+.support-areas-eyebrow {
+  display: block;
+  margin-bottom: 0.9rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.66rem, 0.9vw, 0.78rem);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(183, 244, 255, 0.54);
+}
+
+.support-areas-title {
+  margin: 0 auto;
+  max-width: 26ch;
+  white-space: pre-line;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.75rem, 3.8vw, 3.15rem);
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: var(--color-ivory);
+}
+
+.support-areas-subtext {
+  margin: clamp(0.9rem, 2vh, 1.4rem) auto 0;
+  max-width: 62ch;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.88rem, 1.1vw, 0.98rem);
+  line-height: 1.82;
+  color: rgba(247, 243, 238, 0.64);
+}
+
+.support-areas-panels {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1rem, 1.8vw, 1.4rem);
+}
+
+.support-area-panel {
+  position: relative;
+  overflow: hidden;
+  min-height: clamp(220px, 22vw, 270px);
+  display: grid;
+  grid-template-columns: clamp(120px, 14vw, 170px) minmax(0, 1fr) clamp(140px, 18vw, 220px);
+  align-items: stretch;
+  border: 1px solid rgba(183, 244, 255, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 28px, 100% 100%, 24px 100%, 0 calc(100% - 22px));
+  box-shadow:
+    0 24px 55px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    inset 0 -1px 0 rgba(183, 244, 255, 0.08);
+  transition: box-shadow 0.55s ease, border-color 0.55s ease, transform 0.42s ease;
+}
+
+.support-area-panel:hover {
+  border-color: rgba(183, 244, 255, 0.34);
+  box-shadow:
+    0 0 0 1px rgba(183, 244, 255, 0.1),
+    0 0 40px rgba(183, 244, 255, 0.08),
+    0 28px 62px rgba(0, 0, 0, 0.5);
+}
+
+.support-area-panel--anxiety {
+  background:
+    radial-gradient(ellipse 38% 60% at 14% 50%, rgba(183, 244, 255, 0.11), transparent 78%),
+    linear-gradient(150deg, rgba(8, 31, 42, 0.95), rgba(10, 45, 58, 0.85));
+}
+
+.support-area-panel--mood {
+  background:
+    radial-gradient(ellipse 36% 56% at 84% 36%, rgba(247, 243, 238, 0.08), transparent 78%),
+    linear-gradient(150deg, rgba(10, 36, 46, 0.95), rgba(8, 28, 36, 0.84));
+}
+
+.support-area-panel--ocd {
+  background:
+    radial-gradient(ellipse 34% 54% at 18% 72%, rgba(183, 244, 255, 0.08), transparent 78%),
+    linear-gradient(152deg, rgba(8, 30, 40, 0.96), rgba(9, 37, 48, 0.84));
+}
+
+.support-area-panel--regulation {
+  background:
+    radial-gradient(ellipse 34% 54% at 88% 60%, rgba(183, 244, 255, 0.1), transparent 78%),
+    linear-gradient(152deg, rgba(8, 25, 33, 0.96), rgba(9, 42, 54, 0.82));
+}
+
+.support-area-panel--relational {
+  background:
+    radial-gradient(ellipse 34% 54% at 24% 30%, rgba(183, 244, 255, 0.09), transparent 78%),
+    linear-gradient(148deg, rgba(8, 28, 37, 0.98), rgba(10, 40, 50, 0.84));
+}
+
+.support-area-panel--reverse {
+  grid-template-columns: clamp(140px, 18vw, 220px) minmax(0, 1fr) clamp(120px, 14vw, 170px);
+}
+
+.support-area-icon-zone {
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid rgba(183, 244, 255, 0.1);
+  background: linear-gradient(to right, rgba(183, 244, 255, 0.05), transparent);
+}
+
+.support-area-panel--reverse .support-area-icon-zone {
+  order: 3;
+  border-right: 0;
+  border-left: 1px solid rgba(183, 244, 255, 0.1);
+  background: linear-gradient(to left, rgba(183, 244, 255, 0.05), transparent);
+}
+
+.support-area-icon-bg {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: clamp(112px, 11vw, 140px);
+  transform: translate(-50%, -50%);
+  opacity: 0.16;
+  filter:
+    brightness(1.65)
+    saturate(1.22)
+    hue-rotate(160deg)
+    drop-shadow(0 0 20px rgba(183, 244, 255, 0.42));
+}
+
+.support-area-icon-float {
+  position: absolute;
+  bottom: 10%;
+  right: 8%;
+  width: clamp(72px, 8vw, 102px);
+  opacity: 0.2;
+  filter:
+    brightness(1.5)
+    saturate(1.2)
+    hue-rotate(150deg)
+    drop-shadow(0 0 14px rgba(183, 244, 255, 0.3));
+}
+
+.support-area-panel--reverse .support-area-icon-float {
+  right: auto;
+  left: 8%;
+}
+
+.support-area-light {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(14px);
+}
+
+.support-area-light--1 {
+  top: 12%;
+  left: 8%;
+  width: 46%;
+  height: 24%;
+  background: linear-gradient(90deg, rgba(183, 244, 255, 0.15), rgba(183, 244, 255, 0));
+}
+
+.support-area-light--2 {
+  bottom: 26%;
+  right: 6%;
+  width: 38%;
+  height: 18%;
+  background: linear-gradient(120deg, rgba(247, 243, 238, 0.1), rgba(247, 243, 238, 0));
+}
+
+.support-area-line {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(183, 244, 255, 0.28), transparent);
+  opacity: 0.42;
+}
+
+.support-area-line--1 {
+  top: 30%;
+  left: 6%;
+  width: 56%;
+}
+
+.support-area-line--2 {
+  bottom: 34%;
+  right: 8%;
+  width: 46%;
+}
+
+.support-area-ambient {
+  position: relative;
+  overflow: hidden;
+}
+
+.support-area-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(130deg, transparent 32%, rgba(183, 244, 255, 0.12) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.9s ease;
+}
+
+.support-area-panel:hover .support-area-shine {
+  transform: translateX(120%);
+}
+
+.support-area-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.3rem, 2vw, 1.9rem);
+  background: linear-gradient(to right, rgba(5, 15, 21, 0.72), rgba(5, 15, 21, 0.45));
+}
+
+.support-area-title {
+  margin: 0 0 0.62rem;
+  max-width: 34ch;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1rem, 1.4vw, 1.3rem);
+  line-height: 1.26;
+  color: var(--color-ivory);
+}
+
+.support-area-description {
+  margin: 0;
+  max-width: 62ch;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.82rem, 1vw, 0.92rem);
+  line-height: 1.8;
+  color: rgba(247, 243, 238, 0.62);
+}
+
+.support-area-panel--anxiety .support-area-icon-bg {
+  animation: support-wave-flow 7s ease-in-out infinite;
+}
+
+.support-area-panel--mood .support-area-icon-bg {
+  animation: support-breath-glow 6.8s ease-in-out infinite;
+}
+
+.support-area-panel--ocd .support-area-line {
+  animation: support-precision-lines 5.2s linear infinite;
+}
+
+.support-area-panel--regulation .support-area-light--1 {
+  animation: support-breath-glow 7s ease-in-out infinite;
+}
+
+.support-area-panel--relational .support-area-line--1,
+.support-area-panel--relational .support-area-line--2 {
+  animation: support-node-flow 5.2s ease-in-out infinite;
+}
+
+@keyframes support-wave-flow {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.14; }
+  50% { transform: translate(-7px, 5px) scale(1.06); opacity: 0.22; }
+}
+
+@keyframes support-breath-glow {
+  0%, 100% { opacity: 0.14; transform: scale(1); }
+  50% { opacity: 0.24; transform: scale(1.06); }
+}
+
+@keyframes support-precision-lines {
+  0% { opacity: 0.2; transform: translateX(0); }
+  50% { opacity: 0.55; transform: translateX(6px); }
+  100% { opacity: 0.2; transform: translateX(0); }
+}
+
+@keyframes support-node-flow {
+  0%, 100% { opacity: 0.25; filter: drop-shadow(0 0 0 rgba(183, 244, 255, 0)); }
+  50% { opacity: 0.6; filter: drop-shadow(0 0 6px rgba(183, 244, 255, 0.48)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clinical-transition-orb,
+  .support-area-icon-bg,
+  .support-area-line,
+  .support-area-light {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .support-areas-panels {
+    gap: 0.9rem;
+  }
+
+  .support-area-panel {
+    min-height: 230px;
+    grid-template-columns: 110px minmax(0, 1fr) 130px;
+  }
+
+  .support-area-panel--reverse {
+    grid-template-columns: 130px minmax(0, 1fr) 110px;
+  }
+}
+
+@media (max-width: 640px) {
+  .clinical-transition-title {
+    font-size: clamp(1.8rem, 9vw, 2.7rem);
+  }
+
+  .support-areas-panels {
+    grid-template-columns: 1fr;
+  }
+
+  .support-area-panel {
+    min-height: 230px;
+    width: 100%;
+    grid-template-columns: 1fr;
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 22px, 100% 100%, 18px 100%, 0 calc(100% - 16px));
+  }
+
+  .support-area-panel--reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .support-area-icon-zone,
+  .support-area-panel--reverse .support-area-icon-zone {
+    order: 1;
+    min-height: 92px;
+    border-right: 0;
+    border-left: 0;
+    border-bottom: 1px solid rgba(183, 244, 255, 0.1);
+    background: linear-gradient(to bottom, rgba(183, 244, 255, 0.05), transparent);
+  }
+
+  .support-area-content {
+    order: 2;
+    background: linear-gradient(to top, rgba(5, 15, 21, 0.72), rgba(5, 15, 21, 0.42));
+  }
+
+  .support-area-ambient {
+    order: 3;
+    min-height: 84px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   CLINICAL AREA INTRODUCTION
    ══════════════════════════════════════════════════════════ */
 
 .clinical-intro-section {
