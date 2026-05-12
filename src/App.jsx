@@ -165,6 +165,56 @@ const content = {
           },
         ],
       },
+      clinicalAreaTransition: {
+        eyebrow: 'Area Clinica',
+        title: 'Un percorso terapeutico\ncostruito attorno\nalla persona',
+        paragraph:
+          'Approfondisci le aree di supporto,\ngli approcci terapeutici\ne le modalità di intervento\ndella pratica clinica.',
+        cta: 'Esplora l’area clinica',
+      },
+      supportAreas: {
+        eyebrow: 'Aree di supporto',
+        title: 'Supporto terapeutico\nper difficoltà emotive,\nrelazionali e personali',
+        subtext:
+          'Ogni percorso viene adattato alle esigenze specifiche della persona, attraverso un approccio strutturato, graduale e personalizzato.',
+        panels: [
+          {
+            key: 'anxiety',
+            icon: '/brain.png',
+            title: 'Ansia e gestione dello stress',
+            description:
+              'Percorsi di supporto dedicati alla gestione dell’ansia, dello stress emotivo, delle paure persistenti e del sovraccarico mentale.',
+          },
+          {
+            key: 'mood',
+            icon: '/self-acceptance.png',
+            title: 'Difficoltà emotive e dell’umore',
+            description:
+              'Supporto psicologico per periodi di vulnerabilità emotiva, demotivazione, tristezza persistente e difficoltà nel mantenere equilibrio emotivo.',
+          },
+          {
+            key: 'ocd',
+            icon: '/cognitive-behavior.png',
+            title: 'Pensieri intrusivi e comportamenti compulsivi',
+            description:
+              'Interventi orientati alla gestione di pensieri ricorrenti, compulsioni, controllo dell’ansia e rigidità cognitive.',
+          },
+          {
+            key: 'regulation',
+            icon: '/virtual-reality.png',
+            title: 'Regolazione emotiva',
+            description:
+              'Percorsi focalizzati sullo sviluppo della consapevolezza emotiva, della gestione dello stress e dell’equilibrio psicologico quotidiano.',
+          },
+          {
+            key: 'relational',
+            icon: '/conflict.png',
+            title: 'Difficoltà relazionali',
+            description:
+              'Supporto psicologico per dinamiche relazionali complesse, conflitti emotivi, difficoltà comunicative e relazioni personali difficili.',
+          },
+        ],
+      },
     },
     sections: {
       clinicalPreview: 'Area Clinica',
@@ -328,6 +378,56 @@ const content = {
             icon: '/family.png',
             title: 'Families',
             description: 'Consultations and support pathways for complex family dynamics, parenthood, and moments of significant change.',
+          },
+        ],
+      },
+      clinicalAreaTransition: {
+        eyebrow: 'Clinical Area',
+        title: 'A therapeutic pathway\nbuilt around\nthe person',
+        paragraph:
+          'Explore the support areas,\ntherapeutic approaches,\nand intervention models\nof the clinical practice.',
+        cta: 'Explore the clinical area',
+      },
+      supportAreas: {
+        eyebrow: 'Support Areas',
+        title: 'Therapeutic support\nfor emotional,\nrelational, and personal challenges',
+        subtext:
+          'Each pathway is adapted to each person’s specific needs through a structured, gradual, and personalized therapeutic approach.',
+        panels: [
+          {
+            key: 'anxiety',
+            icon: '/brain.png',
+            title: 'Anxiety and stress management',
+            description:
+              'Support pathways focused on anxiety, emotional stress, persistent fears, and mental overload.',
+          },
+          {
+            key: 'mood',
+            icon: '/self-acceptance.png',
+            title: 'Emotional and mood difficulties',
+            description:
+              'Psychological support for periods of emotional vulnerability, low motivation, persistent sadness, and difficulty maintaining emotional balance.',
+          },
+          {
+            key: 'ocd',
+            icon: '/cognitive-behavior.png',
+            title: 'Intrusive thoughts and compulsive behaviors',
+            description:
+              'Interventions focused on recurring thoughts, compulsions, anxiety management, and cognitive rigidity.',
+          },
+          {
+            key: 'regulation',
+            icon: '/virtual-reality.png',
+            title: 'Emotional regulation',
+            description:
+              'Pathways focused on emotional awareness, stress management, and everyday psychological balance.',
+          },
+          {
+            key: 'relational',
+            icon: '/conflict.png',
+            title: 'Relational difficulties',
+            description:
+              'Psychological support for complex relational dynamics, emotional conflict, communication difficulties, and challenging personal relationships.',
           },
         ],
       },
@@ -1294,6 +1394,99 @@ function WhoIsItForSection({ t }) {
   )
 }
 
+function ClinicalAreaTransitionSection({ t }) {
+  const reduceMotion = useReducedMotion()
+  const transition = t.home.clinicalAreaTransition
+
+  return (
+    <section className="clinical-transition-section">
+      <div className="clinical-transition-bg" aria-hidden="true">
+        <motion.div
+          className="clinical-transition-orb clinical-transition-orb--1"
+          animate={reduceMotion ? {} : { x: [0, 28, 0], y: [0, -20, 0] }}
+          transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <motion.div
+          className="clinical-transition-orb clinical-transition-orb--2"
+          animate={reduceMotion ? {} : { x: [0, -22, 0], y: [0, 26, 0] }}
+          transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut', delay: 1.8 }}
+        />
+      </div>
+
+      <motion.div
+        className="clinical-transition-inner"
+        initial={{ opacity: 0, y: 34 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.35 }}
+        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <p className="clinical-transition-eyebrow">{transition.eyebrow}</p>
+        <h2 className="clinical-transition-title">{transition.title}</h2>
+        <p className="clinical-transition-paragraph">{transition.paragraph}</p>
+        <Link to="/clinical" className="clinical-transition-cta">
+          <span className="clinical-transition-cta-text">{transition.cta}</span>
+          <span className="clinical-transition-cta-arrow" aria-hidden="true">
+            <ArrowRight size={17} />
+          </span>
+          <span className="clinical-transition-cta-sweep" aria-hidden="true" />
+        </Link>
+      </motion.div>
+
+      <div className="clinical-transition-fade" aria-hidden="true" />
+    </section>
+  )
+}
+
+function SupportAreasSection({ t }) {
+  const reduceMotion = useReducedMotion()
+  const support = t.home.supportAreas
+
+  return (
+    <section className="support-areas-section">
+      <div className="support-areas-inner">
+        <motion.div
+          className="support-areas-header"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.88, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className="support-areas-eyebrow">{support.eyebrow}</span>
+          <h2 className="support-areas-title">{support.title}</h2>
+          <p className="support-areas-subtext">{support.subtext}</p>
+        </motion.div>
+
+        <div className="support-areas-panels">
+          {support.panels.map((panel, index) => (
+            <motion.article
+              key={panel.key}
+              className={`support-area-panel support-area-panel--${panel.key}`}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -24 : 24, y: 22 }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              viewport={{ once: true, amount: 0.16 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: index * 0.08 }}
+              whileHover={reduceMotion ? {} : { y: -4, transition: { duration: 0.42, ease: [0.22, 1, 0.36, 1] } }}
+            >
+              <div className="support-area-icon-env" aria-hidden="true">
+                <img src={panel.icon} alt="" className="support-area-icon-bg" />
+                <span className="support-area-light support-area-light--1" />
+                <span className="support-area-light support-area-light--2" />
+                <span className="support-area-line support-area-line--1" />
+                <span className="support-area-line support-area-line--2" />
+              </div>
+
+              <div className="support-area-content">
+                <h3 className="support-area-title">{panel.title}</h3>
+                <p className="support-area-description">{panel.description}</p>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function Section({ title, subtitle, items }) {
   return (
     <section className="section-block">
@@ -1333,12 +1526,8 @@ function Home({ t }) {
         <TherapeuticApproachSection t={t} />
         <EditorialQuoteStripSection t={t} />
         <WhoIsItForSection t={t} />
-
-        <blockquote className="quote">{t.sections.testimonials}</blockquote>
-        <section className="contact-strip card">
-          <p>{t.sections.contactCta}</p>
-          <Link to="/contact" className="btn btn-primary">{t.nav.book}</Link>
-        </section>
+        <ClinicalAreaTransitionSection t={t} />
+        <SupportAreasSection t={t} />
       </div>
     </>
   )
