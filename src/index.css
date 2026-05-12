@@ -627,7 +627,7 @@ a {
 .landing-secondary {
   display: flex;
   flex-direction: column;
-  /* Span the two-column desktop hero grid so the copy can sit in the page center. */
+  /* Span `.landing-inner`'s two desktop grid columns so the copy can sit in the page center. */
   grid-column: 1 / -1;
   justify-self: center;
   width: min(var(--landing-secondary-max-width), calc(100% - (var(--landing-secondary-inline-gap) * 2)));
@@ -640,6 +640,12 @@ a {
   padding-top: calc(100vh + 5rem);
 }
 
+.landing-headline,
+.landing-desc {
+  margin-inline: auto;
+  text-align: center;
+}
+
 .landing-headline {
   margin: 0;
   font-family: 'Cormorant Garamond', serif;
@@ -648,8 +654,6 @@ a {
   line-height: 1.18;
   color: var(--color-ivory);
   max-width: 24ch;
-  margin-inline: auto;
-  text-align: center;
 }
 
 .landing-desc {
@@ -659,8 +663,6 @@ a {
   line-height: 1.65;
   color: rgba(247, 243, 238, 0.78);
   max-width: 38ch;
-  margin-inline: auto;
-  text-align: center;
 }
 
 .landing-cta-row {
