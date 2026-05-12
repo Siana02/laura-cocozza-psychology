@@ -29,9 +29,11 @@ const content = {
       about: 'Chi Sono',
       contact: 'Contatti',
       book: 'Prenota un Colloquio',
+      bookSession: 'Prenota una Seduta',
     },
     home: {
       eyebrow: 'Psicoterapia clinica e psicologia forense',
+      by: 'DI',
       title: 'Uno spazio professionale, umano e autorevole per il tuo equilibrio.',
       description:
         'Percorsi personalizzati per adolescenti, adulti e famiglie, con integrazione clinica-forense e una rete multidisciplinare dedicata al benessere.',
@@ -69,9 +71,11 @@ const content = {
       about: 'About',
       contact: 'Contact',
       book: 'Book a Consultation',
+      bookSession: 'Book a Session',
     },
     home: {
       eyebrow: 'Clinical psychotherapy and forensic psychology',
+      by: 'BY',
       title: 'A professional, human, and authoritative space for your wellbeing.',
       description:
         'Tailored pathways for adolescents, adults, and families, integrating clinical and forensic expertise with multidisciplinary support.',
@@ -352,14 +356,14 @@ function SiteHeader({ t, lang, setLang, isLanding, menuOpen, setMenuOpen }) {
       <div className="site-header-end">
         <LanguageSwitch lang={lang} setLang={setLang} />
         <Link to="/contact" className="header-book-btn">
-          Book a Session
+          {t.nav.bookSession}
         </Link>
       </div>
 
       {/* Mobile / tablet — right */}
       <div className="site-header-mobile">
         <Link to="/contact" className="header-book-btn">
-          Book a Consultation
+          {t.nav.book}
         </Link>
         <button
           type="button"
@@ -403,10 +407,10 @@ function LandingHero({ t }) {
             {t.home.eyebrow}
           </motion.p>
           <motion.p className="landing-by" variants={textVariants}>
-            BY
+            {t.home.by}
           </motion.p>
           <motion.h1 className="landing-name" variants={textVariants}>
-            Dr. Laura Cocozza
+            {t.doctor}
           </motion.h1>
         </motion.div>
 
@@ -418,14 +422,14 @@ function LandingHero({ t }) {
           variants={{ hidden: {}, visible: { transition: { staggerChildren: reduceMotion ? 0.04 : 0.1, delayChildren: reduceMotion ? 0 : 0.38 } } }}
         >
           <motion.p className="landing-headline" variants={textVariants}>
-            A professional, human, and authoritative space for your wellbeing.
+            {t.home.title}
           </motion.p>
           <motion.p className="landing-desc" variants={textVariants}>
-            Tailored pathways for adolescents, adults, and families, integrating clinical and forensic expertise with multidisciplinary support.
+            {t.home.description}
           </motion.p>
           <motion.div className="landing-cta-row" variants={textVariants}>
             <Link to="/contact" className="book-pill">
-              book a consultation
+              {t.home.ctaPrimary}
             </Link>
             <Link to="/contact" className="book-pill-arrow" aria-label="Book a consultation">
               <ArrowUpRight size={18} />
