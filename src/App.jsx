@@ -1709,7 +1709,10 @@ function SupportAreasSection({ t }) {
       <div className="support-story-panels">
         {support.panels.map((panel, index) => {
           const isReversed = index % 2 === 1
-          const panelIconSrc = supportPngIconMap[panel.key] ?? panel.icon
+          const panelIconSrc = supportPngIconMap[panel.key]
+          if (!panelIconSrc) {
+            throw new Error(`Missing support icon mapping for panel key "${panel.key}"`)
+          }
           return (
             <motion.article
               key={panel.key}
