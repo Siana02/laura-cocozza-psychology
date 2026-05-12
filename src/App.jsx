@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from 'framer-motion'
 import {
   ArrowRight,
@@ -72,6 +72,46 @@ const content = {
           {
             title: 'Trattamento Personalizzato',
             text: 'Percorsi psicologici su misura costruiti sui bisogni emotivi, relazionali e contestuali di ogni persona.',
+          },
+        ],
+      },
+      clinicalAreaIntro: {
+        eyebrow: 'Ambito Clinico',
+        title: 'Psicoterapia cognitivo-comportamentale\nper adolescenti, adulti e famiglie',
+        paragraph1:
+          'La pratica offre percorsi di psicoterapia, supporto psicologico e accompagnamento rivolti a persone che affrontano difficoltà emotive, relazionali e familiari.',
+        paragraph2:
+          'Ogni percorso viene costruito attraverso un approccio integrato e multidisciplinare, con l\'obiettivo di offrire un supporto personalizzato, strutturato e profondamente umano.',
+        secondary:
+          'Uno spazio clinico orientato all\'ascolto, alla comprensione e alla costruzione di un equilibrio psicologico sostenibile nel tempo.',
+      },
+      integratedCareProcess: {
+        eyebrow: 'Come Funziona',
+        title: 'Il Percorso di Cura',
+        steps: [
+          {
+            number: '01',
+            title: 'Comprensione della situazione',
+            description:
+              'Ogni percorso inizia da un\'attenta comprensione della storia personale, delle difficoltà emotive e delle esigenze specifiche della persona.',
+          },
+          {
+            number: '02',
+            title: 'Costruzione del percorso',
+            description:
+              'L\'intervento terapeutico viene strutturato in modo personalizzato, integrando strumenti clinici e strategie orientate agli obiettivi individuali.',
+          },
+          {
+            number: '03',
+            title: 'Collaborazione multidisciplinare',
+            description:
+              'Quando necessario, la pratica collabora con professionisti specializzati in ambito psichiatrico, neuropsichiatrico e legale per offrire un supporto integrato.',
+          },
+          {
+            number: '04',
+            title: 'Supporto continuativo',
+            description:
+              'L\'obiettivo del percorso è favorire stabilità emotiva, consapevolezza e un equilibrio psicologico sostenibile nel tempo.',
           },
         ],
       },
@@ -168,6 +208,46 @@ const content = {
           {
             title: 'Individualized Treatment',
             text: 'Tailored psychological pathways based on each person’s emotional, relational, and contextual needs.',
+          },
+        ],
+      },
+      clinicalAreaIntro: {
+        eyebrow: 'Clinical Area',
+        title: 'Cognitive-behavioral psychotherapy\nfor adolescents, adults, and families',
+        paragraph1:
+          'The practice offers psychotherapy pathways, psychological support and guidance for people navigating emotional, relational, and family difficulties.',
+        paragraph2:
+          'Each pathway is built through an integrated, multidisciplinary approach, with the goal of providing support that is personalised, structured, and deeply human.',
+        secondary:
+          'A clinical space oriented toward listening, understanding, and building a sustainable psychological balance over time.',
+      },
+      integratedCareProcess: {
+        eyebrow: 'How It Works',
+        title: 'The Care Process',
+        steps: [
+          {
+            number: '01',
+            title: 'Understanding the situation',
+            description:
+              "Every pathway begins with careful understanding of the person's personal history, emotional difficulties, and specific needs.",
+          },
+          {
+            number: '02',
+            title: 'Building the pathway',
+            description:
+              'The therapeutic intervention is structured in a personalised way, integrating clinical tools and strategies oriented toward individual goals.',
+          },
+          {
+            number: '03',
+            title: 'Multidisciplinary collaboration',
+            description:
+              'When needed, the practice collaborates with specialists in psychiatry, neuropsychiatry, and law to offer integrated support.',
+          },
+          {
+            number: '04',
+            title: 'Ongoing support',
+            description:
+              'The goal of the pathway is to foster emotional stability, awareness, and a sustainable psychological balance over time.',
           },
         ],
       },
@@ -838,6 +918,111 @@ function VrAtmosphere({ reduceMotion }) {
   )
 }
 
+function ClinicalAreaIntroductionSection({ t }) {
+  const ci = t.home.clinicalAreaIntro
+
+  return (
+    <section className="clinical-intro-section">
+      {/* Atmospheric floating orbs */}
+      <div className="clinical-intro-bg" aria-hidden="true">
+        <div className="clinical-intro-orb clinical-intro-orb--1" />
+        <div className="clinical-intro-orb clinical-intro-orb--2" />
+        <div className="clinical-intro-orb clinical-intro-orb--3" />
+      </div>
+
+      <div className="clinical-intro-inner">
+        <div className="clinical-intro-split">
+          {/* Left column — eyebrow + large editorial title */}
+          <motion.div
+            className="clinical-intro-left"
+            initial={{ opacity: 0, x: -32 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <span className="clinical-intro-eyebrow">{ci.eyebrow}</span>
+            <h2 className="clinical-intro-title">{ci.title}</h2>
+          </motion.div>
+
+          {/* Right column — paragraphs */}
+          <motion.div
+            className="clinical-intro-right"
+            initial={{ opacity: 0, y: 22 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.88, ease: [0.22, 1, 0.36, 1], delay: 0.18 }}
+          >
+            <p className="clinical-intro-paragraph">{ci.paragraph1}</p>
+            <p className="clinical-intro-paragraph">{ci.paragraph2}</p>
+            <p className="clinical-intro-secondary">{ci.secondary}</p>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Transition cue toward next section */}
+      <div className="clinical-intro-divider" aria-hidden="true" />
+    </section>
+  )
+}
+
+function IntegratedCareProcessSection({ t }) {
+  const reduceMotion = useReducedMotion()
+  const icp = t.home.integratedCareProcess
+
+  return (
+    <section className="care-process-section">
+      <div className="care-process-inner">
+        {/* Section header */}
+        <motion.div
+          className="care-process-header"
+          initial={{ opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className="care-process-eyebrow">{icp.eyebrow}</span>
+          <h2 className="care-process-title">{icp.title}</h2>
+        </motion.div>
+
+        {/* Steps — horizontal on desktop, vertical on mobile */}
+        <div className="care-process-steps">
+          {icp.steps.map((step, i) => (
+            <motion.div
+              key={step.number}
+              className="care-process-step"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.78, ease: [0.22, 1, 0.36, 1], delay: i * 0.13 }}
+            >
+              {/* Glowing node */}
+              <div className="care-process-node-wrap" aria-hidden="true">
+                <motion.div
+                  className="care-process-node-pulse"
+                  animate={reduceMotion ? {} : { scale: [1, 1.55, 1], opacity: [0.35, 0, 0.35] }}
+                  transition={{ duration: 2.8 + i * 0.35, repeat: Infinity, ease: 'easeOut', delay: i * 0.55 }}
+                />
+                <div className="care-process-node">
+                  <span>{step.number}</span>
+                </div>
+              </div>
+
+              {/* Step content */}
+              <div className="care-process-step-content">
+                <h3 className="care-process-step-title">{step.title}</h3>
+                <p className="care-process-step-desc">{step.description}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Gradient transition toward the therapeutic approach section */}
+      <div className="care-process-transition" aria-hidden="true" />
+    </section>
+  )
+}
+
 function TherapeuticApproachSection({ t }) {
   const reduceMotion = useReducedMotion()
   const ta = t.home.therapeuticApproach
@@ -953,16 +1138,6 @@ function Section({ title, subtitle, items }) {
 }
 
 function Home({ t }) {
-  const previews = useMemo(
-    () => [
-      { icon: Brain, title: t.sections.clinicalPreview, text: 'CBT, ACT, VR support, individual and family pathways.', to: '/clinical' },
-      { icon: Scale, title: t.sections.forensicPreview, text: 'CTU, CTP, family proceedings and legal technical support.', to: '/forensic' },
-      { icon: BriefcaseBusiness, title: t.sections.psylexPreview, text: 'A legal-psychology collaboration network and platform vision.', to: '/forensic/psylex' },
-      { icon: Sparkles, title: t.sections.aboutPreview, text: 'A trust-oriented, warm, and rigorous therapeutic identity.', to: '/about' },
-    ],
-    [t],
-  )
-
   return (
     <>
       <LandingHero t={t} />
@@ -970,24 +1145,9 @@ function Home({ t }) {
       <div className="app-shell app-shell--home">
         <TrustBuildingSection t={t} />
 
-        <section className="trust-bar glass">
-          {t.home.trust.map((item) => (
-            <p key={item}>{item}</p>
-          ))}
-        </section>
-
-        <Section title={t.sections.clinicalPreview} items={previews.slice(0, 2)} />
-        <Section title={t.sections.psylexPreview} items={previews.slice(2, 4)} />
+        <ClinicalAreaIntroductionSection t={t} />
+        <IntegratedCareProcessSection t={t} />
         <TherapeuticApproachSection t={t} />
-        <Section
-          title={t.sections.process}
-          items={[
-            { icon: Phone, title: 'First Contact', text: 'An initial listening phase with clear objectives.' },
-            { icon: BookOpen, title: 'Evaluation', text: 'A clinical or forensic assessment tailored to context.' },
-            { icon: HeartHandshake, title: 'Personalized Pathway', text: 'A bespoke plan balancing evidence and person-centered care.' },
-            { icon: ShieldCheck, title: 'Ongoing Support', text: 'Progress review, adaptations, and continuity.' },
-          ]}
-        />
 
         <blockquote className="quote">{t.sections.testimonials}</blockquote>
         <section className="contact-strip card">
