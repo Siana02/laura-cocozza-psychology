@@ -2284,7 +2284,7 @@ h3 {
 .clinical-transition-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(95px);
+  filter: blur(70px);
 }
 
 .clinical-transition-orb--1 {
@@ -2504,8 +2504,8 @@ h3 {
   flex-direction: column;
   justify-content: flex-end;
   border: 1px solid rgba(183, 244, 255, 0.12);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 24px 55px rgba(0, 0, 0, 0.42);
   transition: box-shadow 0.55s ease, border-color 0.55s ease;
 }
@@ -2513,15 +2513,6 @@ h3 {
 .support-area-panel:hover {
   border-color: rgba(183, 244, 255, 0.34);
   box-shadow:
-    0 0 40px rgba(183, 244, 255, 0.08),
-    0 28px 62px rgba(0, 0, 0, 0.5);
-}
-
-.support-area-panel:focus-visible {
-  outline: none;
-  border-color: rgba(183, 244, 255, 0.44);
-  box-shadow:
-    0 0 0 2px rgba(183, 244, 255, 0.24),
     0 0 40px rgba(183, 244, 255, 0.08),
     0 28px 62px rgba(0, 0, 0, 0.5);
 }
@@ -2576,14 +2567,14 @@ h3 {
     brightness(1.65)
     saturate(1.22)
     hue-rotate(160deg)
-    drop-shadow(0 0 28px rgba(183, 244, 255, 0.42));
+    drop-shadow(0 0 20px rgba(183, 244, 255, 0.42));
   transform-origin: center;
 }
 
 .support-area-light {
   position: absolute;
   border-radius: 999px;
-  filter: blur(18px);
+  filter: blur(14px);
 }
 
 .support-area-light--1 {

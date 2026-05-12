@@ -1440,9 +1440,7 @@ function ClinicalAreaTransitionSection({ t }) {
 function SupportAreasSection({ t }) {
   const reduceMotion = useReducedMotion()
   const support = t.home.supportAreas
-  const panelLiftInteraction = reduceMotion
-    ? {}
-    : { y: -4, transition: { duration: 0.42, ease: [0.22, 1, 0.36, 1] } }
+  const panelLiftInteraction = reduceMotion ? {} : { y: -4, transition: { duration: 0.42, ease: [0.22, 1, 0.36, 1] } }
 
   return (
     <section className="support-areas-section">
@@ -1464,13 +1462,11 @@ function SupportAreasSection({ t }) {
             <motion.article
               key={panel.key}
               className={`support-area-panel support-area-panel--${panel.key}`}
-              tabIndex={0}
               initial={{ opacity: 0, x: index % 2 === 0 ? -24 : 24, y: 22 }}
               whileInView={{ opacity: 1, x: 0, y: 0 }}
               viewport={{ once: true, amount: 0.16 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: index * 0.08 }}
               whileHover={panelLiftInteraction}
-              whileFocus={panelLiftInteraction}
             >
               <div className="support-area-icon-env" aria-hidden="true">
                 <img src={panel.icon} alt="" className="support-area-icon-bg" />
