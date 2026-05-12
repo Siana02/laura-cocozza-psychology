@@ -45,6 +45,7 @@ body {
 }
 
 html {
+  /* Redundant with body but required for iOS Safari overflow containment */
   overflow-x: hidden;
 }
 
