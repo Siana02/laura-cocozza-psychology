@@ -566,7 +566,11 @@ function AppShell() {
   const [lang, setLang] = useState('it')
   const [preloaderVisible, setPreloaderVisible] = useState(() => {
     if (typeof window === 'undefined') return true
-    return window.sessionStorage.getItem(PRELOADER_SESSION_KEY) !== 'true'
+    try {
+      return window.sessionStorage.getItem(PRELOADER_SESSION_KEY) !== 'true'
+    } catch {
+      return true
+    }
   })
   const location = useLocation()
   const reduceMotion = useReducedMotion()
@@ -575,7 +579,11 @@ function AppShell() {
 
   useEffect(() => {
     if (!preloaderVisible || typeof window === 'undefined') return
-    window.sessionStorage.setItem(PRELOADER_SESSION_KEY, 'true')
+    try {
+      window.sessionStorage.setItem(PRELOADER_SESSION_KEY, 'true')
+    } catch {
+      // Storage may be unavailable; keep runtime stable.
+    }
   }, [preloaderVisible])
 
   useEffect(() => {
