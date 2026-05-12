@@ -16,6 +16,14 @@
   --radius-medium: 20px;
   --radius-small: 14px;
   --header-height: 72px;
+  --hero-mask: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.12) 6%,
+    rgba(0, 0, 0, 0.52) 18%,
+    rgba(0, 0, 0, 0.88) 32%,
+    #000 50%
+  );
 }
 
 * {
@@ -393,6 +401,8 @@ a {
   z-index: 45;
   display: flex;
   flex-direction: column;
+  /* solid fallback for browsers without color-mix() support */
+  background: #0d2528;
   background: color-mix(in srgb, var(--color-landing) 96%, transparent);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
@@ -527,22 +537,8 @@ a {
   background-image: url('/laura-cocozza-hero-image.jpg');
   background-size: cover;
   background-position: center top;
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(0, 0, 0, 0.12) 6%,
-    rgba(0, 0, 0, 0.52) 18%,
-    rgba(0, 0, 0, 0.88) 32%,
-    #000 50%
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(0, 0, 0, 0.12) 6%,
-    rgba(0, 0, 0, 0.52) 18%,
-    rgba(0, 0, 0, 0.88) 32%,
-    #000 50%
-  );
+  -webkit-mask-image: var(--hero-mask);
+  mask-image: var(--hero-mask);
   filter: saturate(0.82) brightness(0.88);
 }
 

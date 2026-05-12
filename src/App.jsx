@@ -38,6 +38,8 @@ const content = {
       description:
         'Percorsi personalizzati per adolescenti, adulti e famiglie, con integrazione clinica-forense e una rete multidisciplinare dedicata al benessere.',
       ctaPrimary: 'Prenota una consulenza',
+      ctaAriaLabel: 'Prenota una consulenza',
+      logoAriaLabel: 'Monogramma LC – torna alla home',
       ctaSecondary: 'Esplora Area Clinica',
       trust: ['Terapia Cognitivo Comportamentale', 'Approccio Integrato', 'Online & in Presenza', 'Supporto Multidisciplinare'],
     },
@@ -80,6 +82,8 @@ const content = {
       description:
         'Tailored pathways for adolescents, adults, and families, integrating clinical and forensic expertise with multidisciplinary support.',
       ctaPrimary: 'Book a consultation',
+      ctaAriaLabel: 'Book a consultation',
+      logoAriaLabel: 'LC monogram – back to home',
       ctaSecondary: 'Explore Clinical Area',
       trust: ['Cognitive Behavioral Therapy', 'Integrated Approach', 'Online & In-Person', 'Multidisciplinary Support'],
     },
@@ -319,12 +323,11 @@ function MobileMenu({ open, onClose, t, lang, setLang }) {
 
 function SiteHeader({ t, lang, setLang, isLanding, menuOpen, setMenuOpen }) {
   const headerClass = `site-header ${isLanding ? 'site-header--landing' : 'site-header--default'}`
-  const ariaLabel = lang === 'it' ? 'Monogramma LC – torna alla home' : 'LC monogram – back to home'
 
   return (
     <header className={headerClass}>
       {/* LC logo — layoutId target: framer-motion flies it from the preloader */}
-      <Link to="/home" className="lc-logo-link" aria-label={ariaLabel}>
+      <Link to="/home" className="lc-logo-link" aria-label={t.home.logoAriaLabel}>
         <motion.div layoutId="lc-monogram" className="lc-logo-wrap">
           <span className="material-symbols-outlined lc-logo-balance" aria-hidden="true">
             balance
@@ -431,7 +434,7 @@ function LandingHero({ t }) {
             <Link to="/contact" className="book-pill">
               {t.home.ctaPrimary}
             </Link>
-            <Link to="/contact" className="book-pill-arrow" aria-label="Book a consultation">
+            <Link to="/contact" className="book-pill-arrow" aria-label={t.home.ctaAriaLabel}>
               <ArrowUpRight size={18} />
             </Link>
           </motion.div>
