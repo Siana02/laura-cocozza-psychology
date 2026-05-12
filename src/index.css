@@ -569,6 +569,7 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  transform: translateY(-20%);
   padding: 4rem clamp(1.5rem, 4vw, 3rem) 4rem clamp(2rem, 8vw, 6rem);
   color: var(--color-ivory);
 }
