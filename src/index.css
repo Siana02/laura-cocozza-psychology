@@ -426,7 +426,7 @@ h3 {
   }
 
   .libra-icon {
-    width: min(100vw, 700px);
+    width: clamp(240px, 100vw, 700px);
   }
 
   .lc-mark {

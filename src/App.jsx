@@ -104,8 +104,8 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 },
 }
 
-const PRELOADER_INITIAL_DURATION_MS = 4700
-const PRELOADER_INITIAL_REDUCED_MOTION_DURATION_MS = 900
+const PRELOADER_DURATION_MS = 4700
+const PRELOADER_REDUCED_MOTION_DURATION_MS = 900
 const LC_CIRCLE_PATH_LENGTH = 390
 const LC_L_PATH_LENGTH = 338
 const HERO_ORB_Y_REST = -4
@@ -133,9 +133,9 @@ function LibraWatermark() {
 
 function Preloader({ visible, ariaLabel }) {
   const reduceMotion = useReducedMotion()
-  const drawDuration = reduceMotion ? 0.5 : 3.1
-  const holdDuration = reduceMotion ? 0.1 : 1
-  const bgDuration = drawDuration + holdDuration + (reduceMotion ? 0.2 : 0.45)
+  const monogramDrawDuration = reduceMotion ? 0.5 : 3.1
+  const monogramHoldDuration = reduceMotion ? 0.1 : 1
+  const bgDuration = monogramDrawDuration + monogramHoldDuration + (reduceMotion ? 0.2 : 0.45)
   const preloaderKey = reduceMotion ? 'preloader-reduced' : 'preloader-default'
 
   return (
@@ -162,7 +162,7 @@ function Preloader({ visible, ariaLabel }) {
             className="lc-wrap"
             initial={{ opacity: 0, y: 8, filter: 'blur(5px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            transition={{ duration: drawDuration, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: monogramDrawDuration, ease: [0.22, 1, 0.36, 1] }}
             exit={{ opacity: 0, transition: { duration: reduceMotion ? 0.15 : 0.45, ease: [0.4, 0, 1, 1] } }}
           >
             <motion.svg viewBox="0 0 240 240" className="lc-mark" role="img" aria-label={ariaLabel}>
@@ -176,7 +176,7 @@ function Preloader({ visible, ariaLabel }) {
                 strokeLinejoin="round"
                 initial={{ strokeDasharray: LC_CIRCLE_PATH_LENGTH, strokeDashoffset: LC_CIRCLE_PATH_LENGTH }}
                 animate={{ strokeDasharray: LC_CIRCLE_PATH_LENGTH, strokeDashoffset: 0, opacity: [0.74, 1, 1] }}
-                transition={{ duration: drawDuration, ease: [0.38, 0, 0.2, 1], times: [0, 0.78, 1] }}
+                transition={{ duration: monogramDrawDuration, ease: [0.38, 0, 0.2, 1], times: [0, 0.78, 1] }}
               />
               <motion.path
                 className="lc-mark-stroke"
@@ -188,7 +188,7 @@ function Preloader({ visible, ariaLabel }) {
                 strokeLinejoin="round"
                 initial={{ strokeDasharray: LC_L_PATH_LENGTH, strokeDashoffset: LC_L_PATH_LENGTH }}
                 animate={{ strokeDasharray: LC_L_PATH_LENGTH, strokeDashoffset: 0, opacity: [0.74, 1, 1] }}
-                transition={{ duration: drawDuration, ease: [0.38, 0, 0.2, 1], times: [0, 0.78, 1] }}
+                transition={{ duration: monogramDrawDuration, ease: [0.38, 0, 0.2, 1], times: [0, 0.78, 1] }}
               />
               <defs>
                 <linearGradient id="maskSweep" x1="0" y1="0" x2="1" y2="0">
@@ -205,7 +205,7 @@ function Preloader({ visible, ariaLabel }) {
                   height="240"
                   fill="url(#maskSweep)"
                   animate={{ x: 350, opacity: [0, 0.5, 0.1, 0] }}
-                  transition={{ duration: drawDuration, ease: [0.35, 0, 0.65, 1], delay: 0.18, times: [0, 0.3, 0.75, 1] }}
+                  transition={{ duration: monogramDrawDuration, ease: [0.35, 0, 0.65, 1], delay: 0.18, times: [0, 0.3, 0.75, 1] }}
                 />
               )}
             </motion.svg>
@@ -590,7 +590,7 @@ function AppShell() {
     if (!preloaderVisible) return
     const timer = setTimeout(
       () => setPreloaderVisible(false),
-      reduceMotion ? PRELOADER_INITIAL_REDUCED_MOTION_DURATION_MS : PRELOADER_INITIAL_DURATION_MS,
+      reduceMotion ? PRELOADER_REDUCED_MOTION_DURATION_MS : PRELOADER_DURATION_MS,
     )
     return () => clearTimeout(timer)
   }, [preloaderVisible, reduceMotion])
@@ -606,7 +606,7 @@ function AppShell() {
           covered: {
             opacity: 0,
             y: reduceMotion ? 0 : 10,
-            filter: reduceMotion ? 'none' : 'blur(3px)',
+            filter: reduceMotion ? 'blur(0px)' : 'blur(3px)',
             transition: { duration: reduceMotion ? 0.16 : 0.28, ease: [0.4, 0, 1, 1] },
           },
           visible: {
