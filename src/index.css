@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600&family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&family=Plus+Jakarta+Sans:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600&family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&family=Plus+Jakarta+Sans:wght@500;600&display=swap');
 
 :root {
   --color-primary: #0f4c5c;
@@ -59,10 +59,13 @@ a {
   will-change: transform, opacity, filter;
 }
 
-.libra-icon {
-  width: clamp(280px, 74vw, 980px);
-  height: auto;
-  opacity: 0.8;
+.balance-watermark {
+  font-family: 'Material Symbols Outlined';
+  font-size: clamp(280px, 74vw, 980px);
+  font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 48;
+  line-height: 1;
+  display: block;
+  user-select: none;
 }
 
 .lc-wrap {
@@ -85,10 +88,7 @@ a {
   width: clamp(192px, 25vw, 280px);
   color: var(--color-ivory);
   overflow: visible;
-}
-
-.lc-mark-stroke {
-  vector-effect: non-scaling-stroke;
+  font-family: 'Abril Fatface', serif;
 }
 
 .app-shell {
@@ -425,8 +425,8 @@ h3 {
     inset: -16%;
   }
 
-  .libra-icon {
-    width: clamp(240px, 100vw, 700px);
+  .balance-watermark {
+    font-size: clamp(240px, 100vw, 700px);
   }
 
   .lc-mark {

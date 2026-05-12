@@ -106,9 +106,6 @@ const fadeUp = {
 
 const PRELOADER_DURATION_MS = 4700
 const PRELOADER_REDUCED_MOTION_DURATION_MS = 900
-// These dash lengths are tuned to the current SVG path geometry and should be updated if monogram paths change.
-const LC_CIRCLE_PATH_LENGTH = 390
-const LC_L_PATH_LENGTH = 338
 const HERO_ORB_Y_REST = -4
 const HERO_ORB_Y_PEAK = -18
 const PRELOADER_SESSION_KEY = 'lc-preloader-played'
@@ -135,18 +132,11 @@ function markPreloaderAsShown() {
   }
 }
 
-function LibraWatermark() {
+function BalanceWatermark() {
   return (
-    <svg viewBox="0 0 240 240" aria-hidden="true" className="libra-icon">
-      <path
-        d="M48 74h144M120 74v92M88 166h64M56 90h56l-28 48-28-48Zm72 0h56l-28 48-28-48Z"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="4.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+    <span className="material-symbols-outlined balance-watermark" aria-hidden="true">
+      balance
+    </span>
   )
 }
 
@@ -174,7 +164,7 @@ function Preloader({ visible, ariaLabel }) {
             exit={{ opacity: 0, transition: { duration: reduceMotion ? 0.2 : 0.65, delay: reduceMotion ? 0 : 0.24 } }}
             transition={{ duration: bgDuration, ease: [0.33, 1, 0.68, 1] }}
           >
-            <LibraWatermark />
+            <BalanceWatermark />
           </motion.div>
 
           <motion.div
@@ -184,31 +174,31 @@ function Preloader({ visible, ariaLabel }) {
             transition={{ duration: monogramDrawDuration, ease: [0.22, 1, 0.36, 1] }}
             exit={{ opacity: 0, transition: { duration: reduceMotion ? 0.15 : 0.45, ease: [0.4, 0, 1, 1] } }}
           >
-            <motion.svg viewBox="0 0 240 240" className="lc-mark" role="img" aria-label={ariaLabel}>
-              <motion.path
-                className="lc-mark-stroke"
-                d="M166 62a62 62 0 1 0 0 124"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="9"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                initial={{ strokeDasharray: LC_CIRCLE_PATH_LENGTH, strokeDashoffset: LC_CIRCLE_PATH_LENGTH }}
-                animate={{ strokeDasharray: LC_CIRCLE_PATH_LENGTH, strokeDashoffset: 0, opacity: [0.74, 1, 1] }}
-                transition={{ duration: monogramDrawDuration, ease: [0.38, 0, 0.2, 1], times: [0, 0.78, 1] }}
-              />
-              <motion.path
-                className="lc-mark-stroke"
-                d="M92 40v116h46"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="9"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                initial={{ strokeDasharray: LC_L_PATH_LENGTH, strokeDashoffset: LC_L_PATH_LENGTH }}
-                animate={{ strokeDasharray: LC_L_PATH_LENGTH, strokeDashoffset: 0, opacity: [0.74, 1, 1] }}
-                transition={{ duration: monogramDrawDuration, ease: [0.38, 0, 0.2, 1], times: [0, 0.78, 1] }}
-              />
+            <motion.svg viewBox="0 0 240 200" className="lc-mark" role="img" aria-label={ariaLabel}>
+              <motion.text
+                x="6"
+                y="172"
+                fontSize="162"
+                fontFamily="'Abril Fatface', serif"
+                fill="currentColor"
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: monogramDrawDuration * 0.75, ease: [0.22, 1, 0.36, 1] }}
+              >
+                L
+              </motion.text>
+              <motion.text
+                x="92"
+                y="172"
+                fontSize="162"
+                fontFamily="'Abril Fatface', serif"
+                fill="currentColor"
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: monogramDrawDuration * 0.75, ease: [0.22, 1, 0.36, 1], delay: reduceMotion ? 0 : 0.14 }}
+              >
+                C
+              </motion.text>
               <defs>
                 <linearGradient id="maskSweep" x1="0" y1="0" x2="1" y2="0">
                   <stop offset="0" stopColor="transparent" />
@@ -221,7 +211,7 @@ function Preloader({ visible, ariaLabel }) {
                   x="-120"
                   y="0"
                   width="100"
-                  height="240"
+                  height="200"
                   fill="url(#maskSweep)"
                   animate={{ x: 350, opacity: [0, 0.5, 0.1, 0] }}
                   transition={{ duration: monogramDrawDuration, ease: [0.35, 0, 0.65, 1], delay: 0.18, times: [0, 0.3, 0.75, 1] }}
