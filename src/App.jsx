@@ -104,8 +104,14 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 },
 }
 
-const PRELOADER_DURATION_MS = 2400
-const ROUTE_PRELOADER_DURATION_MS = 1700
+const PRELOADER_INITIAL_DURATION_MS = 2400
+const PRELOADER_ROUTE_DURATION_MS = 1700
+const PRELOADER_INITIAL_REDUCED_MOTION_DURATION_MS = 500
+const PRELOADER_ROUTE_REDUCED_MOTION_DURATION_MS = 280
+const LC_CIRCLE_PATH_LENGTH = 352
+const LC_L_PATH_LENGTH = 320
+const HERO_ORB_Y_REST = -4
+const HERO_ORB_Y_PEAK = -18
 
 function LibraWatermark() {
   return (
@@ -115,7 +121,7 @@ function LibraWatermark() {
   )
 }
 
-function Preloader({ visible, mode, cycle }) {
+function Preloader({ visible, mode, cycle, ariaLabel }) {
   const reduceMotion = useReducedMotion()
   const drawDuration = reduceMotion ? 0.6 : mode === 'route' ? 1.55 : 2.15
   const bgDuration = reduceMotion ? 0.8 : mode === 'route' ? 1.7 : 2.35
@@ -147,7 +153,7 @@ function Preloader({ visible, mode, cycle }) {
             transition={{ duration: drawDuration, ease: [0.22, 1, 0.36, 1] }}
             exit={{ opacity: 0, transition: { duration: reduceMotion ? 0.2 : 0.36, ease: [0.4, 0, 1, 1] } }}
           >
-            <motion.svg viewBox="0 0 220 220" className="lc-mark" aria-label="Monogramma Laura Cocozza">
+            <motion.svg viewBox="0 0 220 220" className="lc-mark" role="img" aria-label={ariaLabel}>
               <motion.path
                 className="lc-mark-stroke"
                 d="M150 66a56 56 0 1 0 0 112"
@@ -156,8 +162,8 @@ function Preloader({ visible, mode, cycle }) {
                 strokeWidth="7"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                initial={{ strokeDasharray: 352, strokeDashoffset: 352 }}
-                animate={{ strokeDasharray: 352, strokeDashoffset: 0 }}
+                initial={{ strokeDasharray: LC_CIRCLE_PATH_LENGTH, strokeDashoffset: LC_CIRCLE_PATH_LENGTH }}
+                animate={{ strokeDasharray: LC_CIRCLE_PATH_LENGTH, strokeDashoffset: 0 }}
                 transition={{ duration: drawDuration, ease: [0.22, 1, 0.36, 1] }}
               />
               <motion.path
@@ -168,8 +174,8 @@ function Preloader({ visible, mode, cycle }) {
                 strokeWidth="7"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                initial={{ strokeDasharray: 320, strokeDashoffset: 320 }}
-                animate={{ strokeDasharray: 320, strokeDashoffset: 0 }}
+                initial={{ strokeDasharray: LC_L_PATH_LENGTH, strokeDashoffset: LC_L_PATH_LENGTH }}
+                animate={{ strokeDasharray: LC_L_PATH_LENGTH, strokeDashoffset: 0 }}
                 transition={{ duration: reduceMotion ? drawDuration : drawDuration * 0.88, ease: [0.22, 1, 0.36, 1], delay: reduceMotion ? 0 : 0.08 }}
               />
               <defs>
@@ -250,6 +256,17 @@ function Hero({ t }) {
       },
     },
   }
+  const heroVisualTransition = { duration: reduceMotion ? 0.3 : 0.85, ease: [0.22, 1, 0.36, 1] }
+  const heroMaskInitial = { clipPath: reduceMotion ? 'inset(0% 0% 0% 0%)' : 'inset(100% 0% 0% 0%)' }
+  const heroMaskTransition = { duration: reduceMotion ? 0.2 : 0.8, ease: [0.22, 1, 0.36, 1], delay: reduceMotion ? 0 : 0.08 }
+  const heroOrbAnimation = useMemo(
+    () => ({ y: reduceMotion ? 0 : [HERO_ORB_Y_REST, HERO_ORB_Y_PEAK, HERO_ORB_Y_REST] }),
+    [reduceMotion],
+  )
+  const heroOrbTransition = useMemo(
+    () => ({ duration: reduceMotion ? 0.01 : 4, repeat: reduceMotion ? 0 : Infinity, ease: 'easeInOut' }),
+    [reduceMotion],
+  )
 
   return (
     <section className="hero-section">
@@ -281,16 +298,16 @@ function Hero({ t }) {
         initial={{ opacity: 0, x: reduceMotion ? 0 : 24 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: reduceMotion ? 0.3 : 0.85, ease: [0.22, 1, 0.36, 1] }}
+        transition={heroVisualTransition}
       >
         <motion.div
           className="hero-visual-mask"
-          initial={{ clipPath: reduceMotion ? 'inset(0% 0% 0% 0%)' : 'inset(100% 0% 0% 0%)' }}
+          initial={heroMaskInitial}
           whileInView={{ clipPath: 'inset(0% 0% 0% 0%)' }}
           viewport={{ once: true }}
-          transition={{ duration: reduceMotion ? 0.2 : 0.8, ease: [0.22, 1, 0.36, 1], delay: reduceMotion ? 0 : 0.08 }}
+          transition={heroMaskTransition}
         >
-          <motion.div className="hero-orb" animate={{ y: reduceMotion ? 0 : [-4, -18, -4] }} transition={{ duration: reduceMotion ? 0.01 : 4, repeat: reduceMotion ? 0 : Infinity, ease: 'easeInOut' }} />
+          <motion.div className="hero-orb" animate={heroOrbAnimation} transition={heroOrbTransition} />
           <div className="hero-points">
             <p><ShieldCheck size={16} />Clinical and forensic integration</p>
             <p><HeartHandshake size={16} />Empathic and evidence-based care</p>
@@ -548,9 +565,13 @@ function AppShell() {
   const location = useLocation()
   const reduceMotion = useReducedMotion()
   const t = content[lang]
+  const preloaderAriaLabel = lang === 'it' ? 'Monogramma Laura Cocozza' : 'Laura Cocozza monogram'
 
   useEffect(() => {
-    const timer = setTimeout(() => setPreloaderVisible(false), reduceMotion ? 500 : PRELOADER_DURATION_MS)
+    const timer = setTimeout(
+      () => setPreloaderVisible(false),
+      reduceMotion ? PRELOADER_INITIAL_REDUCED_MOTION_DURATION_MS : PRELOADER_INITIAL_DURATION_MS,
+    )
     return () => clearTimeout(timer)
   }, [reduceMotion])
 
@@ -562,13 +583,16 @@ function AppShell() {
     setPreloaderMode('route')
     setPreloaderCycle((prev) => prev + 1)
     setPreloaderVisible(true)
-    const timer = setTimeout(() => setPreloaderVisible(false), reduceMotion ? 280 : ROUTE_PRELOADER_DURATION_MS)
+    const timer = setTimeout(
+      () => setPreloaderVisible(false),
+      reduceMotion ? PRELOADER_ROUTE_REDUCED_MOTION_DURATION_MS : PRELOADER_ROUTE_DURATION_MS,
+    )
     return () => clearTimeout(timer)
   }, [location.pathname, reduceMotion])
 
   return (
     <>
-      <Preloader visible={preloaderVisible} mode={preloaderMode} cycle={preloaderCycle} />
+      <Preloader visible={preloaderVisible} mode={preloaderMode} cycle={preloaderCycle} ariaLabel={preloaderAriaLabel} />
       <motion.div
         className="app-shell app-content"
         initial={false}
