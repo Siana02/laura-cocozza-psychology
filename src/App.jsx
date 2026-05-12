@@ -652,8 +652,9 @@ function NeuralVisualization({ reduceMotion }) {
             x2={nodes[b].x} y2={nodes[b].y}
             stroke="rgba(183,244,255,0.22)"
             strokeWidth="0.6"
-            animate={reduceMotion ? {} : { opacity: [0.06, 0.45, 0.06] }}
-            transition={{ duration: 3 + (i % 4) * 0.7, repeat: Infinity, delay: i * 0.22, ease: 'easeInOut' }}
+            strokeDasharray="5 7"
+            animate={reduceMotion ? {} : { strokeDashoffset: [0, -60], opacity: [0.1, 0.4, 0.1] }}
+            transition={{ duration: 3 + (i % 4) * 0.7, repeat: Infinity, ease: 'easeInOut', delay: i * 0.22 }}
           />
         ))}
         {nodes.map((n, i) => (
@@ -666,41 +667,76 @@ function NeuralVisualization({ reduceMotion }) {
           />
         ))}
       </svg>
-      <div className="neural-brain-center">
-        <motion.div
-          animate={reduceMotion ? {} : { scale: [0.96, 1.04, 0.96] }}
-          transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <Brain className="neural-brain-icon" />
-        </motion.div>
-      </div>
       <div className="neural-ring neural-ring--1" />
       <div className="neural-ring neural-ring--2" />
     </div>
   )
 }
 
-function CbtPanelDecoration({ reduceMotion }) {
-  const pts = [{ x: 72, y: 15 }, { x: 20, y: 65 }, { x: 72, y: 115 }, { x: 124, y: 65 }]
-  const cons = [[0, 1], [1, 2], [2, 3], [3, 0], [0, 2], [1, 3]]
+function CbtAtmosphere({ reduceMotion }) {
+  const hub = { x: 100, y: 88 }
+  const spokes = [
+    { x: 172, y: 32 },
+    { x: 196, y: 112 },
+    { x: 150, y: 180 },
+    { x: 50, y: 180 },
+    { x: 4, y: 112 },
+    { x: 28, y: 32 },
+  ]
+  const crosses = [[0, 2], [1, 4], [2, 5], [0, 3]]
   return (
-    <div className="panel-decoration panel-decoration--cbt" aria-hidden="true">
-      <svg viewBox="0 0 144 130" fill="none">
-        {cons.map(([a, b], i) => (
+    <div className="panel-atm panel-atm--cbt" aria-hidden="true">
+      <Brain className="panel-atm-bg-icon" />
+      <svg viewBox="0 0 200 200" className="panel-atm-svg" fill="none">
+        {spokes.map((sp, i) => (
           <motion.line
-            key={i}
-            x1={pts[a].x} y1={pts[a].y} x2={pts[b].x} y2={pts[b].y}
-            stroke="rgba(183,244,255,0.22)" strokeWidth="0.8"
-            animate={reduceMotion ? {} : { opacity: [0.1, 0.45, 0.1] }}
-            transition={{ duration: 2.8, repeat: Infinity, delay: i * 0.5, ease: 'easeInOut' }}
+            key={`sp${i}`}
+            x1={hub.x} y1={hub.y} x2={sp.x} y2={sp.y}
+            stroke="rgba(183,244,255,0.28)"
+            strokeWidth="0.7"
+            strokeDasharray="5 6"
+            animate={reduceMotion ? {} : { strokeDashoffset: [0, -88] }}
+            transition={{ duration: 2.2 + i * 0.28, repeat: Infinity, ease: 'linear' }}
           />
         ))}
-        {pts.map((pt, i) => (
+        {crosses.map(([a, b], i) => (
+          <motion.line
+            key={`cx${i}`}
+            x1={spokes[a].x} y1={spokes[a].y}
+            x2={spokes[b].x} y2={spokes[b].y}
+            stroke="rgba(183,244,255,0.1)"
+            strokeWidth="0.5"
+            strokeDasharray="2 9"
+            animate={reduceMotion ? {} : { strokeDashoffset: [0, -44], opacity: [0.1, 0.45, 0.1] }}
+            transition={{ duration: 5 + i * 0.7, repeat: Infinity, ease: 'easeInOut', delay: i * 0.8 }}
+          />
+        ))}
+        {/* Hub pulse ring */}
+        <motion.circle
+          cx={hub.x} cy={hub.y} r={10}
+          fill="none"
+          stroke="rgba(183,244,255,0.28)"
+          strokeWidth="0.7"
+          animate={reduceMotion ? {} : { r: [8, 18, 8], opacity: [0.5, 0, 0.5] }}
+          transition={{ duration: 3.2, repeat: Infinity, ease: 'easeOut' }}
+        />
+        {/* Hub core */}
+        <circle cx={hub.x} cy={hub.y} r={4} fill="rgba(183,244,255,0.7)" />
+        <motion.circle
+          cx={hub.x} cy={hub.y} r={7}
+          fill="rgba(183,244,255,0.06)"
+          stroke="rgba(183,244,255,0.35)" strokeWidth="0.6"
+          animate={reduceMotion ? {} : { scale: [0.95, 1.18, 0.95] }}
+          transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        {/* Endpoint nodes */}
+        {spokes.map((sp, i) => (
           <motion.circle
-            key={i} cx={pt.x} cy={pt.y} r={4}
-            fill="rgba(183,244,255,0.5)"
-            animate={reduceMotion ? {} : { r: [3, 5.5, 3], opacity: [0.3, 0.8, 0.3] }}
-            transition={{ duration: 2.2, repeat: Infinity, delay: i * 0.55, ease: 'easeInOut' }}
+            key={`en${i}`}
+            cx={sp.x} cy={sp.y} r={3}
+            fill="rgba(183,244,255,0.45)"
+            animate={reduceMotion ? {} : { opacity: [0.2, 0.72, 0.2] }}
+            transition={{ duration: 2.4 + i * 0.35, repeat: Infinity, ease: 'easeInOut', delay: i * 0.4 }}
           />
         ))}
       </svg>
@@ -708,41 +744,96 @@ function CbtPanelDecoration({ reduceMotion }) {
   )
 }
 
-function ActPanelDecoration({ reduceMotion }) {
+function ActAtmosphere({ reduceMotion }) {
   return (
-    <div className="panel-decoration panel-decoration--act" aria-hidden="true">
-      <motion.div
-        className="act-breath-ring act-breath-ring--1"
-        animate={reduceMotion ? {} : { scale: [0.7, 1.2, 0.7], opacity: [0.15, 0.4, 0.15] }}
-        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-      />
-      <motion.div
-        className="act-breath-ring act-breath-ring--2"
-        animate={reduceMotion ? {} : { scale: [1.1, 0.75, 1.1], opacity: [0.1, 0.28, 0.1] }}
-        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-      />
+    <div className="panel-atm panel-atm--act" aria-hidden="true">
+      <Waves className="panel-atm-bg-icon" />
+      <svg viewBox="0 0 200 200" className="panel-atm-svg" preserveAspectRatio="xMidYMid slice" fill="none">
+        <defs>
+          <linearGradient id="act-r1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="rgba(168,181,162,0)" />
+            <stop offset="45%" stopColor="rgba(168,181,162,0.28)" />
+            <stop offset="100%" stopColor="rgba(168,181,162,0)" />
+          </linearGradient>
+          <linearGradient id="act-r2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="rgba(183,244,255,0)" />
+            <stop offset="50%" stopColor="rgba(183,244,255,0.2)" />
+            <stop offset="100%" stopColor="rgba(183,244,255,0)" />
+          </linearGradient>
+          <linearGradient id="act-r3" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="rgba(247,243,238,0)" />
+            <stop offset="40%" stopColor="rgba(247,243,238,0.12)" />
+            <stop offset="100%" stopColor="rgba(247,243,238,0)" />
+          </linearGradient>
+        </defs>
+        {/* Ribbon 1 — sage, upper */}
+        <motion.path
+          d="M -20 52 C 30 38, 75 78, 120 62 C 158 50, 178 68, 220 55"
+          stroke="url(#act-r1)"
+          strokeWidth="22"
+          animate={reduceMotion ? {} : {
+            d: [
+              'M -20 52 C 30 38, 75 78, 120 62 C 158 50, 178 68, 220 55',
+              'M -20 62 C 28 52, 78 68, 120 75 C 155 82, 182 55, 220 68',
+              'M -20 52 C 30 38, 75 78, 120 62 C 158 50, 178 68, 220 55',
+            ],
+          }}
+          transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        {/* Ribbon 2 — teal, mid */}
+        <motion.path
+          d="M -20 100 C 45 88, 85 118, 130 100 C 165 86, 190 108, 220 98"
+          stroke="url(#act-r2)"
+          strokeWidth="16"
+          animate={reduceMotion ? {} : {
+            d: [
+              'M -20 100 C 45 88, 85 118, 130 100 C 165 86, 190 108, 220 98',
+              'M -20 108 C 40 100, 90 108, 130 114 C 162 120, 192 95, 220 110',
+              'M -20 100 C 45 88, 85 118, 130 100 C 165 86, 190 108, 220 98',
+            ],
+          }}
+          transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
+        />
+        {/* Ribbon 3 — ivory, lower */}
+        <motion.path
+          d="M -20 148 C 35 140, 80 162, 130 148 C 170 137, 188 152, 220 144"
+          stroke="url(#act-r3)"
+          strokeWidth="11"
+          animate={reduceMotion ? {} : {
+            d: [
+              'M -20 148 C 35 140, 80 162, 130 148 C 170 137, 188 152, 220 144',
+              'M -20 155 C 38 148, 82 155, 130 158 C 168 162, 190 146, 220 155',
+              'M -20 148 C 35 140, 80 162, 130 148 C 170 137, 188 152, 220 144',
+            ],
+          }}
+          transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 3 }}
+        />
+      </svg>
     </div>
   )
 }
 
-function VrPanelDecoration({ reduceMotion }) {
+function VrAtmosphere({ reduceMotion }) {
   return (
-    <div className="panel-decoration panel-decoration--vr" aria-hidden="true">
-      <motion.div
-        className="vr-glass-shard vr-glass-shard--1"
-        animate={reduceMotion ? {} : { y: [0, -10, 0], opacity: [0.3, 0.65, 0.3] }}
-        transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
-      />
-      <motion.div
-        className="vr-glass-shard vr-glass-shard--2"
-        animate={reduceMotion ? {} : { y: [0, 8, 0], opacity: [0.2, 0.5, 0.2] }}
-        transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
-      />
-      <motion.div
-        className="vr-glass-shard vr-glass-shard--3"
-        animate={reduceMotion ? {} : { y: [0, -6, 0], opacity: [0.12, 0.38, 0.12] }}
-        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}
-      />
+    <div className="panel-atm panel-atm--vr" aria-hidden="true">
+      <Glasses className="panel-atm-bg-icon" />
+      {/* Depth planes */}
+      <div className="vr-depth-plane vr-depth-plane--1" />
+      <div className="vr-depth-plane vr-depth-plane--2" />
+      <div className="vr-depth-plane vr-depth-plane--3" />
+      {/* Scanning line */}
+      {!reduceMotion && (
+        <motion.div
+          className="vr-scan-line"
+          animate={{ y: ['-5%', '105%'] }}
+          transition={{ duration: 3.8, repeat: Infinity, ease: 'linear', repeatDelay: 1.5 }}
+        />
+      )}
+      {/* Corner reticle brackets */}
+      <div className="vr-bracket vr-bracket--tl" />
+      <div className="vr-bracket vr-bracket--tr" />
+      <div className="vr-bracket vr-bracket--bl" />
+      <div className="vr-bracket vr-bracket--br" />
     </div>
   )
 }
@@ -752,9 +843,9 @@ function TherapeuticApproachSection({ t }) {
   const ta = t.home.therapeuticApproach
 
   const panels = [
-    { key: 'cbt', Icon: Brain, label: ta.panels[0].label, title: ta.panels[0].title, description: ta.panels[0].description },
-    { key: 'act', Icon: Waves, label: ta.panels[1].label, title: ta.panels[1].title, description: ta.panels[1].description },
-    { key: 'vr',  Icon: Glasses, label: ta.panels[2].label, title: ta.panels[2].title, description: ta.panels[2].description },
+    { key: 'cbt', label: ta.panels[0].label, title: ta.panels[0].title, description: ta.panels[0].description },
+    { key: 'act', label: ta.panels[1].label, title: ta.panels[1].title, description: ta.panels[1].description },
+    { key: 'vr',  label: ta.panels[2].label, title: ta.panels[2].title, description: ta.panels[2].description },
   ]
 
   return (
@@ -812,21 +903,21 @@ function TherapeuticApproachSection({ t }) {
             <motion.article
               key={panel.key}
               className={`therapeutic-panel therapeutic-panel--${panel.key}`}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 36 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: i * 0.12 }}
-              whileHover={reduceMotion ? {} : { y: -6, transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] } }}
+              viewport={{ once: true, amount: 0.12 }}
+              transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1], delay: i * 0.14 }}
+              whileHover={reduceMotion ? {} : { y: -5, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } }}
             >
-              <span className="therapeutic-panel-label">{panel.label}</span>
-              <span className="therapeutic-panel-icon" aria-hidden="true">
-                <panel.Icon size={22} />
-              </span>
-              <h3 className="therapeutic-panel-title">{panel.title}</h3>
-              <p className="therapeutic-panel-description">{panel.description}</p>
-              {panel.key === 'cbt' && <CbtPanelDecoration reduceMotion={reduceMotion} />}
-              {panel.key === 'act' && <ActPanelDecoration reduceMotion={reduceMotion} />}
-              {panel.key === 'vr'  && <VrPanelDecoration  reduceMotion={reduceMotion} />}
+              {panel.key === 'cbt' && <CbtAtmosphere reduceMotion={reduceMotion} />}
+              {panel.key === 'act' && <ActAtmosphere reduceMotion={reduceMotion} />}
+              {panel.key === 'vr'  && <VrAtmosphere  reduceMotion={reduceMotion} />}
+
+              <div className="therapeutic-panel-content">
+                <span className="therapeutic-panel-label">{panel.label}</span>
+                <h3 className="therapeutic-panel-title">{panel.title}</h3>
+                <p className="therapeutic-panel-description">{panel.description}</p>
+              </div>
             </motion.article>
           ))}
         </div>
