@@ -855,19 +855,23 @@ h3 {
   }
 
   .landing-primary {
-    min-height: auto;
+    /* fill the first viewport below the header so content appears centred */
+    min-height: calc(100vh - var(--header-height));
+    justify-content: center;
+    transform: none; /* reset desktop -20% shift */
     padding: 3rem clamp(1.5rem, 6vw, 3rem) 2.5rem;
   }
 
   .landing-secondary {
     min-height: auto;
     padding: 2.5rem clamp(1.5rem, 6vw, 3rem) 4rem;
-    padding-top: 2.5rem; /* no push-down on mobile */
+    padding-top: 2.5rem;
     justify-content: flex-start;
   }
 
   .landing-section {
-    min-height: auto;
+    /* tall enough to hold primary (≈100vh) + secondary stacked */
+    min-height: 200vh;
   }
 
   .landing-hero-img {
