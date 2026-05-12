@@ -29,6 +29,7 @@ const content = {
       about: 'Chi Sono',
       contact: 'Contatti',
       book: 'Prenota un Colloquio',
+      bookShort: 'Prenota',
       bookSession: 'Prenota una Seduta',
     },
     home: {
@@ -102,6 +103,7 @@ const content = {
       about: 'About',
       contact: 'Contact',
       book: 'Book a Consultation',
+      bookShort: 'Book',
       bookSession: 'Book a Session',
     },
     home: {
@@ -194,11 +196,7 @@ function markPreloaderAsShown() {
 }
 
 function BalanceWatermark() {
-  return (
-    <span className="material-symbols-outlined balance-watermark" aria-hidden="true">
-      balance
-    </span>
-  )
+  return <Scale className="balance-watermark" aria-hidden="true" strokeWidth={1.2} />
 }
 
 function Preloader({ visible, ariaLabel }) {
@@ -409,7 +407,7 @@ function SiteHeader({ t, lang, setLang, isLanding, menuOpen, setMenuOpen, preloa
       <div className="site-header-mobile">
         <LanguageSwitch lang={lang} setLang={setLang} className="mobile-header-lang-switch" />
         <Link to="/contact" className="header-book-btn">
-          {t.nav.book}
+          {t.nav.bookShort}
         </Link>
         <button
           type="button"
@@ -514,7 +512,7 @@ function LandingHero({ t }) {
             <Link to="/contact" className="book-pill">
               {t.home.ctaPrimary}
               <span className="book-pill-icon" aria-hidden="true">
-                <ArrowUpRight size={16} />
+                <ArrowUpRight size={22} />
               </span>
             </Link>
           </motion.div>
@@ -547,13 +545,22 @@ function TrustBuildingSection({ t }) {
       </div>
 
       <div className="trust-intro-role-block">
+        <h3 className="trust-intro-role-title">{t.home.trustSection.roleTitle}</h3>
+        <div className="icon-divider" aria-hidden="true">
+          <span className="icon-divider__line icon-divider__line--left" />
+          <span className="icon-divider__icon">
+            <HeartHandshake size={20} />
+          </span>
+          <span className="icon-divider__line icon-divider__line--right" />
+        </div>
         <p className="trust-intro-role-badge">{t.home.trustSection.roleDetails}</p>
         <p className="trust-intro-role-description">{t.home.trustSection.roleDescription}</p>
       </div>
 
       <div className="trust-intro-cards">
-        {trustCards.map((item) => (
+        {trustCards.map((item, index) => (
           <article key={item.title} className="trust-intro-card">
+            <span className="trust-intro-card-number">{String(index + 1).padStart(2, '0')}</span>
             <item.icon size={30} />
             <h4>{item.title}</h4>
             <p>{item.text}</p>
@@ -605,7 +612,7 @@ function Home({ t }) {
     <>
       <LandingHero t={t} />
 
-      <div className="app-shell">
+      <div className="app-shell app-shell--home">
         <TrustBuildingSection t={t} />
 
         <section className="trust-bar glass">
