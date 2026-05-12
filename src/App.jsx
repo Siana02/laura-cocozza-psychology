@@ -665,7 +665,7 @@ function NeuralVisualization({ reduceMotion }) {
           />
         ))}
       </svg>
-      <img src="/brain.png" alt="" className="neural-center-icon" />
+      <img src="/brain.png" alt="" aria-hidden="true" className="neural-center-icon" />
       <div className="neural-ring neural-ring--1" />
       <div className="neural-ring neural-ring--2" />
     </div>
@@ -685,7 +685,7 @@ function CbtAtmosphere({ reduceMotion }) {
   const crosses = [[0, 2], [1, 4], [2, 5], [0, 3]]
   return (
     <div className="panel-atm panel-atm--cbt" aria-hidden="true">
-      <img src="/cognitive-behavior.png" alt="" className="panel-atm-bg-icon panel-atm-bg-image" />
+      <img src="/cognitive-behavior.png" alt="" aria-hidden="true" className="panel-atm-bg-icon panel-atm-bg-image" />
       <svg viewBox="0 0 200 200" className="panel-atm-svg" fill="none">
         {spokes.map((sp, i) => (
           <motion.line
@@ -746,7 +746,7 @@ function CbtAtmosphere({ reduceMotion }) {
 function ActAtmosphere({ reduceMotion }) {
   return (
     <div className="panel-atm panel-atm--act" aria-hidden="true">
-      <img src="/self-acceptance.png" alt="" className="panel-atm-bg-icon panel-atm-bg-image" />
+      <img src="/self-acceptance.png" alt="" aria-hidden="true" className="panel-atm-bg-icon panel-atm-bg-image" />
       <svg viewBox="0 0 200 200" className="panel-atm-svg" preserveAspectRatio="xMidYMid slice" fill="none">
         <defs>
           <linearGradient id="act-r1" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -815,7 +815,7 @@ function ActAtmosphere({ reduceMotion }) {
 function VrAtmosphere({ reduceMotion }) {
   return (
     <div className="panel-atm panel-atm--vr" aria-hidden="true">
-      <img src="/virtual-reality.png" alt="" className="panel-atm-bg-icon panel-atm-bg-image" />
+      <img src="/virtual-reality.png" alt="" aria-hidden="true" className="panel-atm-bg-icon panel-atm-bg-image" />
       {/* Depth planes */}
       <div className="vr-depth-plane vr-depth-plane--1" />
       <div className="vr-depth-plane vr-depth-plane--2" />
@@ -870,7 +870,7 @@ function TherapeuticApproachSection({ t }) {
             aria-hidden="true"
           >
             <span className="icon-divider__line icon-divider__line--left" />
-            <span className="icon-divider__icon"><img src="/brain.png" alt="" className="icon-divider__image" /></span>
+            <span className="icon-divider__icon"><img src="/brain.png" alt="" aria-hidden="true" className="icon-divider__image" /></span>
             <span className="icon-divider__line icon-divider__line--right" />
           </motion.div>
 
