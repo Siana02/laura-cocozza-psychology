@@ -6,6 +6,7 @@ import {
   BookOpen,
   Brain,
   BriefcaseBusiness,
+  Glasses,
   HeartHandshake,
   Landmark,
   Phone,
@@ -15,6 +16,7 @@ import {
   Stethoscope,
   UserStar,
   Users,
+  Waves,
 } from 'lucide-react'
 import { BrowserRouter, Link, NavLink, Navigate, Route, Routes, useLocation } from 'react-router-dom'
 
@@ -70,6 +72,28 @@ const content = {
           {
             title: 'Trattamento Personalizzato',
             text: 'Percorsi psicologici su misura costruiti sui bisogni emotivi, relazionali e contestuali di ogni persona.',
+          },
+        ],
+      },
+      therapeuticApproach: {
+        title: 'Approccio terapeutico',
+        subheading: 'Metodi terapeutici basati sull\'evidenza,\nintegrati con strumenti innovativi\ne approcci multidisciplinari.',
+        editorial: 'Ogni percorso è costruito su metodi scientificamente validati, adattati alle esigenze individuali.',
+        panels: [
+          {
+            label: 'TCC / CBT',
+            title: 'Psicoterapia Cognitivo-Comportamentale (TCC)',
+            description: 'Un approccio terapeutico basato sull\'evidenza, orientato alla comprensione della relazione tra pensieri, emozioni e comportamenti.',
+          },
+          {
+            label: 'ACT',
+            title: 'Acceptance and Commitment Therapy (ACT)',
+            description: 'Un approccio focalizzato sullo sviluppo della flessibilità psicologica e dell\'equilibrio emotivo.',
+          },
+          {
+            label: 'VR',
+            title: 'Realtà Virtuale',
+            description: 'Tecnologie immersive utilizzate come supporto nei percorsi terapeutici e nella gestione di specifiche difficoltà emotive e comportamentali.',
           },
         ],
       },
@@ -144,6 +168,28 @@ const content = {
           {
             title: 'Individualized Treatment',
             text: 'Tailored psychological pathways based on each person’s emotional, relational, and contextual needs.',
+          },
+        ],
+      },
+      therapeuticApproach: {
+        title: 'Therapeutic Approach',
+        subheading: 'Evidence-based therapeutic methods,\nintegrated with innovative tools\nand multidisciplinary approaches.',
+        editorial: 'Every pathway is built on scientifically validated methods, adapted to individual needs.',
+        panels: [
+          {
+            label: 'CBT',
+            title: 'Cognitive Behavioral Therapy (CBT)',
+            description: 'An evidence-based therapeutic approach focused on understanding the relationship between thoughts, emotions, and behaviors.',
+          },
+          {
+            label: 'ACT',
+            title: 'Acceptance and Commitment Therapy (ACT)',
+            description: 'An approach focused on developing psychological flexibility and emotional equilibrium.',
+          },
+          {
+            label: 'VR',
+            title: 'Virtual Reality',
+            description: 'Immersive technologies used as support in therapeutic pathways and the management of specific emotional and behavioral difficulties.',
           },
         ],
       },
@@ -581,6 +627,305 @@ function TrustBuildingSection({ t }) {
   )
 }
 
+function NeuralVisualization({ reduceMotion }) {
+  const nodes = [
+    { id: 0, x: 100, y: 18 },
+    { id: 1, x: 158, y: 43 },
+    { id: 2, x: 182, y: 100 },
+    { id: 3, x: 158, y: 157 },
+    { id: 4, x: 100, y: 182 },
+    { id: 5, x: 42, y: 157 },
+    { id: 6, x: 18, y: 100 },
+    { id: 7, x: 42, y: 43 },
+  ]
+  const connections = [
+    [0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 0],
+    [0, 3], [1, 5], [2, 6], [4, 7],
+  ]
+  return (
+    <div className="neural-vis-wrap" aria-hidden="true">
+      <svg className="neural-svg" viewBox="0 0 200 200" fill="none">
+        {connections.map(([a, b], i) => (
+          <motion.line
+            key={`c${i}`}
+            x1={nodes[a].x} y1={nodes[a].y}
+            x2={nodes[b].x} y2={nodes[b].y}
+            stroke="rgba(183,244,255,0.22)"
+            strokeWidth="0.6"
+            strokeDasharray="5 7"
+            animate={reduceMotion ? {} : { strokeDashoffset: [0, -60], opacity: [0.1, 0.4, 0.1] }}
+            transition={{ duration: 3 + (i % 4) * 0.7, repeat: Infinity, ease: 'easeInOut', delay: i * 0.22 }}
+          />
+        ))}
+        {nodes.map((n, i) => (
+          <motion.circle
+            key={`n${n.id}`}
+            cx={n.x} cy={n.y} r={3}
+            fill="rgba(183,244,255,0.75)"
+            animate={reduceMotion ? {} : { r: [2.2, 4, 2.2], opacity: [0.4, 0.95, 0.4] }}
+            transition={{ duration: 2.6 + (i % 4) * 0.5, repeat: Infinity, delay: i * 0.34, ease: 'easeInOut' }}
+          />
+        ))}
+      </svg>
+      <div className="neural-ring neural-ring--1" />
+      <div className="neural-ring neural-ring--2" />
+    </div>
+  )
+}
+
+function CbtAtmosphere({ reduceMotion }) {
+  const hub = { x: 100, y: 88 }
+  const spokes = [
+    { x: 172, y: 32 },
+    { x: 196, y: 112 },
+    { x: 150, y: 180 },
+    { x: 50, y: 180 },
+    { x: 4, y: 112 },
+    { x: 28, y: 32 },
+  ]
+  const crosses = [[0, 2], [1, 4], [2, 5], [0, 3]]
+  return (
+    <div className="panel-atm panel-atm--cbt" aria-hidden="true">
+      <Brain className="panel-atm-bg-icon" />
+      <svg viewBox="0 0 200 200" className="panel-atm-svg" fill="none">
+        {spokes.map((sp, i) => (
+          <motion.line
+            key={`sp${i}`}
+            x1={hub.x} y1={hub.y} x2={sp.x} y2={sp.y}
+            stroke="rgba(183,244,255,0.28)"
+            strokeWidth="0.7"
+            strokeDasharray="5 6"
+            animate={reduceMotion ? {} : { strokeDashoffset: [0, -88] }}
+            transition={{ duration: 2.2 + i * 0.28, repeat: Infinity, ease: 'linear' }}
+          />
+        ))}
+        {crosses.map(([a, b], i) => (
+          <motion.line
+            key={`cx${i}`}
+            x1={spokes[a].x} y1={spokes[a].y}
+            x2={spokes[b].x} y2={spokes[b].y}
+            stroke="rgba(183,244,255,0.1)"
+            strokeWidth="0.5"
+            strokeDasharray="2 9"
+            animate={reduceMotion ? {} : { strokeDashoffset: [0, -44], opacity: [0.1, 0.45, 0.1] }}
+            transition={{ duration: 5 + i * 0.7, repeat: Infinity, ease: 'easeInOut', delay: i * 0.8 }}
+          />
+        ))}
+        {/* Hub pulse ring */}
+        <motion.circle
+          cx={hub.x} cy={hub.y} r={10}
+          fill="none"
+          stroke="rgba(183,244,255,0.28)"
+          strokeWidth="0.7"
+          animate={reduceMotion ? {} : { r: [8, 18, 8], opacity: [0.5, 0, 0.5] }}
+          transition={{ duration: 3.2, repeat: Infinity, ease: 'easeOut' }}
+        />
+        {/* Hub core */}
+        <circle cx={hub.x} cy={hub.y} r={4} fill="rgba(183,244,255,0.7)" />
+        <motion.circle
+          cx={hub.x} cy={hub.y} r={7}
+          fill="rgba(183,244,255,0.06)"
+          stroke="rgba(183,244,255,0.35)" strokeWidth="0.6"
+          animate={reduceMotion ? {} : { scale: [0.95, 1.18, 0.95] }}
+          transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        {/* Endpoint nodes */}
+        {spokes.map((sp, i) => (
+          <motion.circle
+            key={`en${i}`}
+            cx={sp.x} cy={sp.y} r={3}
+            fill="rgba(183,244,255,0.45)"
+            animate={reduceMotion ? {} : { opacity: [0.2, 0.72, 0.2] }}
+            transition={{ duration: 2.4 + i * 0.35, repeat: Infinity, ease: 'easeInOut', delay: i * 0.4 }}
+          />
+        ))}
+      </svg>
+    </div>
+  )
+}
+
+function ActAtmosphere({ reduceMotion }) {
+  return (
+    <div className="panel-atm panel-atm--act" aria-hidden="true">
+      <Waves className="panel-atm-bg-icon" />
+      <svg viewBox="0 0 200 200" className="panel-atm-svg" preserveAspectRatio="xMidYMid slice" fill="none">
+        <defs>
+          <linearGradient id="act-r1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="rgba(168,181,162,0)" />
+            <stop offset="45%" stopColor="rgba(168,181,162,0.28)" />
+            <stop offset="100%" stopColor="rgba(168,181,162,0)" />
+          </linearGradient>
+          <linearGradient id="act-r2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="rgba(183,244,255,0)" />
+            <stop offset="50%" stopColor="rgba(183,244,255,0.2)" />
+            <stop offset="100%" stopColor="rgba(183,244,255,0)" />
+          </linearGradient>
+          <linearGradient id="act-r3" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="rgba(247,243,238,0)" />
+            <stop offset="40%" stopColor="rgba(247,243,238,0.12)" />
+            <stop offset="100%" stopColor="rgba(247,243,238,0)" />
+          </linearGradient>
+        </defs>
+        {/* Ribbon 1 — sage, upper */}
+        <motion.path
+          d="M -20 52 C 30 38, 75 78, 120 62 C 158 50, 178 68, 220 55"
+          stroke="url(#act-r1)"
+          strokeWidth="22"
+          animate={reduceMotion ? {} : {
+            d: [
+              'M -20 52 C 30 38, 75 78, 120 62 C 158 50, 178 68, 220 55',
+              'M -20 62 C 28 52, 78 68, 120 75 C 155 82, 182 55, 220 68',
+              'M -20 52 C 30 38, 75 78, 120 62 C 158 50, 178 68, 220 55',
+            ],
+          }}
+          transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        {/* Ribbon 2 — teal, mid */}
+        <motion.path
+          d="M -20 100 C 45 88, 85 118, 130 100 C 165 86, 190 108, 220 98"
+          stroke="url(#act-r2)"
+          strokeWidth="16"
+          animate={reduceMotion ? {} : {
+            d: [
+              'M -20 100 C 45 88, 85 118, 130 100 C 165 86, 190 108, 220 98',
+              'M -20 108 C 40 100, 90 108, 130 114 C 162 120, 192 95, 220 110',
+              'M -20 100 C 45 88, 85 118, 130 100 C 165 86, 190 108, 220 98',
+            ],
+          }}
+          transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
+        />
+        {/* Ribbon 3 — ivory, lower */}
+        <motion.path
+          d="M -20 148 C 35 140, 80 162, 130 148 C 170 137, 188 152, 220 144"
+          stroke="url(#act-r3)"
+          strokeWidth="11"
+          animate={reduceMotion ? {} : {
+            d: [
+              'M -20 148 C 35 140, 80 162, 130 148 C 170 137, 188 152, 220 144',
+              'M -20 155 C 38 148, 82 155, 130 158 C 168 162, 190 146, 220 155',
+              'M -20 148 C 35 140, 80 162, 130 148 C 170 137, 188 152, 220 144',
+            ],
+          }}
+          transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 3 }}
+        />
+      </svg>
+    </div>
+  )
+}
+
+function VrAtmosphere({ reduceMotion }) {
+  return (
+    <div className="panel-atm panel-atm--vr" aria-hidden="true">
+      <Glasses className="panel-atm-bg-icon" />
+      {/* Depth planes */}
+      <div className="vr-depth-plane vr-depth-plane--1" />
+      <div className="vr-depth-plane vr-depth-plane--2" />
+      <div className="vr-depth-plane vr-depth-plane--3" />
+      {/* Scanning line */}
+      {!reduceMotion && (
+        <motion.div
+          className="vr-scan-line"
+          animate={{ y: ['-5%', '105%'] }}
+          transition={{ duration: 3.8, repeat: Infinity, ease: 'linear', repeatDelay: 1.5 }}
+        />
+      )}
+      {/* Corner reticle brackets */}
+      <div className="vr-bracket vr-bracket--tl" />
+      <div className="vr-bracket vr-bracket--tr" />
+      <div className="vr-bracket vr-bracket--bl" />
+      <div className="vr-bracket vr-bracket--br" />
+    </div>
+  )
+}
+
+function TherapeuticApproachSection({ t }) {
+  const reduceMotion = useReducedMotion()
+  const ta = t.home.therapeuticApproach
+
+  const panels = [
+    { key: 'cbt', label: ta.panels[0].label, title: ta.panels[0].title, description: ta.panels[0].description },
+    { key: 'act', label: ta.panels[1].label, title: ta.panels[1].title, description: ta.panels[1].description },
+    { key: 'vr',  label: ta.panels[2].label, title: ta.panels[2].title, description: ta.panels[2].description },
+  ]
+
+  return (
+    <section className="therapeutic-approach-section">
+      <div className="therapeutic-approach-inner">
+        <div className="therapeutic-approach-header">
+          <motion.h2
+            className="therapeutic-approach-heading"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {ta.title}
+          </motion.h2>
+
+          <motion.div
+            className="icon-divider"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            aria-hidden="true"
+          >
+            <span className="icon-divider__line icon-divider__line--left" />
+            <span className="icon-divider__icon"><Brain size={20} /></span>
+            <span className="icon-divider__line icon-divider__line--right" />
+          </motion.div>
+
+          <motion.p
+            className="therapeutic-approach-subheading"
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+          >
+            {ta.subheading}
+          </motion.p>
+
+          <motion.p
+            className="therapeutic-approach-editorial"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.32 }}
+          >
+            {ta.editorial}
+          </motion.p>
+        </div>
+
+        <NeuralVisualization reduceMotion={reduceMotion} />
+
+        <div className="therapeutic-panels-grid">
+          {panels.map((panel, i) => (
+            <motion.article
+              key={panel.key}
+              className={`therapeutic-panel therapeutic-panel--${panel.key}`}
+              initial={{ opacity: 0, y: 36 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.12 }}
+              transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1], delay: i * 0.14 }}
+              whileHover={reduceMotion ? {} : { y: -5, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } }}
+            >
+              {panel.key === 'cbt' && <CbtAtmosphere reduceMotion={reduceMotion} />}
+              {panel.key === 'act' && <ActAtmosphere reduceMotion={reduceMotion} />}
+              {panel.key === 'vr'  && <VrAtmosphere  reduceMotion={reduceMotion} />}
+
+              <div className="therapeutic-panel-content">
+                <span className="therapeutic-panel-label">{panel.label}</span>
+                <h3 className="therapeutic-panel-title">{panel.title}</h3>
+                <p className="therapeutic-panel-description">{panel.description}</p>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function Section({ title, subtitle, items }) {
   return (
     <section className="section-block">
@@ -633,15 +978,7 @@ function Home({ t }) {
 
         <Section title={t.sections.clinicalPreview} items={previews.slice(0, 2)} />
         <Section title={t.sections.psylexPreview} items={previews.slice(2, 4)} />
-        <Section
-          title={t.sections.philosophy}
-          items={[
-            { icon: Brain, title: 'CBT', text: 'Structured cognitive work for practical change.' },
-            { icon: Sparkles, title: 'ACT', text: 'Acceptance, values, and psychological flexibility.' },
-            { icon: Stethoscope, title: 'Virtual Reality Support', text: 'Innovative protocols for graded exposure and emotional regulation.' },
-            { icon: Users, title: 'Integrated Care', text: 'Shared planning with psychiatrists, neuropsychiatrists, and legal professionals.' },
-          ]}
-        />
+        <TherapeuticApproachSection t={t} />
         <Section
           title={t.sections.process}
           items={[

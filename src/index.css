@@ -44,6 +44,11 @@ body {
   overflow-x: hidden;
 }
 
+html {
+  /* Redundant with body but required for iOS Safari overflow containment */
+  overflow-x: hidden;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -546,7 +551,7 @@ a {
 
 .landing-section {
   position: relative;
-  min-height: 115vh;
+  min-height: 160vh;
   background-color: var(--color-landing);
   overflow: hidden;
 }
@@ -577,7 +582,7 @@ a {
 .landing-inner {
   position: relative;
   z-index: 1;
-  min-height: 115vh;
+  min-height: 160vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: clamp(2rem, 6vw, 5rem);
@@ -589,7 +594,7 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  transform: translateY(-20%);
+  transform: translateY(-8%);
   padding: 4rem clamp(1.5rem, 4vw, 3rem) 4rem clamp(2rem, 8vw, 6rem);
   color: var(--color-ivory);
 }
@@ -597,7 +602,7 @@ a {
 .landing-eyebrow {
   margin: 0;
   font-family: 'DM Sans', sans-serif;
-  font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+  font-size: clamp(0.65rem, 0.95vw, 0.78rem);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(247, 243, 238, 0.6);
@@ -605,7 +610,7 @@ a {
 }
 
 .landing-by {
-  margin: clamp(1.2rem, 3vh, 2rem) 0 clamp(0.4rem, 1.2vh, 0.8rem);
+  margin: clamp(0.8rem, 2vh, 1.5rem) 0 clamp(0.3rem, 0.8vh, 0.55rem);
   font-family: 'DM Sans', sans-serif;
   font-size: clamp(0.7rem, 1.1vw, 0.88rem);
   letter-spacing: 0.2em;
@@ -617,7 +622,7 @@ a {
   margin: 0;
   font-family: 'Cinzel', serif;
   font-weight: 500;
-  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  font-size: clamp(1.9rem, 3.8vw, 3.2rem);
   line-height: 1.1;
   letter-spacing: 0.02em;
   color: var(--color-ivory);
@@ -634,9 +639,9 @@ a {
   align-items: center;
   padding-inline: var(--landing-secondary-inline-gap);
   padding-bottom: clamp(4rem, 8vh, 6rem);
-  min-height: 115vh;
-  /* Keep the secondary copy below the first viewport while centering it horizontally. */
-  padding-top: calc(100vh + 5rem);
+  min-height: auto;
+  /* Brings secondary content closer while keeping it below fold. */
+  padding-top: calc(50vh);
 }
 
 .landing-headline,
@@ -1038,6 +1043,11 @@ a {
   width: 100%;
 }
 
+.app-shell--home > .therapeutic-approach-section {
+  /* Full-bleed immersive treatment — matches trust section approach. */
+  width: 100%;
+}
+
 .glass {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -1403,5 +1413,422 @@ h3 {
 
   .landing-desc {
     font-size: clamp(1.22rem, 4.8vw, 1.42rem);
+  }
+}
+
+/* ── Therapeutic Approach Section ───────────────────────── */
+
+.therapeutic-approach-section {
+  padding: clamp(4rem, 8vh, 7rem) 0 clamp(4rem, 8vh, 6.5rem);
+  position: relative;
+  overflow: hidden;
+  /* Layered atmospheric background — not flat */
+  background:
+    radial-gradient(ellipse 70% 50% at 18% 25%, rgba(15, 76, 92, 0.38) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 45% at 82% 75%, rgba(11, 59, 70, 0.32) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(7, 30, 38, 0.45) 0%, transparent 70%);
+}
+
+/* Faint diagonal ambient texture across the section */
+.therapeutic-approach-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 58px,
+    rgba(183, 244, 255, 0.011) 58px,
+    rgba(183, 244, 255, 0.011) 59px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.therapeutic-approach-inner {
+  max-width: min(1200px, 100% - 2rem);
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 3vw, 2rem);
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Section header ───────────────────────────────────────── */
+
+.therapeutic-approach-header {
+  text-align: center;
+}
+
+.therapeutic-approach-heading {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.9rem, 3.8vw, 3.1rem);
+  font-weight: 600;
+  color: var(--color-ivory);
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.therapeutic-approach-subheading {
+  margin: clamp(0.9rem, 2vh, 1.5rem) auto 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+  font-weight: 500;
+  line-height: 1.7;
+  color: rgba(247, 243, 238, 0.86);
+  max-width: 44ch;
+  white-space: pre-line;
+}
+
+.therapeutic-approach-editorial {
+  margin: 0.65rem auto 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+  font-style: italic;
+  color: rgba(247, 243, 238, 0.5);
+  max-width: 52ch;
+}
+
+/* ── Neural visualization (section-level centrepiece) ─────── */
+
+.neural-vis-wrap {
+  position: relative;
+  width: clamp(220px, 34vw, 340px);
+  height: clamp(220px, 34vw, 340px);
+  margin: clamp(2rem, 4vh, 3.2rem) auto;
+}
+
+.neural-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.neural-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(183, 244, 255, 0.14);
+  animation: neural-ring-pulse 4s ease-in-out infinite;
+}
+
+.neural-ring--1 {
+  width: 52%;
+  height: 52%;
+  top: 24%;
+  left: 24%;
+}
+
+.neural-ring--2 {
+  width: 74%;
+  height: 74%;
+  top: 13%;
+  left: 13%;
+  animation-delay: -2s;
+}
+
+@keyframes neural-ring-pulse {
+  0%, 100% { opacity: 0.18; transform: scale(1); }
+  50%       { opacity: 0.5;  transform: scale(1.05); }
+}
+
+/* ── Panels grid ──────────────────────────────────────────── */
+
+.therapeutic-panels-grid {
+  margin-top: clamp(2rem, 5vh, 3.5rem);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.2rem, 2.5vw, 2rem);
+  align-items: start;
+}
+
+/* ── Panel base ───────────────────────────────────────────── */
+
+.therapeutic-panel {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: default;
+  will-change: transform;
+  transition: box-shadow 0.65s ease, border-color 0.65s ease;
+}
+
+/* Text content — always at the bottom; atmosphere fills top */
+.therapeutic-panel-content {
+  position: relative;
+  z-index: 3;
+  margin-top: auto;
+  padding: clamp(1.4rem, 2vw, 1.8rem);
+  /* Gradient veil so text stays legible over atmosphere */
+  background: linear-gradient(to top, rgba(6, 22, 30, 0.88) 0%, rgba(6, 22, 30, 0.62) 55%, transparent 100%);
+}
+
+/* ── Panel 1: CBT — Cognitive Architecture ─────────────── */
+
+.therapeutic-panel--cbt {
+  min-height: clamp(360px, 38vw, 440px);
+  /* Asymmetric radius: sharp structure top-left, rounded bottom-right */
+  border-radius: 6px 22px 6px 22px;
+  background: linear-gradient(162deg, rgba(8, 35, 42, 0.97), rgba(13, 55, 68, 0.93));
+  border: 1px solid rgba(183, 244, 255, 0.14);
+  box-shadow:
+    0 0 0 1px rgba(153, 233, 247, 0.05),
+    0 24px 56px rgba(0, 0, 0, 0.45);
+}
+
+.therapeutic-panel--cbt:hover {
+  border-color: rgba(183, 244, 255, 0.32);
+  box-shadow:
+    0 0 0 1px rgba(183, 244, 255, 0.12),
+    0 0 48px rgba(183, 244, 255, 0.07),
+    0 30px 64px rgba(0, 0, 0, 0.52);
+}
+
+/* ── Panel 2: ACT — Emotional Current ────────────────────── */
+
+.therapeutic-panel--act {
+  min-height: clamp(340px, 35vw, 410px);
+  /* Large organic radius — fluid, adaptive */
+  border-radius: 28px 6px 28px 6px;
+  background: linear-gradient(148deg, rgba(10, 42, 50, 0.96), rgba(8, 28, 34, 0.93));
+  border: 1px solid rgba(168, 181, 162, 0.16);
+  box-shadow: 0 24px 52px rgba(0, 0, 0, 0.38);
+}
+
+.therapeutic-panel--act:hover {
+  border-color: rgba(168, 181, 162, 0.34);
+  box-shadow:
+    0 0 36px rgba(168, 181, 162, 0.07),
+    0 30px 60px rgba(0, 0, 0, 0.44);
+}
+
+/* ── Panel 3: VR — Spatial Interface ─────────────────────── */
+
+.therapeutic-panel--vr {
+  min-height: clamp(370px, 38vw, 450px);
+  /* Tech asymmetry: nearly-square corners on opposing diagonal */
+  border-radius: 2px 30px 2px 30px;
+  background: linear-gradient(148deg, rgba(5, 18, 24, 0.62), rgba(9, 42, 55, 0.48));
+  border: 1px solid rgba(183, 244, 255, 0.22);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    0 0 0 1px rgba(183, 244, 255, 0.04),
+    0 28px 60px rgba(0, 0, 0, 0.52),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    inset 0 -1px 0 rgba(183, 244, 255, 0.04);
+}
+
+.therapeutic-panel--vr:hover {
+  border-color: rgba(183, 244, 255, 0.42);
+  box-shadow:
+    0 0 0 1px rgba(183, 244, 255, 0.1),
+    0 0 55px rgba(183, 244, 255, 0.09),
+    0 32px 68px rgba(0, 0, 0, 0.58),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* ── Panel typography ─────────────────────────────────────── */
+
+.therapeutic-panel-label {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(183, 244, 255, 0.58);
+  padding: 0.2rem 0.66rem;
+  border: 1px solid rgba(183, 244, 255, 0.16);
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.therapeutic-panel--act .therapeutic-panel-label {
+  color: rgba(168, 181, 162, 0.75);
+  border-color: rgba(168, 181, 162, 0.22);
+}
+
+.therapeutic-panel-title {
+  margin: 0 0 0.5rem;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.02rem, 1.35vw, 1.22rem);
+  font-weight: 600;
+  color: var(--color-ivory);
+  line-height: 1.28;
+  position: static;
+}
+
+.therapeutic-panel-description {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.82rem, 0.98vw, 0.9rem);
+  line-height: 1.74;
+  color: rgba(247, 243, 238, 0.6);
+}
+
+/* ── Panel atmosphere (full-bleed behind content) ─────────── */
+
+.panel-atm {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  /* Atmosphere occupies roughly the top 60% of panel visually */
+}
+
+/* Large atmospheric icon — becomes part of the environment */
+.panel-atm-bg-icon {
+  position: absolute;
+  width: 58%;
+  height: 58%;
+  top: 6%;
+  right: -4%;
+  opacity: 0.055;
+  color: rgba(183, 244, 255, 1);
+}
+
+.panel-atm--act .panel-atm-bg-icon {
+  width: 72%;
+  height: 72%;
+  top: 4%;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  opacity: 0.045;
+  color: rgba(247, 243, 238, 1);
+}
+
+.panel-atm--vr .panel-atm-bg-icon {
+  width: 68%;
+  height: 68%;
+  top: 8%;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  opacity: 0.05;
+  color: rgba(183, 244, 255, 1);
+}
+
+.panel-atm-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── VR depth planes ─────────────────────────────────────── */
+
+.vr-depth-plane {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 5px;
+  border: 1px solid rgba(183, 244, 255, 0.12);
+}
+
+.vr-depth-plane--1 {
+  width: 84%;
+  height: 32%;
+  top: 5%;
+  background: linear-gradient(135deg, rgba(183, 244, 255, 0.02), rgba(183, 244, 255, 0.008));
+}
+
+.vr-depth-plane--2 {
+  width: 66%;
+  height: 22%;
+  top: 15%;
+  background: rgba(183, 244, 255, 0.015);
+  border-color: rgba(183, 244, 255, 0.2);
+  animation: vr-plane-pulse 6s ease-in-out infinite;
+}
+
+.vr-depth-plane--3 {
+  width: 46%;
+  height: 14%;
+  top: 26%;
+  background: rgba(183, 244, 255, 0.025);
+  border-color: rgba(183, 244, 255, 0.32);
+  animation: vr-plane-pulse 4.5s ease-in-out infinite;
+  animation-delay: -2.2s;
+}
+
+@keyframes vr-plane-pulse {
+  0%, 100% { opacity: 0.45; }
+  50%       { opacity: 1; }
+}
+
+/* Scanning line — sweeps panel top to bottom */
+.vr-scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent 0%, rgba(183, 244, 255, 0.5) 35%, rgba(183, 244, 255, 0.7) 50%, rgba(183, 244, 255, 0.5) 65%, transparent 100%);
+  filter: blur(1px);
+  box-shadow: 0 0 10px rgba(183, 244, 255, 0.28);
+}
+
+/* Corner reticle brackets */
+.vr-bracket {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+}
+
+.vr-bracket--tl {
+  top: 10px;
+  left: 10px;
+  border-top: 1.5px solid rgba(183, 244, 255, 0.55);
+  border-left: 1.5px solid rgba(183, 244, 255, 0.55);
+}
+
+.vr-bracket--tr {
+  top: 10px;
+  right: 10px;
+  border-top: 1.5px solid rgba(183, 244, 255, 0.55);
+  border-right: 1.5px solid rgba(183, 244, 255, 0.55);
+}
+
+.vr-bracket--bl {
+  bottom: 10px;
+  left: 10px;
+  border-bottom: 1.5px solid rgba(183, 244, 255, 0.3);
+  border-left: 1.5px solid rgba(183, 244, 255, 0.3);
+}
+
+.vr-bracket--br {
+  bottom: 10px;
+  right: 10px;
+  border-bottom: 1.5px solid rgba(183, 244, 255, 0.3);
+  border-right: 1.5px solid rgba(183, 244, 255, 0.3);
+}
+
+/* ── Therapeutic approach responsive ─────────────────────── */
+
+@media (max-width: 1024px) {
+  .therapeutic-panels-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .therapeutic-panel--cbt,
+  .therapeutic-panel--act,
+  .therapeutic-panel--vr {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 560px) {
+  .therapeutic-approach-heading {
+    font-size: clamp(1.65rem, 8vw, 2.2rem);
+  }
+
+  .therapeutic-panels-grid {
+    max-width: 100%;
   }
 }
