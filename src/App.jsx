@@ -106,6 +106,7 @@ const fadeUp = {
 
 const PRELOADER_DURATION_MS = 4700
 const PRELOADER_REDUCED_MOTION_DURATION_MS = 900
+// These dash lengths are tuned to the current SVG path geometry and should be updated if monogram paths change.
 const LC_CIRCLE_PATH_LENGTH = 390
 const LC_L_PATH_LENGTH = 338
 const HERO_ORB_Y_REST = -4
@@ -115,6 +116,24 @@ const HERO_ORB_ANIMATION = { y: [HERO_ORB_Y_REST, HERO_ORB_Y_PEAK, HERO_ORB_Y_RE
 const HERO_ORB_REDUCED_ANIMATION = { y: 0 }
 const HERO_ORB_TRANSITION = { duration: 4, repeat: Infinity, ease: 'easeInOut' }
 const HERO_ORB_REDUCED_TRANSITION = { duration: 0.01, repeat: 0, ease: 'linear' }
+
+function shouldShowPreloader() {
+  if (typeof window === 'undefined') return true
+  try {
+    return window.sessionStorage.getItem(PRELOADER_SESSION_KEY) !== 'true'
+  } catch {
+    return true
+  }
+}
+
+function markPreloaderAsShown() {
+  if (typeof window === 'undefined') return
+  try {
+    window.sessionStorage.setItem(PRELOADER_SESSION_KEY, 'true')
+  } catch {
+    // Storage may be unavailable; keep runtime stable.
+  }
+}
 
 function LibraWatermark() {
   return (
@@ -564,26 +583,15 @@ function Footer({ t }) {
 
 function AppShell() {
   const [lang, setLang] = useState('it')
-  const [preloaderVisible, setPreloaderVisible] = useState(() => {
-    if (typeof window === 'undefined') return true
-    try {
-      return window.sessionStorage.getItem(PRELOADER_SESSION_KEY) !== 'true'
-    } catch {
-      return true
-    }
-  })
+  const [preloaderVisible, setPreloaderVisible] = useState(() => shouldShowPreloader())
   const location = useLocation()
   const reduceMotion = useReducedMotion()
   const t = content[lang]
   const preloaderAriaLabel = lang === 'it' ? 'Monogramma Laura Cocozza' : 'Laura Cocozza monogram'
 
   useEffect(() => {
-    if (!preloaderVisible || typeof window === 'undefined') return
-    try {
-      window.sessionStorage.setItem(PRELOADER_SESSION_KEY, 'true')
-    } catch {
-      // Storage may be unavailable; keep runtime stable.
-    }
+    if (!preloaderVisible) return
+    markPreloaderAsShown()
   }, [preloaderVisible])
 
   useEffect(() => {
