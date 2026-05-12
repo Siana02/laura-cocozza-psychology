@@ -819,7 +819,7 @@ function TherapeuticApproachSection({ t }) {
               whileHover={reduceMotion ? {} : { y: -6, transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] } }}
             >
               <span className="therapeutic-panel-label">{panel.label}</span>
-              <span className="therapeutic-panel-icon">
+              <span className="therapeutic-panel-icon" aria-hidden="true">
                 <panel.Icon size={22} />
               </span>
               <h3 className="therapeutic-panel-title">{panel.title}</h3>
