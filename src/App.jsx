@@ -1,6 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
-import gsap from 'gsap'
+import { useEffect, useMemo, useState } from 'react'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import {
   ArrowRight,
   BookOpen,
@@ -105,63 +104,119 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 },
 }
 
-const PRELOADER_DURATION_MS = 2200
+const PRELOADER_DURATION_MS = 4700
+const PRELOADER_REDUCED_MOTION_DURATION_MS = 900
+const HERO_ORB_Y_REST = -4
+const HERO_ORB_Y_PEAK = -18
+const PRELOADER_SESSION_KEY = 'lc-preloader-played'
+const HERO_ORB_ANIMATION = { y: [HERO_ORB_Y_REST, HERO_ORB_Y_PEAK, HERO_ORB_Y_REST] }
+const HERO_ORB_REDUCED_ANIMATION = { y: 0 }
+const HERO_ORB_TRANSITION = { duration: 4, repeat: Infinity, ease: 'easeInOut' }
+const HERO_ORB_REDUCED_TRANSITION = { duration: 0.01, repeat: 0, ease: 'linear' }
 
-function LibraWatermark() {
+function shouldShowPreloader() {
+  if (typeof window === 'undefined') return true
+  try {
+    return window.sessionStorage.getItem(PRELOADER_SESSION_KEY) !== 'true'
+  } catch {
+    return true
+  }
+}
+
+function markPreloaderAsShown() {
+  if (typeof window === 'undefined') return
+  try {
+    window.sessionStorage.setItem(PRELOADER_SESSION_KEY, 'true')
+  } catch {
+    // Storage may be unavailable; keep runtime stable.
+  }
+}
+
+function BalanceWatermark() {
   return (
-    <svg viewBox="0 0 120 120" aria-hidden="true" className="libra-icon">
-      <path d="M25 34h70M60 34v52M44 86h32M22 48h20l-10 18-10-18Zm56 0h20L88 66 78 48Z" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
+    <span className="material-symbols-outlined balance-watermark" aria-hidden="true">
+      balance
+    </span>
   )
 }
 
-function Preloader({ done }) {
+function Preloader({ visible, ariaLabel }) {
+  const reduceMotion = useReducedMotion()
+  const monogramDrawDuration = reduceMotion ? 0.5 : 3.1
+  const monogramHoldDuration = reduceMotion ? 0.1 : 1
+  const bgDuration = monogramDrawDuration + monogramHoldDuration + (reduceMotion ? 0.2 : 0.45)
+  const preloaderKey = reduceMotion ? 'preloader-reduced' : 'preloader-default'
+
   return (
-    <AnimatePresence>
-      {!done && (
-        <motion.div className="preloader" initial={{ opacity: 1 }} exit={{ opacity: 0, transition: { duration: 0.65 } }}>
-          <motion.div className="preloader-bg" animate={{ scale: [1, 1.08, 1.08] }} transition={{ duration: 2.3, repeat: Infinity, ease: 'easeInOut' }}>
-            <LibraWatermark />
+    <AnimatePresence mode="wait">
+      {visible && (
+        <motion.div
+          key={preloaderKey}
+          className="preloader"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0, transition: { duration: reduceMotion ? 0.25 : 0.85, ease: [0.4, 0, 0.2, 1], delay: reduceMotion ? 0 : 0.42 } }}
+        >
+          <motion.div
+            className="preloader-bg"
+            initial={{ opacity: 0, scale: 0.98, filter: 'blur(9px)' }}
+            animate={{ opacity: 1, scale: reduceMotion ? 1 : 1.06, filter: reduceMotion ? 'blur(5px)' : 'blur(2px)' }}
+            exit={{ opacity: 0, transition: { duration: reduceMotion ? 0.2 : 0.65, delay: reduceMotion ? 0 : 0.24 } }}
+            transition={{ duration: bgDuration, ease: [0.33, 1, 0.68, 1] }}
+          >
+            <BalanceWatermark />
           </motion.div>
 
-          <motion.div className="lc-wrap" exit={{ opacity: 0, transition: { duration: 0.45 } }}>
-            <motion.svg viewBox="0 0 200 200" className="lc-mark" animate={{ opacity: [0.6, 1, 0.6] }} transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}>
-              <motion.path
-                d="M122 46a56 56 0 1 0 0 108"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="10"
-                strokeLinecap="round"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-              />
-              <motion.path
-                d="M77 38v78h42"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="10"
-                strokeLinecap="round"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-              />
-              <motion.rect
-                x="-120"
-                y="0"
-                width="80"
-                height="200"
-                fill="url(#maskSweep)"
-                animate={{ x: [0, 280] }}
-                transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
-              />
+          <motion.div
+            className="lc-wrap"
+            initial={{ opacity: 0, y: 8, filter: 'blur(5px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: monogramDrawDuration, ease: [0.22, 1, 0.36, 1] }}
+            exit={{ opacity: 0, transition: { duration: reduceMotion ? 0.15 : 0.45, ease: [0.4, 0, 1, 1] } }}
+          >
+            <motion.svg viewBox="0 0 240 200" className="lc-mark" role="img" aria-label={ariaLabel}>
+              <motion.text
+                x="6"
+                y="172"
+                fontSize="162"
+                fontFamily="'Abril Fatface', serif"
+                fill="currentColor"
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: monogramDrawDuration * 0.75, ease: [0.22, 1, 0.36, 1] }}
+              >
+                L
+              </motion.text>
+              <motion.text
+                x="92"
+                y="172"
+                fontSize="162"
+                fontFamily="'Abril Fatface', serif"
+                fill="currentColor"
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: monogramDrawDuration * 0.75, ease: [0.22, 1, 0.36, 1], delay: reduceMotion ? 0 : 0.14 }}
+              >
+                C
+              </motion.text>
               <defs>
                 <linearGradient id="maskSweep" x1="0" y1="0" x2="1" y2="0">
                   <stop offset="0" stopColor="transparent" />
-                  <stop offset="0.5" stopColor="rgba(252,250,247,0.5)" />
+                  <stop offset="0.5" stopColor="var(--color-ivory)" stopOpacity="0.42" />
                   <stop offset="1" stopColor="transparent" />
                 </linearGradient>
               </defs>
+              {!reduceMotion && (
+                <motion.rect
+                  x="-120"
+                  y="0"
+                  width="100"
+                  height="200"
+                  fill="url(#maskSweep)"
+                  animate={{ x: 350, opacity: [0, 0.5, 0.1, 0] }}
+                  transition={{ duration: monogramDrawDuration, ease: [0.35, 0, 0.65, 1], delay: 0.18, times: [0, 0.3, 0.75, 1] }}
+                />
+              )}
             </motion.svg>
           </motion.div>
         </motion.div>
@@ -210,34 +265,70 @@ function Header({ t, lang, setLang }) {
 }
 
 function Hero({ t }) {
-  const heroRef = useRef(null)
-
-  useEffect(() => {
-    if (!heroRef.current) return
-    const ctx = gsap.context(() => {
-      gsap.to('.hero-orb', { y: -16, duration: 2.8, repeat: -1, yoyo: true, ease: 'sine.inOut' })
-    }, heroRef)
-    return () => ctx.revert()
-  }, [])
+  const reduceMotion = useReducedMotion()
+  const heroStagger = {
+    hidden: { opacity: 0, y: reduceMotion ? 0 : 18 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: reduceMotion ? 0.3 : 0.62,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  }
+  const heroVisualTransition = { duration: reduceMotion ? 0.3 : 0.85, ease: [0.22, 1, 0.36, 1] }
+  const heroMaskInitial = { clipPath: reduceMotion ? 'inset(0% 0% 0% 0%)' : 'inset(100% 0% 0% 0%)' }
+  const heroMaskTransition = { duration: reduceMotion ? 0.2 : 0.8, ease: [0.22, 1, 0.36, 1], delay: reduceMotion ? 0 : 0.08 }
+  const heroOrbAnimation = reduceMotion ? HERO_ORB_REDUCED_ANIMATION : HERO_ORB_ANIMATION
+  const heroOrbTransition = reduceMotion ? HERO_ORB_REDUCED_TRANSITION : HERO_ORB_TRANSITION
 
   return (
-    <section className="hero-section" ref={heroRef}>
-      <motion.div className="hero-copy" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeUp} transition={{ duration: 0.7 }}>
-        <p className="eyebrow">{t.home.eyebrow}</p>
-        <h1>{t.home.title}</h1>
-        <p className="lede">{t.home.description}</p>
-        <div className="cta-row">
+    <section className="hero-section">
+      <motion.div
+        className="hero-copy"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={{
+          hidden: {},
+          visible: {
+            transition: {
+              staggerChildren: reduceMotion ? 0.04 : 0.09,
+              delayChildren: reduceMotion ? 0 : 0.06,
+            },
+          },
+        }}
+      >
+        <motion.p className="eyebrow" variants={heroStagger}>{t.home.eyebrow}</motion.p>
+        <motion.h1 variants={heroStagger}>{t.home.title}</motion.h1>
+        <motion.p className="lede" variants={heroStagger}>{t.home.description}</motion.p>
+        <motion.div className="cta-row" variants={heroStagger}>
           <Link className="btn btn-primary" to="/contact">{t.home.ctaPrimary}</Link>
           <Link className="btn btn-ghost" to="/clinical">{t.home.ctaSecondary}</Link>
-        </div>
+        </motion.div>
       </motion.div>
-      <motion.div className="hero-visual card" initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-        <div className="hero-orb" />
-        <div className="hero-points">
-          <p><ShieldCheck size={16} />Clinical and forensic integration</p>
-          <p><HeartHandshake size={16} />Empathic and evidence-based care</p>
-          <p><Landmark size={16} />Court-aligned professional support</p>
-        </div>
+      <motion.div
+        className="hero-visual card"
+        initial={{ opacity: 0, x: reduceMotion ? 0 : 24 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={heroVisualTransition}
+      >
+        <motion.div
+          className="hero-visual-mask"
+          initial={heroMaskInitial}
+          whileInView={{ clipPath: 'inset(0% 0% 0% 0%)' }}
+          viewport={{ once: true }}
+          transition={heroMaskTransition}
+        >
+          <motion.div className="hero-orb" animate={heroOrbAnimation} transition={heroOrbTransition} />
+          <div className="hero-points">
+            <p><ShieldCheck size={16} />Clinical and forensic integration</p>
+            <p><HeartHandshake size={16} />Empathic and evidence-based care</p>
+            <p><Landmark size={16} />Court-aligned professional support</p>
+          </div>
+        </motion.div>
       </motion.div>
     </section>
   )
@@ -482,38 +573,78 @@ function Footer({ t }) {
 
 function AppShell() {
   const [lang, setLang] = useState('it')
-  const [ready, setReady] = useState(false)
+  const [preloaderVisible, setPreloaderVisible] = useState(() => shouldShowPreloader())
+  const location = useLocation()
+  const reduceMotion = useReducedMotion()
   const t = content[lang]
+  const preloaderAriaLabel = lang === 'it' ? 'Monogramma Laura Cocozza' : 'Laura Cocozza monogram'
 
   useEffect(() => {
-    const timer = setTimeout(() => setReady(true), PRELOADER_DURATION_MS)
+    if (!preloaderVisible) return
+    markPreloaderAsShown()
+  }, [preloaderVisible])
+
+  useEffect(() => {
+    if (!preloaderVisible) return
+    const timer = setTimeout(
+      () => setPreloaderVisible(false),
+      reduceMotion ? PRELOADER_REDUCED_MOTION_DURATION_MS : PRELOADER_DURATION_MS,
+    )
     return () => clearTimeout(timer)
-  }, [])
+  }, [preloaderVisible, reduceMotion])
 
   return (
     <>
-      <Preloader done={ready} />
-      <div className="app-shell">
+      <Preloader visible={preloaderVisible} ariaLabel={preloaderAriaLabel} />
+      <motion.div
+        className="app-shell app-content"
+        initial={false}
+        animate={preloaderVisible ? 'covered' : 'visible'}
+        variants={{
+          covered: {
+            opacity: 0,
+            y: reduceMotion ? 0 : 10,
+            filter: reduceMotion ? 'blur(0px)' : 'blur(3px)',
+            transition: { duration: reduceMotion ? 0.16 : 0.28, ease: [0.4, 0, 1, 1] },
+          },
+          visible: {
+            opacity: 1,
+            y: 0,
+            filter: 'blur(0px)',
+            transition: { duration: reduceMotion ? 0.28 : 0.72, ease: [0.22, 1, 0.36, 1], delay: reduceMotion ? 0 : 0.2 },
+          },
+        }}
+      >
         <Header t={t} lang={lang} setLang={setLang} />
         <main>
-          <Routes>
-            <Route path="/" element={<Navigate to="/home" replace />} />
-            <Route path="/home" element={<Home t={t} />} />
-            <Route path="/clinical" element={<Clinical t={t} />} />
-            <Route path="/clinical/approach" element={<ClinicalApproach />} />
-            <Route path="/clinical/individual-psychotherapy" element={<ClinicalIndividual />} />
-            <Route path="/clinical/family-support" element={<ClinicalFamily />} />
-            <Route path="/clinical/network" element={<ClinicalNetwork />} />
-            <Route path="/forensic" element={<Forensic t={t} />} />
-            <Route path="/forensic/services" element={<ForensicServices />} />
-            <Route path="/forensic/psylex" element={<PsyLexPreview />} />
-            <Route path="/about" element={<About t={t} />} />
-            <Route path="/contact" element={<Contact t={t} />} />
-            <Route path="*" element={<Navigate to="/home" replace />} />
-          </Routes>
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={location.pathname}
+              initial={{ opacity: 0, y: reduceMotion ? 0 : 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: reduceMotion ? 0 : -8 }}
+              transition={{ duration: reduceMotion ? 0.18 : 0.52, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Routes location={location}>
+                <Route path="/" element={<Navigate to="/home" replace />} />
+                <Route path="/home" element={<Home t={t} />} />
+                <Route path="/clinical" element={<Clinical t={t} />} />
+                <Route path="/clinical/approach" element={<ClinicalApproach />} />
+                <Route path="/clinical/individual-psychotherapy" element={<ClinicalIndividual />} />
+                <Route path="/clinical/family-support" element={<ClinicalFamily />} />
+                <Route path="/clinical/network" element={<ClinicalNetwork />} />
+                <Route path="/forensic" element={<Forensic t={t} />} />
+                <Route path="/forensic/services" element={<ForensicServices />} />
+                <Route path="/forensic/psylex" element={<PsyLexPreview />} />
+                <Route path="/about" element={<About t={t} />} />
+                <Route path="/contact" element={<Contact t={t} />} />
+                <Route path="*" element={<Navigate to="/home" replace />} />
+              </Routes>
+            </motion.div>
+          </AnimatePresence>
         </main>
         <Footer t={t} />
-      </div>
+      </motion.div>
     </>
   )
 }

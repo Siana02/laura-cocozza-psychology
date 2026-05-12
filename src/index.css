@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600&family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&family=Plus+Jakarta+Sans:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600&family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&family=Plus+Jakarta+Sans:wght@500;600&display=swap');
 
 :root {
   --color-primary: #0f4c5c;
   --color-primary-dark: #0b3b46;
+  --color-deep-teal: #071e26;
   --color-ivory: #f7f3ee;
   --color-cream: #efe7dc;
   --color-sand: #dccfc0;
@@ -39,35 +40,65 @@ a {
 .preloader {
   position: fixed;
   inset: 0;
-  z-index: 110;
+  z-index: 140;
   display: grid;
   place-items: center;
-  background: linear-gradient(145deg, #052b34, var(--color-primary-dark));
+  overflow: hidden;
+  background: radial-gradient(circle at 70% 16%, color-mix(in srgb, var(--color-primary) 22%, transparent), transparent 44%),
+    linear-gradient(150deg, var(--color-deep-teal), color-mix(in srgb, var(--color-primary-dark) 86%, var(--color-deep-teal)));
+  will-change: opacity;
 }
 
 .preloader-bg {
   position: absolute;
-  color: rgba(252, 250, 247, 0.09);
+  inset: -8%;
+  display: grid;
+  place-items: center;
+  color: color-mix(in srgb, var(--color-ivory) 32%, transparent);
+  pointer-events: none;
+  will-change: transform, opacity, filter;
 }
 
-.libra-icon {
-  width: min(56vw, 420px);
-  height: auto;
+.balance-watermark {
+  font-family: 'Material Symbols Outlined';
+  font-size: clamp(280px, 74vw, 980px);
+  font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 48;
+  line-height: 1;
+  display: block;
+  user-select: none;
 }
 
 .lc-wrap {
   position: relative;
+  z-index: 2;
+  will-change: transform, opacity, filter;
+}
+
+.lc-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 17% 22%;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-ivory) 22%, transparent);
+  filter: blur(18px);
+  pointer-events: none;
 }
 
 .lc-mark {
-  width: 180px;
-  color: var(--color-white);
+  width: clamp(192px, 25vw, 280px);
+  color: var(--color-ivory);
+  overflow: visible;
+  font-family: 'Abril Fatface', serif;
 }
 
 .app-shell {
   width: min(1200px, 100% - 2rem);
   margin: 0 auto;
   padding: 1rem 0 2rem;
+}
+
+.app-content {
+  will-change: transform, opacity, filter;
 }
 
 .glass {
@@ -238,6 +269,11 @@ h3 {
   position: relative;
 }
 
+.hero-visual-mask {
+  position: absolute;
+  inset: 0;
+}
+
 .hero-orb {
   position: absolute;
   width: 220px;
@@ -381,6 +417,20 @@ h3 {
 
   .trust-bar {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .preloader-bg {
+    inset: -16%;
+  }
+
+  .balance-watermark {
+    font-size: clamp(240px, 100vw, 700px);
+  }
+
+  .lc-mark {
+    width: clamp(178px, 52vw, 238px);
   }
 }
 
