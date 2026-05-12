@@ -180,35 +180,35 @@ const content = {
         panels: [
           {
             key: 'anxiety',
-            icon: '/anxiety.png',
+            icon: 'https://www.flaticon.com/free-icons/anxiety',
             title: 'Ansia e gestione dello stress',
             description:
               'Percorsi di supporto dedicati alla gestione dell’ansia, dello stress emotivo, delle paure persistenti e del sovraccarico mentale.',
           },
           {
             key: 'mood',
-            icon: '/emotion.png',
+            icon: 'https://www.flaticon.com/free-icons/mood',
             title: 'Difficoltà emotive e dell’umore',
             description:
               'Supporto psicologico per periodi di vulnerabilità emotiva, demotivazione, tristezza persistente e difficoltà nel mantenere equilibrio emotivo.',
           },
           {
             key: 'ocd',
-            icon: '/ocd.png',
+            icon: 'https://www.flaticon.com/free-icons/ocd',
             title: 'Pensieri intrusivi e comportamenti compulsivi',
             description:
               'Interventi orientati alla gestione di pensieri ricorrenti, compulsioni, controllo dell’ansia e rigidità cognitive.',
           },
           {
             key: 'regulation',
-            icon: '/fear.png',
+            icon: 'https://www.flaticon.com/free-icons/stress',
             title: 'Regolazione emotiva',
             description:
               'Percorsi focalizzati sullo sviluppo della consapevolezza emotiva, della gestione dello stress e dell’equilibrio psicologico quotidiano.',
           },
           {
             key: 'relational',
-            icon: '/conflict.png',
+            icon: 'https://www.flaticon.com/free-icons/conflict',
             title: 'Difficoltà relazionali',
             description:
               'Supporto psicologico per dinamiche relazionali complesse, conflitti emotivi, difficoltà comunicative e relazioni personali difficili.',
@@ -396,35 +396,35 @@ const content = {
         panels: [
           {
             key: 'anxiety',
-            icon: '/anxiety.png',
+            icon: 'https://www.flaticon.com/free-icons/anxiety',
             title: 'Anxiety and stress management',
             description:
               'Support pathways focused on anxiety, emotional stress, persistent fears, and mental overload.',
           },
           {
             key: 'mood',
-            icon: '/emotion.png',
+            icon: 'https://www.flaticon.com/free-icons/mood',
             title: 'Emotional and mood difficulties',
             description:
               'Psychological support for periods of emotional vulnerability, low motivation, persistent sadness, and difficulty maintaining emotional balance.',
           },
           {
             key: 'ocd',
-            icon: '/ocd.png',
+            icon: 'https://www.flaticon.com/free-icons/ocd',
             title: 'Intrusive thoughts and compulsive behaviors',
             description:
               'Interventions focused on recurring thoughts, compulsions, anxiety management, and cognitive rigidity.',
           },
           {
             key: 'regulation',
-            icon: '/fear.png',
+            icon: 'https://www.flaticon.com/free-icons/stress',
             title: 'Emotional regulation',
             description:
               'Pathways focused on emotional awareness, stress management, and everyday psychological balance.',
           },
           {
             key: 'relational',
-            icon: '/conflict.png',
+            icon: 'https://www.flaticon.com/free-icons/conflict',
             title: 'Relational difficulties',
             description:
               'Psychological support for complex relational dynamics, emotional conflict, communication difficulties, and challenging personal relationships.',
@@ -1682,14 +1682,6 @@ function SupportAreasSection({ t }) {
     regulation: <RegulationAtmosphere reduceMotion={reduceMotion} />,
     relational: <RelationalAtmosphere reduceMotion={reduceMotion} />,
   }), [reduceMotion])
-  const supportPngIconMap = useMemo(() => ({
-    anxiety: '/anxiety.png',
-    mood: '/emotion.png',
-    ocd: '/ocd.png',
-    regulation: '/fear.png',
-    relational: '/conflict.png',
-  }), [])
-
   return (
     <section className="support-areas-section">
       <div className="support-areas-inner">
@@ -1709,9 +1701,9 @@ function SupportAreasSection({ t }) {
       <div className="support-story-panels">
         {support.panels.map((panel, index) => {
           const isReversed = index % 2 === 1
-          const panelIconSrc = supportPngIconMap[panel.key]
+          const panelIconSrc = panel.icon
           if (!panelIconSrc) {
-            throw new Error(`Missing support icon mapping for panel key "${panel.key}"`)
+            throw new Error(`Missing support icon for panel key "${panel.key}"`)
           }
           return (
             <motion.article
