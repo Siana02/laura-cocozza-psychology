@@ -52,6 +52,24 @@ const content = {
           'Psicologa • Psicoterapeuta Cognitivo Comportamentale • Consulente in Psicologia Forense (CTU & CTP)',
         roleDescription:
           'Un approccio integrato clinico e forense, orientato a chiarezza, stabilità emotiva e benessere psicologico duraturo.',
+        cards: [
+          {
+            title: 'Psicoterapia Clinica',
+            text: 'Trattamento psicologico evidence-based con CBT e ACT per difficoltà emotive e comportamentali.',
+          },
+          {
+            title: 'Psicologia Forense',
+            text: 'Valutazioni psicologiche CTU/CTP, consulenze in diritto di famiglia e supporto tecnico in procedimenti civili.',
+          },
+          {
+            title: 'Modello di Cura Integrata',
+            text: 'Lavoro multidisciplinare con psichiatri, neuropsichiatri e professionisti legali per un supporto completo.',
+          },
+          {
+            title: 'Trattamento Personalizzato',
+            text: 'Percorsi psicologici su misura costruiti sui bisogni emotivi, relazionali e contestuali di ogni persona.',
+          },
+        ],
       },
     },
     sections: {
@@ -107,6 +125,24 @@ const content = {
           'Psychologist • Cognitive Behavioral Psychotherapist • Forensic Psychology Consultant (CTU & CTP)',
         roleDescription:
           'An integrative clinical and forensic approach focused on clarity, emotional stability, and long-term psychological well-being.',
+        cards: [
+          {
+            title: 'Clinical Psychotherapy',
+            text: 'Evidence-based treatment using CBT and ACT for emotional and behavioral difficulties.',
+          },
+          {
+            title: 'Forensic Psychology',
+            text: 'Court-appointed evaluations (CTU/CTP), family law assessments, and legal expert consultancy.',
+          },
+          {
+            title: 'Integrated Care Model',
+            text: 'Collaborative multidisciplinary work with psychiatrists, neuropsychiatrists, and legal professionals.',
+          },
+          {
+            title: 'Individualized Treatment',
+            text: 'Tailored psychological pathways based on each person’s emotional, relational, and contextual needs.',
+          },
+        ],
       },
     },
     sections: {
@@ -392,7 +428,10 @@ function SiteHeader({ t, lang, setLang, isLanding, menuOpen, setMenuOpen, preloa
 function WordByWordText({ text, className, as = 'p', delay = 0 }) {
   const reduceMotion = useReducedMotion()
   const Tag = motion[as]
-  const words = text.split(' ')
+  const words = [...text.matchAll(/\S+/g)].map((match, index) => ({
+    value: match[0],
+    key: String(match.index ?? `fallback-${index}`),
+  }))
 
   return (
     <Tag
@@ -409,14 +448,14 @@ function WordByWordText({ text, className, as = 'p', delay = 0 }) {
     >
       {words.map((word, index) => (
         <motion.span
-          key={`${word}-${index}`}
+          key={word.key}
           className="word-fade-item"
           variants={{
             hidden: { opacity: 0, y: reduceMotion ? 0 : 8, filter: reduceMotion ? 'none' : 'blur(3px)' },
             visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: reduceMotion ? 0.01 : 0.4, ease: [0.22, 1, 0.36, 1] } },
           }}
         >
-          {word}
+          {word.value}
           {index < words.length - 1 ? ' ' : ''}
         </motion.span>
       ))}
@@ -480,35 +519,17 @@ function LandingHero({ t }) {
 }
 
 function TrustBuildingSection({ t }) {
-  const trustCards = [
-    {
-      icon: Brain,
-      title: 'Clinical Psychotherapy',
-      text: 'Evidence-based treatment using CBT and ACT for emotional and behavioral difficulties.',
-    },
-    {
-      icon: Scale,
-      title: 'Forensic Psychology',
-      text: 'Court-appointed evaluations (CTU/CTP), family law assessments, and legal expert consultancy.',
-    },
-    {
-      icon: Users,
-      title: 'Integrated Care Model',
-      text: 'Collaborative multidisciplinary work with psychiatrists, neuropsychiatrists, and legal professionals.',
-    },
-    {
-      icon: HeartHandshake,
-      title: 'Individualized Treatment',
-      text: 'Tailored psychological pathways based on each person’s emotional, relational, and contextual needs.',
-    },
-  ]
+  const trustCards = [Brain, Scale, Users, HeartHandshake].map((icon, index) => ({
+    icon,
+    ...t.home.trustSection.cards[index],
+  }))
 
   return (
     <section className="trust-intro-section">
       <div className="trust-intro-top">
         <div className="trust-intro-identity">
           <div className="trust-intro-photo-wrap">
-            <img src="/dr-laura-cocozza-professional-headshot.png" alt={t.doctor} className="trust-intro-photo" />
+            <img src="/dr-laura-cocozza-professional-headshot.png" alt={`${t.home.trustSection.identityName} professional headshot`} className="trust-intro-photo" />
           </div>
           <div className="trust-intro-identity-copy">
             <p>{t.home.trustSection.identityName}</p>

@@ -11,6 +11,7 @@
   --color-sage: #a8b5a2;
   --color-text: #1f2933;
   --color-white: #fcfaf7;
+  --color-primary-dark-55: rgba(11, 59, 70, 0.55);
   --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.06);
   --radius-large: 28px;
   --radius-medium: 20px;
@@ -861,12 +862,12 @@ a {
 }
 
 .trust-intro-card:hover svg {
-  color: #0a5f73;
+  color: var(--color-primary);
   filter: drop-shadow(0 0 8px rgba(15, 76, 92, 0.45));
 }
 
 .trust-intro-card:hover h4 {
-  text-decoration-color: rgba(11, 59, 70, 0.55);
+  text-decoration-color: var(--color-primary-dark-55);
 }
 
 /* ── Page shell for inner pages ───────────────────────────── */
