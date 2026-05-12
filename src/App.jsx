@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from 'framer-motion'
 import {
   ArrowRight,
   ArrowUpRight,
@@ -176,7 +176,7 @@ function Preloader({ visible, ariaLabel }) {
             layoutId="lc-monogram"
             initial={{ opacity: 0, y: 8, filter: 'blur(5px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            transition={{ duration: monogramDrawDuration, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: monogramDrawDuration, ease: [0.22, 1, 0.36, 1], layout: { duration: 0.78, ease: [0.22, 1, 0.36, 1] } }}
           >
             <motion.svg viewBox="0 0 240 200" className="lc-mark" role="img" aria-label={ariaLabel}>
               <motion.text
@@ -321,14 +321,19 @@ function MobileMenu({ open, onClose, t, lang, setLang }) {
   )
 }
 
-function SiteHeader({ t, lang, setLang, isLanding, menuOpen, setMenuOpen }) {
+function SiteHeader({ t, lang, setLang, isLanding, menuOpen, setMenuOpen, preloaderDone }) {
   const headerClass = `site-header ${isLanding ? 'site-header--landing' : 'site-header--default'}`
 
   return (
     <header className={headerClass}>
-      {/* LC logo — layoutId target: framer-motion flies it from the preloader */}
+      {/* LC logo — layoutId "lc-monogram" only activates after preloader exits,
+          so framer-motion can fly the shared element from preloader centre to here */}
       <Link to="/home" className="lc-logo-link" aria-label={t.home.logoAriaLabel}>
-        <motion.div layoutId="lc-monogram" className="lc-logo-wrap">
+        <motion.div
+          layoutId={preloaderDone ? 'lc-monogram' : undefined}
+          transition={{ layout: { duration: 0.78, ease: [0.22, 1, 0.36, 1] } }}
+          className="lc-logo-wrap"
+        >
           <span className="material-symbols-outlined lc-logo-balance" aria-hidden="true">
             balance
           </span>
@@ -433,9 +438,9 @@ function LandingHero({ t }) {
           <motion.div className="landing-cta-row" variants={textVariants}>
             <Link to="/contact" className="book-pill">
               {t.home.ctaPrimary}
-            </Link>
-            <Link to="/contact" className="book-pill-arrow" aria-label={t.home.ctaAriaLabel}>
-              <ArrowUpRight size={18} />
+              <span className="book-pill-icon" aria-hidden="true">
+                <ArrowUpRight size={16} />
+              </span>
             </Link>
           </motion.div>
         </motion.div>
@@ -704,6 +709,12 @@ function AppShell() {
   const preloaderAriaLabel = lang === 'it' ? 'Monogramma Laura Cocozza' : 'Laura Cocozza monogram'
   const isHome = location.pathname === '/home' || location.pathname === '/'
 
+  // True once the preloader is dismissed — the header logo gets layoutId only at
+  // that moment so framer-motion has a single owner during the preloader phase
+  // (prevents the "LC stuck at top-left" glitch caused by two elements sharing
+  // the same layoutId while both are in the DOM).
+  const preloaderDone = !preloaderVisible
+
   useEffect(() => {
     if (!preloaderVisible) return
     markPreloaderAsShown()
@@ -719,7 +730,7 @@ function AppShell() {
   }, [preloaderVisible, reduceMotion])
 
   return (
-    <>
+    <LayoutGroup id="lc-shared">
       <Preloader visible={preloaderVisible} ariaLabel={preloaderAriaLabel} />
 
       <motion.div
@@ -737,7 +748,8 @@ function AppShell() {
             opacity: 1,
             y: 0,
             filter: 'blur(0px)',
-            transition: { duration: reduceMotion ? 0.28 : 0.72, ease: [0.22, 1, 0.36, 1], delay: reduceMotion ? 0 : 0.2 },
+            // Start the page reveal earlier so the LC morph and the reveal overlap
+            transition: { duration: reduceMotion ? 0.28 : 0.72, ease: [0.22, 1, 0.36, 1], delay: reduceMotion ? 0 : 0.1 },
           },
         }}
       >
@@ -748,6 +760,7 @@ function AppShell() {
           isLanding={isHome}
           menuOpen={menuOpen}
           setMenuOpen={setMenuOpen}
+          preloaderDone={preloaderDone}
         />
 
         <MobileMenu
@@ -784,7 +797,7 @@ function AppShell() {
           </motion.div>
         </AnimatePresence>
       </motion.div>
-    </>
+    </LayoutGroup>
   )
 }
 
