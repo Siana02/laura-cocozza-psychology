@@ -566,14 +566,17 @@ function AppShell() {
   const [lang, setLang] = useState('it')
   const [preloaderVisible, setPreloaderVisible] = useState(() => {
     if (typeof window === 'undefined') return true
-    const hasPlayed = window.sessionStorage.getItem(PRELOADER_SESSION_KEY) === 'true'
-    if (!hasPlayed) window.sessionStorage.setItem(PRELOADER_SESSION_KEY, 'true')
-    return !hasPlayed
+    return window.sessionStorage.getItem(PRELOADER_SESSION_KEY) !== 'true'
   })
   const location = useLocation()
   const reduceMotion = useReducedMotion()
   const t = content[lang]
   const preloaderAriaLabel = lang === 'it' ? 'Monogramma Laura Cocozza' : 'Laura Cocozza monogram'
+
+  useEffect(() => {
+    if (!preloaderVisible || typeof window === 'undefined') return
+    window.sessionStorage.setItem(PRELOADER_SESSION_KEY, 'true')
+  }, [preloaderVisible])
 
   useEffect(() => {
     if (!preloaderVisible) return

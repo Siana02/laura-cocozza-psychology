@@ -60,7 +60,7 @@ a {
 }
 
 .libra-icon {
-  width: clamp(440px, 74vw, 980px);
+  width: clamp(280px, 74vw, 980px);
   height: auto;
   opacity: 0.8;
 }
