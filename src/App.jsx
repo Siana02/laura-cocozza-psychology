@@ -13,6 +13,7 @@ import {
   ShieldCheck,
   Sparkles,
   Stethoscope,
+  Target,
   Users,
 } from 'lucide-react'
 import { BrowserRouter, Link, NavLink, Navigate, Route, Routes, useLocation } from 'react-router-dom'
@@ -29,7 +30,7 @@ const content = {
       about: 'Chi Sono',
       contact: 'Contatti',
       book: 'Prenota un Colloquio',
-      bookShort: 'Prenota',
+      bookShort: 'Prenota un Colloquio',
       bookSession: 'Prenota una Seduta',
     },
     home: {
@@ -48,7 +49,7 @@ const content = {
         identitySubtitle: 'Studio di Psicoterapia e Psicologia Forense',
         positioning:
           'Helping people rebuild emotional balance through structured, evidence-based psychological support and forensic expertise when needed.',
-        roleTitle: 'Dott.ssa Laura Cocozza',
+        roleTitle: 'Competenza, Metodo e Cura',
         roleDetails:
           'Psicologa • Psicoterapeuta Cognitivo Comportamentale • Consulente in Psicologia Forense (CTU & CTP)',
         roleDescription:
@@ -103,7 +104,7 @@ const content = {
       about: 'About',
       contact: 'Contact',
       book: 'Book a Consultation',
-      bookShort: 'Book',
+      bookShort: 'Book a Consultation',
       bookSession: 'Book a Session',
     },
     home: {
@@ -122,7 +123,7 @@ const content = {
         identitySubtitle: 'Psychotherapy and Forensic Psychology Practice',
         positioning:
           'Helping people rebuild emotional balance through structured, evidence-based psychological support and forensic expertise when needed.',
-        roleTitle: 'Dr. Laura Cocozza',
+        roleTitle: 'Competence, Method and Care',
         roleDetails:
           'Psychologist • Cognitive-Behavioral Psychotherapist • Court-Appointed Expert (CTU) • Technical Consultant (CTP)',
         roleDescription:
@@ -369,9 +370,6 @@ function SiteHeader({ t, lang, setLang, isLanding, menuOpen, setMenuOpen, preloa
           transition={{ layout: { duration: 0.78, ease: [0.22, 1, 0.36, 1] } }}
           className="lc-logo-wrap"
         >
-          <span className="lc-logo-icon-holder" aria-hidden="true">
-            <img src="/logo-or-icon.png" className="lc-logo-mark-bg" alt="" />
-          </span>
           <svg viewBox="0 0 240 200" className="lc-logo-svg" role="presentation" aria-hidden="true">
             <text x="6" y="114" fontSize="162" fontFamily="'Cinzel', serif" fontWeight="500" fill="currentColor">
               L
@@ -380,6 +378,9 @@ function SiteHeader({ t, lang, setLang, isLanding, menuOpen, setMenuOpen, preloa
               C
             </text>
           </svg>
+          <span className="lc-logo-icon-holder" aria-hidden="true">
+            <img src="/logo-or-icon.png" className="lc-logo-mark-bg" alt="" />
+          </span>
         </motion.div>
       </Link>
 
@@ -523,7 +524,7 @@ function LandingHero({ t }) {
 }
 
 function TrustBuildingSection({ t }) {
-  const trustCards = [Brain, Scale, Users, HeartHandshake].map((icon, index) => ({
+  const trustCards = [Brain, Scale, Users, Target].map((icon, index) => ({
     icon,
     ...t.home.trustSection.cards[index],
   }))
