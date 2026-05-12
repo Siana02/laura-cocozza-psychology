@@ -629,10 +629,8 @@ a {
   width: min(760px, calc(100% - 2.8rem));
   justify-content: flex-end;
   align-items: center;
-  text-align: center;
-  padding-right: clamp(1.4rem, 3.8vw, 3.2rem);
+  padding-inline: clamp(1.4rem, 3.8vw, 3.2rem);
   padding-bottom: clamp(4rem, 8vh, 6rem);
-  padding-left: clamp(1.4rem, 3.8vw, 3.2rem);
   min-height: 115vh;
   /* Keep the secondary copy below the initial fold while centering it horizontally. */
   padding-top: calc(100vh + 5rem);
@@ -647,6 +645,7 @@ a {
   color: var(--color-ivory);
   max-width: 24ch;
   margin-inline: auto;
+  text-align: center;
 }
 
 .landing-desc {
@@ -657,6 +656,7 @@ a {
   color: rgba(247, 243, 238, 0.78);
   max-width: 38ch;
   margin-inline: auto;
+  text-align: center;
 }
 
 .landing-cta-row {
