@@ -111,6 +111,10 @@ const LC_L_PATH_LENGTH = 338
 const HERO_ORB_Y_REST = -4
 const HERO_ORB_Y_PEAK = -18
 const PRELOADER_SESSION_KEY = 'lc-preloader-played'
+const HERO_ORB_ANIMATION = { y: [HERO_ORB_Y_REST, HERO_ORB_Y_PEAK, HERO_ORB_Y_REST] }
+const HERO_ORB_REDUCED_ANIMATION = { y: 0 }
+const HERO_ORB_TRANSITION = { duration: 4, repeat: Infinity, ease: 'easeInOut' }
+const HERO_ORB_REDUCED_TRANSITION = { duration: 0.01, repeat: 0, ease: 'linear' }
 
 function LibraWatermark() {
   return (
@@ -267,14 +271,8 @@ function Hero({ t }) {
   const heroVisualTransition = { duration: reduceMotion ? 0.3 : 0.85, ease: [0.22, 1, 0.36, 1] }
   const heroMaskInitial = { clipPath: reduceMotion ? 'inset(0% 0% 0% 0%)' : 'inset(100% 0% 0% 0%)' }
   const heroMaskTransition = { duration: reduceMotion ? 0.2 : 0.8, ease: [0.22, 1, 0.36, 1], delay: reduceMotion ? 0 : 0.08 }
-  const heroOrbAnimation = useMemo(
-    () => ({ y: reduceMotion ? 0 : [HERO_ORB_Y_REST, HERO_ORB_Y_PEAK, HERO_ORB_Y_REST] }),
-    [reduceMotion],
-  )
-  const heroOrbTransition = useMemo(
-    () => ({ duration: reduceMotion ? 0.01 : 4, repeat: reduceMotion ? 0 : Infinity, ease: 'easeInOut' }),
-    [reduceMotion],
-  )
+  const heroOrbAnimation = reduceMotion ? HERO_ORB_REDUCED_ANIMATION : HERO_ORB_ANIMATION
+  const heroOrbTransition = reduceMotion ? HERO_ORB_REDUCED_TRANSITION : HERO_ORB_TRANSITION
 
   return (
     <section className="hero-section">
