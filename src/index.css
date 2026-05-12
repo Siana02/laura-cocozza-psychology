@@ -18,6 +18,9 @@
   --radius-medium: 20px;
   --radius-small: 14px;
   --header-height: 72px;
+  --logo-mark-scale: 1.04;
+  --landing-secondary-max-width: 760px;
+  --landing-secondary-inline-gap: clamp(1.4rem, 3.8vw, 3.2rem);
   --hero-mask: linear-gradient(
     to right,
     transparent 0%,
@@ -178,7 +181,7 @@ a {
   object-fit: contain;
   object-position: center;
   /* Slight overscale keeps the circular holder filled without clipping logo details. */
-  transform: scale(1.04);
+  transform: scale(var(--logo-mark-scale));
   user-select: none;
   pointer-events: none;
   opacity: 1;
@@ -624,12 +627,13 @@ a {
 .landing-secondary {
   display: flex;
   flex-direction: column;
+  /* Span the two-column desktop hero grid so the copy can sit in the page center. */
   grid-column: 1 / -1;
   justify-self: center;
-  width: min(760px, calc(100% - 2.8rem));
+  width: min(var(--landing-secondary-max-width), calc(100% - (var(--landing-secondary-inline-gap) * 2)));
   justify-content: flex-end;
   align-items: center;
-  padding-inline: clamp(1.4rem, 3.8vw, 3.2rem);
+  padding-inline: var(--landing-secondary-inline-gap);
   padding-bottom: clamp(4rem, 8vh, 6rem);
   min-height: 115vh;
   /* Keep the secondary copy below the initial fold while centering it horizontally. */
