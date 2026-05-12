@@ -105,6 +105,8 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 },
 }
 
+const PRELOADER_DURATION_MS = 2200
+
 function LibraWatermark() {
   return (
     <svg viewBox="0 0 120 120" aria-hidden="true" className="libra-icon">
@@ -454,7 +456,7 @@ function Contact({ t }) {
     <Section
       title={t.pages.contactHero}
       items={[
-        { icon: Phone, title: 'Phone', text: '+39 000 000 0000' },
+        { icon: Phone, title: 'Phone', text: 'Available on request · Disponibile su richiesta' },
         { icon: BookOpen, title: 'Email', text: 'info@lauracocozza.it · studio@lauracocozza.it' },
         { icon: Landmark, title: 'Office Address', text: 'Rome, Italy · by appointment' },
         { icon: Users, title: 'Online Consultations', text: 'Secure sessions for national and international clients.' },
@@ -484,7 +486,7 @@ function AppShell() {
   const t = content[lang]
 
   useEffect(() => {
-    const timer = setTimeout(() => setReady(true), 2200)
+    const timer = setTimeout(() => setReady(true), PRELOADER_DURATION_MS)
     return () => clearTimeout(timer)
   }, [])
 
