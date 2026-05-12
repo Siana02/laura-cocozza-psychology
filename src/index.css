@@ -630,7 +630,7 @@ a {
   padding-top: clamp(2rem, 5vw, 4rem);
   padding-right: clamp(1.4rem, 3.8vw, 3.2rem);
   padding-bottom: clamp(2rem, 6vh, 4rem);
-  padding-left: clamp(0.5rem, 1.4vw, 1rem);
+  padding-left: clamp(1.4rem, 3.8vw, 3.2rem);
   min-height: 115vh;
 }
 
@@ -1024,6 +1024,7 @@ a {
 }
 
 .app-shell--home > .trust-intro-section {
+  /* Intentionally full-bleed for edge-to-edge intro background treatment. */
   width: 100%;
 }
 
