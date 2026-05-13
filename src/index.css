@@ -3370,6 +3370,7 @@ h3 {
 }
 
 .network-collab-map {
+  --network-column-min: 245px;
   position: relative;
   min-height: clamp(470px, 49vw, 590px);
   border-radius: clamp(1.2rem, 2vw, 1.8rem);
@@ -3378,7 +3379,7 @@ h3 {
     radial-gradient(circle at 50% 50%, rgba(183, 244, 255, 0.12) 0%, rgba(183, 244, 255, 0.04) 30%, transparent 62%),
     linear-gradient(145deg, rgba(9, 33, 42, 0.82), rgba(6, 24, 31, 0.92));
   display: grid;
-  grid-template-columns: minmax(245px, 1fr) clamp(160px, 15vw, 215px) minmax(245px, 1fr);
+  grid-template-columns: minmax(var(--network-column-min), 1fr) clamp(160px, 15vw, 215px) minmax(var(--network-column-min), 1fr);
   gap: clamp(1rem, 2vw, 1.6rem);
   align-items: center;
   padding: clamp(1.5rem, 3vw, 2.4rem) clamp(1rem, 2.6vw, 1.8rem);
@@ -3718,8 +3719,9 @@ h3 {
   }
 
   .network-collab-map {
+    --network-column-min: 220px;
     min-height: clamp(440px, 56vw, 530px);
-    grid-template-columns: minmax(220px, 1fr) clamp(140px, 15vw, 180px) minmax(220px, 1fr);
+    grid-template-columns: minmax(var(--network-column-min), 1fr) clamp(140px, 15vw, 180px) minmax(var(--network-column-min), 1fr);
   }
 }
 
