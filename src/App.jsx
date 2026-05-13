@@ -1793,6 +1793,7 @@ function Home({ t }) {
         <WhoIsItForSection t={t} />
         <ClinicalAreaTransitionSection t={t} />
         <SupportAreasSection t={t} />
+        <ClinicalFamily />
       </div>
     </>
   )
