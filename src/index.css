@@ -3594,15 +3594,6 @@ h3 {
 }
 
 @media (min-width: 1025px) {
-  .network-collab-column--right {
-    transform: translateX(clamp(-9rem, -10vw, -7rem));
-  }
-
-  /* Pull cards closer to spine */
-  .network-collab-column--right .network-collab-node {
-    transform: translateX(-18px);
-  }
-
   /* Perfect orb positioning */
   .network-collab-core {
     margin-top: 0;
