@@ -113,6 +113,52 @@ const content = {
           },
         ],
       },
+      multidisciplinaryNetwork: {
+        eyebrow: 'Rete Multidisciplinare',
+        title: 'Supporto integrato attraverso una rete di specialisti',
+        intro:
+          'La pratica opera attraverso una rete collaborativa di specialisti, permettendo a ogni percorso terapeutico di essere sostenuto da un approccio integrato e multidisciplinare costruito sui bisogni individuali e familiari.',
+        centerLabel: 'Modello di Cura Integrata',
+        nodes: [
+          {
+            title: 'Child & Adolescent Psychotherapists',
+            description:
+              'Supporto integrato all’interno delle traiettorie evolutive e delle dinamiche familiari complesse.',
+          },
+          {
+            title: 'Neuropsychiatrists',
+            description:
+              'Coordinamento specialistico nei casi che richiedono integrazione neuropsichiatrica e clinica.',
+          },
+          {
+            title: 'Psychiatrists',
+            description:
+              'Integrazione psichiatrica e psicologica per continuità terapeutica nei percorsi più complessi.',
+          },
+          {
+            title: 'Family Law Attorneys',
+            description:
+              'Collaborazione legale nelle situazioni familiari ad alta complessità e nei passaggi decisionali delicati.',
+          },
+          {
+            title: 'Forensic Psychology Professionals',
+            description:
+              'Supporto interdisciplinare per valutazioni tecniche, contesti giudiziari e lavoro psicologico-forense.',
+          },
+        ],
+        cta: {
+          clinical: {
+            title: 'Clinical Psychology',
+            text: 'Esplora percorsi terapeutici, servizi di supporto emotivo, cura familiare e approcci di trattamento personalizzati.',
+            button: 'Explore Clinical Area',
+          },
+          forensic: {
+            title: 'Forensic Psychology',
+            text: 'Scopri servizi forensi, supporto in psicologia giuridica, expertise giudiziaria e il progetto PsyLex.',
+            button: 'Explore Forensic Area',
+          },
+        },
+      },
       therapeuticApproach: {
         eyebrow: 'Il processo terapeutico',
         title: 'Approccio terapeutico',
@@ -328,6 +374,52 @@ const content = {
               'The goal of the pathway is to foster emotional stability, awareness, and a sustainable psychological balance over time.',
           },
         ],
+      },
+      multidisciplinaryNetwork: {
+        eyebrow: 'Multidisciplinary Network',
+        title: 'Integrated support through a network of specialists',
+        intro:
+          'The practice operates through a collaborative network of specialists, allowing each therapeutic pathway to be supported through an integrated and multidisciplinary approach tailored to individual and family needs.',
+        centerLabel: 'Integrated Care Model',
+        nodes: [
+          {
+            title: 'Child & Adolescent Psychotherapists',
+            description:
+              'Integrated support for developmental pathways and complex family dynamics.',
+          },
+          {
+            title: 'Neuropsychiatrists',
+            description:
+              'Specialist collaboration in cases requiring neuropsychiatric and clinical integration.',
+          },
+          {
+            title: 'Psychiatrists',
+            description:
+              'Integrated psychiatric and psychological support for continuity in complex care pathways.',
+          },
+          {
+            title: 'Family Law Attorneys',
+            description:
+              'Legal collaboration within complex family dynamics and high-stakes decision-making contexts.',
+          },
+          {
+            title: 'Forensic Psychology Professionals',
+            description:
+              'Interdisciplinary support for technical assessments, court-related contexts, and forensic pathways.',
+          },
+        ],
+        cta: {
+          clinical: {
+            title: 'Clinical Psychology',
+            text: 'Explore therapeutic pathways, emotional support services, family care, and individualized treatment approaches.',
+            button: 'Explore Clinical Area',
+          },
+          forensic: {
+            title: 'Forensic Psychology',
+            text: 'Discover forensic services, legal psychology support, court-related expertise, and the PsyLex project.',
+            button: 'Explore Forensic Area',
+          },
+        },
       },
       therapeuticApproach: {
         eyebrow: 'About the process',
@@ -1194,6 +1286,96 @@ function IntegratedCareProcessSection({ t }) {
   )
 }
 
+function MultidisciplinaryNetworkSection({ t }) {
+  const reduceMotion = useReducedMotion()
+  const network = t.home.multidisciplinaryNetwork
+
+  return (
+    <section className="network-collab-section">
+      <div className="network-collab-inner">
+        <motion.header
+          className="network-collab-header"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className="network-collab-eyebrow">{network.eyebrow}</span>
+          <h2 className="network-collab-title">{network.title}</h2>
+        </motion.header>
+
+        <div className="network-collab-grid">
+          <motion.p
+            className="network-collab-intro"
+            initial={{ opacity: 0, x: -18 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {network.intro}
+          </motion.p>
+
+          <motion.div
+            className="network-collab-map"
+            initial={{ opacity: 0, x: 18 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.82, ease: [0.22, 1, 0.36, 1], delay: 0.06 }}
+          >
+            <motion.div
+              className="network-collab-core"
+              animate={reduceMotion ? {} : { scale: [1, 1.04, 1] }}
+              transition={{ duration: 4.3, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              {network.centerLabel}
+            </motion.div>
+
+            {network.nodes.map((node, i) => (
+              <motion.div
+                key={node.title}
+                className={`network-collab-node-wrap network-collab-node-wrap--${i + 1}`}
+                initial={{ opacity: 0, scale: 0.92 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.58, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <motion.button
+                  type="button"
+                  className="network-collab-node"
+                  aria-label={node.title}
+                  animate={reduceMotion ? {} : { y: [0, -4, 0] }}
+                  transition={{ duration: 5 + i * 0.35, repeat: Infinity, ease: 'easeInOut' }}
+                >
+                  <h3 className="network-collab-node-title">{node.title}</h3>
+                  <p className="network-collab-node-desc">{node.description}</p>
+                </motion.button>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+
+        <div className="network-collab-cta-row">
+          <Link to="/clinical" className="network-collab-cta network-collab-cta--clinical">
+            <h3 className="network-collab-cta-title">{network.cta.clinical.title}</h3>
+            <p className="network-collab-cta-text">{network.cta.clinical.text}</p>
+            <span className="network-collab-cta-link">
+              {network.cta.clinical.button} <ArrowRight size={16} aria-hidden="true" />
+            </span>
+          </Link>
+
+          <Link to="/forensic" className="network-collab-cta network-collab-cta--forensic">
+            <h3 className="network-collab-cta-title">{network.cta.forensic.title}</h3>
+            <p className="network-collab-cta-text">{network.cta.forensic.text}</p>
+            <span className="network-collab-cta-link">
+              {network.cta.forensic.button} <ArrowRight size={16} aria-hidden="true" />
+            </span>
+          </Link>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function TherapeuticApproachSection({ t }) {
   const reduceMotion = useReducedMotion()
   const ta = t.home.therapeuticApproach
@@ -1794,6 +1976,7 @@ function Home({ t }) {
         <ClinicalAreaTransitionSection t={t} />
         <SupportAreasSection t={t} />
         <ClinicalFamily />
+        <MultidisciplinaryNetworkSection t={t} />
       </div>
     </>
   )
