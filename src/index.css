@@ -3435,7 +3435,7 @@ h3 {
 
 .network-collab-node-wrap--1 { --angle: 240deg; }
 .network-collab-node-wrap--2 { --angle: 300deg; }
-.network-collab-node-wrap--3 { --angle: 14deg; }
+.network-collab-node-wrap--3 { --angle: 0deg; }
 .network-collab-node-wrap--4 { --angle: 72deg; }
 .network-collab-node-wrap--5 { --angle: 146deg; }
 
@@ -3506,6 +3506,12 @@ h3 {
     radial-gradient(circle at 85% 0%, rgba(183, 244, 255, 0.12) 0%, transparent 46%);
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.32);
   transition: transform 0.32s ease, box-shadow 0.32s ease, border-color 0.32s ease;
+}
+
+.network-collab-cta--clinical {
+  background:
+    linear-gradient(150deg, rgba(17, 59, 72, 0.86), rgba(8, 31, 39, 0.95)),
+    radial-gradient(circle at 85% 0%, rgba(183, 244, 255, 0.12) 0%, transparent 46%);
 }
 
 .network-collab-cta--forensic {
