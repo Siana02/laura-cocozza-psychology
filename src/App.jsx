@@ -1912,6 +1912,7 @@ function ClinicalFamily() {
         <motion.header className="family-support-header" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.55 }}>
           <p className="family-support-eyebrow">Section 10</p>
           <h1 className="family-support-title">Couple &amp; Family Support</h1>
+          <IconDivider icon="diversity_1" />
           <p className="family-support-intro">
             A dedicated editorial section for couples, parents, and families seeking structured psychological support through conflict, transition,
             and relational change.
