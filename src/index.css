@@ -3064,6 +3064,9 @@ h3 {
   --cf-back-icon-offset: -34%;
   --cf-back-icon-blur-tilt: -8deg;
   --cf-back-icon-main-tilt: -7deg;
+  --cf-back-field-glow-size: clamp(360px, 55vw, 650px);
+  --cf-back-icon-blur-size: clamp(380px, 56vw, 680px);
+  --cf-back-icon-main-size: clamp(300px, 42vw, 500px);
   transform: rotateY(180deg);
   justify-content: center;
   align-items: flex-start;
@@ -3086,8 +3089,8 @@ h3 {
   content: '';
   position: absolute;
   inset: -24% -28% auto auto;
-  width: clamp(360px, 55vw, 650px);
-  height: clamp(360px, 55vw, 650px);
+  width: var(--cf-back-field-glow-size);
+  height: var(--cf-back-field-glow-size);
   border-radius: 50%;
   background: radial-gradient(circle at center, rgba(183, 244, 255, 0.16), rgba(183, 244, 255, 0.06) 38%, transparent 72%);
   filter: blur(32px);
@@ -3111,8 +3114,8 @@ h3 {
 
 .couple-family-back-icon-blur {
   position: absolute;
-  width: clamp(380px, 56vw, 680px);
-  height: clamp(380px, 56vw, 680px);
+  width: var(--cf-back-icon-blur-size);
+  height: var(--cf-back-icon-blur-size);
   top: var(--cf-back-icon-offset);
   right: var(--cf-back-icon-offset);
   object-fit: contain;
@@ -3130,8 +3133,8 @@ h3 {
 
 .couple-family-back-icon-main {
   position: absolute;
-  width: clamp(300px, 42vw, 500px);
-  height: clamp(300px, 42vw, 500px);
+  width: var(--cf-back-icon-main-size);
+  height: var(--cf-back-icon-main-size);
   top: -22%;
   right: -20%;
   object-fit: contain;
