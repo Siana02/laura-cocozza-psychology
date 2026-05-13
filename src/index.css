@@ -3071,6 +3071,7 @@ h3 {
   --cf-back-field-glow-size: clamp(360px, 55vw, 650px);
   --cf-back-icon-blur-size: clamp(380px, 56vw, 680px);
   --cf-back-icon-main-size: clamp(300px, 42vw, 500px);
+  --cf-highlight-index-default: 0;
   transform: rotateY(180deg);
   justify-content: center;
   align-items: flex-start;
@@ -3187,7 +3188,7 @@ h3 {
   opacity: 0;
   transform: translateY(14px);
   transition: opacity 0.52s ease, transform 0.66s ease;
-  transition-delay: calc(0.34s + (var(--highlight-index, 0) * 0.11s));
+  transition-delay: calc(0.34s + (var(--highlight-index, var(--cf-highlight-index-default)) * 0.11s));
 }
 
 .couple-family-back-point-marker {
@@ -3207,7 +3208,7 @@ h3 {
   transform-origin: left center;
   transform: scaleX(0.75);
   transition: transform 0.62s ease;
-  transition-delay: calc(0.34s + (var(--highlight-index, 0) * 0.11s));
+  transition-delay: calc(0.34s + (var(--highlight-index, var(--cf-highlight-index-default)) * 0.11s));
 }
 
 .couple-family-back-point-text {
