@@ -458,9 +458,9 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 },
 }
 
-function IconDivider({ icon }) {
+function IconDivider({ icon, className = '' }) {
   return (
-    <div className="icon-divider" aria-hidden="true">
+    <div className={`icon-divider ${className}`} aria-hidden="true">
       <span className="icon-divider__line icon-divider__line--left" />
       <span className="icon-divider__icon">
         <span className="icon-divider__material material-symbols-rounded">{icon}</span>
@@ -1793,6 +1793,7 @@ function Home({ t }) {
         <WhoIsItForSection t={t} />
         <ClinicalAreaTransitionSection t={t} />
         <SupportAreasSection t={t} />
+        <ClinicalFamily />
       </div>
     </>
   )
@@ -1854,16 +1855,104 @@ function ClinicalIndividual() {
 }
 
 function ClinicalFamily() {
+  const panels = [
+    {
+      icon: '/relationship.png',
+      title: 'Couple Pathways',
+      intro: 'Support spaces designed to improve communication, navigate conflict, and rebuild emotional understanding.',
+      highlights: [
+        'Communication difficulties',
+        'Emotional reconnection',
+        'Conflict navigation',
+        'Relationship transitions',
+        'Restoring relational balance',
+      ],
+    },
+    {
+      icon: '/separated.png',
+      title: 'Support During Separation',
+      intro: 'Psychological guidance through emotionally complex moments of separation and family transition.',
+      highlights: [
+        'Emotional stabilization',
+        'Separation support',
+        'Parenting transition guidance',
+        'Family restructuring',
+        'Psychological support through change',
+      ],
+    },
+    {
+      icon: '/parental-guidance.png',
+      title: 'Parenting Support',
+      intro: 'Dedicated support pathways for parents navigating educational, emotional, and relational challenges.',
+      highlights: [
+        'Parenting guidance',
+        'Educational challenges',
+        'Emotional family dynamics',
+        'Parent-child communication',
+        'Relational support pathways',
+      ],
+    },
+    {
+      icon: '/family-consultation.png',
+      title: 'Family Consultations',
+      intro: 'Support interventions for complex family situations, conflict resolution, and relational balance.',
+      highlights: [
+        'Complex family situations',
+        'Conflict mediation support',
+        'Emotional regulation',
+        'Family relational assessment',
+        'Integrated multidisciplinary guidance',
+      ],
+    },
+  ]
+
   return (
-    <Section
-      title="Couple & Family Support"
-      items={[
-        { icon: Users, title: 'Couple Counseling', text: 'Conflict de-escalation and relational restructuring.' },
-        { icon: HeartHandshake, title: 'Separation Support', text: 'Emotion-focused guidance in transitions.' },
-        { icon: BookOpen, title: 'Parenting Support', text: 'Practical strategies to strengthen parenting alliances.' },
-        { icon: Sparkles, title: 'Family Consultations', text: 'Systemic perspective and shared goals.' },
-      ]}
-    />
+    <section className="family-support-section">
+      <div className="family-support-shell">
+        <motion.header className="family-support-header" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.55 }}>
+          <p className="family-support-eyebrow">Section 10</p>
+          <h1 className="family-support-title">Couple & Family Support</h1>
+          <IconDivider icon="diversity_1" className="family-support-divider" />
+          <p className="family-support-intro">
+            A dedicated editorial section for couples, parents, and families seeking structured psychological support through conflict, transition,
+            and relational change.
+          </p>
+        </motion.header>
+
+        <div className="family-support-grid">
+          {panels.map((panel, index) => (
+            <motion.article
+              key={panel.title}
+              className="family-support-card"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.55, delay: index * 0.08 }}
+              tabIndex={0}
+            >
+              <div className="family-support-card-inner">
+                <div className="family-support-face family-support-face--front">
+                  <img src={panel.icon} alt="" aria-hidden="true" className="family-support-front-icon" />
+                  <h2>{panel.title}</h2>
+                  <p>{panel.intro}</p>
+                  <span className="family-support-cta">Discover the support pathway</span>
+                </div>
+
+                <div className="family-support-face family-support-face--back">
+                  <img src={panel.icon} alt="" aria-hidden="true" className="family-support-back-icon" />
+                  <ul className="family-support-highlights">
+                    {panel.highlights.map((highlight) => (
+                      <li key={highlight}>{highlight}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </section>
   )
 }
 
