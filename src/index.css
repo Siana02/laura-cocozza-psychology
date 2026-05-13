@@ -4993,12 +4993,11 @@ a.site-footer-contact-item:hover {
   html,
   body,
   #root,
-  #root > *,
   .app-content,
   .app-shell,
   .app-shell--home {
     width: 100%;
     max-width: 100%;
-    overflow-x: hidden !important;
+    overflow-x: hidden;
   }
 }
