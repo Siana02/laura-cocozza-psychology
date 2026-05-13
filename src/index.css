@@ -4988,3 +4988,16 @@ a.site-footer-contact-item:hover {
     text-align: left;
   }
 }
+
+@media (max-width: 768px) {
+  html,
+  body,
+  #root,
+  .app-content,
+  .app-shell,
+  .app-shell--home {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+}
