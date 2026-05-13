@@ -3324,12 +3324,14 @@ h3 {
 .network-collab-header {
   max-width: min(980px, 100%);
   margin-bottom: clamp(2.1rem, 4.4vh, 3.3rem);
+  margin-inline: auto;
+  text-align: center;
 }
 
 .network-collab-divider {
   display: flex;
   margin-top: 1.1rem;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .network-collab-eyebrow {
@@ -3358,6 +3360,10 @@ h3 {
   gap: clamp(1.5rem, 3vw, 3.3rem);
   align-items: center;
   margin-bottom: clamp(2.5rem, 5vh, 3.8rem);
+}
+
+.network-collab-grid > * {
+  min-width: 0;
 }
 
 .network-collab-intro {
@@ -3466,7 +3472,7 @@ h3 {
 
 .network-collab-node-wrap--right {
   justify-content: flex-start;
-  padding-left: var(--connector-space);
+  padding-left: clamp(1.6rem, 3vw, 2.6rem);
 }
 
 .network-collab-connector {
@@ -3528,6 +3534,10 @@ h3 {
   font: inherit;
   cursor: pointer;
   transition: transform 0.34s ease, box-shadow 0.34s ease, border-color 0.34s ease, background 0.34s ease, filter 0.34s ease;
+}
+
+.network-collab-column--right .network-collab-node {
+  width: min(100%, 280px);
 }
 
 .network-collab-node-wrap:is(:hover, :focus-within) .network-collab-node {
@@ -3767,10 +3777,6 @@ h3 {
     margin-inline: auto;
   }
 
-  .network-collab-divider {
-    justify-content: center;
-  }
-
   .network-collab-intro {
     max-width: none;
     text-align: center;
@@ -3778,6 +3784,14 @@ h3 {
 
   .network-collab-cta-row {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .network-collab-section,
+  .network-collab-inner,
+  .network-collab-map {
+    overflow-x: clip;
   }
 }
 
