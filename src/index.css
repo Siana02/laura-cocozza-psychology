@@ -42,11 +42,15 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 html {
   /* Redundant with body but required for iOS Safari overflow containment */
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 a {
@@ -1074,14 +1078,16 @@ a {
 
 .app-shell--home {
   width: 100%;
-  max-width: none;
+  max-width: 100%;
   margin: 0;
   padding: 0 0 2rem;
+  overflow-x: hidden;
   background: linear-gradient(180deg, var(--color-landing) 0%, color-mix(in srgb, var(--color-landing-soft) 82%, #000) 100%);
 }
 
 .app-shell--home > * {
   width: min(1200px, 100% - 2rem);
+  max-width: 100%;
   margin-inline: auto;
 }
 
@@ -1118,6 +1124,18 @@ a {
 .app-shell--home > .who-section {
   /* Full-bleed audience section. */
   width: 100%;
+}
+
+@media (max-width: 768px) {
+  .app-shell--home {
+    overflow-x: clip;
+  }
+
+  .app-shell--home > * {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+  }
 }
 
 .glass {
@@ -3573,6 +3591,29 @@ h3 {
   font-size: clamp(0.74rem, 0.82vw, 0.8rem);
   line-height: 1.55;
   color: rgba(214, 241, 246, 0.82);
+}
+
+@media (min-width: 1025px) {
+  .network-collab-column--right {
+    transform: translateX(clamp(-9rem, -10vw, -7rem));
+  }
+
+  /* Pull cards closer to spine */
+  .network-collab-column--right .network-collab-node {
+    transform: translateX(-18px);
+  }
+
+  /* Perfect orb positioning */
+  .network-collab-core {
+    margin-top: 0;
+    align-self: start;
+    justify-self: center;
+  }
+
+  /* Start spine BELOW orb */
+  .network-collab-spine {
+    top: calc(clamp(152px, 17vw, 198px) + 2.2rem);
+  }
 }
 
 @keyframes network-spine-breathe {
