@@ -3061,7 +3061,7 @@ h3 {
 }
 
 .couple-family-face--back {
-  --cf-back-icon-overflow: -34%;
+  --cf-back-icon-offset: -34%;
   --cf-back-icon-blur-tilt: -8deg;
   --cf-back-icon-main-tilt: -7deg;
   transform: rotateY(180deg);
@@ -3113,8 +3113,8 @@ h3 {
   position: absolute;
   width: clamp(380px, 56vw, 680px);
   height: clamp(380px, 56vw, 680px);
-  top: var(--cf-back-icon-overflow);
-  right: var(--cf-back-icon-overflow);
+  top: var(--cf-back-icon-offset);
+  right: var(--cf-back-icon-offset);
   object-fit: contain;
   opacity: 0;
   filter:
@@ -3211,8 +3211,7 @@ h3 {
   color: rgba(247, 243, 238, 0.82);
 }
 
-.couple-family-flip-card:hover .couple-family-back-icon-blur,
-.couple-family-flip-card:hover .couple-family-back-icon-main {
+.couple-family-flip-card:hover .couple-family-back-icon-blur {
   opacity: 0.16;
   transform: scale(1) rotate(var(--cf-back-icon-blur-tilt));
 }
@@ -3266,7 +3265,7 @@ h3 {
   }
 
   .couple-family-back-points {
-    width: min(80%, 360px);
+    width: min(86%, 380px);
   }
 }
 
