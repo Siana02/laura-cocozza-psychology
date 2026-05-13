@@ -1365,7 +1365,6 @@ function TherapeuticApproachSection({ t }) {
           </motion.h2>
 
           <motion.div
-            className="therapeutic-approach-divider"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}

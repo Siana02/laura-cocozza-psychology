@@ -883,7 +883,6 @@ a {
   color: rgba(247, 243, 238, 0.95);
   background: rgba(247, 243, 238, 0.12);
   box-shadow: 0 0 14px rgba(247, 243, 238, 0.4);
-  animation: divider-icon-pulse 2.8s ease-in-out infinite;
 }
 
 .icon-divider__icon svg {
@@ -941,6 +940,12 @@ a {
     box-shadow:
       0 0 18px rgba(247, 243, 238, 0.45),
       0 0 34px rgba(174, 246, 255, 0.36);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .icon-divider__icon {
+    animation: divider-icon-pulse 2.8s ease-in-out infinite;
   }
 }
 
@@ -2840,11 +2845,11 @@ h3 {
     font-size: clamp(1.32rem, 5.5vw, 1.75rem);
   }
 
-.support-story-panel--anxiety,
-.support-story-panel--mood,
-.support-story-panel--ocd,
-.support-story-panel--regulation,
-.support-story-panel--relational {
+  .support-story-panel--anxiety,
+  .support-story-panel--mood,
+  .support-story-panel--ocd,
+  .support-story-panel--regulation,
+  .support-story-panel--relational {
     clip-path: none;
   }
 }
@@ -3128,6 +3133,14 @@ h3 {
 
   .couple-family-flip-card:hover .couple-family-flip-inner {
     transform: none;
+    filter: none;
+  }
+
+  .couple-family-flip-card:hover::before {
+    border-color: rgba(183, 244, 255, 0.16);
+    box-shadow:
+      0 0 0 1px rgba(183, 244, 255, 0.05),
+      0 24px 56px rgba(0, 0, 0, 0.45);
   }
 }
 
