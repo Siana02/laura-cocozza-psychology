@@ -3610,9 +3610,9 @@ h3 {
     justify-self: center;
   }
 
-  /* Start spine BELOW orb */
+  /* Start spine BELOW orb: container padding-top + orb height + 0.5rem gap */
   .network-collab-spine {
-    top: calc(clamp(152px, 17vw, 198px) + 2.2rem);
+    top: calc(clamp(1.5rem, 3vw, 2.4rem) + clamp(152px, 17vw, 198px) + 0.5rem);
   }
 }
 
