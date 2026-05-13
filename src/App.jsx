@@ -118,7 +118,7 @@ const content = {
         title: 'Supporto integrato attraverso una rete di specialisti',
         intro:
           'La pratica opera attraverso una rete collaborativa di specialisti, permettendo a ogni percorso terapeutico di essere sostenuto da un approccio integrato e multidisciplinare costruito sui bisogni individuali e familiari.',
-        centerLabel: 'Integrated Care Model',
+        centerLabel: 'Modello di Cura Integrata',
         nodes: [
           {
             title: 'Child & Adolescent Psychotherapists',
@@ -1324,7 +1324,7 @@ function MultidisciplinaryNetworkSection({ t }) {
           >
             <motion.div
               className="network-collab-core"
-              animate={reduceMotion ? {} : { scale: [1, 1.04, 1], opacity: [0.9, 1, 0.9] }}
+              animate={reduceMotion ? {} : { scale: [1, 1.04, 1], opacity: [0.95, 1, 0.95] }}
               transition={{ duration: 4.3, repeat: Infinity, ease: 'easeInOut' }}
             >
               {network.centerLabel}
