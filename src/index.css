@@ -3281,6 +3281,7 @@ h3 {
   }
 }
 .family-support-section {
+  --family-support-card-perspective: 1600px;
   width: 100vw;
   margin-left: calc(50% - 50vw);
   position: relative;
@@ -3371,7 +3372,7 @@ h3 {
 .family-support-card {
   position: relative;
   min-height: clamp(370px, 34vw, 460px);
-  perspective: 1600px;
+  perspective: var(--family-support-card-perspective);
   outline: none;
 }
 
