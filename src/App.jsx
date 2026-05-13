@@ -1289,6 +1289,8 @@ function IntegratedCareProcessSection({ t }) {
 function MultidisciplinaryNetworkSection({ t }) {
   const reduceMotion = useReducedMotion()
   const network = t.home.multidisciplinaryNetwork
+  const leftNodes = [network.nodes[0], network.nodes[2], network.nodes[4]].filter(Boolean)
+  const rightNodes = [network.nodes[1], network.nodes[3]].filter(Boolean)
 
   return (
     <section className="network-collab-section">
@@ -1302,6 +1304,7 @@ function MultidisciplinaryNetworkSection({ t }) {
         >
           <span className="network-collab-eyebrow">{network.eyebrow}</span>
           <h2 className="network-collab-title">{network.title}</h2>
+          <IconDivider icon="hub" className="network-collab-divider" />
         </motion.header>
 
         <div className="network-collab-grid">
@@ -1322,6 +1325,8 @@ function MultidisciplinaryNetworkSection({ t }) {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.82, ease: [0.22, 1, 0.36, 1], delay: 0.06 }}
           >
+            <div className="network-collab-spine" aria-hidden="true" />
+
             <motion.div
               className="network-collab-core"
               animate={reduceMotion ? {} : { scale: [1, 1.04, 1] }}
@@ -1330,46 +1335,76 @@ function MultidisciplinaryNetworkSection({ t }) {
               {network.centerLabel}
             </motion.div>
 
-            {network.nodes.map((node, i) => (
-              <motion.div
-                key={node.title}
-                className={`network-collab-node-wrap network-collab-node-wrap--${i + 1}`}
-                initial={{ opacity: 0, scale: 0.92 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.58, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <motion.button
-                  type="button"
-                  className="network-collab-node"
-                  aria-label={node.title}
-                  animate={reduceMotion ? {} : { y: [0, -4, 0] }}
-                  transition={{ duration: 5 + i * 0.35, repeat: Infinity, ease: 'easeInOut' }}
+            <div className="network-collab-column network-collab-column--left">
+              {leftNodes.map((node, i) => (
+                <motion.div
+                  key={node.title}
+                  className="network-collab-node-wrap network-collab-node-wrap--left"
+                  initial={{ opacity: 0, x: -18 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.56, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <h3 className="network-collab-node-title">{node.title}</h3>
-                  <p className="network-collab-node-desc">{node.description}</p>
-                </motion.button>
-              </motion.div>
-            ))}
+                  <span className="network-collab-connector" aria-hidden="true" />
+                  <motion.button
+                    type="button"
+                    className="network-collab-node"
+                    aria-label={node.title}
+                    animate={reduceMotion ? {} : { y: [0, -2, 0] }}
+                    transition={{ duration: 5.4 + i * 0.35, repeat: Infinity, ease: 'easeInOut' }}
+                  >
+                    <h3 className="network-collab-node-title">{node.title}</h3>
+                    <p className="network-collab-node-desc">{node.description}</p>
+                  </motion.button>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="network-collab-column network-collab-column--right">
+              {rightNodes.map((node, i) => (
+                <motion.div
+                  key={node.title}
+                  className="network-collab-node-wrap network-collab-node-wrap--right"
+                  initial={{ opacity: 0, x: 18 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.56, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <span className="network-collab-connector" aria-hidden="true" />
+                  <motion.button
+                    type="button"
+                    className="network-collab-node"
+                    aria-label={node.title}
+                    animate={reduceMotion ? {} : { y: [0, -2, 0] }}
+                    transition={{ duration: 5.6 + i * 0.35, repeat: Infinity, ease: 'easeInOut' }}
+                  >
+                    <h3 className="network-collab-node-title">{node.title}</h3>
+                    <p className="network-collab-node-desc">{node.description}</p>
+                  </motion.button>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </div>
 
         <div className="network-collab-cta-row">
-          <Link to="/clinical" className="network-collab-cta network-collab-cta--clinical">
+          <div className="network-collab-cta network-collab-cta--clinical">
             <h3 className="network-collab-cta-title">{network.cta.clinical.title}</h3>
             <p className="network-collab-cta-text">{network.cta.clinical.text}</p>
-            <span className="network-collab-cta-link">
-              {network.cta.clinical.button} <ArrowRight size={16} aria-hidden="true" />
-            </span>
-          </Link>
+            <Link to="/clinical" className="network-collab-cta-button">
+              <span>{network.cta.clinical.button}</span>
+              <ArrowRight size={16} aria-hidden="true" />
+            </Link>
+          </div>
 
-          <Link to="/forensic" className="network-collab-cta network-collab-cta--forensic">
+          <div className="network-collab-cta network-collab-cta--forensic">
             <h3 className="network-collab-cta-title">{network.cta.forensic.title}</h3>
             <p className="network-collab-cta-text">{network.cta.forensic.text}</p>
-            <span className="network-collab-cta-link">
-              {network.cta.forensic.button} <ArrowRight size={16} aria-hidden="true" />
-            </span>
-          </Link>
+            <Link to="/forensic" className="network-collab-cta-button">
+              <span>{network.cta.forensic.button}</span>
+              <ArrowRight size={16} aria-hidden="true" />
+            </Link>
+          </div>
         </div>
       </div>
     </section>
