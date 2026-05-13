@@ -42,11 +42,15 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 html {
   /* Redundant with body but required for iOS Safari overflow containment */
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 a {
@@ -1074,14 +1078,16 @@ a {
 
 .app-shell--home {
   width: 100%;
-  max-width: none;
+  max-width: 100%;
   margin: 0;
   padding: 0 0 2rem;
+  overflow-x: hidden;
   background: linear-gradient(180deg, var(--color-landing) 0%, color-mix(in srgb, var(--color-landing-soft) 82%, #000) 100%);
 }
 
 .app-shell--home > * {
   width: min(1200px, 100% - 2rem);
+  max-width: 100%;
   margin-inline: auto;
 }
 
@@ -1118,6 +1124,18 @@ a {
 .app-shell--home > .who-section {
   /* Full-bleed audience section. */
   width: 100%;
+}
+
+@media (max-width: 768px) {
+  .app-shell--home {
+    overflow-x: clip;
+  }
+
+  .app-shell--home > * {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+  }
 }
 
 .glass {
