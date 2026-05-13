@@ -458,9 +458,9 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 },
 }
 
-function IconDivider({ icon }) {
+function IconDivider({ icon, className = '' }) {
   return (
-    <div className="icon-divider" aria-hidden="true">
+    <div className={`icon-divider ${className}`.trim()} aria-hidden="true">
       <span className="icon-divider__line icon-divider__line--left" />
       <span className="icon-divider__icon">
         <span className="icon-divider__material material-symbols-rounded">{icon}</span>
@@ -1912,7 +1912,7 @@ function ClinicalFamily() {
         <motion.header className="family-support-header" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.55 }}>
           <p className="family-support-eyebrow">Section 10</p>
           <h1 className="family-support-title">Couple &amp; Family Support</h1>
-          <IconDivider icon="diversity_1" />
+          <IconDivider icon="diversity_1" className="family-support-divider" />
           <p className="family-support-intro">
             A dedicated editorial section for couples, parents, and families seeking structured psychological support through conflict, transition,
             and relational change.
