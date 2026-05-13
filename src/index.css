@@ -31,7 +31,9 @@
   );
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -41,14 +43,15 @@ body {
   background: radial-gradient(circle at 85% 10%, rgba(15, 76, 92, 0.08), transparent 28%), var(--color-ivory);
   font-family: 'Inter', system-ui, sans-serif;
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
   width: 100%;
   max-width: 100%;
+  position: relative;
 }
 
 html {
   /* Redundant with body but required for iOS Safari overflow containment */
-  overflow-x: hidden;
+  overflow-x: clip;
   width: 100%;
   max-width: 100%;
 }
@@ -3395,6 +3398,7 @@ h3 {
 
 .network-collab-map {
   --network-column-min: 245px;
+  --spine-center: 50%;
   position: relative;
   min-height: clamp(470px, 49vw, 590px);
   border-radius: clamp(1.2rem, 2vw, 1.8rem);
@@ -3414,7 +3418,7 @@ h3 {
   position: absolute;
   top: calc(clamp(1.5rem, 3vw, 2.4rem) + clamp(152px, 17vw, 198px) + 0.75rem);
   bottom: clamp(1.2rem, 2.8vw, 2rem);
-  left: 50%;
+  left: var(--spine-center);
   width: 2px;
   transform: translateX(-50%);
   background: linear-gradient(180deg, rgba(183, 244, 255, 0.14) 0%, rgba(183, 244, 255, 0.66) 48%, rgba(183, 244, 255, 0.14) 100%);
@@ -3596,23 +3600,31 @@ h3 {
 @media (min-width: 1025px) {
   .network-collab-column--right {
     transform: translateX(clamp(-9rem, -10vw, -7rem));
+    margin-left: -2.2rem;
+  }
+
+  .network-collab-column--left {
+    margin-right: -0.4rem;
   }
 
   /* Pull cards closer to spine */
   .network-collab-column--right .network-collab-node {
-    transform: translateX(-18px);
+    transform: translateX(-24px);
   }
 
   /* Perfect orb positioning */
   .network-collab-core {
+    position: absolute;
+    top: clamp(1.5rem, 3vw, 2.4rem);
+    left: var(--spine-center);
+    transform: translateX(-50%);
     margin-top: 0;
     align-self: start;
-    justify-self: center;
   }
 
   /* Start spine BELOW orb */
   .network-collab-spine {
-    top: calc(clamp(152px, 17vw, 198px) + 2.2rem);
+    top: calc(clamp(1.5rem, 3vw, 2.4rem) + clamp(152px, 17vw, 198px) + 0.75rem);
   }
 }
 
@@ -3836,8 +3848,7 @@ h3 {
 }
 
 .family-support-section {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
+  width: 100%;
   position: relative;
   overflow: hidden;
   padding: clamp(5.5rem, 10vh, 8rem) 0 clamp(6rem, 12vh, 9rem);
@@ -3847,12 +3858,21 @@ h3 {
     linear-gradient(180deg, #08161d 0%, #0b2028 50%, #08141b 100%);
 }
 
+.family-support-section,
+.network-collab-section,
+.therapeutic-approach-section,
+.editorial-quote-section,
+.who-section {
+  isolation: isolate;
+}
+
 .family-support-section::before,
 .family-support-section::after {
   content: '';
   position: absolute;
   inset: auto;
   pointer-events: none;
+  max-width: 100%;
 }
 
 .family-support-section::before {
@@ -4986,5 +5006,19 @@ a.site-footer-contact-item:hover {
 
   .site-footer-contact {
     text-align: left;
+  }
+}
+
+@media (max-width: 768px) {
+  html,
+  body,
+  #root {
+    overflow-x: clip;
+    max-width: 100%;
+  }
+
+  section,
+  div {
+    max-width: 100%;
   }
 }
