@@ -3577,11 +3577,7 @@ h3 {
 
 @media (min-width: 1025px) {
   .network-collab-column--right {
-    margin-left: clamp(-9rem, -10vw, -7rem);
-  }
-
-  .network-collab-node-wrap--right {
-    --connector-space: clamp(2rem, 3vw, 2.8rem);
+    transform: translateX(clamp(-9rem, -10vw, -7rem));
   }
 
   .network-collab-spine {
