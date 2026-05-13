@@ -1289,8 +1289,8 @@ function IntegratedCareProcessSection({ t }) {
 function MultidisciplinaryNetworkSection({ t }) {
   const reduceMotion = useReducedMotion()
   const network = t.home.multidisciplinaryNetwork
-  const leftNodes = [network.nodes[0], network.nodes[2], network.nodes[4]].filter(Boolean)
-  const rightNodes = [network.nodes[1], network.nodes[3]].filter(Boolean)
+  const leftNodes = network.nodes.filter((_, i) => i === 0 || i === 2 || i === 4)
+  const rightNodes = network.nodes.filter((_, i) => i === 1 || i === 3)
 
   return (
     <section className="network-collab-section">
