@@ -84,34 +84,50 @@ const content = {
           'Uno spazio clinico orientato all\'ascolto, alla comprensione e alla costruzione di un equilibrio psicologico sostenibile nel tempo.',
       },
       integratedCareProcess: {
-        eyebrow: 'Come Funziona',
-        title: 'Il Percorso di Cura',
-        steps: [
+        eyebrow: 'Collaborative Care',
+        title: 'Supporto integrato attraverso una rete di specialisti',
+        intro:
+          'La pratica opera attraverso una rete collaborativa di specialisti, permettendo a ogni percorso terapeutico di essere sostenuto da un approccio integrato e multidisciplinare costruito sui bisogni individuali e familiari.',
+        centerLabel: 'Integrated Care Model',
+        nodes: [
           {
-            number: '01',
-            title: 'Comprensione della situazione',
+            title: 'Child & Adolescent Psychotherapists',
             description:
-              'Ogni percorso inizia da un\'attenta comprensione della storia personale, delle difficoltà emotive e delle esigenze specifiche della persona.',
+              'Supporto integrato per sviluppo emotivo, transizioni evolutive e dinamiche familiari complesse.',
           },
           {
-            number: '02',
-            title: 'Costruzione del percorso',
+            title: 'Neuropsychiatrists',
             description:
-              'L\'intervento terapeutico viene strutturato in modo personalizzato, integrando strumenti clinici e strategie orientate agli obiettivi individuali.',
+              'Coordinamento specialistico nei casi con elementi neuroevolutivi e bisogni clinici complessi.',
           },
           {
-            number: '03',
-            title: 'Collaborazione multidisciplinare',
+            title: 'Psychiatrists',
             description:
-              'Quando necessario, la pratica collabora con professionisti specializzati in ambito psichiatrico, neuropsichiatrico e legale per offrire un supporto integrato.',
+              'Collaborazione psichiatrica e psicologica per percorsi clinici strutturati e continuità terapeutica.',
           },
           {
-            number: '04',
-            title: 'Supporto continuativo',
+            title: 'Family Law Attorneys',
             description:
-              'L\'obiettivo del percorso è favorire stabilità emotiva, consapevolezza e un equilibrio psicologico sostenibile nel tempo.',
+              'Sinergia legale nelle situazioni familiari ad alta complessità e nelle decisioni di tutela.',
+          },
+          {
+            title: 'Forensic Psychology Professionals',
+            description:
+              'Integrazione specialistica per valutazioni tecniche, contesti giudiziari e supporto psicologico-forense.',
           },
         ],
+        cta: {
+          clinical: {
+            title: 'Clinical Psychology',
+            text: 'Esplora percorsi terapeutici, servizi di supporto emotivo, cura familiare e approcci di trattamento personalizzati.',
+            button: 'Explore Clinical Area',
+          },
+          forensic: {
+            title: 'Forensic Psychology',
+            text: 'Scopri servizi forensi, supporto in psicologia giuridica, attività connesse ai procedimenti e il progetto PsyLex.',
+            button: 'Explore Forensic Area',
+          },
+        },
       },
       therapeuticApproach: {
         eyebrow: 'Il processo terapeutico',
@@ -300,34 +316,50 @@ const content = {
           'A clinical space oriented toward listening, understanding, and building a sustainable psychological balance over time.',
       },
       integratedCareProcess: {
-        eyebrow: 'How It Works',
-        title: 'The Care Process',
-        steps: [
+        eyebrow: 'Multidisciplinary Network',
+        title: 'Integrated support through a network of specialists',
+        intro:
+          'The practice operates through a collaborative network of specialists, allowing each therapeutic pathway to be supported through an integrated and multidisciplinary approach tailored to individual and family needs.',
+        centerLabel: 'Integrated Care Model',
+        nodes: [
           {
-            number: '01',
-            title: 'Understanding the situation',
+            title: 'Child & Adolescent Psychotherapists',
             description:
-              "Every pathway begins with careful understanding of the person's personal history, emotional difficulties, and specific needs.",
+              'Integrated support for emotional development, life-stage transitions, and complex family dynamics.',
           },
           {
-            number: '02',
-            title: 'Building the pathway',
+            title: 'Neuropsychiatrists',
             description:
-              'The therapeutic intervention is structured in a personalised way, integrating clinical tools and strategies oriented toward individual goals.',
+              'Specialist coordination in pathways involving neurodevelopmental features and complex clinical needs.',
           },
           {
-            number: '03',
-            title: 'Multidisciplinary collaboration',
+            title: 'Psychiatrists',
             description:
-              'When needed, the practice collaborates with specialists in psychiatry, neuropsychiatry, and law to offer integrated support.',
+              'Integrated psychiatric and psychological collaboration for structured and continuous care.',
           },
           {
-            number: '04',
-            title: 'Ongoing support',
+            title: 'Family Law Attorneys',
             description:
-              'The goal of the pathway is to foster emotional stability, awareness, and a sustainable psychological balance over time.',
+              'Legal collaboration within complex family dynamics and safeguarding-oriented decisions.',
+          },
+          {
+            title: 'Forensic Psychology Professionals',
+            description:
+              'Specialist integration for technical evaluations, court-related contexts, and forensic-psychology support.',
           },
         ],
+        cta: {
+          clinical: {
+            title: 'Clinical Psychology',
+            text: 'Explore therapeutic pathways, emotional support services, family care, and individualized treatment approaches.',
+            button: 'Explore Clinical Area',
+          },
+          forensic: {
+            title: 'Forensic Psychology',
+            text: 'Discover forensic services, legal psychology support, court-related expertise, and the PsyLex project.',
+            button: 'Explore Forensic Area',
+          },
+        },
       },
       therapeuticApproach: {
         eyebrow: 'About the process',
@@ -1143,7 +1175,6 @@ function IntegratedCareProcessSection({ t }) {
   return (
     <section className="care-process-section">
       <div className="care-process-inner">
-        {/* Section header */}
         <motion.div
           className="care-process-header"
           initial={{ opacity: 0, y: 22 }}
@@ -1155,40 +1186,78 @@ function IntegratedCareProcessSection({ t }) {
           <h2 className="care-process-title">{icp.title}</h2>
         </motion.div>
 
-        {/* Steps — horizontal on desktop, vertical on mobile */}
-        <div className="care-process-steps">
-          {icp.steps.map((step, i) => (
-            <motion.div
-              key={step.number}
-              className="care-process-step"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.78, ease: [0.22, 1, 0.36, 1], delay: i * 0.13 }}
-            >
-              {/* Glowing node */}
-              <div className="care-process-node-wrap" aria-hidden="true">
-                <motion.div
-                  className="care-process-node-pulse"
-                  animate={reduceMotion ? {} : { scale: [1, 1.55, 1], opacity: [0.35, 0, 0.35] }}
-                  transition={{ duration: 2.8 + i * 0.35, repeat: Infinity, ease: 'easeOut', delay: i * 0.55 }}
-                />
-                <div className="care-process-node">
-                  <span>{step.number}</span>
-                </div>
-              </div>
+        <div className="care-process-layout">
+          <motion.div
+            className="care-process-copy"
+            initial={{ opacity: 0, x: -18 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <p className="care-process-intro">{icp.intro}</p>
+          </motion.div>
 
-              {/* Step content */}
-              <div className="care-process-step-content">
-                <h3 className="care-process-step-title">{step.title}</h3>
-                <p className="care-process-step-desc">{step.description}</p>
-              </div>
+          <motion.div
+            className="care-network-map"
+            initial={{ opacity: 0, x: 18 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.82, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
+          >
+            <motion.div
+              className="care-network-core"
+              animate={reduceMotion ? {} : { scale: [1, 1.04, 1], opacity: [0.92, 1, 0.92] }}
+              transition={{ duration: 4.4, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              {icp.centerLabel}
             </motion.div>
-          ))}
+
+            {icp.nodes.map((node, i) => (
+              <motion.article
+                key={node.title}
+                className={`care-network-orbit care-network-orbit--${i + 1}`}
+                tabIndex={0}
+                initial={{ opacity: 0, scale: 0.92 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.14 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <motion.div
+                  className="care-network-node"
+                  animate={reduceMotion ? {} : { y: [0, -5, 0] }}
+                  transition={{ duration: 5 + i * 0.4, repeat: Infinity, ease: 'easeInOut' }}
+                >
+                  <h3 className="care-network-node-title">{node.title}</h3>
+                  <p className="care-network-node-desc">{node.description}</p>
+                </motion.div>
+              </motion.article>
+            ))}
+          </motion.div>
+        </div>
+
+        <div className="care-process-cta-row">
+          <Link to="/clinical" className="care-process-cta-panel">
+            <div className="care-process-cta-content">
+              <h3 className="care-process-cta-title">{icp.cta.clinical.title}</h3>
+              <p className="care-process-cta-text">{icp.cta.clinical.text}</p>
+              <span className="care-process-cta-button">
+                {icp.cta.clinical.button} <ArrowRight size={16} aria-hidden="true" />
+              </span>
+            </div>
+          </Link>
+
+          <Link to="/forensic" className="care-process-cta-panel care-process-cta-panel--forensic">
+            <div className="care-process-cta-content">
+              <h3 className="care-process-cta-title">{icp.cta.forensic.title}</h3>
+              <p className="care-process-cta-text">{icp.cta.forensic.text}</p>
+              <span className="care-process-cta-button">
+                {icp.cta.forensic.button} <ArrowRight size={16} aria-hidden="true" />
+              </span>
+            </div>
+          </Link>
         </div>
       </div>
 
-      {/* Gradient transition toward the therapeutic approach section */}
       <div className="care-process-transition" aria-hidden="true" />
     </section>
   )
