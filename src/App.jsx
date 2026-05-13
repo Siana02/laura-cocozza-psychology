@@ -1910,7 +1910,7 @@ function CoupleFamilySupportSection({ t }) {
               whileHover={reduceMotion ? {} : { y: -4, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } }}
             >
               <div className="couple-family-flip-inner">
-                <div className="couple-family-face couple-family-face--front">
+                <div className="couple-family-face couple-family-face--front front-face">
                   <div className="couple-family-front-icon-wrap" aria-hidden="true">
                     <img src={panel.icon} alt="" className="couple-family-front-icon" />
                   </div>
@@ -1919,7 +1919,7 @@ function CoupleFamilySupportSection({ t }) {
                   <span className="couple-family-front-cue">{panel.cue}</span>
                 </div>
 
-                <div className="couple-family-face couple-family-face--back">
+                <div className="couple-family-face couple-family-face--back back-face">
                   <div className="couple-family-back-icon-field" aria-hidden="true">
                     <img src={panel.icon} alt="" className="couple-family-back-icon-blur" />
                     <img src={panel.icon} alt="" className="couple-family-back-icon-main" />
