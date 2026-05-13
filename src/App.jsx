@@ -268,7 +268,7 @@ const content = {
           },
           {
             key: 'family-consultations',
-            icon: '/family (1).png',
+            icon: '/family-consultation.png',
             title: 'Consulenze Familiari',
             intro: 'Interventi di supporto per situazioni familiari complesse, gestione del conflitto ed equilibrio relazionale.',
             cue: '→ Esplora il processo',
@@ -552,7 +552,7 @@ const content = {
           },
           {
             key: 'family-consultations',
-            icon: '/family (1).png',
+            icon: '/family-consultation.png',
             title: 'Family Consultations',
             intro: 'Support interventions for complex family situations, conflict resolution, and relational balance.',
             cue: '→ Explore the process',

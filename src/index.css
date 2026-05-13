@@ -2753,6 +2753,11 @@ h3 {
 /* ── Reduced motion ──────────────────────────────────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {
+  .icon-divider__line,
+  .icon-divider__icon {
+    animation: none !important;
+  }
+
   .clinical-transition-orb,
   .support-atm-svg * {
     animation: none !important;
