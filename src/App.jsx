@@ -1940,7 +1940,7 @@ function CoupleFamilyBackSurface({ panel }) {
       <ul className="couple-family-back-points">
         {panel.points.map((point, pointIndex) => (
           <li
-            key={`${panel.key}-${pointIndex}`}
+            key={pointIndex}
             className="couple-family-back-point"
             style={{ '--highlight-index': pointIndex }}
           >
