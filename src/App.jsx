@@ -1324,7 +1324,7 @@ function MultidisciplinaryNetworkSection({ t }) {
           >
             <motion.div
               className="network-collab-core"
-              animate={reduceMotion ? {} : { scale: [1, 1.04, 1], opacity: [0.95, 1, 0.95] }}
+              animate={reduceMotion ? {} : { scale: [1, 1.04, 1] }}
               transition={{ duration: 4.3, repeat: Infinity, ease: 'easeInOut' }}
             >
               {network.centerLabel}
