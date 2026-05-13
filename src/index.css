@@ -3809,12 +3809,12 @@ h3 {
 }
 
 @media (max-width: 767px) {
-  .clinical-transition-section,
-  .support-areas-section,
-  .family-support-section {
+  body .clinical-transition-section,
+  body .support-areas-section,
+  body .family-support-section {
     width: 100vw;
     max-width: 100vw;
-    margin-left: 0 !important;
+    margin-left: 0;
   }
 }
 
