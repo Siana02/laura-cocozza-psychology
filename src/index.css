@@ -3409,6 +3409,10 @@ h3 {
 }
 
 .family-support-face--front {
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 1.6vw, 1.4rem);
+  text-align: center;
   border: 1px solid rgba(210, 234, 236, 0.18);
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.02)),
@@ -3417,8 +3421,25 @@ h3 {
 
 .family-support-face--front::before {
   background:
-    radial-gradient(circle at top right, rgba(183, 244, 255, 0.18), transparent 34%),
+    radial-gradient(circle at 50% 28%, rgba(183, 244, 255, 0.3) 0%, rgba(183, 244, 255, 0.12) 18%, transparent 42%),
+    radial-gradient(circle at 50% 30%, rgba(90, 184, 191, 0.18) 0%, transparent 30%),
     linear-gradient(140deg, transparent 0%, rgba(255, 255, 255, 0.03) 100%);
+}
+
+.family-support-face--front::after {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  width: clamp(180px, 24vw, 260px);
+  height: clamp(180px, 24vw, 260px);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(158, 237, 240, 0.2) 0%, rgba(158, 237, 240, 0.09) 30%, rgba(158, 237, 240, 0.02) 55%, transparent 72%);
+  filter: blur(24px);
+  opacity: 0.9;
+  pointer-events: none;
 }
 
 .family-support-face--front h2,
@@ -3430,16 +3451,21 @@ h3 {
 }
 
 .family-support-front-icon {
-  width: clamp(62px, 6vw, 76px);
-  height: clamp(62px, 6vw, 76px);
+  width: clamp(108px, 10vw, 138px);
+  height: clamp(108px, 10vw, 138px);
   object-fit: contain;
   position: relative;
   z-index: 1;
-  filter: brightness(1.08) drop-shadow(0 14px 22px rgba(183, 244, 255, 0.18));
+  filter:
+    brightness(1.1)
+    saturate(1.06)
+    drop-shadow(0 0 18px rgba(150, 233, 237, 0.34))
+    drop-shadow(0 0 42px rgba(84, 173, 181, 0.22))
+    drop-shadow(0 18px 28px rgba(183, 244, 255, 0.18));
 }
 
 .family-support-face--front h2 {
-  margin: 1.8rem 0 0;
+  margin: 0;
   font-family: 'Playfair Display', serif;
   font-size: clamp(1.6rem, 2.2vw, 2rem);
   line-height: 1.2;
@@ -3447,8 +3473,8 @@ h3 {
 }
 
 .family-support-face--front p {
-  margin: 1rem 0 0;
-  max-width: 30ch;
+  margin: 0;
+  max-width: 32ch;
   font-family: 'DM Sans', sans-serif;
   font-size: clamp(0.96rem, 1.1vw, 1rem);
   line-height: 1.85;
@@ -3458,20 +3484,43 @@ h3 {
 .family-support-cta {
   display: inline-flex;
   align-items: center;
-  margin-top: 2rem;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-top: 0.5rem;
+  padding: 0.9rem 1.4rem;
+  border: 1px solid rgba(183, 244, 255, 0.18);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(18, 42, 51, 0.9), rgba(10, 26, 33, 0.82));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 14px 32px rgba(0, 0, 0, 0.18);
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.84rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: rgba(183, 244, 255, 0.88);
+  transition:
+    background 300ms ease,
+    border-color 300ms ease,
+    box-shadow 300ms ease,
+    transform 300ms ease,
+    color 300ms ease;
+}
+
+.family-support-cta::after {
+  content: '→';
+  font-size: 1rem;
+  transition: transform 300ms ease;
 }
 
 .family-support-face--back {
   transform: rotateY(180deg);
-  justify-content: flex-end;
+  justify-content: center;
   border: 1px solid rgba(183, 244, 255, 0.14);
   background:
-    radial-gradient(circle at 20% 18%, rgba(183, 244, 255, 0.12), transparent 32%),
+    radial-gradient(circle at 22% 18%, rgba(183, 244, 255, 0.14), transparent 32%),
+    radial-gradient(circle at 72% 64%, rgba(110, 201, 210, 0.12), transparent 34%),
     linear-gradient(155deg, rgba(7, 19, 26, 0.98) 0%, rgba(10, 31, 41, 0.98) 100%);
 }
 
@@ -3483,14 +3532,18 @@ h3 {
 
 .family-support-back-icon {
   position: absolute;
-  top: 50%;
-  right: -6%;
-  width: clamp(190px, 48%, 290px);
-  height: clamp(190px, 48%, 290px);
+  top: 52%;
+  right: -12%;
+  width: clamp(250px, 62%, 360px);
+  height: clamp(250px, 62%, 360px);
   object-fit: contain;
-  transform: translateY(-50%);
-  opacity: 0.1;
-  filter: brightness(1.4) saturate(0.8);
+  transform: translateY(-50%) scale(1.08);
+  opacity: 0.14;
+  filter:
+    brightness(1.35)
+    saturate(0.82)
+    blur(1.6px)
+    drop-shadow(0 0 28px rgba(167, 239, 242, 0.16));
   pointer-events: none;
 }
 
@@ -3499,23 +3552,42 @@ h3 {
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 0.9rem;
+  align-self: center;
+  width: min(100%, 27rem);
+  gap: 1.05rem;
 }
 
 .family-support-highlights li {
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem;
+  gap: 0.9rem;
   font-family: 'DM Sans', sans-serif;
   font-size: clamp(0.96rem, 1.1vw, 1rem);
-  line-height: 1.65;
+  line-height: 1.72;
   color: rgba(247, 243, 238, 0.82);
 }
 
 .family-support-highlights li::before {
   content: '•';
   flex: 0 0 auto;
+  margin-top: 0.04rem;
   color: rgba(183, 244, 255, 0.88);
+}
+
+.family-support-card:is(:hover, :focus-visible) .family-support-cta {
+  color: rgba(221, 250, 255, 0.96);
+  border-color: rgba(183, 244, 255, 0.3);
+  background:
+    linear-gradient(180deg, rgba(24, 55, 66, 0.94), rgba(12, 31, 39, 0.88));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 18px 34px rgba(0, 0, 0, 0.24),
+    0 0 22px rgba(183, 244, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.family-support-card:is(:hover, :focus-visible) .family-support-cta::after {
+  transform: translateX(3px);
 }
 
 .family-support-card:focus-visible .family-support-face {
@@ -3544,9 +3616,14 @@ h3 {
     min-height: 390px;
   }
 
+  .family-support-front-icon {
+    width: 110px;
+    height: 110px;
+  }
+
   .family-support-back-icon {
-    width: 180px;
-    height: 180px;
-    right: -10%;
+    width: 220px;
+    height: 220px;
+    right: -14%;
   }
 }

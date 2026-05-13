@@ -1935,7 +1935,7 @@ function ClinicalFamily() {
                   <img src={panel.icon} alt="" aria-hidden="true" className="family-support-front-icon" />
                   <h2>{panel.title}</h2>
                   <p>{panel.intro}</p>
-                  <span className="family-support-cta">→ Discover the support pathway</span>
+                  <span className="family-support-cta">Discover the support pathway</span>
                 </div>
 
                 <div className="family-support-face family-support-face--back">
