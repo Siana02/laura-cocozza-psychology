@@ -2973,7 +2973,8 @@ h3 {
     0 28px 64px rgba(0, 0, 0, 0.5);
 }
 
-.couple-family-face {
+.couple-family-front-face,
+.couple-family-back-face {
   position: absolute;
   inset: 0;
   display: flex;
@@ -2986,7 +2987,7 @@ h3 {
   clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 28px 100%, 0 calc(100% - 28px));
 }
 
-.couple-family-face--front {
+.couple-family-front-face {
   transform: rotateY(0deg);
   justify-content: flex-end;
   padding: clamp(1.6rem, 2.3vw, 2.2rem);
@@ -2996,7 +2997,7 @@ h3 {
     linear-gradient(152deg, rgba(10, 42, 50, 0.98) 0%, rgba(8, 26, 34, 0.95) 56%, rgba(8, 19, 28, 0.98) 100%);
 }
 
-.couple-family-face--front::after {
+.couple-family-front-face::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -3064,7 +3065,7 @@ h3 {
   background: rgba(183, 244, 255, 0.08);
 }
 
-.couple-family-face--back {
+.couple-family-back-face {
   --cf-back-icon-offset: -34%;
   --cf-back-icon-blur-tilt: -8deg;
   --cf-back-icon-main-tilt: -7deg;

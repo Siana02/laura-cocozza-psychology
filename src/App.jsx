@@ -1910,7 +1910,7 @@ function CoupleFamilySupportSection({ t }) {
               whileHover={reduceMotion ? {} : { y: -4, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } }}
             >
               <div className="couple-family-flip-inner">
-                <div className="couple-family-face couple-family-face--front">
+                <div className="couple-family-front-face">
                   <div className="couple-family-front-icon-wrap" aria-hidden="true">
                     <img src={panel.icon} alt="" className="couple-family-front-icon" />
                   </div>
@@ -1919,32 +1919,38 @@ function CoupleFamilySupportSection({ t }) {
                   <span className="couple-family-front-cue">{panel.cue}</span>
                 </div>
 
-                <div className="couple-family-face couple-family-face--back">
-                  <div className="couple-family-back-icon-field" aria-hidden="true">
-                    <img src={panel.icon} alt="" className="couple-family-back-icon-blur" />
-                    <img src={panel.icon} alt="" className="couple-family-back-icon-main" />
-                    <div className="couple-family-back-icon-glow" />
-                  </div>
-                  <ul className="couple-family-back-points">
-                    {panel.points.map((point, pointIndex) => (
-                      <li
-                        key={point}
-                        className="couple-family-back-point"
-                        style={{ '--highlight-index': pointIndex }}
-                      >
-                        <span className="couple-family-back-point-marker" aria-hidden="true" />
-                        <span className="couple-family-back-point-line" aria-hidden="true" />
-                        <span className="couple-family-back-point-text">{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <CoupleFamilyBackSurface panel={panel} />
               </div>
             </motion.article>
           ))}
         </div>
       </div>
     </section>
+  )
+}
+
+function CoupleFamilyBackSurface({ panel }) {
+  return (
+    <div className="couple-family-back-face">
+      <div className="couple-family-back-icon-field" aria-hidden="true">
+        <img src={panel.icon} alt="" className="couple-family-back-icon-blur" />
+        <img src={panel.icon} alt="" className="couple-family-back-icon-main" />
+        <div className="couple-family-back-icon-glow" />
+      </div>
+      <ul className="couple-family-back-points">
+        {panel.points.map((point, pointIndex) => (
+          <li
+            key={point}
+            className="couple-family-back-point"
+            style={{ '--highlight-index': pointIndex }}
+          >
+            <span className="couple-family-back-point-marker" aria-hidden="true" />
+            <span className="couple-family-back-point-line" aria-hidden="true" />
+            <span className="couple-family-back-point-text">{point}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
 
