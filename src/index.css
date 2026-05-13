@@ -3404,6 +3404,7 @@ h3 {
 .network-collab-node-wrap {
   --radius: clamp(154px, 17vw, 210px);
   --angle: 0deg;
+  --delay: 0s;
   position: relative;
   top: 50%;
   left: 50%;
@@ -3413,6 +3414,7 @@ h3 {
   transform-origin: center;
   z-index: 1;
   animation: network-node-float 7.2s ease-in-out infinite;
+  animation-delay: var(--delay);
 }
 
 .network-collab-node-wrap::before {
@@ -3433,11 +3435,11 @@ h3 {
   filter: drop-shadow(0 0 10px rgba(183, 244, 255, 0.52));
 }
 
-.network-collab-node-wrap--1 { --angle: 240deg; }
-.network-collab-node-wrap--2 { --angle: 300deg; }
-.network-collab-node-wrap--3 { --angle: 0deg; }
-.network-collab-node-wrap--4 { --angle: 72deg; }
-.network-collab-node-wrap--5 { --angle: 146deg; }
+.network-collab-node-wrap--1 { --angle: 216deg; --delay: -0.2s; }
+.network-collab-node-wrap--2 { --angle: 288deg; --delay: -0.8s; }
+.network-collab-node-wrap--3 { --angle: 0deg; --delay: -1.4s; }
+.network-collab-node-wrap--4 { --angle: 72deg; --delay: -2s; }
+.network-collab-node-wrap--5 { --angle: 144deg; --delay: -2.6s; }
 
 .network-collab-node {
   width: clamp(188px, 17vw, 232px);
@@ -3448,6 +3450,9 @@ h3 {
   padding: 0.88rem 0.98rem 0.92rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.09);
   transform: rotate(calc(-1 * var(--angle)));
+  text-align: left;
+  font: inherit;
+  cursor: default;
   transition: transform 0.34s ease, box-shadow 0.34s ease, border-color 0.34s ease, background 0.34s ease;
 }
 
@@ -3501,17 +3506,14 @@ h3 {
   border-radius: 1.15rem;
   border: 1px solid rgba(183, 244, 255, 0.24);
   padding: clamp(1.2rem, 2.3vw, 1.65rem);
-  background:
-    linear-gradient(150deg, rgba(17, 59, 72, 0.86), rgba(8, 31, 39, 0.95)),
-    radial-gradient(circle at 85% 0%, rgba(183, 244, 255, 0.12) 0%, transparent 46%);
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.32);
   transition: transform 0.32s ease, box-shadow 0.32s ease, border-color 0.32s ease;
 }
 
 .network-collab-cta--clinical {
   background:
-    linear-gradient(150deg, rgba(17, 59, 72, 0.86), rgba(8, 31, 39, 0.95)),
-    radial-gradient(circle at 85% 0%, rgba(183, 244, 255, 0.12) 0%, transparent 46%);
+    linear-gradient(150deg, rgba(20, 70, 83, 0.86), rgba(9, 35, 44, 0.95)),
+    radial-gradient(circle at 85% 0%, rgba(183, 244, 255, 0.14) 0%, transparent 46%);
 }
 
 .network-collab-cta--forensic {

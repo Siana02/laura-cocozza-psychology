@@ -1331,24 +1331,25 @@ function MultidisciplinaryNetworkSection({ t }) {
             </motion.div>
 
             {network.nodes.map((node, i) => (
-              <motion.article
+              <motion.div
                 key={node.title}
                 className={`network-collab-node-wrap network-collab-node-wrap--${i + 1}`}
-                tabIndex={0}
                 initial={{ opacity: 0, scale: 0.92 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.58, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               >
-                <motion.div
+                <motion.button
+                  type="button"
                   className="network-collab-node"
+                  aria-label={node.title}
                   animate={reduceMotion ? {} : { y: [0, -4, 0] }}
                   transition={{ duration: 5 + i * 0.35, repeat: Infinity, ease: 'easeInOut' }}
                 >
                   <h3 className="network-collab-node-title">{node.title}</h3>
                   <p className="network-collab-node-desc">{node.description}</p>
-                </motion.div>
-              </motion.article>
+                </motion.button>
+              </motion.div>
             ))}
           </motion.div>
         </div>
