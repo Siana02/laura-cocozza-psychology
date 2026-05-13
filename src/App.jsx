@@ -215,6 +215,74 @@ const content = {
           },
         ],
       },
+      coupleFamilySupport: {
+        eyebrow: 'Coppia e famiglia',
+        title: 'Supporto per coppia e famiglia',
+        subtext: 'Uno spazio di supporto psicologico pensato per favorire connessione, guida relazionale e cura emotiva nei passaggi complessi.',
+        backLabel: 'Percorso di supporto',
+        panels: [
+          {
+            key: 'couple-pathways',
+            icon: '/relationship.png',
+            title: 'Percorsi di Coppia',
+            intro: 'Spazi di supporto progettati per migliorare la comunicazione, gestire il conflitto e ricostruire la comprensione emotiva.',
+            cue: '→ Scopri il percorso di supporto',
+            reassurance: 'Un percorso strutturato e rispettoso dei tempi di ciascuno.',
+            points: [
+              'Difficoltà comunicative',
+              'Disconnessione emotiva',
+              'Gestione del conflitto',
+              'Transizioni relazionali',
+              'Supporto nei periodi di cambiamento',
+            ],
+          },
+          {
+            key: 'separation-support',
+            icon: '/separated.png',
+            title: 'Supporto nella Separazione',
+            intro: 'Guida psicologica nei momenti emotivamente complessi della separazione e delle transizioni familiari.',
+            cue: '→ Esplora il processo',
+            reassurance: 'Chiarezza emotiva e stabilizzazione durante il cambiamento.',
+            points: [
+              'Elaborazione emotiva',
+              'Ristrutturazione della relazione',
+              'Supporto alla genitorialità',
+              'Guida nelle transizioni familiari',
+              'Stabilizzazione psicologica',
+            ],
+          },
+          {
+            key: 'parenting-support',
+            icon: '/parental-guidance.png',
+            title: 'Supporto alla Genitorialità',
+            intro: 'Percorsi dedicati ai genitori che affrontano sfide educative, emotive e relazionali.',
+            cue: '→ Scopri il percorso di supporto',
+            reassurance: 'Un orientamento pratico e umano per il sistema familiare.',
+            points: [
+              'Guida genitoriale',
+              'Difficoltà educative',
+              'Comunicazione familiare',
+              'Supporto emotivo',
+              'Dinamiche relazionali',
+            ],
+          },
+          {
+            key: 'family-consultations',
+            icon: '/family (1).png',
+            title: 'Consulenze Familiari',
+            intro: 'Interventi di supporto per situazioni familiari complesse, gestione del conflitto ed equilibrio relazionale.',
+            cue: '→ Esplora il processo',
+            reassurance: 'Uno spazio sicuro per ritrovare equilibrio e direzione condivisa.',
+            points: [
+              'Dinamiche familiari conflittuali',
+              'Supporto alla mediazione familiare',
+              'Valutazione relazionale',
+              'Regolazione emotiva',
+              'Guida familiare integrata',
+            ],
+          },
+        ],
+      },
     },
     sections: {
       clinicalPreview: 'Area Clinica',
@@ -431,6 +499,74 @@ const content = {
           },
         ],
       },
+      coupleFamilySupport: {
+        eyebrow: 'Couple & Family',
+        title: 'Couple & Family Support',
+        subtext: 'A psychologically grounded support space focused on connection, relational guidance, and emotional healing through complex transitions.',
+        backLabel: 'Support Pathway',
+        panels: [
+          {
+            key: 'couple-pathways',
+            icon: '/relationship.png',
+            title: 'Couple Pathways',
+            intro: 'Support spaces designed to improve communication, navigate conflict, and rebuild emotional understanding.',
+            cue: '→ Discover the support pathway',
+            reassurance: 'A structured and respectful process aligned with each person’s pace.',
+            points: [
+              'Communication difficulties',
+              'Emotional disconnection',
+              'Conflict management',
+              'Relationship transitions',
+              'Support through periods of change',
+            ],
+          },
+          {
+            key: 'separation-support',
+            icon: '/separated.png',
+            title: 'Support During Separation',
+            intro: 'Psychological guidance through emotionally complex moments of separation and family transition.',
+            cue: '→ Explore the process',
+            reassurance: 'Emotional clarity and stabilization through transition phases.',
+            points: [
+              'Emotional processing',
+              'Relationship restructuring',
+              'Parenting support',
+              'Family transition guidance',
+              'Psychological stabilization',
+            ],
+          },
+          {
+            key: 'parenting-support',
+            icon: '/parental-guidance.png',
+            title: 'Parenting Support',
+            intro: 'Dedicated support pathways for parents navigating educational, emotional, and relational challenges.',
+            cue: '→ Discover the support pathway',
+            reassurance: 'Practical and human guidance for the family system.',
+            points: [
+              'Parenting guidance',
+              'Educational difficulties',
+              'Family communication',
+              'Emotional support',
+              'Relational dynamics',
+            ],
+          },
+          {
+            key: 'family-consultations',
+            icon: '/family (1).png',
+            title: 'Family Consultations',
+            intro: 'Support interventions for complex family situations, conflict resolution, and relational balance.',
+            cue: '→ Explore the process',
+            reassurance: 'A safe setting to restore balance and shared direction.',
+            points: [
+              'Conflictual family dynamics',
+              'Family mediation support',
+              'Relational assessment',
+              'Emotional regulation',
+              'Integrated family guidance',
+            ],
+          },
+        ],
+      },
     },
     sections: {
       clinicalPreview: 'Clinical Area',
@@ -456,6 +592,18 @@ const content = {
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0 },
+}
+
+function IconDivider({ icon }) {
+  return (
+    <div className="icon-divider" aria-hidden="true">
+      <span className="icon-divider__line icon-divider__line--left" />
+      <span className="icon-divider__icon">
+        <span className="icon-divider__material material-symbols-rounded">{icon}</span>
+      </span>
+      <span className="icon-divider__line icon-divider__line--right" />
+    </div>
+  )
 }
 
 const PRELOADER_DURATION_MS = 4700
@@ -1217,16 +1365,13 @@ function TherapeuticApproachSection({ t }) {
           </motion.h2>
 
           <motion.div
-            className="icon-divider"
+            className="therapeutic-approach-divider"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            aria-hidden="true"
           >
-            <span className="icon-divider__line icon-divider__line--left" />
-            <span className="icon-divider__icon"><img src="/brain.png" alt="" className="icon-divider__image" /></span>
-            <span className="icon-divider__line icon-divider__line--right" />
+            <IconDivider icon="neurology" />
           </motion.div>
 
           <motion.p
@@ -1352,6 +1497,7 @@ function WhoIsItForSection({ t }) {
         >
           <span className="who-eyebrow">{wf.eyebrow}</span>
           <h2 className="who-title">{wf.title}</h2>
+          <IconDivider icon="groups_3" />
           <p className="who-subtext">{wf.subtext}</p>
         </motion.div>
 
@@ -1695,6 +1841,7 @@ function SupportAreasSection({ t }) {
         >
           <span className="support-areas-eyebrow">{support.eyebrow}</span>
           <h2 className="support-areas-title">{support.title}</h2>
+          <IconDivider icon="psychiatry" />
           <p className="support-areas-subtext">{support.subtext}</p>
         </motion.div>
       </div>
@@ -1742,6 +1889,65 @@ function SupportAreasSection({ t }) {
   )
 }
 
+function CoupleFamilySupportSection({ t }) {
+  const cf = t.home.coupleFamilySupport
+  const reduceMotion = useReducedMotion()
+
+  return (
+    <section className="couple-family-section">
+      <div className="couple-family-inner">
+        <motion.div
+          className="couple-family-header"
+          initial={{ opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className="couple-family-eyebrow">{cf.eyebrow}</span>
+          <h2 className="couple-family-title">{cf.title}</h2>
+          <IconDivider icon="diversity_3" />
+          <p className="couple-family-subtext">{cf.subtext}</p>
+        </motion.div>
+
+        <div className="couple-family-grid">
+          {cf.panels.map((panel, index) => (
+            <motion.article
+              key={panel.key}
+              className={`couple-family-flip-card couple-family-flip-card--${panel.key}`}
+              initial={{ opacity: 0, y: 34 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1], delay: index * 0.12 }}
+              whileHover={reduceMotion ? {} : { y: -4, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } }}
+            >
+              <div className="couple-family-flip-inner">
+                <div className="couple-family-face couple-family-face--front">
+                  <div className="couple-family-front-icon-wrap" aria-hidden="true">
+                    <img src={panel.icon} alt="" className="couple-family-front-icon" />
+                  </div>
+                  <h3 className="couple-family-front-title">{panel.title}</h3>
+                  <p className="couple-family-front-intro">{panel.intro}</p>
+                  <span className="couple-family-front-cue">{panel.cue}</span>
+                </div>
+
+                <div className="couple-family-face couple-family-face--back">
+                  <span className="couple-family-back-label">{cf.backLabel}</span>
+                  <ul className="couple-family-back-points">
+                    {panel.points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                  <p className="couple-family-back-reassurance">{panel.reassurance}</p>
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function Section({ title, subtitle, items }) {
   return (
     <section className="section-block">
@@ -1783,6 +1989,7 @@ function Home({ t }) {
         <WhoIsItForSection t={t} />
         <ClinicalAreaTransitionSection t={t} />
         <SupportAreasSection t={t} />
+        <CoupleFamilySupportSection t={t} />
       </div>
     </>
   )
