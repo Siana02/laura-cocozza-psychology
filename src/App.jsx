@@ -219,7 +219,6 @@ const content = {
         eyebrow: 'Coppia e famiglia',
         title: 'Supporto per coppia e famiglia',
         subtext: 'Uno spazio di supporto psicologico pensato per favorire connessione, guida relazionale e cura emotiva nei passaggi complessi.',
-        backLabel: 'Percorso di supporto',
         panels: [
           {
             key: 'couple-pathways',
@@ -227,13 +226,12 @@ const content = {
             title: 'Percorsi di Coppia',
             intro: 'Spazi di supporto progettati per migliorare la comunicazione, gestire il conflitto e ricostruire la comprensione emotiva.',
             cue: '→ Scopri il percorso di supporto',
-            reassurance: 'Un percorso strutturato e rispettoso dei tempi di ciascuno.',
             points: [
               'Difficoltà comunicative',
-              'Disconnessione emotiva',
-              'Gestione del conflitto',
+              'Riconnessione emotiva',
+              'Orientamento nel conflitto',
               'Transizioni relazionali',
-              'Supporto nei periodi di cambiamento',
+              'Ripristino dell’equilibrio relazionale',
             ],
           },
           {
@@ -242,13 +240,12 @@ const content = {
             title: 'Supporto nella Separazione',
             intro: 'Guida psicologica nei momenti emotivamente complessi della separazione e delle transizioni familiari.',
             cue: '→ Esplora il processo',
-            reassurance: 'Chiarezza emotiva e stabilizzazione durante il cambiamento.',
             points: [
-              'Elaborazione emotiva',
-              'Ristrutturazione della relazione',
-              'Supporto alla genitorialità',
-              'Guida nelle transizioni familiari',
-              'Stabilizzazione psicologica',
+              'Stabilizzazione emotiva',
+              'Supporto nella separazione',
+              'Guida alle transizioni genitoriali',
+              'Ristrutturazione familiare',
+              'Supporto psicologico nel cambiamento',
             ],
           },
           {
@@ -257,13 +254,12 @@ const content = {
             title: 'Supporto alla Genitorialità',
             intro: 'Percorsi dedicati ai genitori che affrontano sfide educative, emotive e relazionali.',
             cue: '→ Scopri il percorso di supporto',
-            reassurance: 'Un orientamento pratico e umano per il sistema familiare.',
             points: [
               'Guida genitoriale',
-              'Difficoltà educative',
-              'Comunicazione familiare',
-              'Supporto emotivo',
-              'Dinamiche relazionali',
+              'Sfide educative',
+              'Dinamiche emotive familiari',
+              'Comunicazione genitore-figlio',
+              'Percorsi di supporto relazionale',
             ],
           },
           {
@@ -272,13 +268,12 @@ const content = {
             title: 'Consulenze Familiari',
             intro: 'Interventi di supporto per situazioni familiari complesse, gestione del conflitto ed equilibrio relazionale.',
             cue: '→ Esplora il processo',
-            reassurance: 'Uno spazio sicuro per ritrovare equilibrio e direzione condivisa.',
             points: [
-              'Dinamiche familiari conflittuali',
-              'Supporto alla mediazione familiare',
-              'Valutazione relazionale',
+              'Situazioni familiari complesse',
+              'Supporto alla mediazione del conflitto',
               'Regolazione emotiva',
-              'Guida familiare integrata',
+              'Valutazione relazionale familiare',
+              'Guida integrata multidisciplinare',
             ],
           },
         ],
@@ -503,7 +498,6 @@ const content = {
         eyebrow: 'Couple & Family',
         title: 'Couple & Family Support',
         subtext: 'A psychologically grounded support space focused on connection, relational guidance, and emotional healing through complex transitions.',
-        backLabel: 'Support Pathway',
         panels: [
           {
             key: 'couple-pathways',
@@ -511,13 +505,12 @@ const content = {
             title: 'Couple Pathways',
             intro: 'Support spaces designed to improve communication, navigate conflict, and rebuild emotional understanding.',
             cue: '→ Discover the support pathway',
-            reassurance: 'A structured and respectful process aligned with each person’s pace.',
             points: [
               'Communication difficulties',
-              'Emotional disconnection',
-              'Conflict management',
+              'Emotional reconnection',
+              'Conflict navigation',
               'Relationship transitions',
-              'Support through periods of change',
+              'Restoring relational balance',
             ],
           },
           {
@@ -526,13 +519,12 @@ const content = {
             title: 'Support During Separation',
             intro: 'Psychological guidance through emotionally complex moments of separation and family transition.',
             cue: '→ Explore the process',
-            reassurance: 'Emotional clarity and stabilization through transition phases.',
             points: [
-              'Emotional processing',
-              'Relationship restructuring',
-              'Parenting support',
-              'Family transition guidance',
-              'Psychological stabilization',
+              'Emotional stabilization',
+              'Separation support',
+              'Parenting transition guidance',
+              'Family restructuring',
+              'Psychological support through change',
             ],
           },
           {
@@ -541,13 +533,12 @@ const content = {
             title: 'Parenting Support',
             intro: 'Dedicated support pathways for parents navigating educational, emotional, and relational challenges.',
             cue: '→ Discover the support pathway',
-            reassurance: 'Practical and human guidance for the family system.',
             points: [
               'Parenting guidance',
-              'Educational difficulties',
-              'Family communication',
-              'Emotional support',
-              'Relational dynamics',
+              'Educational challenges',
+              'Emotional family dynamics',
+              'Parent-child communication',
+              'Relational support pathways',
             ],
           },
           {
@@ -556,13 +547,12 @@ const content = {
             title: 'Family Consultations',
             intro: 'Support interventions for complex family situations, conflict resolution, and relational balance.',
             cue: '→ Explore the process',
-            reassurance: 'A safe setting to restore balance and shared direction.',
             points: [
-              'Conflictual family dynamics',
-              'Family mediation support',
-              'Relational assessment',
+              'Complex family situations',
+              'Conflict mediation support',
               'Emotional regulation',
-              'Integrated family guidance',
+              'Family relational assessment',
+              'Integrated multidisciplinary guidance',
             ],
           },
         ],
@@ -1930,13 +1920,24 @@ function CoupleFamilySupportSection({ t }) {
                 </div>
 
                 <div className="couple-family-face couple-family-face--back">
-                  <span className="couple-family-back-label">{cf.backLabel}</span>
+                  <div className="couple-family-back-icon-field" aria-hidden="true">
+                    <img src={panel.icon} alt="" className="couple-family-back-icon-blur" />
+                    <img src={panel.icon} alt="" className="couple-family-back-icon-main" />
+                    <div className="couple-family-back-icon-glow" />
+                  </div>
                   <ul className="couple-family-back-points">
-                    {panel.points.map((point) => (
-                      <li key={point}>{point}</li>
+                    {panel.points.map((point, pointIndex) => (
+                      <li
+                        key={point}
+                        className="couple-family-back-point"
+                        style={{ '--highlight-index': pointIndex }}
+                      >
+                        <span className="couple-family-back-point-marker" aria-hidden="true" />
+                        <span className="couple-family-back-point-line" aria-hidden="true" />
+                        <span className="couple-family-back-point-text">{point}</span>
+                      </li>
                     ))}
                   </ul>
-                  <p className="couple-family-back-reassurance">{panel.reassurance}</p>
                 </div>
               </div>
             </motion.article>
