@@ -1892,7 +1892,7 @@ function ClinicalFamily() {
       ],
     },
     {
-      icon: '/family%20(1).png',
+      icon: '/family (1).png',
       title: 'Family Consultations',
       intro: 'Support interventions for complex family situations, conflict resolution, and relational balance.',
       highlights: [
