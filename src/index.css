@@ -3605,11 +3605,15 @@ h3 {
     transform: translateX(-18px);
   }
 
-  /* Perfect orb positioning */
+  /* Pin orb exactly on the spine (left: 50% of the map card) */
   .network-collab-core {
-    margin-top: var(--network-map-padding-top);
-    align-self: start;
-    justify-self: center;
+    position: absolute;
+    left: 50%;
+    top: var(--network-map-padding-top);
+    transform: translateX(-50%);
+    margin-top: 0;
+    align-self: unset;
+    justify-self: unset;
   }
 
   .network-collab-spine {
