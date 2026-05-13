@@ -1929,14 +1929,13 @@ function ClinicalFamily() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.55, delay: index * 0.08 }}
               tabIndex={0}
-              aria-label={panel.title}
             >
               <div className="family-support-card-inner">
                 <div className="family-support-face family-support-face--front">
                   <img src={panel.icon} alt="" aria-hidden="true" className="family-support-front-icon" />
                   <h2>{panel.title}</h2>
                   <p>{panel.intro}</p>
-                  <span className="family-support-cta" aria-hidden="true">Discover the support pathway</span>
+                  <span className="family-support-cta">Discover the support pathway</span>
                 </div>
 
                 <div className="family-support-face family-support-face--back">
