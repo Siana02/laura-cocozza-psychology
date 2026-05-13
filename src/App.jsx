@@ -6,15 +6,20 @@ import {
   BookOpen,
   Brain,
   BriefcaseBusiness,
+  ChevronDown,
   HeartHandshake,
   Landmark,
+  Mail,
+  MapPin,
   Phone,
   Scale,
+  Send,
   ShieldCheck,
   Sparkles,
   Stethoscope,
   UserStar,
   Users,
+  Video,
 } from 'lucide-react'
 import { BrowserRouter, Link, NavLink, Navigate, Route, Routes, useLocation } from 'react-router-dom'
 
@@ -261,6 +266,55 @@ const content = {
           },
         ],
       },
+      aboutSection: {
+        eyebrow: 'PROFILO PROFESSIONALE',
+        title: 'Un approccio multidisciplinare fondato sulla psicologia clinica e forense',
+        badge: 'Psicologa • Psicoterapeuta Cognitivo-Comportamentale • Psicologa Forense',
+        paragraph:
+          "La Dott.ssa Laura Cocozza è psicologa, psicoterapeuta cognitivo-comportamentale e psicologa forense. La sua pratica professionale integra la psicoterapia clinica con la consulenza forense, offrendo un modello di cura che risponde con precisione alle esigenze emotive, relazionali e legali di ogni persona. Attraverso l'uso della Terapia Cognitivo-Comportamentale (TCC), dell'Acceptance and Commitment Therapy (ACT) e di tecnologie innovative come la realtà virtuale, ogni percorso viene costruito attorno alla specificità dell'individuo. In ambito forense, collabora con tribunali e professionisti legali in qualità di CTU e CTP, occupandosi di valutazioni psicologiche, diritto di famiglia e supporto in procedimenti civili. Un approccio integrato, multidisciplinare e profondamente umano.",
+        ctaButton: 'Prenota una Seduta',
+        ctaSubtext: 'Consulenze online e in presenza disponibili',
+      },
+      faqSection: {
+        eyebrow: 'DOMANDE FREQUENTI',
+        title: 'Informazioni su consulenze, percorsi terapeutici e servizi forensi',
+        intro: 'Una selezione di domande comuni riguardo ai percorsi clinici, alle consulenze e ai servizi di supporto psicologico.',
+        faqs: [
+          { q: 'Che tipo di supporto psicologico offre?', a: 'Lo studio offre psicoterapia individuale, supporto psicologico, consulenze familiari e servizi di psicologia forense. I percorsi vengono costruiti in modo personalizzato sulla base delle esigenze emotive, relazionali e contestuali di ogni persona.' },
+          { q: 'A chi sono destinati i percorsi terapeutici?', a: "I percorsi sono rivolti ad adolescenti, adulti e famiglie che affrontano difficoltà emotive, relazionali, comportamentali o momenti di cambiamento significativo. L'approccio è sempre adattato al contesto e alla storia individuale." },
+          { q: 'Sono disponibili colloqui online?', a: 'Sì. Lo studio offre colloqui sia in presenza, presso la sede di Udine, sia online, attraverso piattaforme sicure e riservate. La modalità viene concordata in base alle esigenze della persona.' },
+          { q: 'Quanto dura di solito un percorso di psicoterapia?', a: 'La durata varia in base agli obiettivi terapeutici, alla natura delle difficoltà e alla evoluzione del percorso. Viene sempre definita in modo condiviso, con regolari momenti di verifica e revisione degli obiettivi.' },
+          { q: "Cos'è la psicoterapia cognitivo-comportamentale?", a: "La Terapia Cognitivo-Comportamentale (TCC) è un approccio evidence-based orientato alla comprensione della relazione tra pensieri, emozioni e comportamenti. Viene utilizzata per trattare ansia, umore, OCD, difficoltà relazionali e molte altre problematiche psicologiche." },
+          { q: "Cos'è l'Acceptance and Commitment Therapy (ACT)?", a: "L'ACT è un approccio terapeutico focalizzato sullo sviluppo della flessibilità psicologica, dell'accettazione e dell'azione orientata ai valori personali. È particolarmente efficace nei percorsi di regolazione emotiva e gestione dello stress." },
+          { q: 'Come si svolgono le consulenze in psicologia forense?', a: 'Le consulenze forensi possono essere richieste da privati, avvocati o tribunali. Includono valutazioni psicologiche, redazione di perizie, attività di CTU/CTP e supporto in procedimenti di diritto di famiglia.' },
+          { q: 'Collabora con altri professionisti?', a: 'Sì. Lo studio opera attraverso una rete multidisciplinare che include psichiatri, neuropsichiatri infantili, psicoterapeuti dell\'età evolutiva e avvocati specializzati in diritto di famiglia, per offrire un supporto integrato e continuativo.' },
+          { q: 'Posso richiedere supporto durante processi di separazione o affidamento?', a: 'Sì. Lo studio offre consulenze specifiche per famiglie in fase di separazione, con attenzione alla genitorialità, al benessere dei figli e alla gestione emotiva dei passaggi più delicati.' },
+          { q: 'Come posso prenotare un appuntamento o richiedere informazioni?', a: 'È possibile contattare lo studio via email a laura.cocozza@gmail.com o info@psylexitalia.com, oppure telefonicamente al 339366980. Il primo contatto avviene solitamente tramite una breve call conoscitiva.' },
+        ],
+      },
+      contactSection: {
+        eyebrow: 'CONTATTI',
+        title: 'Richiedi informazioni o prenota una consulenza',
+        intro: 'È possibile richiedere informazioni riguardo ai percorsi clinici, alle consulenze familiari o ai servizi di psicologia forense attraverso i contatti dello studio. Il primo contatto avviene in modo semplice e riservato.',
+        form: {
+          fullName: 'Nome e Cognome',
+          email: 'Email',
+          phone: 'Telefono (facoltativo)',
+          subject: 'Oggetto',
+          message: 'Messaggio',
+          send: 'Invia Richiesta →',
+        },
+        info: {
+          emailTitle: 'Email',
+          phoneTitle: 'Telefono',
+          locationTitle: 'Sede',
+          consultationsTitle: 'Consulenze',
+          emails: ['laura.cocozza@gmail.com', 'laura.cocozza.893@psypec.it', 'info@psylexitalia.com'],
+          phone: '339 366 980',
+          address: 'Via Generale Baldissera 14 — Udine',
+          consultations: 'Colloqui online e in presenza',
+        },
+      },
     },
     sections: {
       clinicalPreview: 'Area Clinica',
@@ -279,7 +333,14 @@ const content = {
       aboutHero: 'Chi Sono',
       contactHero: 'Contatti',
     },
-    footer: '© Studio Laura Cocozza · Psicoterapia e Psicologia Forense',
+    footer: {
+      brand: 'Studio di Psicoterapia e Psicologia Forense',
+      doctor: 'Dott.ssa Laura Cocozza',
+      tagline: 'Consulenze online e in presenza disponibili.',
+      nav: ['Home', 'Area Clinica', 'Psicologia Forense', 'Contatti', 'FAQ'],
+      navLinks: ['/home', '/clinical', '/forensic', '/contact', '/home'],
+      copyright: '© 2026 Laura Cocozza — Tutti i diritti riservati.',
+    },
   },
   en: {
     brand: 'Psychotherapy and Forensic Psychology Practice',
@@ -523,6 +584,55 @@ const content = {
           },
         ],
       },
+      aboutSection: {
+        eyebrow: 'PROFESSIONAL PROFILE',
+        title: 'A multidisciplinary approach grounded in clinical and forensic psychology',
+        badge: 'Psychologist • Cognitive-Behavioral Psychotherapist • Forensic Psychologist',
+        paragraph:
+          "Dr. Laura Cocozza is a psychologist, cognitive-behavioral psychotherapist, and forensic psychologist. Her professional practice integrates clinical psychotherapy with forensic consultancy, offering an integrated care model that responds with precision to the emotional, relational, and legal needs of every individual. Through the use of Cognitive-Behavioral Therapy (CBT), Acceptance and Commitment Therapy (ACT), and innovative technologies such as virtual reality, each pathway is built around the specificity of the person. In the forensic domain, she collaborates with courts and legal professionals as a court-appointed expert (CTU/CTP), working on psychological assessments, family law, and civil proceedings. A deeply integrated, multidisciplinary, and human-centered approach.",
+        ctaButton: 'Book a Session',
+        ctaSubtext: 'Online and in-person consultations available',
+      },
+      faqSection: {
+        eyebrow: 'FREQUENTLY ASKED QUESTIONS',
+        title: 'Information about consultations, therapy pathways, and forensic services',
+        intro: 'A selection of common questions regarding clinical pathways, consultations, and psychological support services.',
+        faqs: [
+          { q: 'What types of psychological support do you offer?', a: 'The practice offers individual psychotherapy, psychological support, family consultations, and forensic psychology services. Pathways are built in a personalised way based on each person\'s emotional, relational, and contextual needs.' },
+          { q: 'Who are therapy pathways designed for?', a: 'Pathways are designed for adolescents, adults, and families navigating emotional, relational, or behavioural difficulties, or significant life transitions. The approach is always adapted to individual context and personal history.' },
+          { q: 'Are online consultations available?', a: 'Yes. The practice offers consultations both in-person at the Udine office and online through secure, private platforms. The format is agreed upon based on each person\'s needs.' },
+          { q: 'How long does a psychotherapy pathway usually last?', a: 'Duration varies according to therapeutic goals, the nature of the difficulties, and the evolution of the process. It is always determined collaboratively, with regular moments of review and objective reassessment.' },
+          { q: 'What is cognitive-behavioral psychotherapy?', a: 'Cognitive-Behavioral Therapy (CBT) is an evidence-based approach focused on understanding the relationship between thoughts, emotions, and behaviors. It is used to treat anxiety, mood difficulties, OCD, relational issues, and many other psychological challenges.' },
+          { q: 'What is Acceptance and Commitment Therapy (ACT)?', a: 'ACT is a therapeutic approach focused on developing psychological flexibility, acceptance, and values-oriented action. It is particularly effective in pathways for emotional regulation and stress management.' },
+          { q: 'How are forensic psychology consultations conducted?', a: 'Forensic consultations can be requested by private individuals, lawyers, or courts. They include psychological assessments, expert reports, CTU/CTP activities, and support in family law proceedings.' },
+          { q: 'Do you collaborate with other professionals?', a: 'Yes. The practice works through a multidisciplinary network that includes psychiatrists, child neuropsychiatrists, developmental psychotherapists, and family law attorneys, offering integrated and continuous support.' },
+          { q: 'Can I request support during family or separation processes?', a: 'Yes. The practice offers specific consultations for families navigating separation, with attention to parenting, children\'s wellbeing, and emotional management through critical transitions.' },
+          { q: 'How can I book an appointment or request information?', a: 'You can contact the practice via email at laura.cocozza@gmail.com or info@psylexitalia.com, or by phone at +39 339 366 980. First contact usually takes the form of a brief introductory call.' },
+        ],
+      },
+      contactSection: {
+        eyebrow: 'CONTACTS',
+        title: 'Request information or schedule a consultation',
+        intro: 'It is possible to request information regarding clinical pathways, family consultations, or forensic psychological services through the practice contacts. First contact is simple, private, and frictionless.',
+        form: {
+          fullName: 'Full Name',
+          email: 'Email',
+          phone: 'Phone (optional)',
+          subject: 'Subject',
+          message: 'Message',
+          send: 'Send Request →',
+        },
+        info: {
+          emailTitle: 'Email',
+          phoneTitle: 'Phone',
+          locationTitle: 'Location',
+          consultationsTitle: 'Consultations',
+          emails: ['laura.cocozza@gmail.com', 'laura.cocozza.893@psypec.it', 'info@psylexitalia.com'],
+          phone: '+39 339 366 980',
+          address: 'Via Generale Baldissera 14 — Udine',
+          consultations: 'Online and in-person consultations',
+        },
+      },
     },
     sections: {
       clinicalPreview: 'Clinical Area',
@@ -541,7 +651,14 @@ const content = {
       aboutHero: 'About',
       contactHero: 'Contact',
     },
-    footer: '© Laura Cocozza Practice · Psychotherapy and Forensic Psychology',
+    footer: {
+      brand: 'Psychotherapy and Forensic Psychology Practice',
+      doctor: 'Dr. Laura Cocozza',
+      tagline: 'Online and in-person consultations available.',
+      nav: ['Home', 'Clinical Area', 'Forensic Psychology', 'Contacts', 'FAQ'],
+      navLinks: ['/home', '/clinical', '/forensic', '/contact', '/home'],
+      copyright: '© 2026 Laura Cocozza — All rights reserved.',
+    },
   },
 }
 
@@ -1969,6 +2086,379 @@ function SupportAreasSection({ t }) {
   )
 }
 
+// ─── SECTION 12 — ABOUT DR. LAURA ────────────────────────────────────────────
+
+function AboutDrLauraSection({ t }) {
+  const about = t.home.aboutSection
+
+  return (
+    <section className="about-section">
+      <div className="about-section-bg" aria-hidden="true">
+        <div className="about-section-orb about-section-orb--1" />
+        <div className="about-section-orb about-section-orb--2" />
+      </div>
+
+      <div className="about-section-inner">
+        <motion.div
+          className="about-section-header"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className="about-section-eyebrow">{about.eyebrow}</span>
+          <h2 className="about-section-title">{about.title}</h2>
+          <div className="about-section-badge">
+            <span>{about.badge}</span>
+          </div>
+        </motion.div>
+
+        <div className="about-section-layout">
+          <motion.div
+            className="about-section-image-col"
+            initial={{ opacity: 0, x: -32 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="about-section-portrait">
+              <div className="about-section-portrait-glow" aria-hidden="true" />
+              <img
+                src="/dr-laura-cocozza-professional-headshot.png"
+                alt="Dr. Laura Cocozza — professional portrait"
+                className="about-section-portrait-img"
+              />
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="about-section-content-col"
+            initial={{ opacity: 0, x: 32 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
+          >
+            <p className="about-section-paragraph">{about.paragraph}</p>
+          </motion.div>
+        </div>
+
+        <motion.div
+          className="about-section-cta-wrap"
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+        >
+          <Link to="/contact" className="book-pill">
+            {about.ctaButton}
+            <span className="book-pill-icon" aria-hidden="true">
+              <ArrowUpRight size={22} />
+            </span>
+          </Link>
+          <p className="about-section-cta-subtext">{about.ctaSubtext}</p>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+// ─── SECTION 13 — FAQ ─────────────────────────────────────────────────────────
+
+function FaqSection({ t }) {
+  const faq = t.home.faqSection
+  const [openIndex, setOpenIndex] = useState(null)
+  const reduceMotion = useReducedMotion()
+
+  const half = Math.ceil(faq.faqs.length / 2)
+  const leftFaqs = faq.faqs.slice(0, half)
+  const rightFaqs = faq.faqs.slice(half)
+
+  function FaqItem({ item, globalIndex }) {
+    const isOpen = openIndex === globalIndex
+    return (
+      <div className={`faq-item${isOpen ? ' faq-item--open' : ''}`}>
+        <button
+          type="button"
+          className="faq-question"
+          onClick={() => setOpenIndex(isOpen ? null : globalIndex)}
+          aria-expanded={isOpen}
+        >
+          <span className="faq-question-text">{item.q}</span>
+          <span className="faq-chevron" aria-hidden="true">
+            <ChevronDown size={18} />
+          </span>
+        </button>
+        <AnimatePresence initial={false}>
+          {isOpen && (
+            <motion.div
+              className="faq-answer"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: reduceMotion ? 0.1 : 0.38, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <p className="faq-answer-text">{item.a}</p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    )
+  }
+
+  return (
+    <section className="faq-section">
+      <div className="faq-section-bg" aria-hidden="true">
+        <div className="faq-orb faq-orb--1" />
+        <div className="faq-orb faq-orb--2" />
+      </div>
+
+      <div className="faq-section-inner">
+        <motion.div
+          className="faq-header"
+          initial={{ opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className="faq-eyebrow">{faq.eyebrow}</span>
+          <h2 className="faq-title">{faq.title}</h2>
+          <p className="faq-intro">{faq.intro}</p>
+        </motion.div>
+
+        <div className="faq-grid">
+          <motion.div
+            className="faq-column"
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {leftFaqs.map((item, i) => (
+              <FaqItem key={i} item={item} globalIndex={i} />
+            ))}
+          </motion.div>
+
+          <motion.div
+            className="faq-column"
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
+          >
+            {rightFaqs.map((item, i) => (
+              <FaqItem key={i} item={item} globalIndex={half + i} />
+            ))}
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ─── SECTION 14 — CONTACT ─────────────────────────────────────────────────────
+
+function HomepageContactSection({ t }) {
+  const cs = t.home.contactSection
+  const [formState, setFormState] = useState({ fullName: '', email: '', phone: '', subject: '', message: '' })
+
+  function handleChange(e) {
+    setFormState((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    const mailtoBody = encodeURIComponent(
+      `Nome: ${formState.fullName}\nEmail: ${formState.email}\nTelefono: ${formState.phone}\nMessaggio:\n${formState.message}`
+    )
+    window.location.href = `mailto:laura.cocozza@gmail.com?subject=${encodeURIComponent(formState.subject || cs.form.subject)}&body=${mailtoBody}`
+  }
+
+  return (
+    <section className="hp-contact-section" id="contact">
+      <div className="hp-contact-bg" aria-hidden="true">
+        <div className="hp-contact-orb hp-contact-orb--1" />
+        <div className="hp-contact-orb hp-contact-orb--2" />
+      </div>
+
+      <div className="hp-contact-inner">
+        <motion.div
+          className="hp-contact-header"
+          initial={{ opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className="hp-contact-eyebrow">{cs.eyebrow}</span>
+          <h2 className="hp-contact-title">{cs.title}</h2>
+          <IconDivider icon="mail" className="hp-contact-divider" />
+          <p className="hp-contact-intro">{cs.intro}</p>
+        </motion.div>
+
+        <div className="hp-contact-layout">
+          {/* Contact form */}
+          <motion.form
+            className="hp-contact-form"
+            onSubmit={handleSubmit}
+            initial={{ opacity: 0, x: -28 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="hp-contact-field">
+              <label className="hp-contact-label" htmlFor="hpc-fullname">{cs.form.fullName}</label>
+              <input
+                id="hpc-fullname"
+                name="fullName"
+                type="text"
+                className="hp-contact-input"
+                value={formState.fullName}
+                onChange={handleChange}
+                required
+                autoComplete="name"
+              />
+            </div>
+            <div className="hp-contact-field">
+              <label className="hp-contact-label" htmlFor="hpc-email">{cs.form.email}</label>
+              <input
+                id="hpc-email"
+                name="email"
+                type="email"
+                className="hp-contact-input"
+                value={formState.email}
+                onChange={handleChange}
+                required
+                autoComplete="email"
+              />
+            </div>
+            <div className="hp-contact-field">
+              <label className="hp-contact-label" htmlFor="hpc-phone">{cs.form.phone}</label>
+              <input
+                id="hpc-phone"
+                name="phone"
+                type="tel"
+                className="hp-contact-input"
+                value={formState.phone}
+                onChange={handleChange}
+                autoComplete="tel"
+              />
+            </div>
+            <div className="hp-contact-field">
+              <label className="hp-contact-label" htmlFor="hpc-subject">{cs.form.subject}</label>
+              <input
+                id="hpc-subject"
+                name="subject"
+                type="text"
+                className="hp-contact-input"
+                value={formState.subject}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="hp-contact-field hp-contact-field--full">
+              <label className="hp-contact-label" htmlFor="hpc-message">{cs.form.message}</label>
+              <textarea
+                id="hpc-message"
+                name="message"
+                rows={5}
+                className="hp-contact-input hp-contact-textarea"
+                value={formState.message}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <button type="submit" className="hp-contact-send">
+              <Send size={16} aria-hidden="true" />
+              <span>{cs.form.send}</span>
+            </button>
+          </motion.form>
+
+          {/* Contact info panel */}
+          <motion.div
+            className="hp-contact-info-panel"
+            initial={{ opacity: 0, x: 28 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+          >
+            <div className="hp-contact-info-block">
+              <span className="hp-contact-info-icon" aria-hidden="true"><Mail size={18} /></span>
+              <div>
+                <p className="hp-contact-info-title">{cs.info.emailTitle}</p>
+                {cs.info.emails.map((email) => (
+                  <a key={email} href={`mailto:${email}`} className="hp-contact-info-value hp-contact-info-link">{email}</a>
+                ))}
+              </div>
+            </div>
+            <div className="hp-contact-info-block">
+              <span className="hp-contact-info-icon" aria-hidden="true"><Phone size={18} /></span>
+              <div>
+                <p className="hp-contact-info-title">{cs.info.phoneTitle}</p>
+                <a href={`tel:${cs.info.phone.replace(/\s/g, '')}`} className="hp-contact-info-value hp-contact-info-link">{cs.info.phone}</a>
+              </div>
+            </div>
+            <div className="hp-contact-info-block">
+              <span className="hp-contact-info-icon" aria-hidden="true"><MapPin size={18} /></span>
+              <div>
+                <p className="hp-contact-info-title">{cs.info.locationTitle}</p>
+                <p className="hp-contact-info-value">{cs.info.address}</p>
+              </div>
+            </div>
+            <div className="hp-contact-info-block">
+              <span className="hp-contact-info-icon" aria-hidden="true"><Video size={18} /></span>
+              <div>
+                <p className="hp-contact-info-title">{cs.info.consultationsTitle}</p>
+                <p className="hp-contact-info-value">{cs.info.consultations}</p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ─── SECTION 15 — SITE FOOTER ─────────────────────────────────────────────────
+
+function SiteFooter({ t }) {
+  const f = t.footer
+
+  return (
+    <footer className="site-footer">
+      <div className="site-footer-top-rule" aria-hidden="true" />
+      <div className="site-footer-inner">
+        {/* Left — logo & brand */}
+        <div className="site-footer-brand">
+          <Link to="/home" className="site-footer-logo-link" aria-label="Home — Laura Cocozza">
+            <img src="/logo-or-icon.png" alt="" className="site-footer-logo-img" aria-hidden="true" />
+          </Link>
+          <div className="site-footer-brand-copy">
+            <p className="site-footer-brand-name">{f.doctor}</p>
+            <p className="site-footer-brand-subtitle">{f.brand}</p>
+            <p className="site-footer-brand-tagline">{f.tagline}</p>
+          </div>
+        </div>
+
+        {/* Center — nav */}
+        <nav className="site-footer-nav" aria-label="Footer navigation">
+          {f.nav.map((label, i) => (
+            <Link key={label} to={f.navLinks[i]} className="site-footer-nav-link">{label}</Link>
+          ))}
+        </nav>
+
+        {/* Right — contact microcopy */}
+        <div className="site-footer-contact">
+          <a href="mailto:laura.cocozza@gmail.com" className="site-footer-contact-item">laura.cocozza@gmail.com</a>
+          <a href="tel:+39339366980" className="site-footer-contact-item">+39 339 366 980</a>
+          <p className="site-footer-contact-item">Via Generale Baldissera 14 — Udine</p>
+        </div>
+      </div>
+
+      <div className="site-footer-bottom">
+        <p className="site-footer-copyright">{f.copyright}</p>
+      </div>
+    </footer>
+  )
+}
+
 function Section({ title, subtitle, items }) {
   return (
     <section className="section-block">
@@ -2012,7 +2502,12 @@ function Home({ t }) {
         <SupportAreasSection t={t} />
         <ClinicalFamily />
         <MultidisciplinaryNetworkSection t={t} />
+        <AboutDrLauraSection t={t} />
+        <FaqSection t={t} />
+        <HomepageContactSection t={t} />
       </div>
+
+      <SiteFooter t={t} />
     </>
   )
 }
@@ -2264,13 +2759,13 @@ function Contact({ t }) {
 function Footer({ t }) {
   return (
     <footer className="footer">
-      <p>{t.footer}</p>
+      <p>{t.footer.copyright}</p>
       <div>
         <Link to="/home">Home</Link>
-        <Link to="/clinical">Clinical</Link>
-        <Link to="/forensic">Forensic</Link>
-        <Link to="/about">About</Link>
-        <Link to="/contact">Contact</Link>
+        <Link to="/clinical">{t.footer.nav[1]}</Link>
+        <Link to="/forensic">{t.footer.nav[2]}</Link>
+        <Link to="/about">{t.nav.about}</Link>
+        <Link to="/contact">{t.footer.nav[3]}</Link>
       </div>
     </footer>
   )
