@@ -1413,16 +1413,9 @@ function MultidisciplinaryNetworkSection({ t }) {
       if (typeof window === 'undefined') return () => {}
 
       const desktopQuery = window.matchMedia('(min-width: 1200px)')
+      desktopQuery.addEventListener('change', onStoreChange)
 
-      if (desktopQuery.addEventListener) {
-        desktopQuery.addEventListener('change', onStoreChange)
-
-        return () => desktopQuery.removeEventListener('change', onStoreChange)
-      }
-
-      desktopQuery.addListener(onStoreChange)
-
-      return () => desktopQuery.removeListener(onStoreChange)
+      return () => desktopQuery.removeEventListener('change', onStoreChange)
     },
     () => (typeof window !== 'undefined' ? window.matchMedia('(min-width: 1200px)').matches : false),
     () => false,
