@@ -3604,16 +3604,6 @@ h3 {
   color: rgba(214, 241, 246, 0.82);
 }
 
-@media (min-width: 1025px) {
-  .network-collab-column--right {
-    transform: none;
-  }
-
-  .network-collab-spine {
-    top: calc(var(--network-map-pad-block) + var(--network-core-size) + 0.5rem);
-  }
-}
-
 @keyframes network-spine-breathe {
   0%, 100% { opacity: 0.72; box-shadow: 0 0 8px rgba(121, 222, 237, 0.28); }
   50% { opacity: 1; box-shadow: 0 0 16px rgba(121, 222, 237, 0.54); }
