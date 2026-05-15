@@ -39,6 +39,10 @@ const content = {
       book: 'Prenota un Colloquio',
       bookShort: 'Prenota un Colloquio',
       bookSession: 'Prenota una Seduta',
+      mobileNavAria: 'Navigazione mobile',
+      mainNavAria: 'Navigazione principale',
+      openMenuAria: 'Apri menu',
+      closeMenuAria: 'Chiudi menu',
     },
     home: {
       eyebrow: 'Psicoterapia clinica e psicologia forense',
@@ -89,6 +93,12 @@ const content = {
           'Ogni percorso viene costruito attraverso un approccio integrato e multidisciplinare, con l\'obiettivo di offrire un supporto personalizzato, strutturato e profondamente umano.',
         secondary:
           'Uno spazio clinico orientato all\'ascolto, alla comprensione e alla costruzione di un equilibrio psicologico sostenibile nel tempo.',
+        highlights: [
+          'Valutazione iniziale accurata per definire priorità e obiettivi realistici.',
+          'Percorso strutturato con monitoraggio continuo dei progressi clinici.',
+          'Intervento personalizzato su bisogni emotivi, relazionali e familiari.',
+          'Collaborazione multidisciplinare quando utile al benessere complessivo.',
+        ],
         cta: 'Voglio trovare il percorso più adatto a me',
         imageAlt: 'Dott.ssa Laura Cocozza nel suo studio professionale',
       },
@@ -133,39 +143,39 @@ const content = {
         nodeKicker: 'Nodo di cura specialistica',
         nodes: [
           {
-            title: 'Child & Adolescent Psychotherapists',
+            title: 'Psicoterapeuti dell’età evolutiva',
             description:
               'Supporto integrato all’interno delle traiettorie evolutive e delle dinamiche familiari complesse.',
           },
           {
-            title: 'Neuropsychiatrists',
+            title: 'Neuropsichiatri',
             description:
               'Coordinamento specialistico nei casi che richiedono integrazione neuropsichiatrica e clinica.',
           },
           {
-            title: 'Psychiatrists',
+            title: 'Psichiatri',
             description:
               'Integrazione psichiatrica e psicologica per continuità terapeutica nei percorsi più complessi.',
           },
           {
-            title: 'Family Law Attorneys',
+            title: 'Avvocati di diritto di famiglia',
             description:
               'Collaborazione legale nelle situazioni familiari ad alta complessità e nei passaggi decisionali delicati.',
           },
           {
-            title: 'Forensic Psychology Professionals',
+            title: 'Professionisti di psicologia forense',
             description:
               'Supporto interdisciplinare per valutazioni tecniche, contesti giudiziari e lavoro psicologico-forense.',
           },
         ],
         cta: {
           clinical: {
-            title: 'Clinical Psychology',
+            title: 'Psicologia Clinica',
             text: 'Esplora percorsi terapeutici, servizi di supporto emotivo, cura familiare e approcci di trattamento personalizzati.',
             button: 'Voglio il supporto clinico giusto per me',
           },
           forensic: {
-            title: 'Forensic Psychology',
+            title: 'Psicologia Forense',
             text: 'Scopri servizi forensi, supporto in psicologia giuridica, expertise giudiziaria e il progetto PsyLex.',
             button: 'Voglio chiarezza nel mio percorso forense',
           },
@@ -198,6 +208,7 @@ const content = {
       editorialQuote: {
         quote: 'La psicoterapia non consiste nel cambiare chi siamo, ma nel comprendere con maggiore chiarezza il modo in cui viviamo emozioni, relazioni ed esperienze.',
         attribution: '— Dott.ssa Laura Cocozza',
+        ariaLabel: 'Citazione editoriale',
       },
       whoIsItFor: {
         eyebrow: 'Per chi è pensato',
@@ -275,6 +286,64 @@ const content = {
           },
         ],
       },
+      familySupport: {
+        eyebrow: 'Dove le relazioni ritrovano equilibrio',
+        title: 'Supporto per coppie e famiglie',
+        intro:
+          'Una sezione dedicata a coppie, genitori e famiglie che cercano un supporto psicologico strutturato nelle fasi di conflitto, transizione e cambiamento relazionale.',
+        cardCta: 'Voglio più chiarezza e stabilità nella mia famiglia',
+        sectionCta: 'Voglio ricostruire equilibrio nella mia famiglia',
+        panels: [
+          {
+            icon: '/relationship.png',
+            title: 'Percorsi di Coppia',
+            intro: 'Spazi di supporto per migliorare la comunicazione, affrontare i conflitti e ricostruire comprensione emotiva.',
+            highlights: [
+              'Difficoltà comunicative',
+              'Riconnessione emotiva',
+              'Gestione dei conflitti',
+              'Transizioni nella relazione',
+              'Recupero dell’equilibrio di coppia',
+            ],
+          },
+          {
+            icon: '/separated.png',
+            title: 'Supporto nella Separazione',
+            intro: 'Sostegno psicologico nei momenti emotivamente complessi di separazione e transizione familiare.',
+            highlights: [
+              'Stabilizzazione emotiva',
+              'Supporto durante la separazione',
+              'Orientamento alla genitorialità',
+              'Riorganizzazione familiare',
+              'Accompagnamento nel cambiamento',
+            ],
+          },
+          {
+            icon: '/parental-guidance.png',
+            title: 'Sostegno alla Genitorialità',
+            intro: 'Percorsi dedicati ai genitori che affrontano sfide educative, emotive e relazionali.',
+            highlights: [
+              'Guida alla genitorialità',
+              'Criticità educative',
+              'Dinamiche emotive familiari',
+              'Comunicazione genitori-figli',
+              'Supporto relazionale continuativo',
+            ],
+          },
+          {
+            icon: '/family-consultation.png',
+            title: 'Consulenze Familiari',
+            intro: 'Interventi di supporto per situazioni familiari complesse, gestione dei conflitti ed equilibrio relazionale.',
+            highlights: [
+              'Situazioni familiari complesse',
+              'Mediazione dei conflitti',
+              'Regolazione emotiva',
+              'Lettura delle dinamiche familiari',
+              'Supporto multidisciplinare integrato',
+            ],
+          },
+        ],
+      },
       aboutSection: {
         eyebrow: 'PROFILO PROFESSIONALE',
         title: 'Un approccio multidisciplinare fondato sulla psicologia clinica e forense',
@@ -283,6 +352,7 @@ const content = {
           "La Dott.ssa Laura Cocozza è psicologa, psicoterapeuta cognitivo-comportamentale e psicologa forense. La sua pratica professionale integra la psicoterapia clinica con la consulenza forense, offrendo un modello di cura che risponde con precisione alle esigenze emotive, relazionali e legali di ogni persona. Attraverso l'uso della Terapia Cognitivo-Comportamentale (TCC), dell'Acceptance and Commitment Therapy (ACT) e di tecnologie innovative come la realtà virtuale, ogni percorso viene costruito attorno alla specificità dell'individuo. In ambito forense, collabora con tribunali e professionisti legali in qualità di CTU e CTP, occupandosi di valutazioni psicologiche, diritto di famiglia e supporto in procedimenti civili. Un approccio integrato, multidisciplinare e profondamente umano.",
         ctaButton: 'Voglio prenotare la mia seduta',
         ctaSubtext: 'Consulenze online e in presenza disponibili',
+        portraitAlt: 'Dott.ssa Laura Cocozza — ritratto professionale',
       },
       faqSection: {
         eyebrow: 'DOMANDE FREQUENTI',
@@ -312,6 +382,10 @@ const content = {
           subject: 'Oggetto',
           message: 'Messaggio',
           send: 'Voglio ricevere una risposta dedicata →',
+          mailtoName: 'Nome',
+          mailtoEmail: 'Email',
+          mailtoPhone: 'Telefono',
+          mailtoMessage: 'Messaggio',
         },
         info: {
           emailTitle: 'Email',
@@ -348,6 +422,8 @@ const content = {
       tagline: 'Consulenze online e in presenza disponibili.',
       nav: ['Home', 'Area Clinica', 'Psicologia Forense', 'Contatti', 'FAQ'],
       navLinks: ['/home', '/clinical', '/forensic', '/contact', '/home'],
+      logoAriaLabel: 'Home — Laura Cocozza',
+      navAriaLabel: 'Navigazione footer',
       copyright: '© 2026 Laura Cocozza — Tutti i diritti riservati.',
     },
   },
@@ -364,6 +440,10 @@ const content = {
       book: 'Book a Consultation',
       bookShort: 'Book a Consultation',
       bookSession: 'Book a Session',
+      mobileNavAria: 'Mobile navigation',
+      mainNavAria: 'Main navigation',
+      openMenuAria: 'Open menu',
+      closeMenuAria: 'Close menu',
     },
     home: {
       eyebrow: 'Clinical psychotherapy and forensic psychology',
@@ -414,6 +494,12 @@ const content = {
           'Each pathway is built through an integrated, multidisciplinary approach, with the goal of providing support that is personalised, structured, and deeply human.',
         secondary:
           'A clinical space oriented toward listening, understanding, and building a sustainable psychological balance over time.',
+        highlights: [
+          'Accurate initial assessment to define clear priorities and realistic goals.',
+          'Structured pathway with ongoing clinical progress monitoring.',
+          'Personalized intervention for emotional, relational, and family needs.',
+          'Multidisciplinary coordination whenever it improves outcomes.',
+        ],
         cta: 'I want to find the right pathway for me',
         imageAlt: 'Dr. Laura Cocozza in her professional practice',
       },
@@ -453,7 +539,7 @@ const content = {
         intro:
           'The practice operates through a collaborative network of specialists, allowing each therapeutic pathway to be supported through an integrated and multidisciplinary approach tailored to individual and family needs.',
         centerLabel: 'Integrated Care Model',
-        desktopCenterLabel: 'Modello di Cura Integrata',
+        desktopCenterLabel: 'Integrated Care Model',
         desktopSpineTitle: 'Integrated Care Model',
         nodeKicker: 'Specialist care pillar',
         nodes: [
@@ -487,12 +573,12 @@ const content = {
           clinical: {
             title: 'Clinical Psychology',
             text: 'Explore therapeutic pathways, emotional support services, family care, and individualized treatment approaches.',
-            button: 'Voglio il supporto clinico giusto per me',
+            button: 'I want the clinical support that fits me',
           },
           forensic: {
             title: 'Forensic Psychology',
             text: 'Discover forensic services, legal psychology support, court-related expertise, and the PsyLex project.',
-            button: 'Voglio chiarezza nel mio percorso forense',
+            button: 'I want clarity for my forensic case',
           },
         },
       },
@@ -523,6 +609,7 @@ const content = {
       editorialQuote: {
         quote: 'Psychotherapy is not about changing who we are, but about understanding with greater clarity how we experience emotions, relationships, and life itself.',
         attribution: '— Dr. Laura Cocozza',
+        ariaLabel: 'Editorial quote',
       },
       whoIsItFor: {
         eyebrow: 'Who it is for',
@@ -600,6 +687,64 @@ const content = {
           },
         ],
       },
+      familySupport: {
+        eyebrow: 'Where relationships regain balance',
+        title: 'Couple & Family Support',
+        intro:
+          'A dedicated section for couples, parents, and families seeking structured psychological support through conflict, transition, and relational change.',
+        cardCta: 'I want stronger family clarity and support',
+        sectionCta: 'I want to rebuild balance in my family',
+        panels: [
+          {
+            icon: '/relationship.png',
+            title: 'Couple Pathways',
+            intro: 'Support spaces designed to improve communication, navigate conflict, and rebuild emotional understanding.',
+            highlights: [
+              'Communication difficulties',
+              'Emotional reconnection',
+              'Conflict navigation',
+              'Relationship transitions',
+              'Restoring relational balance',
+            ],
+          },
+          {
+            icon: '/separated.png',
+            title: 'Support During Separation',
+            intro: 'Psychological guidance through emotionally complex moments of separation and family transition.',
+            highlights: [
+              'Emotional stabilization',
+              'Separation support',
+              'Parenting transition guidance',
+              'Family restructuring',
+              'Psychological support through change',
+            ],
+          },
+          {
+            icon: '/parental-guidance.png',
+            title: 'Parenting Support',
+            intro: 'Dedicated support pathways for parents navigating educational, emotional, and relational challenges.',
+            highlights: [
+              'Parenting guidance',
+              'Educational challenges',
+              'Emotional family dynamics',
+              'Parent-child communication',
+              'Relational support pathways',
+            ],
+          },
+          {
+            icon: '/family-consultation.png',
+            title: 'Family Consultations',
+            intro: 'Support interventions for complex family situations, conflict resolution, and relational balance.',
+            highlights: [
+              'Complex family situations',
+              'Conflict mediation support',
+              'Emotional regulation',
+              'Family relational assessment',
+              'Integrated multidisciplinary guidance',
+            ],
+          },
+        ],
+      },
       aboutSection: {
         eyebrow: 'PROFESSIONAL PROFILE',
         title: 'A multidisciplinary approach grounded in clinical and forensic psychology',
@@ -608,6 +753,7 @@ const content = {
           "Dr. Laura Cocozza is a psychologist, cognitive-behavioral psychotherapist, and forensic psychologist. Her professional practice integrates clinical psychotherapy with forensic consultancy, offering an integrated care model that responds with precision to the emotional, relational, and legal needs of every individual. Through the use of Cognitive-Behavioral Therapy (CBT), Acceptance and Commitment Therapy (ACT), and innovative technologies such as virtual reality, each pathway is built around the specificity of the person. In the forensic domain, she collaborates with courts and legal professionals as a court-appointed expert (CTU/CTP), working on psychological assessments, family law, and civil proceedings. A deeply integrated, multidisciplinary, and human-centered approach.",
         ctaButton: 'I want to book my session',
         ctaSubtext: 'Online and in-person consultations available',
+        portraitAlt: 'Dr. Laura Cocozza — professional portrait',
       },
       faqSection: {
         eyebrow: 'FREQUENTLY ASKED QUESTIONS',
@@ -637,6 +783,10 @@ const content = {
           subject: 'Subject',
           message: 'Message',
           send: 'I want a dedicated response →',
+          mailtoName: 'Name',
+          mailtoEmail: 'Email',
+          mailtoPhone: 'Phone',
+          mailtoMessage: 'Message',
         },
         info: {
           emailTitle: 'Email',
@@ -673,6 +823,8 @@ const content = {
       tagline: 'Online and in-person consultations available.',
       nav: ['Home', 'Clinical Area', 'Forensic Psychology', 'Contacts', 'FAQ'],
       navLinks: ['/home', '/clinical', '/forensic', '/contact', '/home'],
+      logoAriaLabel: 'Home — Laura Cocozza',
+      navAriaLabel: 'Footer navigation',
       copyright: '© 2026 Laura Cocozza — All rights reserved.',
     },
   },
@@ -849,7 +1001,7 @@ function MobileMenu({ open, onClose, t }) {
                 hidden: {},
                 visible: { transition: { staggerChildren: reduceMotion ? 0.03 : 0.07, delayChildren: reduceMotion ? 0 : 0.1 } },
               }}
-              aria-label="Mobile navigation"
+              aria-label={t.nav.mobileNavAria}
             >
               {[
                 { to: '/home', label: t.nav.home },
@@ -906,7 +1058,7 @@ function SiteHeader({ t, lang, setLang, isLanding, menuOpen, setMenuOpen, preloa
       </Link>
 
       {/* Desktop nav — center */}
-      <nav className="site-nav-desktop" aria-label="Main navigation">
+      <nav className="site-nav-desktop" aria-label={t.nav.mainNavAria}>
         <div className="site-nav-frosted">
           <NavLink to="/home" end>{t.nav.home}</NavLink>
           <NavLink to="/clinical" end>{t.nav.clinical}</NavLink>
@@ -935,7 +1087,7 @@ function SiteHeader({ t, lang, setLang, isLanding, menuOpen, setMenuOpen, preloa
           type="button"
           className={`hamburger-btn${menuOpen ? ' is-open' : ''}`}
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-label={menuOpen ? t.nav.closeMenuAria : t.nav.openMenuAria}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
         >
@@ -998,7 +1150,7 @@ function LandingHero({ t }) {
   }
 
   return (
-    <section className="landing-section" aria-label="Hero">
+    <section className="landing-section" aria-label={t.home.eyebrow}>
       {/* Painterly hero image — right side, bleeds left */}
       <div className="landing-hero-img" role="presentation" aria-hidden="true" />
 
@@ -1354,6 +1506,11 @@ function ClinicalAreaIntroductionSection({ t }) {
             <p className="clinical-intro-paragraph">{ci.paragraph1}</p>
             <p className="clinical-intro-paragraph">{ci.paragraph2}</p>
             <p className="clinical-intro-secondary">{ci.secondary}</p>
+            <ul className="clinical-intro-highlights">
+              {ci.highlights.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
             <Link to="/contact" className="section-cta section-cta--clinical-intro">
               {ci.cta}
             </Link>
@@ -1577,21 +1734,13 @@ function NetworkCtaRow({ network, className = '' }) {
 
 function MultidisciplinaryNetworkDesktopSection({ network }) {
   const [activeNode, setActiveNode] = useState(null)
-  const nodeByTitle = useMemo(() => new Map(network.nodes.map((node) => [node.title, node])), [network.nodes])
   const leftColumnNodes = useMemo(
-    () => ([
-      'Child & Adolescent Psychotherapists',
-      'Forensic Psychology Professionals',
-    ].map((title) => nodeByTitle.get(title)).filter(Boolean)),
-    [nodeByTitle],
+    () => [network.nodes[0], network.nodes[4]].filter(Boolean),
+    [network.nodes],
   )
   const rightColumnNodes = useMemo(
-    () => ([
-      'Psychiatrists',
-      'Family Law Attorneys',
-      'Neuropsychiatrists',
-    ].map((title) => nodeByTitle.get(title)).filter(Boolean)),
-    [nodeByTitle],
+    () => [network.nodes[2], network.nodes[3], network.nodes[1]].filter(Boolean),
+    [network.nodes],
   )
 
   return (
@@ -1795,7 +1944,7 @@ function EditorialQuoteStripSection({ t }) {
   const eq = t.home.editorialQuote
 
   return (
-    <section className="editorial-quote-section" aria-label="Reflective quote">
+    <section className="editorial-quote-section" aria-label={eq.ariaLabel}>
       {/* Atmospheric background movement */}
       {!reduceMotion && (
         <>
@@ -2299,7 +2448,7 @@ function AboutDrLauraSection({ t }) {
               <div className="about-section-portrait-glow" aria-hidden="true" />
               <img
                 src="/dr-laura-cocozza-professional-headshot.png"
-                alt="Dr. Laura Cocozza — professional portrait"
+                alt={about.portraitAlt}
                 className="about-section-portrait-img"
               />
             </div>
@@ -2442,7 +2591,7 @@ function HomepageContactSection({ t }) {
   function handleSubmit(e) {
     e.preventDefault()
     const mailtoBody = encodeURIComponent(
-      `Nome: ${formState.fullName}\nEmail: ${formState.email}\nTelefono: ${formState.phone}\nMessaggio:\n${formState.message}`
+      `${cs.form.mailtoName}: ${formState.fullName}\n${cs.form.mailtoEmail}: ${formState.email}\n${cs.form.mailtoPhone}: ${formState.phone}\n${cs.form.mailtoMessage}:\n${formState.message}`
     )
     window.location.href = `mailto:laura.cocozza@gmail.com?subject=${encodeURIComponent(formState.subject || cs.form.subject)}&body=${mailtoBody}`
   }
@@ -2601,7 +2750,7 @@ function SiteFooter({ t }) {
       <div className="site-footer-inner">
         {/* Left — logo & brand */}
         <div className="site-footer-brand">
-          <Link to="/home" className="site-footer-logo-link" aria-label="Home — Laura Cocozza">
+          <Link to="/home" className="site-footer-logo-link" aria-label={f.logoAriaLabel}>
             <img src="/logo-or-icon.png" alt="" className="site-footer-logo-img" aria-hidden="true" />
           </Link>
           <div className="site-footer-brand-copy">
@@ -2612,7 +2761,7 @@ function SiteFooter({ t }) {
         </div>
 
         {/* Center — nav */}
-        <nav className="site-footer-nav" aria-label="Footer navigation">
+        <nav className="site-footer-nav" aria-label={f.navAriaLabel}>
           {f.nav.map((label, i) => (
             <Link key={label} to={f.navLinks[i]} className="site-footer-nav-link">{label}</Link>
           ))}
@@ -2674,7 +2823,7 @@ function Home({ t }) {
         <WhoIsItForSection t={t} />
         <ClinicalAreaTransitionSection t={t} />
         <SupportAreasSection t={t} />
-        <ClinicalFamily />
+        <ClinicalFamily t={t} />
         <MultidisciplinaryNetworkSection t={t} />
         <AboutDrLauraSection t={t} />
         <FaqSection t={t} />
@@ -2741,69 +2890,18 @@ function ClinicalIndividual() {
   )
 }
 
-function ClinicalFamily() {
-  const panels = [
-    {
-      icon: '/relationship.png',
-      title: 'Couple Pathways',
-      intro: 'Support spaces designed to improve communication, navigate conflict, and rebuild emotional understanding.',
-      highlights: [
-        'Communication difficulties',
-        'Emotional reconnection',
-        'Conflict navigation',
-        'Relationship transitions',
-        'Restoring relational balance',
-      ],
-    },
-    {
-      icon: '/separated.png',
-      title: 'Support During Separation',
-      intro: 'Psychological guidance through emotionally complex moments of separation and family transition.',
-      highlights: [
-        'Emotional stabilization',
-        'Separation support',
-        'Parenting transition guidance',
-        'Family restructuring',
-        'Psychological support through change',
-      ],
-    },
-    {
-      icon: '/parental-guidance.png',
-      title: 'Parenting Support',
-      intro: 'Dedicated support pathways for parents navigating educational, emotional, and relational challenges.',
-      highlights: [
-        'Parenting guidance',
-        'Educational challenges',
-        'Emotional family dynamics',
-        'Parent-child communication',
-        'Relational support pathways',
-      ],
-    },
-    {
-      icon: '/family-consultation.png',
-      title: 'Family Consultations',
-      intro: 'Support interventions for complex family situations, conflict resolution, and relational balance.',
-      highlights: [
-        'Complex family situations',
-        'Conflict mediation support',
-        'Emotional regulation',
-        'Family relational assessment',
-        'Integrated multidisciplinary guidance',
-      ],
-    },
-  ]
+function ClinicalFamily({ t }) {
+  const fs = t.home.familySupport
+  const panels = fs.panels
 
   return (
     <section className="family-support-section">
       <div className="family-support-shell">
         <motion.header className="family-support-header" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.55 }}>
-          <p className="family-support-eyebrow">Dove le relazioni ritrovano equilibrio</p>
-          <h1 className="family-support-title">Couple & Family Support</h1>
+          <p className="family-support-eyebrow">{fs.eyebrow}</p>
+          <h1 className="family-support-title">{fs.title}</h1>
           <IconDivider icon="diversity_1" className="family-support-divider" />
-          <p className="family-support-intro">
-            A dedicated editorial section for couples, parents, and families seeking structured psychological support through conflict, transition,
-            and relational change.
-          </p>
+          <p className="family-support-intro">{fs.intro}</p>
         </motion.header>
 
         <div className="family-support-grid">
@@ -2823,7 +2921,7 @@ function ClinicalFamily() {
                   <img src={panel.icon} alt="" aria-hidden="true" className="family-support-front-icon" />
                   <h2>{panel.title}</h2>
                   <p>{panel.intro}</p>
-                  <span className="family-support-cta">I want stronger family clarity and support</span>
+                  <span className="family-support-cta">{fs.cardCta}</span>
                 </div>
 
                 <div className="family-support-face family-support-face--back">
@@ -2841,7 +2939,7 @@ function ClinicalFamily() {
 
         <div className="family-support-cta-wrap">
           <Link to="/contact" className="section-cta section-cta--family-support">
-            I want to rebuild balance in my family
+            {fs.sectionCta}
           </Link>
         </div>
       </div>
@@ -3035,7 +3133,7 @@ function AppShell() {
               <Route path="/clinical" element={<PageWrapper t={t}><Clinical t={t} /></PageWrapper>} />
               <Route path="/clinical/approach" element={<PageWrapper t={t}><ClinicalApproach /></PageWrapper>} />
               <Route path="/clinical/individual-psychotherapy" element={<PageWrapper t={t}><ClinicalIndividual /></PageWrapper>} />
-              <Route path="/clinical/family-support" element={<PageWrapper t={t}><ClinicalFamily /></PageWrapper>} />
+              <Route path="/clinical/family-support" element={<PageWrapper t={t}><ClinicalFamily t={t} /></PageWrapper>} />
               <Route path="/clinical/network" element={<PageWrapper t={t}><ClinicalNetwork /></PageWrapper>} />
               <Route path="/forensic" element={<PageWrapper t={t}><Forensic t={t} /></PageWrapper>} />
               <Route path="/forensic/services" element={<PageWrapper t={t}><ForensicServices /></PageWrapper>} />

@@ -3000,7 +3000,7 @@ h3 {
   display: grid;
   grid-template-columns: 1.12fr 0.88fr;
   gap: clamp(2.5rem, 6vw, 5.5rem);
-  align-items: start;
+  align-items: stretch;
   padding-bottom: clamp(4rem, 8vh, 6.5rem);
 }
 
@@ -3040,6 +3040,7 @@ h3 {
   flex-direction: column;
   gap: clamp(1.2rem, 2.5vh, 1.8rem);
   padding-top: clamp(0.4rem, 1.2vh, 1.2rem);
+  min-height: 100%;
 }
 
 .clinical-intro-paragraph {
@@ -3074,9 +3075,38 @@ h3 {
 .clinical-intro-image {
   display: block;
   width: 100%;
-  height: clamp(210px, 26vw, 330px);
-  object-fit: cover;
-  object-position: center top;
+  height: auto;
+  object-fit: contain;
+}
+
+.clinical-intro-highlights {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.72rem;
+}
+
+.clinical-intro-highlights li {
+  position: relative;
+  margin: 0;
+  padding-left: 1.2rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.88rem, 1.02vw, 0.96rem);
+  line-height: 1.65;
+  color: rgba(214, 245, 250, 0.88);
+}
+
+.clinical-intro-highlights li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.58em;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 999px;
+  background: rgba(183, 244, 255, 0.92);
+  box-shadow: 0 0 12px rgba(183, 244, 255, 0.38);
 }
 
 .section-cta {
