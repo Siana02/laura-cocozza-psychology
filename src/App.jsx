@@ -291,13 +291,13 @@ const content = {
         title: 'Supporto per coppie e famiglie',
         intro:
           'Una sezione dedicata a coppie, genitori e famiglie che cercano un supporto psicologico strutturato nelle fasi di conflitto, transizione e cambiamento relazionale.',
-        cardCta: 'Voglio più chiarezza e stabilità nella mia famiglia',
-        sectionCta: 'Voglio ricostruire equilibrio nella mia famiglia',
+        sectionCta: 'Voglio ricostruire equilibrio nelle mie relazioni',
         panels: [
           {
             icon: '/relationship.png',
             title: 'Percorsi di Coppia',
             intro: 'Spazi di supporto per migliorare la comunicazione, affrontare i conflitti e ricostruire comprensione emotiva.',
+            cta: 'Voglio migliorare la comunicazione di coppia',
             highlights: [
               'Difficoltà comunicative',
               'Riconnessione emotiva',
@@ -310,6 +310,7 @@ const content = {
             icon: '/separated.png',
             title: 'Supporto nella Separazione',
             intro: 'Sostegno psicologico nei momenti emotivamente complessi di separazione e transizione familiare.',
+            cta: 'Voglio supporto per affrontare la separazione',
             highlights: [
               'Stabilizzazione emotiva',
               'Supporto durante la separazione',
@@ -322,6 +323,7 @@ const content = {
             icon: '/parental-guidance.png',
             title: 'Sostegno alla Genitorialità',
             intro: 'Percorsi dedicati ai genitori che affrontano sfide educative, emotive e relazionali.',
+            cta: 'Voglio una guida per la mia genitorialità',
             highlights: [
               'Guida alla genitorialità',
               'Criticità educative',
@@ -334,6 +336,7 @@ const content = {
             icon: '/family-consultation.png',
             title: 'Consulenze Familiari',
             intro: 'Interventi di supporto per situazioni familiari complesse, gestione dei conflitti ed equilibrio relazionale.',
+            cta: 'Voglio orientamento per la mia situazione familiare',
             highlights: [
               'Situazioni familiari complesse',
               'Mediazione dei conflitti',
@@ -692,13 +695,13 @@ const content = {
         title: 'Couple & Family Support',
         intro:
           'A dedicated section for couples, parents, and families seeking structured psychological support through conflict, transition, and relational change.',
-        cardCta: 'I want stronger family clarity and support',
-        sectionCta: 'I want to rebuild balance in my family',
+        sectionCta: 'I want to rebuild balance in my relationships',
         panels: [
           {
             icon: '/relationship.png',
             title: 'Couple Pathways',
             intro: 'Support spaces designed to improve communication, navigate conflict, and rebuild emotional understanding.',
+            cta: 'I want to strengthen communication in my relationship',
             highlights: [
               'Communication difficulties',
               'Emotional reconnection',
@@ -711,6 +714,7 @@ const content = {
             icon: '/separated.png',
             title: 'Support During Separation',
             intro: 'Psychological guidance through emotionally complex moments of separation and family transition.',
+            cta: 'I want support through separation and transition',
             highlights: [
               'Emotional stabilization',
               'Separation support',
@@ -723,6 +727,7 @@ const content = {
             icon: '/parental-guidance.png',
             title: 'Parenting Support',
             intro: 'Dedicated support pathways for parents navigating educational, emotional, and relational challenges.',
+            cta: 'I want guidance for my parenting journey',
             highlights: [
               'Parenting guidance',
               'Educational challenges',
@@ -735,6 +740,7 @@ const content = {
             icon: '/family-consultation.png',
             title: 'Family Consultations',
             intro: 'Support interventions for complex family situations, conflict resolution, and relational balance.',
+            cta: 'I want clarity for my family dynamics',
             highlights: [
               'Complex family situations',
               'Conflict mediation support',
@@ -1479,17 +1485,25 @@ function ClinicalAreaIntroductionSection({ t }) {
       </div>
 
       <div className="clinical-intro-inner">
+        <motion.div
+          className="clinical-intro-top"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className="clinical-intro-eyebrow">{ci.eyebrow}</span>
+          <h2 className="clinical-intro-title">{ci.title}</h2>
+        </motion.div>
+
         <div className="clinical-intro-split">
-          {/* Left column — eyebrow + large editorial title */}
           <motion.div
-            className="clinical-intro-left"
+            className="clinical-intro-image-col"
             initial={{ opacity: 0, x: -32 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span className="clinical-intro-eyebrow">{ci.eyebrow}</span>
-            <h2 className="clinical-intro-title">{ci.title}</h2>
             <div className="clinical-intro-image-wrap">
               <img src="/laura-cocozza-hero-image.jpg" alt={ci.imageAlt} className="clinical-intro-image" />
             </div>
@@ -1768,7 +1782,10 @@ function MultidisciplinaryNetworkDesktopSection({ network }) {
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
           >
             <div className="network-collab-desktop-divider-line" aria-hidden="true" />
-            <p className="network-collab-desktop-spine-title">{network.desktopSpineTitle}</p>
+            <div className="network-collab-desktop-spine-badge">
+              <span className="network-collab-desktop-spine-orb" aria-hidden="true" />
+              <p className="network-collab-desktop-spine-title">{network.desktopSpineTitle}</p>
+            </div>
 
             <div className="network-collab-desktop-column network-collab-desktop-column--left">
               {leftColumnNodes.map((node) => {
@@ -1788,7 +1805,6 @@ function MultidisciplinaryNetworkDesktopSection({ network }) {
                       onFocus={() => setActiveNode(node.title)}
                       onBlur={() => setActiveNode(null)}
                     >
-                      <span className="network-collab-desktop-node-kicker">{network.nodeKicker}</span>
                       <h3 className="network-collab-node-title">{node.title}</h3>
                       <p className="network-collab-node-desc">{node.description}</p>
                     </motion.article>
@@ -1815,7 +1831,6 @@ function MultidisciplinaryNetworkDesktopSection({ network }) {
                       onFocus={() => setActiveNode(node.title)}
                       onBlur={() => setActiveNode(null)}
                     >
-                      <span className="network-collab-desktop-node-kicker">{network.nodeKicker}</span>
                       <h3 className="network-collab-node-title">{node.title}</h3>
                       <p className="network-collab-node-desc">{node.description}</p>
                     </motion.article>
@@ -2431,6 +2446,7 @@ function AboutDrLauraSection({ t }) {
         >
           <span className="about-section-eyebrow">{about.eyebrow}</span>
           <h2 className="about-section-title">{about.title}</h2>
+          <IconDivider icon="workspace_premium" />
           <div className="about-section-badge">
             <span>{about.badge}</span>
           </div>
@@ -2461,7 +2477,9 @@ function AboutDrLauraSection({ t }) {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
           >
-            <p className="about-section-paragraph">{about.paragraph}</p>
+            <div className="about-section-content-card">
+              <p className="about-section-paragraph">{about.paragraph}</p>
+            </div>
           </motion.div>
         </div>
 
@@ -2921,7 +2939,7 @@ function ClinicalFamily({ t }) {
                   <img src={panel.icon} alt="" aria-hidden="true" className="family-support-front-icon" />
                   <h2>{panel.title}</h2>
                   <p>{panel.intro}</p>
-                  <span className="family-support-cta">{fs.cardCta}</span>
+                  <span className="family-support-cta">{panel.cta}</span>
                 </div>
 
                 <div className="family-support-face family-support-face--back">
