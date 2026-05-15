@@ -3414,7 +3414,7 @@ h3 {
     radial-gradient(circle at 50% 50%, rgba(183, 244, 255, 0.12) 0%, rgba(183, 244, 255, 0.04) 30%, transparent 62%),
     linear-gradient(145deg, rgba(9, 33, 42, 0.82), rgba(6, 24, 31, 0.92));
   display: grid;
-  grid-template-columns: minmax(var(--network-column-min), 1fr) var(--network-center-column) minmax(var(--network-column-min), 1fr);
+  grid-template-columns: minmax(0, 1fr) var(--network-center-column) minmax(0, 1fr);
   gap: clamp(1rem, 2vw, 1.6rem);
   align-items: center;
   padding: var(--network-map-pad-block) clamp(1rem, 2.6vw, 1.8rem);
@@ -3834,10 +3834,6 @@ h3 {
 }
 
 @media (min-width: 901px) {
-  .network-collab-map {
-    grid-template-columns: minmax(0, 1fr) var(--network-center-column) minmax(0, 1fr);
-  }
-
   .network-collab-spine {
     left: var(--network-center-x);
     top: calc(var(--network-map-pad-block) + var(--network-core-size) + 0.5rem);
