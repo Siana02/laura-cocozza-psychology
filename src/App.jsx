@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState, useSyncExternalStore } from 'react'
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from 'framer-motion'
 import {
   ArrowRight,
@@ -1408,31 +1408,25 @@ function MultidisciplinaryNetworkSection({ t }) {
   const network = t.home.multidisciplinaryNetwork
   const leftNodes = network.nodes.filter((_, i) => i % 2 === 0)
   const rightNodes = network.nodes.filter((_, i) => i % 2 !== 0)
-  const [isDesktopViewport, setIsDesktopViewport] = useState(() => {
-    if (typeof window === 'undefined') return false
-    return window.matchMedia('(min-width: 1200px)').matches
-  })
+  const isDesktopViewport = useSyncExternalStore(
+    (onStoreChange) => {
+      if (typeof window === 'undefined') return () => {}
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return undefined
+      const desktopQuery = window.matchMedia('(min-width: 1200px)')
 
-    const desktopQuery = window.matchMedia('(min-width: 1200px)')
-    const handleDesktopChange = (event) => {
-      setIsDesktopViewport(event.matches)
-    }
+      if (desktopQuery.addEventListener) {
+        desktopQuery.addEventListener('change', onStoreChange)
 
-    setIsDesktopViewport(desktopQuery.matches)
+        return () => desktopQuery.removeEventListener('change', onStoreChange)
+      }
 
-    if (desktopQuery.addEventListener) {
-      desktopQuery.addEventListener('change', handleDesktopChange)
+      desktopQuery.addListener(onStoreChange)
 
-      return () => desktopQuery.removeEventListener('change', handleDesktopChange)
-    }
-
-    desktopQuery.addListener(handleDesktopChange)
-
-    return () => desktopQuery.removeListener(handleDesktopChange)
-  }, [])
+      return () => desktopQuery.removeListener(onStoreChange)
+    },
+    () => (typeof window !== 'undefined' ? window.matchMedia('(min-width: 1200px)').matches : false),
+    () => false,
+  )
 
   if (isDesktopViewport) {
     return null
