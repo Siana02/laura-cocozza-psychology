@@ -3817,26 +3817,36 @@ h3 {
 }
 
 @media (min-width: 901px) {
+  .network-collab-map {
+    display: grid;
+    grid-template-columns: minmax(320px, 1fr) 220px minmax(320px, 1fr);
+    align-items: start;
+  }
+
   .network-collab-spine {
-    left: var(--network-center-x);
+    left: 50%;
+    transform: translateX(-50%);
     top: calc(var(--network-map-pad-block) + var(--network-core-size) + 0.5rem);
   }
 
   .network-collab-core {
     position: absolute;
-    left: var(--network-center-x);
-    top: var(--network-map-pad-block);
-    margin-top: 0;
+    left: 50%;
     transform: translateX(-50%);
+    top: 2rem;
+    margin: 0;
+  }
+
+  .network-collab-column--left {
+    align-items: flex-end;
   }
 
   .network-collab-column--right {
-    transform: none;
+    align-items: flex-start;
   }
 
-  .network-collab-node-wrap--left,
-  .network-collab-node-wrap--right {
-    --connector-space: clamp(2.6rem, 4.4vw, 4.1rem);
+  .network-collab-node-wrap {
+    --connector-space: 2.2rem;
   }
 
   .network-collab-cta-row {
