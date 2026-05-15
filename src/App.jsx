@@ -23,6 +23,8 @@ import {
 } from 'lucide-react'
 import { BrowserRouter, Link, NavLink, Navigate, Route, Routes, useLocation } from 'react-router-dom'
 
+const SECTION_11_DESKTOP_QUERY = '(min-width: 1200px)'
+
 const content = {
   it: {
     brand: 'Studio di Psicoterapia e Psicologia Forense',
@@ -1408,11 +1410,10 @@ function MultidisciplinaryNetworkSection({ t }) {
   const network = t.home.multidisciplinaryNetwork
   const leftNodes = network.nodes.filter((_, i) => i % 2 === 0)
   const rightNodes = network.nodes.filter((_, i) => i % 2 !== 0)
-  const desktopSectionQuery = '(min-width: 1200px)'
   const desktopMediaQuery = useMemo(() => {
     if (typeof window === 'undefined') return null
-    return window.matchMedia(desktopSectionQuery)
-  }, [desktopSectionQuery])
+    return window.matchMedia(SECTION_11_DESKTOP_QUERY)
+  }, [])
   const isDesktopViewport = useSyncExternalStore(
     (onStoreChange) => {
       if (!desktopMediaQuery) return () => {}
