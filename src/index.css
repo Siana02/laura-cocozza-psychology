@@ -1657,6 +1657,23 @@ h3 {
   align-items: start;
 }
 
+.therapeutic-cta-slot {
+  display: flex;
+  justify-content: center;
+}
+
+.therapeutic-cta-slot--desktop {
+  grid-column: 2 / 3;
+  grid-row: 2;
+  align-self: start;
+}
+
+.therapeutic-cta-slot--mobile {
+  display: none;
+  margin-top: clamp(1.4rem, 3vh, 2.2rem);
+  justify-content: center;
+}
+
 /* ── Panel base ───────────────────────────────────────────── */
 
 .therapeutic-panel {
@@ -1950,6 +1967,14 @@ h3 {
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .therapeutic-cta-slot--desktop {
+    display: none;
+  }
+
+  .therapeutic-cta-slot--mobile {
+    display: flex;
   }
 
   .therapeutic-panel--cbt,
@@ -2296,6 +2321,12 @@ h3 {
   font-size: clamp(0.82rem, 1vw, 0.9rem);
   line-height: 1.74;
   color: rgba(247, 243, 238, 0.58);
+}
+
+.who-cta-wrap {
+  margin-top: clamp(1.8rem, 4vh, 2.6rem);
+  display: flex;
+  justify-content: center;
 }
 
 /* ── Responsive ───────────────────────────────────────────── */
@@ -2969,7 +3000,7 @@ h3 {
   display: grid;
   grid-template-columns: 1.12fr 0.88fr;
   gap: clamp(2.5rem, 6vw, 5.5rem);
-  align-items: start;
+  align-items: stretch;
   padding-bottom: clamp(4rem, 8vh, 6.5rem);
 }
 
@@ -3009,6 +3040,7 @@ h3 {
   flex-direction: column;
   gap: clamp(1.2rem, 2.5vh, 1.8rem);
   padding-top: clamp(0.4rem, 1.2vh, 1.2rem);
+  min-height: 100%;
 }
 
 .clinical-intro-paragraph {
@@ -3026,6 +3058,86 @@ h3 {
   line-height: 1.78;
   color: rgba(247, 243, 238, 0.44);
   font-style: italic;
+}
+
+.clinical-intro-image-wrap {
+  position: relative;
+  margin-top: clamp(1rem, 2.8vh, 1.8rem);
+  width: min(100%, 620px);
+  border-radius: clamp(1rem, 1.8vw, 1.5rem);
+  overflow: hidden;
+  border: 1px solid rgba(183, 244, 255, 0.2);
+  box-shadow:
+    0 24px 52px rgba(0, 0, 0, 0.34),
+    0 0 28px rgba(183, 244, 255, 0.1);
+}
+
+.clinical-intro-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.clinical-intro-highlights {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.72rem;
+}
+
+.clinical-intro-highlights li {
+  position: relative;
+  margin: 0;
+  padding-left: 1.2rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.88rem, 1.02vw, 0.96rem);
+  line-height: 1.65;
+  color: rgba(214, 245, 250, 0.88);
+}
+
+.clinical-intro-highlights li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.58em;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 999px;
+  background: rgba(183, 244, 255, 0.92);
+  box-shadow: 0 0 12px rgba(183, 244, 255, 0.38);
+}
+
+.section-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: clamp(0.9rem, 2vh, 1.4rem);
+  padding: 0.9rem 1.4rem;
+  border-radius: 999px;
+  text-decoration: none;
+  text-align: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.82rem, 1vw, 0.92rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #052029;
+  background: linear-gradient(140deg, #c2f4ff 0%, #9de5f2 100%);
+  border: 1px solid rgba(194, 244, 255, 0.92);
+  box-shadow:
+    0 18px 34px rgba(2, 14, 20, 0.34),
+    0 0 28px rgba(183, 244, 255, 0.32);
+  transition: transform 200ms ease, box-shadow 200ms ease, filter 200ms ease;
+}
+
+.section-cta:hover,
+.section-cta:focus-visible {
+  transform: translateY(-2px);
+  filter: brightness(1.03);
+  box-shadow:
+    0 22px 38px rgba(2, 14, 20, 0.38),
+    0 0 30px rgba(183, 244, 255, 0.42);
 }
 
 /* ── Transition divider to Section 04 ─────────────────── */
@@ -3053,6 +3165,11 @@ h3 {
   .clinical-intro-split {
     grid-template-columns: 1fr;
     gap: clamp(1.4rem, 4vh, 2.4rem);
+  }
+
+  .clinical-intro-image-wrap {
+    width: 100%;
+    max-width: 560px;
   }
 }
 
@@ -3828,6 +3945,22 @@ h3 {
     z-index: 1;
   }
 
+  .network-collab-desktop-spine-title {
+    position: absolute;
+    top: clamp(0.9rem, 2vw, 1.35rem);
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    z-index: 3;
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(0.68rem, 0.78vw, 0.78rem);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(204, 244, 248, 0.85);
+    text-align: center;
+    pointer-events: none;
+  }
+
   .network-collab-desktop-column {
     position: relative;
     z-index: 2;
@@ -4214,6 +4347,12 @@ h3 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(1.8rem, 2.8vw, 2.6rem);
+}
+
+.family-support-cta-wrap {
+  margin-top: clamp(1.8rem, 4vh, 2.8rem);
+  display: flex;
+  justify-content: center;
 }
 
 .family-support-card {
