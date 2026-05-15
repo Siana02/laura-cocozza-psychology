@@ -1408,16 +1408,17 @@ function MultidisciplinaryNetworkSection({ t }) {
   const network = t.home.multidisciplinaryNetwork
   const leftNodes = network.nodes.filter((_, i) => i % 2 === 0)
   const rightNodes = network.nodes.filter((_, i) => i % 2 !== 0)
+  const desktopSectionQuery = '(min-width: 1200px)'
   const isDesktopViewport = useSyncExternalStore(
     (onStoreChange) => {
       if (typeof window === 'undefined') return () => {}
 
-      const desktopQuery = window.matchMedia('(min-width: 1200px)')
+      const desktopQuery = window.matchMedia(desktopSectionQuery)
       desktopQuery.addEventListener('change', onStoreChange)
 
       return () => desktopQuery.removeEventListener('change', onStoreChange)
     },
-    () => (typeof window !== 'undefined' ? window.matchMedia('(min-width: 1200px)').matches : false),
+    () => (typeof window !== 'undefined' ? window.matchMedia(desktopSectionQuery).matches : false),
     () => false,
   )
 
