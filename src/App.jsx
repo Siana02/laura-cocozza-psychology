@@ -46,10 +46,10 @@ const content = {
       title: 'Uno spazio professionale, umano e autorevole per il tuo equilibrio.',
       description:
         'Percorsi personalizzati per adolescenti, adulti e famiglie, con integrazione clinica-forense e una rete multidisciplinare dedicata al benessere.',
-      ctaPrimary: 'Prenota una consulenza',
-      ctaAriaLabel: 'Prenota una consulenza',
+      ctaPrimary: 'Voglio iniziare il mio percorso',
+      ctaAriaLabel: 'Voglio iniziare il mio percorso',
       logoAriaLabel: 'Monogramma LC – torna alla home',
-      ctaSecondary: 'Esplora Area Clinica',
+      ctaSecondary: 'Scelgo il mio percorso clinico',
       trust: ['Terapia Cognitivo Comportamentale', 'Approccio Integrato', 'Online & in Presenza', 'Supporto Multidisciplinare'],
       trustSection: {
         identityName: 'Dr Laura Cocozza',
@@ -89,6 +89,8 @@ const content = {
           'Ogni percorso viene costruito attraverso un approccio integrato e multidisciplinare, con l\'obiettivo di offrire un supporto personalizzato, strutturato e profondamente umano.',
         secondary:
           'Uno spazio clinico orientato all\'ascolto, alla comprensione e alla costruzione di un equilibrio psicologico sostenibile nel tempo.',
+        cta: 'Voglio trovare il percorso più adatto a me',
+        imageAlt: 'Dott.ssa Laura Cocozza nel suo studio professionale',
       },
       integratedCareProcess: {
         eyebrow: 'Come Funziona',
@@ -127,6 +129,8 @@ const content = {
           'La pratica opera attraverso una rete collaborativa di specialisti, permettendo a ogni percorso terapeutico di essere sostenuto da un approccio integrato e multidisciplinare costruito sui bisogni individuali e familiari.',
         centerLabel: 'Modello di Cura Integrata',
         desktopCenterLabel: 'Modello di Cura Integrata',
+        desktopSpineTitle: 'Modello di Cura Integrata',
+        nodeKicker: 'Nodo di cura specialistica',
         nodes: [
           {
             title: 'Child & Adolescent Psychotherapists',
@@ -158,12 +162,12 @@ const content = {
           clinical: {
             title: 'Clinical Psychology',
             text: 'Esplora percorsi terapeutici, servizi di supporto emotivo, cura familiare e approcci di trattamento personalizzati.',
-            button: 'Explore Clinical Area',
+            button: 'Voglio il supporto clinico giusto per me',
           },
           forensic: {
             title: 'Forensic Psychology',
             text: 'Scopri servizi forensi, supporto in psicologia giuridica, expertise giudiziaria e il progetto PsyLex.',
-            button: 'Explore Forensic Area',
+            button: 'Voglio chiarezza nel mio percorso forense',
           },
         },
       },
@@ -172,6 +176,7 @@ const content = {
         title: 'Approccio terapeutico',
         subheading: 'Metodi terapeutici basati sull\'evidenza,\nintegrati con strumenti innovativi\ne approcci multidisciplinari.',
         editorial: 'Ogni percorso è costruito su metodi scientificamente validati, adattati alle esigenze individuali.',
+        cta: 'Voglio capire quale metodo mi aiuta davvero',
         panels: [
           {
             label: 'TCC / CBT',
@@ -198,6 +203,7 @@ const content = {
         eyebrow: 'Per chi è pensato',
         title: 'Percorsi costruiti attorno\nalle diverse fasi della vita\ne alle esigenze individuali',
         subtext: 'Ogni percorso terapeutico viene sviluppato considerando il contesto personale, relazionale ed emotivo di ciascuna persona.',
+        cta: 'Voglio il percorso più adatto alla mia fase di vita',
         panels: [
           {
             key: 'adolescents',
@@ -224,7 +230,7 @@ const content = {
         title: 'Un percorso terapeutico\ncostruito attorno\nalla persona',
         paragraph:
           'Approfondisci le aree di supporto,\ngli approcci terapeutici\ne le modalità di intervento\ndella pratica clinica.',
-        cta: 'Esplora l’area clinica',
+        cta: 'Voglio iniziare con un percorso clinico su misura',
       },
       supportAreas: {
         eyebrow: 'Aree di supporto',
@@ -275,7 +281,7 @@ const content = {
         badge: 'Psicologa • Psicoterapeuta Cognitivo-Comportamentale • Psicologa Forense',
         paragraph:
           "La Dott.ssa Laura Cocozza è psicologa, psicoterapeuta cognitivo-comportamentale e psicologa forense. La sua pratica professionale integra la psicoterapia clinica con la consulenza forense, offrendo un modello di cura che risponde con precisione alle esigenze emotive, relazionali e legali di ogni persona. Attraverso l'uso della Terapia Cognitivo-Comportamentale (TCC), dell'Acceptance and Commitment Therapy (ACT) e di tecnologie innovative come la realtà virtuale, ogni percorso viene costruito attorno alla specificità dell'individuo. In ambito forense, collabora con tribunali e professionisti legali in qualità di CTU e CTP, occupandosi di valutazioni psicologiche, diritto di famiglia e supporto in procedimenti civili. Un approccio integrato, multidisciplinare e profondamente umano.",
-        ctaButton: 'Prenota una Seduta',
+        ctaButton: 'Voglio prenotare la mia seduta',
         ctaSubtext: 'Consulenze online e in presenza disponibili',
       },
       faqSection: {
@@ -305,7 +311,7 @@ const content = {
           phone: 'Telefono (facoltativo)',
           subject: 'Oggetto',
           message: 'Messaggio',
-          send: 'Invia Richiesta →',
+          send: 'Voglio ricevere una risposta dedicata →',
         },
         info: {
           emailTitle: 'Email',
@@ -365,10 +371,10 @@ const content = {
       title: 'A professional, human, and authoritative space for your wellbeing.',
       description:
         'Tailored pathways for adolescents, adults, and families, integrating clinical and forensic expertise with multidisciplinary support.',
-      ctaPrimary: 'Book a consultation',
-      ctaAriaLabel: 'Book a consultation',
+      ctaPrimary: 'I want to start my care journey',
+      ctaAriaLabel: 'I want to start my care journey',
       logoAriaLabel: 'LC monogram – back to home',
-      ctaSecondary: 'Explore Clinical Area',
+      ctaSecondary: 'I choose my clinical pathway',
       trust: ['Cognitive Behavioral Therapy', 'Integrated Approach', 'Online & In-Person', 'Multidisciplinary Support'],
       trustSection: {
         identityName: 'Dr Laura Cocozza',
@@ -408,6 +414,8 @@ const content = {
           'Each pathway is built through an integrated, multidisciplinary approach, with the goal of providing support that is personalised, structured, and deeply human.',
         secondary:
           'A clinical space oriented toward listening, understanding, and building a sustainable psychological balance over time.',
+        cta: 'I want to find the right pathway for me',
+        imageAlt: 'Dr. Laura Cocozza in her professional practice',
       },
       integratedCareProcess: {
         eyebrow: 'How It Works',
@@ -446,6 +454,8 @@ const content = {
           'The practice operates through a collaborative network of specialists, allowing each therapeutic pathway to be supported through an integrated and multidisciplinary approach tailored to individual and family needs.',
         centerLabel: 'Integrated Care Model',
         desktopCenterLabel: 'Modello di Cura Integrata',
+        desktopSpineTitle: 'Integrated Care Model',
+        nodeKicker: 'Specialist care pillar',
         nodes: [
           {
             title: 'Child & Adolescent Psychotherapists',
@@ -477,12 +487,12 @@ const content = {
           clinical: {
             title: 'Clinical Psychology',
             text: 'Explore therapeutic pathways, emotional support services, family care, and individualized treatment approaches.',
-            button: 'Explore Clinical Area',
+            button: 'Voglio il supporto clinico giusto per me',
           },
           forensic: {
             title: 'Forensic Psychology',
             text: 'Discover forensic services, legal psychology support, court-related expertise, and the PsyLex project.',
-            button: 'Explore Forensic Area',
+            button: 'Voglio chiarezza nel mio percorso forense',
           },
         },
       },
@@ -491,6 +501,7 @@ const content = {
         title: 'Therapeutic Approach',
         subheading: 'Evidence-based therapeutic methods,\nintegrated with innovative tools\nand multidisciplinary approaches.',
         editorial: 'Every pathway is built on scientifically validated methods, adapted to individual needs.',
+        cta: 'I want to discover the method that helps me most',
         panels: [
           {
             label: 'CBT',
@@ -517,6 +528,7 @@ const content = {
         eyebrow: 'Who it is for',
         title: 'Pathways built around\nthe different stages of life\nand individual needs',
         subtext: 'Each therapeutic pathway is developed considering the personal, relational, and emotional context of every individual.',
+        cta: 'I want a pathway tailored to my life stage',
         panels: [
           {
             key: 'adolescents',
@@ -543,7 +555,7 @@ const content = {
         title: 'A therapeutic pathway\nbuilt around\nthe person',
         paragraph:
           'Explore the support areas,\ntherapeutic approaches,\nand intervention models\nof the clinical practice.',
-        cta: 'Explore the clinical area',
+        cta: 'I want to begin a tailored clinical pathway',
       },
       supportAreas: {
         eyebrow: 'Support Areas',
@@ -594,7 +606,7 @@ const content = {
         badge: 'Psychologist • Cognitive-Behavioral Psychotherapist • Forensic Psychologist',
         paragraph:
           "Dr. Laura Cocozza is a psychologist, cognitive-behavioral psychotherapist, and forensic psychologist. Her professional practice integrates clinical psychotherapy with forensic consultancy, offering an integrated care model that responds with precision to the emotional, relational, and legal needs of every individual. Through the use of Cognitive-Behavioral Therapy (CBT), Acceptance and Commitment Therapy (ACT), and innovative technologies such as virtual reality, each pathway is built around the specificity of the person. In the forensic domain, she collaborates with courts and legal professionals as a court-appointed expert (CTU/CTP), working on psychological assessments, family law, and civil proceedings. A deeply integrated, multidisciplinary, and human-centered approach.",
-        ctaButton: 'Book a Session',
+        ctaButton: 'I want to book my session',
         ctaSubtext: 'Online and in-person consultations available',
       },
       faqSection: {
@@ -624,7 +636,7 @@ const content = {
           phone: 'Phone (optional)',
           subject: 'Subject',
           message: 'Message',
-          send: 'Send Request →',
+          send: 'I want a dedicated response →',
         },
         info: {
           emailTitle: 'Email',
@@ -1326,6 +1338,9 @@ function ClinicalAreaIntroductionSection({ t }) {
           >
             <span className="clinical-intro-eyebrow">{ci.eyebrow}</span>
             <h2 className="clinical-intro-title">{ci.title}</h2>
+            <div className="clinical-intro-image-wrap">
+              <img src="/laura-cocozza-hero-image.jpg" alt={ci.imageAlt} className="clinical-intro-image" />
+            </div>
           </motion.div>
 
           {/* Right column — paragraphs */}
@@ -1339,6 +1354,9 @@ function ClinicalAreaIntroductionSection({ t }) {
             <p className="clinical-intro-paragraph">{ci.paragraph1}</p>
             <p className="clinical-intro-paragraph">{ci.paragraph2}</p>
             <p className="clinical-intro-secondary">{ci.secondary}</p>
+            <Link to="/contact" className="section-cta section-cta--clinical-intro">
+              {ci.cta}
+            </Link>
           </motion.div>
         </div>
       </div>
@@ -1601,6 +1619,7 @@ function MultidisciplinaryNetworkDesktopSection({ network }) {
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
           >
             <div className="network-collab-desktop-divider-line" aria-hidden="true" />
+            <p className="network-collab-desktop-spine-title">{network.desktopSpineTitle}</p>
 
             <div className="network-collab-desktop-column network-collab-desktop-column--left">
               {leftColumnNodes.map((node) => {
@@ -1620,7 +1639,7 @@ function MultidisciplinaryNetworkDesktopSection({ network }) {
                       onFocus={() => setActiveNode(node.title)}
                       onBlur={() => setActiveNode(null)}
                     >
-                      <span className="network-collab-desktop-node-kicker">Specialist node</span>
+                      <span className="network-collab-desktop-node-kicker">{network.nodeKicker}</span>
                       <h3 className="network-collab-node-title">{node.title}</h3>
                       <p className="network-collab-node-desc">{node.description}</p>
                     </motion.article>
@@ -1647,7 +1666,7 @@ function MultidisciplinaryNetworkDesktopSection({ network }) {
                       onFocus={() => setActiveNode(node.title)}
                       onBlur={() => setActiveNode(null)}
                     >
-                      <span className="network-collab-desktop-node-kicker">Specialist node</span>
+                      <span className="network-collab-desktop-node-kicker">{network.nodeKicker}</span>
                       <h3 className="network-collab-node-title">{node.title}</h3>
                       <p className="network-collab-node-desc">{node.description}</p>
                     </motion.article>
@@ -1731,9 +1750,9 @@ function TherapeuticApproachSection({ t }) {
         <NeuralVisualization reduceMotion={reduceMotion} />
 
         <div className="therapeutic-panels-grid">
-          {panels.map((panel, i) => (
+          {panels.flatMap((panel, i) => ([
             <motion.article
-              key={panel.key}
+              key={`${panel.key}-card`}
               className={`therapeutic-panel therapeutic-panel--${panel.key}`}
               initial={{ opacity: 0, y: 36 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1750,8 +1769,21 @@ function TherapeuticApproachSection({ t }) {
                 <h3 className="therapeutic-panel-title">{panel.title}</h3>
                 <p className="therapeutic-panel-description">{panel.description}</p>
               </div>
-            </motion.article>
-          ))}
+            </motion.article>,
+            i === 1 ? (
+              <div key="therapeutic-desktop-cta" className="therapeutic-cta-slot therapeutic-cta-slot--desktop">
+                <Link to="/clinical/approach" className="section-cta section-cta--therapeutic">
+                  {ta.cta}
+                </Link>
+              </div>
+            ) : null,
+          ]))}
+        </div>
+
+        <div className="therapeutic-cta-slot therapeutic-cta-slot--mobile">
+          <Link to="/clinical/approach" className="section-cta section-cta--therapeutic">
+            {ta.cta}
+          </Link>
         </div>
       </div>
     </section>
@@ -1867,6 +1899,12 @@ function WhoIsItForSection({ t }) {
               </div>
             </motion.article>
           ))}
+        </div>
+
+        <div className="who-cta-wrap">
+          <Link to="/contact" className="section-cta section-cta--who">
+            {wf.cta}
+          </Link>
         </div>
       </div>
     </section>
@@ -2759,7 +2797,7 @@ function ClinicalFamily() {
     <section className="family-support-section">
       <div className="family-support-shell">
         <motion.header className="family-support-header" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.55 }}>
-          <p className="family-support-eyebrow">Section 10</p>
+          <p className="family-support-eyebrow">Dove le relazioni ritrovano equilibrio</p>
           <h1 className="family-support-title">Couple & Family Support</h1>
           <IconDivider icon="diversity_1" className="family-support-divider" />
           <p className="family-support-intro">
@@ -2785,7 +2823,7 @@ function ClinicalFamily() {
                   <img src={panel.icon} alt="" aria-hidden="true" className="family-support-front-icon" />
                   <h2>{panel.title}</h2>
                   <p>{panel.intro}</p>
-                  <span className="family-support-cta">Discover the support pathway</span>
+                  <span className="family-support-cta">I want stronger family clarity and support</span>
                 </div>
 
                 <div className="family-support-face family-support-face--back">
@@ -2799,6 +2837,12 @@ function ClinicalFamily() {
               </div>
             </motion.article>
           ))}
+        </div>
+
+        <div className="family-support-cta-wrap">
+          <Link to="/contact" className="section-cta section-cta--family-support">
+            I want to rebuild balance in my family
+          </Link>
         </div>
       </div>
     </section>
