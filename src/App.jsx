@@ -23,7 +23,7 @@ import {
 } from 'lucide-react'
 import { BrowserRouter, Link, NavLink, Navigate, Route, Routes, useLocation } from 'react-router-dom'
 
-const SECTION_11_DESKTOP_QUERY = '(min-width: 1200px)'
+const SECTION_11_DESKTOP_QUERY = '(min-width: 1025px)'
 
 const content = {
   it: {
@@ -126,6 +126,7 @@ const content = {
         intro:
           'La pratica opera attraverso una rete collaborativa di specialisti, permettendo a ogni percorso terapeutico di essere sostenuto da un approccio integrato e multidisciplinare costruito sui bisogni individuali e familiari.',
         centerLabel: 'Modello di Cura Integrata',
+        desktopCenterLabel: 'Modello di Cura Integrata',
         nodes: [
           {
             title: 'Child & Adolescent Psychotherapists',
@@ -444,6 +445,7 @@ const content = {
         intro:
           'The practice operates through a collaborative network of specialists, allowing each therapeutic pathway to be supported through an integrated and multidisciplinary approach tailored to individual and family needs.',
         centerLabel: 'Integrated Care Model',
+        desktopCenterLabel: 'Modello di Cura Integrata',
         nodes: [
           {
             title: 'Child & Adolescent Psychotherapists',
@@ -1427,7 +1429,7 @@ function MultidisciplinaryNetworkSection({ t }) {
   )
 
   if (isDesktopViewport) {
-    return null
+    return <MultidisciplinaryNetworkDesktopSection network={network} reduceMotion={reduceMotion} />
   }
 
   return (
@@ -1525,25 +1527,194 @@ function MultidisciplinaryNetworkSection({ t }) {
           </motion.div>
         </div>
 
-        <div className="network-collab-cta-row">
-          <div className="network-collab-cta network-collab-cta--clinical">
-            <h3 className="network-collab-cta-title">{network.cta.clinical.title}</h3>
-            <p className="network-collab-cta-text">{network.cta.clinical.text}</p>
-            <Link to="/clinical" className="network-collab-cta-button">
-              <span>{network.cta.clinical.button}</span>
-              <ArrowRight size={16} aria-hidden="true" />
-            </Link>
-          </div>
+        <NetworkCtaRow network={network} />
+      </div>
+    </section>
+  )
+}
 
-          <div className="network-collab-cta network-collab-cta--forensic">
-            <h3 className="network-collab-cta-title">{network.cta.forensic.title}</h3>
-            <p className="network-collab-cta-text">{network.cta.forensic.text}</p>
-            <Link to="/forensic" className="network-collab-cta-button">
-              <span>{network.cta.forensic.button}</span>
-              <ArrowRight size={16} aria-hidden="true" />
-            </Link>
-          </div>
+function NetworkCtaRow({ network, className = '' }) {
+  return (
+    <div className={`network-collab-cta-row${className ? ` ${className}` : ''}`}>
+      <div className="network-collab-cta network-collab-cta--clinical">
+        <h3 className="network-collab-cta-title">{network.cta.clinical.title}</h3>
+        <p className="network-collab-cta-text">{network.cta.clinical.text}</p>
+        <Link to="/clinical" className="network-collab-cta-button">
+          <span>{network.cta.clinical.button}</span>
+          <ArrowRight size={16} aria-hidden="true" />
+        </Link>
+      </div>
+
+      <div className="network-collab-cta network-collab-cta--forensic">
+        <h3 className="network-collab-cta-title">{network.cta.forensic.title}</h3>
+        <p className="network-collab-cta-text">{network.cta.forensic.text}</p>
+        <Link to="/forensic" className="network-collab-cta-button">
+          <span>{network.cta.forensic.button}</span>
+          <ArrowRight size={16} aria-hidden="true" />
+        </Link>
+      </div>
+    </div>
+  )
+}
+
+function MultidisciplinaryNetworkDesktopSection({ network, reduceMotion }) {
+  const [activeNode, setActiveNode] = useState(null)
+  const nodeByTitle = useMemo(() => new Map(network.nodes.map((node) => [node.title, node])), [network.nodes])
+  const desktopNodes = useMemo(() => (
+    [
+      {
+        title: 'Child & Adolescent Psychotherapists',
+        position: 'top-left',
+        connector: { x: 29, y: 27 },
+      },
+      {
+        title: 'Psychiatrists',
+        position: 'top-right',
+        connector: { x: 71, y: 26 },
+      },
+      {
+        title: 'Forensic Psychology Professionals',
+        position: 'bottom-left',
+        connector: { x: 27, y: 69 },
+      },
+      {
+        title: 'Family Law Attorneys',
+        position: 'bottom-right',
+        connector: { x: 73, y: 68 },
+      },
+      {
+        title: 'Neuropsychiatrists',
+        position: 'bottom-center',
+        connector: { x: 50, y: 82 },
+      },
+    ].map((item) => ({
+      ...nodeByTitle.get(item.title),
+      ...item,
+    })).filter((item) => item.title)
+  ), [nodeByTitle])
+  const particles = useMemo(() => ([
+    { top: '10%', left: '18%', size: '0.5rem', duration: 9.5, delay: 0.2 },
+    { top: '22%', left: '78%', size: '0.72rem', duration: 11.2, delay: 1.2 },
+    { top: '36%', left: '14%', size: '0.4rem', duration: 10.4, delay: 2.1 },
+    { top: '48%', left: '84%', size: '0.64rem', duration: 12.8, delay: 0.8 },
+    { top: '72%', left: '24%', size: '0.58rem', duration: 10.8, delay: 1.7 },
+    { top: '80%', left: '70%', size: '0.46rem', duration: 9.9, delay: 2.6 },
+  ]), [])
+
+  return (
+    <section className="network-collab-section network-collab-section--desktop">
+      <div className="network-collab-inner network-collab-inner--desktop">
+        <div className="network-collab-desktop-grid">
+          <motion.div
+            className="network-collab-desktop-intro"
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.82, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <span className="network-collab-eyebrow">{network.eyebrow}</span>
+            <h2 className="network-collab-title network-collab-title--desktop">{network.title}</h2>
+            <IconDivider icon="hub" className="network-collab-divider network-collab-divider--desktop" />
+            <p className="network-collab-intro network-collab-intro--desktop">{network.intro}</p>
+          </motion.div>
+
+          <motion.div
+            className="network-collab-desktop-visual"
+            initial={{ opacity: 0, x: 28 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
+          >
+            <div className="network-collab-desktop-atmosphere" aria-hidden="true">
+              <div className="network-collab-desktop-glow network-collab-desktop-glow--one" />
+              <div className="network-collab-desktop-glow network-collab-desktop-glow--two" />
+              <div className="network-collab-desktop-ring network-collab-desktop-ring--one" />
+              <div className="network-collab-desktop-ring network-collab-desktop-ring--two" />
+              {particles.map((particle, index) => (
+                <motion.span
+                  key={`${particle.top}-${particle.left}`}
+                  className="network-collab-desktop-particle"
+                  style={{ top: particle.top, left: particle.left, width: particle.size, height: particle.size }}
+                  animate={reduceMotion ? {} : {
+                    y: [0, -18, 0],
+                    opacity: [0.18, 0.78, 0.18],
+                    scale: [0.9, 1.08, 0.92],
+                  }}
+                  transition={{
+                    duration: particle.duration,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                    delay: particle.delay + index * 0.15,
+                  }}
+                />
+              ))}
+            </div>
+
+            <svg className="network-collab-desktop-connectors" viewBox="0 0 100 100" aria-hidden="true" preserveAspectRatio="none">
+              {desktopNodes.map((node, index) => {
+                const isActive = activeNode === node.title
+
+                return (
+                  <g key={node.title} className={`network-collab-desktop-connector${isActive ? ' is-active' : ''}`}>
+                    <motion.line
+                      x1="50"
+                      y1="50"
+                      x2={node.connector.x}
+                      y2={node.connector.y}
+                      animate={reduceMotion ? {} : { opacity: isActive ? [0.68, 1, 0.68] : [0.28, 0.48, 0.28] }}
+                      transition={{ duration: 4.8 + index * 0.35, repeat: Infinity, ease: 'easeInOut' }}
+                    />
+                    <motion.circle
+                      cx="50"
+                      cy="50"
+                      r="0.78"
+                      animate={reduceMotion ? {} : {
+                        cx: [50, node.connector.x, 50],
+                        cy: [50, node.connector.y, 50],
+                        opacity: isActive ? [0, 1, 0] : [0, 0.7, 0],
+                      }}
+                      transition={{ duration: 4 + index * 0.35, repeat: Infinity, ease: 'easeInOut', delay: index * 0.3 }}
+                    />
+                  </g>
+                )
+              })}
+            </svg>
+
+            <motion.div
+              className="network-collab-desktop-orb"
+              animate={reduceMotion ? {} : { scale: [1, 1.03, 1] }}
+              transition={{ duration: 5.6, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <span className="network-collab-desktop-orb-label">{network.desktopCenterLabel ?? network.centerLabel}</span>
+            </motion.div>
+
+            {desktopNodes.map((node, index) => {
+              const isActive = activeNode === node.title
+
+              return (
+                <motion.article
+                  key={node.title}
+                  className={`network-collab-desktop-node network-collab-desktop-node--${node.position}${isActive ? ' is-active' : ''}`}
+                  tabIndex={0}
+                  onMouseEnter={() => setActiveNode(node.title)}
+                  onMouseLeave={() => setActiveNode(null)}
+                  onFocus={() => setActiveNode(node.title)}
+                  onBlur={() => setActiveNode(null)}
+                  animate={reduceMotion ? {} : { y: [0, -5, 0] }}
+                  whileHover={reduceMotion ? undefined : { y: -10 }}
+                  whileFocus={reduceMotion ? undefined : { y: -10 }}
+                  transition={{ duration: 6 + index * 0.45, repeat: Infinity, ease: 'easeInOut', delay: index * 0.22 }}
+                >
+                  <span className="network-collab-desktop-node-kicker">Specialist node</span>
+                  <h3 className="network-collab-node-title">{node.title}</h3>
+                  <p className="network-collab-node-desc">{node.description}</p>
+                </motion.article>
+              )
+            })}
+          </motion.div>
         </div>
+
+        <NetworkCtaRow network={network} className="network-collab-cta-row--desktop" />
       </div>
     </section>
   )
