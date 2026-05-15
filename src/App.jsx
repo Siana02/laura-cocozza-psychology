@@ -1413,7 +1413,7 @@ function MultidisciplinaryNetworkSection({ t }) {
   const desktopMediaQuery = useMemo(() => {
     if (typeof window === 'undefined') return null
     return window.matchMedia(SECTION_11_DESKTOP_QUERY)
-  }, [SECTION_11_DESKTOP_QUERY])
+  }, [])
   const isDesktopViewport = useSyncExternalStore(
     (onStoreChange) => {
       if (!desktopMediaQuery) return () => {}
