@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState, useSyncExternalStore } from 'react'
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from 'framer-motion'
 import {
   ArrowRight,
@@ -22,6 +22,8 @@ import {
   Video,
 } from 'lucide-react'
 import { BrowserRouter, Link, NavLink, Navigate, Route, Routes, useLocation } from 'react-router-dom'
+
+const SECTION_11_DESKTOP_QUERY = '(min-width: 1200px)'
 
 const content = {
   it: {
@@ -1408,6 +1410,25 @@ function MultidisciplinaryNetworkSection({ t }) {
   const network = t.home.multidisciplinaryNetwork
   const leftNodes = network.nodes.filter((_, i) => i % 2 === 0)
   const rightNodes = network.nodes.filter((_, i) => i % 2 !== 0)
+  const desktopMediaQuery = useMemo(() => {
+    if (typeof window === 'undefined') return null
+    return window.matchMedia(SECTION_11_DESKTOP_QUERY)
+  }, [])
+  const isDesktopViewport = useSyncExternalStore(
+    (onStoreChange) => {
+      if (!desktopMediaQuery) return () => {}
+
+      desktopMediaQuery.addEventListener('change', onStoreChange)
+
+      return () => desktopMediaQuery.removeEventListener('change', onStoreChange)
+    },
+    () => desktopMediaQuery?.matches ?? false,
+    () => false,
+  )
+
+  if (isDesktopViewport) {
+    return null
+  }
 
   return (
     <section className="network-collab-section">
