@@ -1408,6 +1408,35 @@ function MultidisciplinaryNetworkSection({ t }) {
   const network = t.home.multidisciplinaryNetwork
   const leftNodes = network.nodes.filter((_, i) => i % 2 === 0)
   const rightNodes = network.nodes.filter((_, i) => i % 2 !== 0)
+  const [isDesktopViewport, setIsDesktopViewport] = useState(() => {
+    if (typeof window === 'undefined') return false
+    return window.matchMedia('(min-width: 1200px)').matches
+  })
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return undefined
+
+    const desktopQuery = window.matchMedia('(min-width: 1200px)')
+    const handleDesktopChange = (event) => {
+      setIsDesktopViewport(event.matches)
+    }
+
+    setIsDesktopViewport(desktopQuery.matches)
+
+    if (desktopQuery.addEventListener) {
+      desktopQuery.addEventListener('change', handleDesktopChange)
+
+      return () => desktopQuery.removeEventListener('change', handleDesktopChange)
+    }
+
+    desktopQuery.addListener(handleDesktopChange)
+
+    return () => desktopQuery.removeListener(handleDesktopChange)
+  }, [])
+
+  if (isDesktopViewport) {
+    return null
+  }
 
   return (
     <section className="network-collab-section">
