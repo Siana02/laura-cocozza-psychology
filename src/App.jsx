@@ -1409,16 +1409,19 @@ function MultidisciplinaryNetworkSection({ t }) {
   const leftNodes = network.nodes.filter((_, i) => i % 2 === 0)
   const rightNodes = network.nodes.filter((_, i) => i % 2 !== 0)
   const desktopSectionQuery = '(min-width: 1200px)'
+  const desktopMediaQuery = useMemo(() => {
+    if (typeof window === 'undefined') return null
+    return window.matchMedia(desktopSectionQuery)
+  }, [desktopSectionQuery])
   const isDesktopViewport = useSyncExternalStore(
     (onStoreChange) => {
-      if (typeof window === 'undefined') return () => {}
+      if (!desktopMediaQuery) return () => {}
 
-      const desktopQuery = window.matchMedia(desktopSectionQuery)
-      desktopQuery.addEventListener('change', onStoreChange)
+      desktopMediaQuery.addEventListener('change', onStoreChange)
 
-      return () => desktopQuery.removeEventListener('change', onStoreChange)
+      return () => desktopMediaQuery.removeEventListener('change', onStoreChange)
     },
-    () => (typeof window !== 'undefined' ? window.matchMedia(desktopSectionQuery).matches : false),
+    () => desktopMediaQuery?.matches ?? false,
     () => false,
   )
 
