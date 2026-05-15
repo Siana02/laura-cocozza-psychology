@@ -3309,6 +3309,13 @@ h3 {
    SECTION 11 — MULTIDISCIPLINARY NETWORK
    ══════════════════════════════════════════════════════════ */
 
+/* Section 11 — hidden on desktop; visible on mobile and tablet only */
+@media (min-width: 1025px) {
+  .network-collab-section {
+    display: none;
+  }
+}
+
 .network-collab-section {
   position: relative;
   overflow: hidden;
