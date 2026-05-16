@@ -4627,10 +4627,7 @@ function CpSupportAreasSection({ cp }) {
 
 function CpNetworkSection({ cp }) {
   return (
-    <section id={cp.id} className="cp-section cp-section--teal cp-section--network">
-      <div className="cp-network-atmosphere" aria-hidden="true">
-        <img src="/hallway-image.PNG" alt="" className="cp-network-atmosphere-image" />
-      </div>
+    <section id={cp.id} className="cp-section cp-section--teal">
       <div className="cp-section-inner">
         <CpSectionHeader
           eyebrow={cp.eyebrow}
@@ -4839,11 +4836,6 @@ const FORENSIC_PAGE_CONTENT = {
       title: 'Competenza istituzionale al servizio del procedimento',
       intro:
         'Psicologa iscritta all\'Ordine degli Psicologi, specializzata in psicologia forense e giuridica. Esperienza documentata in perizie, valutazioni e consulenze per Tribunali e studi legali del territorio nazionale.',
-      imageSrc: '/hallway-image.PNG',
-      imageAlt: 'Interno professionale dello studio, utilizzato come ancoraggio visivo istituzionale',
-      imageKicker: 'Contesto professionale',
-      imageCaption:
-        'Uno spazio riservato e strutturato che riflette il rigore metodologico e la qualità della collaborazione tecnico-legale.',
       credentials: [
         {
           code: 'CTU',
@@ -5014,11 +5006,6 @@ const FORENSIC_PAGE_CONTENT = {
       title: 'Institutional expertise in service of the proceeding',
       intro:
         'Registered psychologist specialised in forensic and legal psychology. Documented experience in expert reports, assessments, and consultancy for courts and law firms across Italy.',
-      imageSrc: '/hallway-image.PNG',
-      imageAlt: 'Professional interior space used as an institutional trust anchor',
-      imageKicker: 'Professional setting',
-      imageCaption:
-        'A private, structured environment that reflects methodological rigour and high-quality technical-legal collaboration.',
       credentials: [
         {
           code: 'CTU',
@@ -5336,13 +5323,10 @@ const ABOUT_PAGE_CONTENT = {
 const CONTACT_PAGE_CONTENT = {
   it: {
     hero: {
-      title: 'Contact',
+      title: 'Richiedi supporto e orientamento',
       subtitle: 'Clinical and forensic consultations available',
       intro:
         'Uno spazio di contatto chiaro e riservato per richieste cliniche, consulenze forensi e orientamento familiare o legale.',
-      imageSrc: '/hallway-image.PNG',
-      imageAlt: 'Hallway image used as a trust anchor for consultation requests',
-      trustLabel: 'Studio professionale · risposta riservata',
     },
     methods: {
       eyebrow: 'CONTACT OPTIONS',
@@ -5389,13 +5373,10 @@ const CONTACT_PAGE_CONTENT = {
   },
   en: {
     hero: {
-      title: 'Contact',
+      title: 'Reach Out for Support',
       subtitle: 'Clinical and forensic consultations available',
       intro:
         'A clear and confidential contact space for clinical requests, forensic consultations, and family or legal guidance.',
-      imageSrc: '/hallway-image.PNG',
-      imageAlt: 'Hallway image used as a trust anchor for consultation requests',
-      trustLabel: 'Professional practice · confidential response',
     },
     methods: {
       eyebrow: 'CONTACT OPTIONS',
@@ -5628,40 +5609,21 @@ function FpProfileSection({ fp }) {
           intro={fp.intro}
           dividerIcon={FORENSIC_DIVIDER_ICONS.profile}
         />
-        <div className="fp-profile-layout">
-          <div className="fp-credentials-grid">
-            {fp.credentials.map((cred, i) => (
-              <motion.article
-                key={cred.code}
-                className="fp-credential-card"
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }}
-              >
-                <span className="fp-credential-code">{cred.code}</span>
-                <h3 className="fp-credential-title">{cred.title}</h3>
-                <p className="fp-credential-description">{cred.description}</p>
-              </motion.article>
-            ))}
-          </div>
-
-          <motion.aside
-            className="fp-profile-visual"
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.78, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
-          >
-            <div className="fp-profile-image-shell">
-              <img src={fp.imageSrc} alt={fp.imageAlt} className="fp-profile-image" />
-              <div className="fp-profile-image-overlay" aria-hidden="true" />
-            </div>
-            <div className="fp-profile-image-copy">
-              <span className="fp-profile-image-kicker">{fp.imageKicker}</span>
-              <p className="fp-profile-image-caption">{fp.imageCaption}</p>
-            </div>
-          </motion.aside>
+        <div className="fp-credentials-grid">
+          {fp.credentials.map((cred, i) => (
+            <motion.article
+              key={cred.code}
+              className="fp-credential-card"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }}
+            >
+              <span className="fp-credential-code">{cred.code}</span>
+              <h3 className="fp-credential-title">{cred.title}</h3>
+              <p className="fp-credential-description">{cred.description}</p>
+            </motion.article>
+          ))}
         </div>
       </div>
     </section>
@@ -6141,32 +6103,17 @@ function ContactPage({ t }) {
     <>
       <section className="contact-page-hero">
         <div className="contact-page-shell">
-          <div className="contact-page-hero-grid">
-            <motion.div
-              className="contact-page-hero-copy"
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <span className="contact-page-eyebrow">CONTACT</span>
-              <h1 className="contact-page-hero-title">{cp.hero.title}</h1>
-              <p className="contact-page-hero-subtitle">{cp.hero.subtitle}</p>
-              <p className="contact-page-hero-intro">{cp.hero.intro}</p>
-            </motion.div>
-
-            <motion.div
-              className="contact-page-hero-visual"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.82, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
-            >
-              <div className="contact-page-hero-image-shell">
-                <img src={cp.hero.imageSrc} alt={cp.hero.imageAlt} className="contact-page-hero-image" />
-                <div className="contact-page-hero-overlay" aria-hidden="true" />
-                <span className="contact-page-hero-trust">{cp.hero.trustLabel}</span>
-              </div>
-            </motion.div>
-          </div>
+          <motion.div
+            className="contact-page-hero-copy contact-page-hero-copy--centered"
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <span className="contact-page-eyebrow">CONTACT</span>
+            <h1 className="contact-page-hero-title">{cp.hero.title}</h1>
+            <p className="contact-page-hero-subtitle">{cp.hero.subtitle}</p>
+            <p className="contact-page-hero-intro">{cp.hero.intro}</p>
+          </motion.div>
         </div>
       </section>
 
