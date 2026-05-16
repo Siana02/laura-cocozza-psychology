@@ -55,11 +55,11 @@ const content = {
     home: {
       eyebrow: 'Psicoterapia clinica e psicologia forense',
       by: 'DI',
-      title: 'Uno spazio professionale, umano e autorevole per il tuo equilibrio.',
+      title: 'Uno spazio professionale e umano, dedicato al tuo benessere.',
       description:
         'Percorsi personalizzati per adolescenti, adulti e famiglie, con integrazione clinica-forense e una rete multidisciplinare dedicata al benessere.',
-      ctaPrimary: 'Voglio iniziare il mio percorso',
-      ctaAriaLabel: 'Voglio iniziare il mio percorso',
+      ctaPrimary: 'Inizia il tuo percorso',
+      ctaAriaLabel: 'Inizia il tuo percorso',
       logoAriaLabel: 'Monogramma LC – torna alla home',
       ctaSecondary: 'Scelgo il mio percorso clinico',
       trust: ['Terapia Cognitivo Comportamentale', 'Approccio Integrato', 'Online & in Presenza', 'Supporto Multidisciplinare'],
@@ -72,7 +72,7 @@ const content = {
         roleDetails:
           'Psicologa • Psicoterapeuta Cognitivo Comportamentale • Consulente in Psicologia Forense (CTU & CTP)',
         roleDescription:
-          'Un approccio integrato clinico e forense, orientato a chiarezza, stabilità emotiva e benessere psicologico duraturo.',
+          'Un approccio clinico-forense integrato, orientato alla chiarezza, alla stabilità emotiva e a un benessere psicologico duraturo.',
         cards: [
           {
             title: 'Psicoterapia Clinica',
@@ -100,7 +100,7 @@ const content = {
         paragraph2:
           'Ogni percorso viene costruito attraverso un approccio integrato e multidisciplinare, con l\'obiettivo di offrire un supporto personalizzato, strutturato e profondamente umano.',
         secondary:
-          'Uno spazio clinico orientato all\'ascolto, alla comprensione e alla costruzione di un equilibrio psicologico sostenibile nel tempo.',
+          'Uno spazio di ascolto e comprensione, dedicato a costruire un equilibrio psicologico solido e duraturo.',
         highlights: [
           'Valutazione iniziale accurata per definire priorità e obiettivi realistici.',
           'Percorso strutturato con monitoraggio continuo dei progressi clinici.',
@@ -193,7 +193,7 @@ const content = {
         eyebrow: 'Il processo terapeutico',
         title: 'Approccio terapeutico',
         subheading: 'Metodi terapeutici basati sull\'evidenza,\nintegrati con strumenti innovativi\ne approcci multidisciplinari.',
-        editorial: 'Ogni percorso è costruito su metodi scientificamente validati, adattati alle esigenze individuali.',
+        editorial: 'Ogni percorso si fonda su metodi scientificamente validati, adattati alle esigenze di ciascuno.',
         cta: 'Voglio capire quale metodo mi aiuta davvero',
         panels: [
           {
@@ -209,7 +209,7 @@ const content = {
           {
             label: 'VR',
             title: 'Realtà Virtuale',
-            description: 'Tecnologie immersive utilizzate come supporto nei percorsi terapeutici e nella gestione di specifiche difficoltà emotive e comportamentali.',
+            description: 'Tecnologie immersive che affiancano i percorsi terapeutici e aiutano nella gestione di difficoltà emotive e comportamentali.',
           },
         ],
       },
@@ -220,7 +220,7 @@ const content = {
       },
       whoIsItFor: {
         eyebrow: 'Per chi è pensato',
-        title: 'Percorsi costruiti attorno\nalle diverse fasi della vita\ne alle esigenze individuali',
+        title: 'Percorsi pensati per ogni fase della vita\ne per le esigenze di ciascuno',
         subtext: 'Ogni percorso terapeutico viene sviluppato considerando il contesto personale, relazionale ed emotivo di ciascuna persona.',
         cta: 'Voglio il percorso più adatto alla mia fase di vita',
         panels: [
@@ -304,7 +304,7 @@ const content = {
           {
             icon: '/relationship.png',
             title: 'Percorsi di Coppia',
-            intro: 'Spazi di supporto per migliorare la comunicazione, affrontare i conflitti e ricostruire comprensione emotiva.',
+            intro: 'Percorsi dedicati a migliorare la comunicazione, affrontare i conflitti e ritrovare la comprensione emotiva.',
             cta: 'Voglio migliorare la comunicazione di coppia',
             highlights: [
               'Difficoltà comunicative',
@@ -385,7 +385,7 @@ const content = {
       contactSection: {
         eyebrow: 'CONTATTI',
         title: 'Richiedi informazioni o prenota una consulenza',
-        intro: 'È possibile richiedere informazioni riguardo ai percorsi clinici, alle consulenze familiari o ai servizi di psicologia forense attraverso i contatti dello studio. Il primo contatto avviene in modo semplice e riservato.',
+        intro: 'È possibile richiedere informazioni riguardo ai percorsi clinici, alle consulenze familiari o ai servizi di psicologia forense attraverso i contatti dello studio. Il primo contatto è semplice e riservato.',
         form: {
           fullName: 'Nome e Cognome',
           email: 'Email',
@@ -4990,6 +4990,8 @@ const FORENSIC_PAGE_CONTENT = {
       subtitle: 'Un ecosistema collaborativo di psicologia giuridica in fase di sviluppo',
       description:
         'PsyLex è una piattaforma professionale emergente che integra psicologia giuridica, consulenza forense e collaborazione interdisciplinare tra psicologi e avvocati.',
+      previewImageSrc: '/psylex-italia-image-with-content.jpeg',
+      previewImageAlt: 'Anteprima grafica del progetto PsyLex Italia',
       features: [
         'Connessione di professionisti forensi in flussi di lavoro strutturati',
         'Miglioramento del coordinamento in procedimenti familiari e civili',
@@ -5160,6 +5162,8 @@ const FORENSIC_PAGE_CONTENT = {
       subtitle: 'A collaborative legal-psychology ecosystem under development',
       description:
         'PsyLex is an emerging professional platform integrating legal psychology, forensic consultation, and interdisciplinary collaboration between psychologists and attorneys.',
+      previewImageSrc: '/psylex-italia-image-with-content.jpeg',
+      previewImageAlt: 'PsyLex Italia project visual preview',
       features: [
         'Connect forensic professionals in structured workflows',
         'Improve coordination in family and civil proceedings',
@@ -5842,6 +5846,16 @@ function FpPsyLexSection({ fp }) {
         >
           {fp.status}
         </motion.p>
+
+        <motion.figure
+          className="fp-psylex-preview"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.68, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+        >
+          <img src={fp.previewImageSrc} alt={fp.previewImageAlt} className="fp-psylex-preview-image" />
+        </motion.figure>
 
         <motion.div
           className="fp-psylex-actions"
