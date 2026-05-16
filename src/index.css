@@ -7642,6 +7642,7 @@ a.site-footer-contact-item:hover {
   .site-footer-branding {
     justify-content: flex-start;
   }
+}
 
 @media (max-width: 767px) {
   .about-page-hero-grid,
