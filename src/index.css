@@ -3957,7 +3957,7 @@ h3 {
     column-gap: clamp(2.4rem, 4vw, 4rem);
     row-gap: clamp(1.15rem, 2vw, 1.6rem);
     align-items: start;
-    padding: clamp(2.8rem, 4.2vw, 3.8rem) clamp(2rem, 3.2vw, 3rem) clamp(1.6rem, 2.2vw, 2.2rem);
+    padding: clamp(7.5rem, 10vw, 9rem) clamp(2rem, 3.2vw, 3rem) clamp(1.6rem, 2.2vw, 2.2rem);
   }
 
   .network-collab-desktop-divider-line {
@@ -4204,7 +4204,7 @@ h3 {
 
   .network-collab-core {
     grid-column: 1;
-    margin: 0 auto 0.45rem;
+    margin: 0 auto 1.5rem;
   }
 
   .network-collab-column {
@@ -5324,12 +5324,12 @@ h3 {
 
 .site-footer-inner {
   display: grid;
-  grid-template-columns: minmax(220px, 1.1fr) 1fr minmax(220px, 0.9fr);
-  gap: clamp(2rem, 4vw, 4rem);
+  grid-template-columns: minmax(200px, 1.2fr) minmax(160px, 0.8fr) minmax(200px, 1fr);
+  gap: clamp(2.4rem, 4vw, 4.5rem);
   align-items: start;
   max-width: min(1280px, 100% - 2rem);
   margin: 0 auto;
-  padding: clamp(2.8rem, 5vw, 4.5rem) clamp(1rem, 3vw, 2.5rem) clamp(2.4rem, 4.5vw, 3.8rem);
+  padding: clamp(3rem, 5vw, 4.8rem) clamp(1rem, 3vw, 2.5rem) clamp(2.4rem, 4.5vw, 3.8rem);
 }
 
 .site-footer-brand {
@@ -5389,11 +5389,32 @@ h3 {
   font-style: italic;
 }
 
+.site-footer-nav-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.site-footer-contact-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.site-footer-col-heading {
+  margin: 0 0 0.3rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.72rem, 0.78vw, 0.78rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(193, 246, 255, 0.45);
+}
+
 .site-footer-nav {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.82rem;
+  align-items: flex-start;
+  gap: 0.7rem;
 }
 
 .site-footer-nav-link {
@@ -5413,18 +5434,24 @@ h3 {
 .site-footer-contact {
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
-  text-align: right;
+  gap: 0.65rem;
+  text-align: left;
 }
 
 .site-footer-contact-item {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
   font-family: 'DM Sans', sans-serif;
-  font-size: clamp(0.8rem, 0.88vw, 0.9rem);
+  font-size: clamp(0.78rem, 0.85vw, 0.88rem);
   color: rgba(193, 246, 255, 0.6);
   text-decoration: none;
   transition: color 0.24s ease;
-  line-height: 1.55;
+  line-height: 1.5;
+}
+
+.site-footer-contact-item--link {
+  cursor: pointer;
 }
 
 a.site-footer-contact-item:hover {
@@ -5457,25 +5484,18 @@ a.site-footer-contact-item:hover {
     grid-column: 1 / -1;
     flex-direction: row;
     align-items: center;
-  }
-
-  .site-footer-contact {
-    text-align: left;
+    gap: 1.2rem;
   }
 }
 
 @media (max-width: 600px) {
   .site-footer-inner {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.8rem;
   }
 
   .site-footer-nav {
     align-items: flex-start;
-  }
-
-  .site-footer-contact {
-    text-align: left;
   }
 }
 
@@ -7521,6 +7541,29 @@ a.site-footer-contact-item:hover {
 .contact-page-card-items {
   display: grid;
   gap: 0.45rem;
+}
+
+.contact-page-card-item--link {
+  text-decoration: none;
+  color: rgba(193, 246, 255, 0.72);
+  transition: color 0.22s ease;
+  word-break: break-all;
+}
+
+.contact-page-card-item--link:hover {
+  color: rgba(193, 246, 255, 1);
+}
+
+.contact-page-card-item--whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.4rem;
+}
+
+.contact-page-card-phone-group {
+  display: flex;
+  flex-direction: column;
 }
 
 .about-page-card-grid--values {
