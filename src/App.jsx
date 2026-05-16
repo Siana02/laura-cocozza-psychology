@@ -30,6 +30,7 @@ import {
 import { BrowserRouter, Link, NavLink, Navigate, Route, Routes, useLocation } from 'react-router-dom'
 
 const SECTION_11_DESKTOP_QUERY = '(min-width: 1025px)'
+const PSYLEX_SECTION_PATH = '/forensic#forensic-psylex'
 
 const content = {
   it: {
@@ -2241,10 +2242,20 @@ function Preloader({ visible, ariaLabel }) {
 }
 
 function ScrollToTop() {
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
+
   useEffect(() => {
+    if (hash) {
+      const id = hash.replace('#', '')
+      window.requestAnimationFrame(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      })
+      return
+    }
+
     window.scrollTo({ top: 0, behavior: 'smooth' })
-  }, [pathname])
+  }, [pathname, hash])
+
   return null
 }
 
@@ -2286,7 +2297,7 @@ function MobileMenu({ open, onClose, t }) {
                 { to: '/home', label: t.nav.home },
                 { to: '/clinical', label: t.nav.clinical },
                 { to: '/forensic', label: t.nav.forensic },
-                { to: '/forensic/psylex', label: t.nav.psylex },
+                { to: PSYLEX_SECTION_PATH, label: t.nav.psylex },
                 { to: '/about', label: t.nav.about },
                 { to: '/contact', label: t.nav.contact },
               ].map(({ to, label }) => (
@@ -2342,7 +2353,7 @@ function SiteHeader({ t, lang, setLang, isLanding, menuOpen, setMenuOpen, preloa
           <NavLink to="/home" end>{t.nav.home}</NavLink>
           <NavLink to="/clinical" end>{t.nav.clinical}</NavLink>
           <NavLink to="/forensic" end>{t.nav.forensic}</NavLink>
-          <NavLink to="/forensic/psylex">{t.nav.psylex}</NavLink>
+          <NavLink to={PSYLEX_SECTION_PATH}>{t.nav.psylex}</NavLink>
           <NavLink to="/about" end>{t.nav.about}</NavLink>
           <NavLink to="/contact" end>{t.nav.contact}</NavLink>
         </div>
@@ -4032,11 +4043,11 @@ function HomepageContactSection({ t }) {
 
 // ─── SECTION 15 — SITE FOOTER ─────────────────────────────────────────────────
 
-function SiteFooter({ t }) {
+function SiteFooter({ t, branding }) {
   const f = t.footer
 
   return (
-    <footer className="site-footer">
+    <footer className={`site-footer${branding ? ' site-footer--branded' : ''}`}>
       <div className="site-footer-top-rule" aria-hidden="true" />
       <div className="site-footer-inner">
         {/* Left — logo & brand */}
@@ -4064,6 +4075,15 @@ function SiteFooter({ t }) {
           <a href="tel:+39339366980" className="site-footer-contact-item">+39 339 366 980</a>
           <p className="site-footer-contact-item">Via Generale Baldissera 14 — Udine</p>
         </div>
+
+        {branding && (
+          <div className="site-footer-branding">
+            <Link to={branding.href} className="site-footer-branding-link">
+              <img src="/psylex-italia-logo.png" alt={branding.alt} className="site-footer-branding-logo" />
+              <span className="site-footer-branding-label">{branding.label}</span>
+            </Link>
+          </div>
+        )}
       </div>
 
       <div className="site-footer-bottom">
@@ -4607,7 +4627,10 @@ function CpSupportAreasSection({ cp }) {
 
 function CpNetworkSection({ cp }) {
   return (
-    <section id={cp.id} className="cp-section cp-section--teal">
+    <section id={cp.id} className="cp-section cp-section--teal cp-section--network">
+      <div className="cp-network-atmosphere" aria-hidden="true">
+        <img src="/hallway-image.PNG" alt="" className="cp-network-atmosphere-image" />
+      </div>
       <div className="cp-section-inner">
         <CpSectionHeader
           eyebrow={cp.eyebrow}
@@ -4816,6 +4839,11 @@ const FORENSIC_PAGE_CONTENT = {
       title: 'Competenza istituzionale al servizio del procedimento',
       intro:
         'Psicologa iscritta all\'Ordine degli Psicologi, specializzata in psicologia forense e giuridica. Esperienza documentata in perizie, valutazioni e consulenze per Tribunali e studi legali del territorio nazionale.',
+      imageSrc: '/hallway-image.PNG',
+      imageAlt: 'Interno professionale dello studio, utilizzato come ancoraggio visivo istituzionale',
+      imageKicker: 'Contesto professionale',
+      imageCaption:
+        'Uno spazio riservato e strutturato che riflette il rigore metodologico e la qualità della collaborazione tecnico-legale.',
       credentials: [
         {
           code: 'CTU',
@@ -4926,6 +4954,7 @@ const FORENSIC_PAGE_CONTENT = {
       id: 'forensic-psylex',
       eyebrow: 'ECOSISTEMA IN SVILUPPO',
       title: 'PsyLex',
+      logoAlt: 'Logo PsyLex Italia',
       subtitle: 'Un ecosistema collaborativo di psicologia giuridica in fase di sviluppo',
       description:
         'PsyLex è una piattaforma professionale emergente che integra psicologia giuridica, consulenza forense e collaborazione interdisciplinare tra psicologi e avvocati.',
@@ -4954,6 +4983,11 @@ const FORENSIC_PAGE_CONTENT = {
       consultations: 'Colloqui online e in presenza',
       cta: 'Richiedi Informazioni',
     },
+    footerBranding: {
+      href: PSYLEX_SECTION_PATH,
+      alt: 'Logo PsyLex Italia',
+      label: 'PsyLex Italia – Emerging Legal Psychology Network',
+    },
   },
   en: {
     hero: {
@@ -4980,6 +5014,11 @@ const FORENSIC_PAGE_CONTENT = {
       title: 'Institutional expertise in service of the proceeding',
       intro:
         'Registered psychologist specialised in forensic and legal psychology. Documented experience in expert reports, assessments, and consultancy for courts and law firms across Italy.',
+      imageSrc: '/hallway-image.PNG',
+      imageAlt: 'Professional interior space used as an institutional trust anchor',
+      imageKicker: 'Professional setting',
+      imageCaption:
+        'A private, structured environment that reflects methodological rigour and high-quality technical-legal collaboration.',
       credentials: [
         {
           code: 'CTU',
@@ -5090,6 +5129,7 @@ const FORENSIC_PAGE_CONTENT = {
       id: 'forensic-psylex',
       eyebrow: 'EMERGING ECOSYSTEM',
       title: 'PsyLex',
+      logoAlt: 'PsyLex Italia logo',
       subtitle: 'A collaborative legal-psychology ecosystem under development',
       description:
         'PsyLex is an emerging professional platform integrating legal psychology, forensic consultation, and interdisciplinary collaboration between psychologists and attorneys.',
@@ -5118,6 +5158,287 @@ const FORENSIC_PAGE_CONTENT = {
       consultations: 'Online and in-person consultations',
       cta: 'Request Information',
     },
+    footerBranding: {
+      href: PSYLEX_SECTION_PATH,
+      alt: 'PsyLex Italia logo',
+      label: 'PsyLex Italia – Emerging Legal Psychology Network',
+    },
+  },
+}
+
+const ABOUT_PAGE_CONTENT = {
+  it: {
+    hero: {
+      eyebrow: 'ABOUT',
+      title: 'Dr. Laura Cocozza',
+      subtitle: 'Psychotherapist and Forensic Psychologist',
+      philosophy:
+        'La pratica professionale nasce dall\'integrazione tra competenza clinica, ascolto autentico e responsabilità professionale. Ogni percorso viene costruito con attenzione alla storia personale, al contesto relazionale e alla qualità dell\'alleanza terapeutica.',
+      methodology:
+        'L\'intervento si fonda su psicoterapia evidence-based, valutazione accurata e obiettivi condivisi. Terapia Cognitivo-Comportamentale, ACT e collaborazione multidisciplinare vengono utilizzate in modo rigoroso e personalizzato, con una doppia competenza clinica e forense.',
+      primaryCta: 'Explore Clinical Area',
+      secondaryCta: 'View Forensic Expertise',
+      imageSrc: '/dr-laura-cocozza-professional-headshot.png',
+      imageAlt: 'Dr. Laura Cocozza professional portrait',
+    },
+    philosophy: {
+      eyebrow: 'PROFESSIONAL PHILOSOPHY',
+      title: 'Un approccio clinico fondato su metodo, cura e chiarezza professionale',
+      intro:
+        'La relazione terapeutica resta centrale, ma è sempre sostenuta da una struttura di lavoro chiara, monitorabile e scientificamente orientata.',
+      cards: [
+        {
+          iconKey: 'brain',
+          title: 'Evidence-based psychotherapy',
+          text: 'Ogni intervento è guidato da modelli clinici validati e da strumenti coerenti con la complessità del caso.',
+        },
+        {
+          iconKey: 'heart',
+          title: 'Integrated human-centred care',
+          text: 'L\'attenzione alla persona, al contesto e alla qualità della relazione rimane il punto di partenza di ogni decisione clinica.',
+        },
+        {
+          iconKey: 'target',
+          title: 'Structured therapeutic pathways',
+          text: 'La presa in carico procede attraverso valutazione, obiettivi condivisi e verifiche regolari del percorso terapeutico.',
+        },
+      ],
+    },
+    profile: {
+      eyebrow: 'PROFESSIONAL PROFILE',
+      title: 'Profilo professionale',
+      intro:
+        'Una pratica che unisce psicoterapia clinica, psicologia forense e collaborazione interdisciplinare in un assetto coerente e affidabile.',
+      rows: [
+        { label: 'Name', value: 'Dr. Laura Cocozza' },
+        { label: 'Title', value: 'Psychologist · Cognitive-Behavioral Psychotherapist · Forensic Psychologist' },
+        {
+          label: 'Specializations',
+          value: 'CBT, ACT, family support, forensic assessment, CTU/CTP consultation, psychological damage evaluation',
+        },
+        {
+          label: 'Dual clinical + forensic role',
+          value: 'Clinical care focused on emotional wellbeing, together with structured forensic expertise for family, civil, and legal contexts.',
+        },
+      ],
+    },
+    values: {
+      eyebrow: 'APPROACH & VALUES',
+      title: 'Valori che orientano ogni percorso',
+      cards: [
+        {
+          iconKey: 'shield',
+          title: 'Clinical integrity',
+          text: 'Scelte cliniche trasparenti, responsabilità professionale e attenzione costante alla tutela della persona.',
+        },
+        {
+          iconKey: 'target',
+          title: 'Structured methodology',
+          text: 'Percorsi definiti da valutazione iniziale, obiettivi concreti e lettura continua dell\'evoluzione terapeutica.',
+        },
+        {
+          iconKey: 'users',
+          title: 'Interdisciplinary collaboration',
+          text: 'Quando necessario, il lavoro clinico si integra con specialisti in area psichiatrica, neuropsichiatrica e legale.',
+        },
+        {
+          iconKey: 'sparkles',
+          title: 'Long-term wellbeing focus',
+          text: 'L\'obiettivo non è la sola gestione del sintomo, ma la costruzione di equilibrio, consapevolezza e continuità nel tempo.',
+        },
+      ],
+    },
+  },
+  en: {
+    hero: {
+      eyebrow: 'ABOUT',
+      title: 'Dr. Laura Cocozza',
+      subtitle: 'Psychotherapist and Forensic Psychologist',
+      philosophy:
+        'The practice is grounded in the integration of clinical competence, authentic listening, and professional responsibility. Each pathway is shaped with attention to personal history, relational context, and the quality of the therapeutic alliance.',
+      methodology:
+        'Work is based on evidence-based psychotherapy, careful assessment, and shared goals. Cognitive-Behavioral Therapy, ACT, and multidisciplinary collaboration are used in a rigorous and personalised way, supported by dual clinical and forensic expertise.',
+      primaryCta: 'Explore Clinical Area',
+      secondaryCta: 'View Forensic Expertise',
+      imageSrc: '/dr-laura-cocozza-professional-headshot.png',
+      imageAlt: 'Dr. Laura Cocozza professional portrait',
+    },
+    philosophy: {
+      eyebrow: 'PROFESSIONAL PHILOSOPHY',
+      title: 'A clinical approach grounded in method, care, and professional clarity',
+      intro:
+        'The therapeutic relationship remains central, while always supported by a clear, measurable, and scientifically informed structure of care.',
+      cards: [
+        {
+          iconKey: 'brain',
+          title: 'Evidence-based psychotherapy',
+          text: 'Each intervention is guided by validated clinical models and tools aligned with the complexity of the case.',
+        },
+        {
+          iconKey: 'heart',
+          title: 'Integrated human-centred care',
+          text: 'Attention to the person, context, and relationship remains the starting point for every clinical decision.',
+        },
+        {
+          iconKey: 'target',
+          title: 'Structured therapeutic pathways',
+          text: 'Care progresses through assessment, shared goals, and regular review of the therapeutic process.',
+        },
+      ],
+    },
+    profile: {
+      eyebrow: 'PROFESSIONAL PROFILE',
+      title: 'Professional profile',
+      intro:
+        'A practice that combines clinical psychotherapy, forensic psychology, and interdisciplinary collaboration within a coherent and trustworthy professional setting.',
+      rows: [
+        { label: 'Name', value: 'Dr. Laura Cocozza' },
+        { label: 'Title', value: 'Psychologist · Cognitive-Behavioral Psychotherapist · Forensic Psychologist' },
+        {
+          label: 'Specializations',
+          value: 'CBT, ACT, family support, forensic assessment, CTU/CTP consultation, psychological damage evaluation',
+        },
+        {
+          label: 'Dual clinical + forensic role',
+          value: 'Clinical care focused on emotional wellbeing, together with structured forensic expertise for family, civil, and legal contexts.',
+        },
+      ],
+    },
+    values: {
+      eyebrow: 'APPROACH & VALUES',
+      title: 'Values that guide every pathway',
+      cards: [
+        {
+          iconKey: 'shield',
+          title: 'Clinical integrity',
+          text: 'Transparent clinical judgment, professional accountability, and constant attention to the person\'s protection.',
+        },
+        {
+          iconKey: 'target',
+          title: 'Structured methodology',
+          text: 'Pathways shaped by initial assessment, concrete objectives, and continuous review of therapeutic progress.',
+        },
+        {
+          iconKey: 'users',
+          title: 'Interdisciplinary collaboration',
+          text: 'When useful, clinical work is integrated with psychiatric, neuropsychiatric, and legal specialists.',
+        },
+        {
+          iconKey: 'sparkles',
+          title: 'Long-term wellbeing focus',
+          text: 'The objective is not only symptom management, but durable balance, awareness, and psychological continuity over time.',
+        },
+      ],
+    },
+  },
+}
+
+const CONTACT_PAGE_CONTENT = {
+  it: {
+    hero: {
+      title: 'Contact',
+      subtitle: 'Clinical and forensic consultations available',
+      intro:
+        'Uno spazio di contatto chiaro e riservato per richieste cliniche, consulenze forensi e orientamento familiare o legale.',
+      imageSrc: '/hallway-image.PNG',
+      imageAlt: 'Hallway image used as a trust anchor for consultation requests',
+      trustLabel: 'Studio professionale · risposta riservata',
+    },
+    methods: {
+      eyebrow: 'CONTACT OPTIONS',
+      title: 'Modalità di contatto e orientamento iniziale',
+      cards: [
+        {
+          iconKey: 'mail',
+          title: 'Email',
+          items: ['laura.cocozza@gmail.com', 'laura.cocozza.893@psypec.it', 'info@psylexitalia.com'],
+        },
+        {
+          iconKey: 'book',
+          title: 'Consultation Types',
+          items: ['Clinical', 'Forensic', 'Family/legal consultation'],
+        },
+        {
+          iconKey: 'refresh',
+          title: 'Availability / Response',
+          items: ['Risposta generalmente entro 1–2 giorni lavorativi', 'Primo orientamento via email o breve call conoscitiva'],
+        },
+      ],
+    },
+    cta: {
+      eyebrow: 'REQUEST A CONSULTATION',
+      title: 'Un punto di accesso semplice, professionale e diretto',
+      intro:
+        'Se desideri un primo orientamento o vuoi richiedere una consulenza, puoi usare i pulsanti qui sotto oppure inviare direttamente un messaggio.',
+      primary: 'Request Consultation',
+      secondary: 'Send Inquiry',
+    },
+    form: {
+      eyebrow: 'FORM',
+      title: 'Invia un messaggio',
+      intro: 'Compila il form essenziale qui sotto. Nome, email e messaggio sono sufficienti per un primo contatto.',
+      name: 'Name',
+      email: 'Email',
+      message: 'Message',
+      send: 'Send Inquiry',
+      subject: 'Richiesta di consulenza dal sito web',
+      mailtoName: 'Nome',
+      mailtoEmail: 'Email',
+      mailtoMessage: 'Messaggio',
+    },
+  },
+  en: {
+    hero: {
+      title: 'Contact',
+      subtitle: 'Clinical and forensic consultations available',
+      intro:
+        'A clear and confidential contact space for clinical requests, forensic consultations, and family or legal guidance.',
+      imageSrc: '/hallway-image.PNG',
+      imageAlt: 'Hallway image used as a trust anchor for consultation requests',
+      trustLabel: 'Professional practice · confidential response',
+    },
+    methods: {
+      eyebrow: 'CONTACT OPTIONS',
+      title: 'Contact pathways and initial guidance',
+      cards: [
+        {
+          iconKey: 'mail',
+          title: 'Email',
+          items: ['laura.cocozza@gmail.com', 'laura.cocozza.893@psypec.it', 'info@psylexitalia.com'],
+        },
+        {
+          iconKey: 'book',
+          title: 'Consultation Types',
+          items: ['Clinical', 'Forensic', 'Family/legal consultation'],
+        },
+        {
+          iconKey: 'refresh',
+          title: 'Availability / Response',
+          items: ['Replies usually within 1–2 working days', 'Initial orientation via email or a short introductory call'],
+        },
+      ],
+    },
+    cta: {
+      eyebrow: 'REQUEST A CONSULTATION',
+      title: 'A simple, professional, and direct access point',
+      intro:
+        'If you would like initial guidance or want to request a consultation, you can use the buttons below or send a message directly.',
+      primary: 'Request Consultation',
+      secondary: 'Send Inquiry',
+    },
+    form: {
+      eyebrow: 'FORM',
+      title: 'Send a message',
+      intro: 'Fill in the essential form below. Name, email, and message are enough for a first contact.',
+      name: 'Name',
+      email: 'Email',
+      message: 'Message',
+      send: 'Send Inquiry',
+      subject: 'Consultation request from website',
+      mailtoName: 'Name',
+      mailtoEmail: 'Email',
+      mailtoMessage: 'Message',
+    },
   },
 }
 
@@ -5140,6 +5461,14 @@ const FORENSIC_SERVICE_ICONS = {
 
 function getForensicPageContent(t) {
   return t.nav.home === 'Home' ? FORENSIC_PAGE_CONTENT.en : FORENSIC_PAGE_CONTENT.it
+}
+
+function getAboutPageContent(t) {
+  return t.nav.home === 'Home' ? ABOUT_PAGE_CONTENT.en : ABOUT_PAGE_CONTENT.it
+}
+
+function getContactPageContent(t) {
+  return t.nav.home === 'Home' ? CONTACT_PAGE_CONTENT.en : CONTACT_PAGE_CONTENT.it
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -5299,21 +5628,40 @@ function FpProfileSection({ fp }) {
           intro={fp.intro}
           dividerIcon={FORENSIC_DIVIDER_ICONS.profile}
         />
-        <div className="fp-credentials-grid">
-          {fp.credentials.map((cred, i) => (
-            <motion.article
-              key={cred.code}
-              className="fp-credential-card"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }}
-            >
-              <span className="fp-credential-code">{cred.code}</span>
-              <h3 className="fp-credential-title">{cred.title}</h3>
-              <p className="fp-credential-description">{cred.description}</p>
-            </motion.article>
-          ))}
+        <div className="fp-profile-layout">
+          <div className="fp-credentials-grid">
+            {fp.credentials.map((cred, i) => (
+              <motion.article
+                key={cred.code}
+                className="fp-credential-card"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }}
+              >
+                <span className="fp-credential-code">{cred.code}</span>
+                <h3 className="fp-credential-title">{cred.title}</h3>
+                <p className="fp-credential-description">{cred.description}</p>
+              </motion.article>
+            ))}
+          </div>
+
+          <motion.aside
+            className="fp-profile-visual"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.78, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
+          >
+            <div className="fp-profile-image-shell">
+              <img src={fp.imageSrc} alt={fp.imageAlt} className="fp-profile-image" />
+              <div className="fp-profile-image-overlay" aria-hidden="true" />
+            </div>
+            <div className="fp-profile-image-copy">
+              <span className="fp-profile-image-kicker">{fp.imageKicker}</span>
+              <p className="fp-profile-image-caption">{fp.imageCaption}</p>
+            </div>
+          </motion.aside>
         </div>
       </div>
     </section>
@@ -5437,6 +5785,15 @@ function FpPsyLexSection({ fp }) {
           transition={{ duration: 0.78, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="fp-eyebrow fp-eyebrow--light">{fp.eyebrow}</span>
+          <motion.img
+            src="/psylex-italia-logo.png"
+            alt={fp.logoAlt}
+            className="fp-psylex-logo"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
+          />
           <h2 className="fp-psylex-title">{fp.title}</h2>
           <IconDivider Icon={FORENSIC_DIVIDER_ICONS.psylex} className="fp-section-divider" />
           <p className="fp-psylex-subtitle">{fp.subtitle}</p>
@@ -5568,7 +5925,7 @@ function ForensicPage({ t }) {
         <FpPsyLexSection fp={fp.psylex} />
         <FpContactSection fp={fp.contact} />
       </div>
-      <SiteFooter t={t} />
+      <SiteFooter t={t} branding={fp.footerBranding} />
     </>
   )
 }
@@ -5592,36 +5949,354 @@ function ForensicServices() {
 }
 
 function PsyLexPreview() {
-  return <Navigate to="/forensic" replace />
+  return <Navigate to={PSYLEX_SECTION_PATH} replace />
+}
+
+const ABOUT_PAGE_ICONS = {
+  brain: Brain,
+  heart: HeartHandshake,
+  target: Target,
+  shield: ShieldCheck,
+  users: Users,
+  sparkles: Sparkles,
+}
+
+const CONTACT_PAGE_ICONS = {
+  mail: Mail,
+  book: BookOpen,
+  refresh: RefreshCcw,
+}
+
+function AboutPageSectionHeader({ eyebrow, title, intro }) {
+  return (
+    <motion.div
+      className="about-page-section-header"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <span className="about-page-eyebrow">{eyebrow}</span>
+      <h2 className="about-page-title">{title}</h2>
+      <IconDivider Icon={HeartHandshake} className="about-page-divider" />
+      {intro && <p className="about-page-intro">{intro}</p>}
+    </motion.div>
+  )
+}
+
+function AboutPage({ t }) {
+  const ap = getAboutPageContent(t)
+
+  return (
+    <>
+      <section className="about-page-hero">
+        <div className="about-page-shell">
+          <div className="about-page-hero-grid">
+            <motion.div
+              className="about-page-hero-copy"
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <span className="about-page-eyebrow">{ap.hero.eyebrow}</span>
+              <h1 className="about-page-hero-title">{ap.hero.title}</h1>
+              <p className="about-page-hero-subtitle">{ap.hero.subtitle}</p>
+              <p className="about-page-hero-paragraph">{ap.hero.philosophy}</p>
+              <p className="about-page-hero-paragraph">{ap.hero.methodology}</p>
+            </motion.div>
+
+            <motion.div
+              className="about-page-hero-visual"
+              initial={{ opacity: 0, x: 18 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.82, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
+            >
+              <div className="about-page-hero-image-shell">
+                <img src={ap.hero.imageSrc} alt={ap.hero.imageAlt} className="about-page-hero-image" />
+              </div>
+            </motion.div>
+          </div>
+
+          <motion.div
+            className="about-page-hero-actions"
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.68, ease: [0.22, 1, 0.36, 1], delay: 0.16 }}
+          >
+            <CpPillButton to="/clinical" variant="primary">
+              {ap.hero.primaryCta}
+            </CpPillButton>
+            <CpPillButton to="/forensic" variant="secondary">
+              {ap.hero.secondaryCta}
+            </CpPillButton>
+          </motion.div>
+        </div>
+      </section>
+
+      <div className="about-page">
+        <section className="about-page-section about-page-section--soft">
+          <div className="about-page-shell">
+            <AboutPageSectionHeader
+              eyebrow={ap.philosophy.eyebrow}
+              title={ap.philosophy.title}
+              intro={ap.philosophy.intro}
+            />
+            <div className="about-page-card-grid">
+              {ap.philosophy.cards.map((card, index) => {
+                const CardIcon = ABOUT_PAGE_ICONS[card.iconKey]
+
+                return (
+                  <motion.article
+                    key={card.title}
+                    className="about-page-card"
+                    initial={{ opacity: 0, y: 22 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1], delay: index * 0.08 }}
+                  >
+                    <span className="about-page-card-icon">{CardIcon && <CardIcon aria-hidden="true" />}</span>
+                    <h3 className="about-page-card-title">{card.title}</h3>
+                    <p className="about-page-card-text">{card.text}</p>
+                  </motion.article>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section className="about-page-section about-page-section--profile">
+          <div className="about-page-shell">
+            <AboutPageSectionHeader
+              eyebrow={ap.profile.eyebrow}
+              title={ap.profile.title}
+              intro={ap.profile.intro}
+            />
+            <motion.article
+              className="about-page-profile-card"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {ap.profile.rows.map((row) => (
+                <div key={row.label} className="about-page-profile-row">
+                  <span className="about-page-profile-label">{row.label}</span>
+                  <p className="about-page-profile-value">{row.value}</p>
+                </div>
+              ))}
+            </motion.article>
+          </div>
+        </section>
+
+        <section className="about-page-section about-page-section--values">
+          <div className="about-page-shell">
+            <AboutPageSectionHeader eyebrow={ap.values.eyebrow} title={ap.values.title} />
+            <div className="about-page-card-grid about-page-card-grid--values">
+              {ap.values.cards.map((card, index) => {
+                const CardIcon = ABOUT_PAGE_ICONS[card.iconKey]
+
+                return (
+                  <motion.article
+                    key={card.title}
+                    className="about-page-card about-page-card--value"
+                    initial={{ opacity: 0, y: 22 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1], delay: index * 0.08 }}
+                  >
+                    <span className="about-page-card-icon">{CardIcon && <CardIcon aria-hidden="true" />}</span>
+                    <h3 className="about-page-card-title">{card.title}</h3>
+                    <p className="about-page-card-text">{card.text}</p>
+                  </motion.article>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <SiteFooter t={t} />
+    </>
+  )
+}
+
+function ContactPage({ t }) {
+  const cp = getContactPageContent(t)
+  const [formState, setFormState] = useState({ name: '', email: '', message: '' })
+
+  function handleChange(event) {
+    const { name, value } = event.target
+    setFormState((prev) => ({ ...prev, [name]: value }))
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    const mailtoBody = encodeURIComponent(
+      `${cp.form.mailtoName}: ${formState.name}\n${cp.form.mailtoEmail}: ${formState.email}\n${cp.form.mailtoMessage}:\n${formState.message}`
+    )
+    window.location.href = `mailto:laura.cocozza@gmail.com?subject=${encodeURIComponent(cp.form.subject)}&body=${mailtoBody}`
+  }
+
+  return (
+    <>
+      <section className="contact-page-hero">
+        <div className="contact-page-shell">
+          <div className="contact-page-hero-grid">
+            <motion.div
+              className="contact-page-hero-copy"
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <span className="contact-page-eyebrow">CONTACT</span>
+              <h1 className="contact-page-hero-title">{cp.hero.title}</h1>
+              <p className="contact-page-hero-subtitle">{cp.hero.subtitle}</p>
+              <p className="contact-page-hero-intro">{cp.hero.intro}</p>
+            </motion.div>
+
+            <motion.div
+              className="contact-page-hero-visual"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.82, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
+            >
+              <div className="contact-page-hero-image-shell">
+                <img src={cp.hero.imageSrc} alt={cp.hero.imageAlt} className="contact-page-hero-image" />
+                <div className="contact-page-hero-overlay" aria-hidden="true" />
+                <span className="contact-page-hero-trust">{cp.hero.trustLabel}</span>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <div className="contact-page">
+        <section className="contact-page-section">
+          <div className="contact-page-shell">
+            <AboutPageSectionHeader
+              eyebrow={cp.methods.eyebrow}
+              title={cp.methods.title}
+            />
+            <div className="contact-page-card-grid">
+              {cp.methods.cards.map((card, index) => {
+                const CardIcon = CONTACT_PAGE_ICONS[card.iconKey]
+
+                return (
+                  <motion.article
+                    key={card.title}
+                    className="contact-page-card"
+                    initial={{ opacity: 0, y: 22 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1], delay: index * 0.08 }}
+                  >
+                    <span className="contact-page-card-icon">{CardIcon && <CardIcon aria-hidden="true" />}</span>
+                    <h3 className="contact-page-card-title">{card.title}</h3>
+                    <div className="contact-page-card-items">
+                      {card.items.map((item) => (
+                        <p key={item} className="contact-page-card-item">{item}</p>
+                      ))}
+                    </div>
+                  </motion.article>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section className="contact-page-cta-section">
+          <motion.div
+            className="contact-page-cta-shell"
+            initial={{ opacity: 0, y: 22 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <span className="contact-page-eyebrow">{cp.cta.eyebrow}</span>
+            <h2 className="contact-page-cta-title">{cp.cta.title}</h2>
+            <p className="contact-page-cta-intro">{cp.cta.intro}</p>
+            <div className="contact-page-cta-actions">
+              <CpPillButton variant="primary" onClick={() => scrollToSection('contact-form-section')}>
+                {cp.cta.primary}
+              </CpPillButton>
+              <a href="mailto:laura.cocozza@gmail.com" className="cp-pill-button cp-pill-button--secondary">
+                <span>{cp.cta.secondary}</span>
+                <CpPillArrow />
+              </a>
+            </div>
+          </motion.div>
+        </section>
+
+        <section id="contact-form-section" className="contact-page-section contact-page-section--form">
+          <div className="contact-page-shell">
+            <AboutPageSectionHeader
+              eyebrow={cp.form.eyebrow}
+              title={cp.form.title}
+              intro={cp.form.intro}
+            />
+            <motion.form
+              className="contact-page-form"
+              onSubmit={handleSubmit}
+              initial={{ opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <label className="contact-page-form-field">
+                <span className="contact-page-form-label">{cp.form.name}</span>
+                <input
+                  type="text"
+                  name="name"
+                  value={formState.name}
+                  onChange={handleChange}
+                  className="contact-page-form-input"
+                  required
+                />
+              </label>
+
+              <label className="contact-page-form-field">
+                <span className="contact-page-form-label">{cp.form.email}</span>
+                <input
+                  type="email"
+                  name="email"
+                  value={formState.email}
+                  onChange={handleChange}
+                  className="contact-page-form-input"
+                  required
+                />
+              </label>
+
+              <label className="contact-page-form-field contact-page-form-field--full">
+                <span className="contact-page-form-label">{cp.form.message}</span>
+                <textarea
+                  name="message"
+                  value={formState.message}
+                  onChange={handleChange}
+                  className="contact-page-form-input contact-page-form-textarea"
+                  required
+                />
+              </label>
+
+              <button type="submit" className="contact-page-form-submit">
+                <span>{cp.form.send}</span>
+                <CpPillArrow />
+              </button>
+            </motion.form>
+          </div>
+        </section>
+      </div>
+
+      <SiteFooter t={t} />
+    </>
+  )
 }
 
 function About({ t }) {
-  return (
-    <Section
-      title={t.pages.aboutHero}
-      items={[
-        { icon: Sparkles, title: 'Biography', text: 'Professional journey grounded in clinical care and forensic competence.' },
-        { icon: Brain, title: 'Professional Philosophy', text: 'Trust, readability, and structured transformation.' },
-        { icon: BookOpen, title: 'Methodology', text: 'Evidence-based interventions with personalized adaptation.' },
-        { icon: BriefcaseBusiness, title: 'Academic and Professional Background', text: 'Continuous education and multidisciplinary practice.' },
-        { icon: Scale, title: 'Clinical + Forensic Positioning', text: 'A coherent voice across wellbeing and legal settings.' },
-      ]}
-    />
-  )
+  return <AboutPage t={t} />
 }
 
 function Contact({ t }) {
-  return (
-    <Section
-      title={t.pages.contactHero}
-      items={[
-        { icon: Phone, title: 'Phone', text: 'Available on request · Disponibile su richiesta' },
-        { icon: BookOpen, title: 'Email', text: 'info@lauracocozza.it · studio@lauracocozza.it' },
-        { icon: Landmark, title: 'Office Address', text: 'Rome, Italy · by appointment' },
-        { icon: Users, title: 'Online Consultations', text: 'Secure sessions for national and international clients.' },
-      ]}
-    />
-  )
+  return <ContactPage t={t} />
 }
 
 function Footer({ t }) {
@@ -5725,11 +6400,11 @@ function AppShell() {
               <Route path="/clinical/individual-psychotherapy" element={<PageWrapper t={t}><ClinicalIndividual /></PageWrapper>} />
               <Route path="/clinical/family-support" element={<PageWrapper t={t}><ClinicalFamily t={t} /></PageWrapper>} />
               <Route path="/clinical/network" element={<PageWrapper t={t}><ClinicalNetwork /></PageWrapper>} />
-              <Route path="/forensic" element={<PageWrapper t={t}><Forensic t={t} /></PageWrapper>} />
+              <Route path="/forensic" element={<Forensic t={t} />} />
               <Route path="/forensic/services" element={<PageWrapper t={t}><ForensicServices /></PageWrapper>} />
-              <Route path="/forensic/psylex" element={<PageWrapper t={t}><PsyLexPreview /></PageWrapper>} />
-              <Route path="/about" element={<PageWrapper t={t}><About t={t} /></PageWrapper>} />
-              <Route path="/contact" element={<PageWrapper t={t}><Contact t={t} /></PageWrapper>} />
+              <Route path="/forensic/psylex" element={<PsyLexPreview />} />
+              <Route path="/about" element={<About t={t} />} />
+              <Route path="/contact" element={<Contact t={t} />} />
               <Route path="*" element={<Navigate to="/home" replace />} />
             </Routes>
           </motion.div>
