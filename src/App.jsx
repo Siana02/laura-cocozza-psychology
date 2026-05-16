@@ -219,6 +219,11 @@ const content = {
         attribution: '— Dott.ssa Laura Cocozza',
         ariaLabel: 'Citazione editoriale',
       },
+      quietEditorial: {
+        ariaLabel: 'Pausa editoriale',
+        text: 'Ogni percorso terapeutico inizia dal sentirsi accolti, ascoltati e rispettati nella propria unicità.',
+        note: 'Uno spazio professionale, riservato e costruito con cura.',
+      },
       whoIsItFor: {
         eyebrow: 'Per chi è pensato',
         title: 'Percorsi pensati per ogni fase della vita\ne per le esigenze di ciascuno',
@@ -368,8 +373,8 @@ const content = {
       },
       faqSection: {
         eyebrow: 'DOMANDE FREQUENTI',
-        title: 'Informazioni su consulenze, percorsi terapeutici e servizi forensi',
-        intro: 'Una selezione di domande comuni riguardo ai percorsi clinici, alle consulenze e ai servizi di supporto psicologico.',
+        title: 'Informazioni su consulenze, percorsi terapeutici e attività forense',
+        intro: 'Una selezione di domande frequenti sui percorsi clinici, sulle consulenze e sul supporto psicologico.',
         faqs: [
           { q: 'Che tipo di supporto psicologico offre?', a: 'Lo studio offre psicoterapia individuale, supporto psicologico, consulenze familiari e servizi di psicologia forense. I percorsi vengono costruiti in modo personalizzato sulla base delle esigenze emotive, relazionali e contestuali di ogni persona.' },
           { q: 'A chi sono destinati i percorsi terapeutici?', a: "I percorsi sono rivolti ad adolescenti, adulti e famiglie che affrontano difficoltà emotive, relazionali, comportamentali o momenti di cambiamento significativo. L'approccio è sempre adattato al contesto e alla storia individuale." },
@@ -386,7 +391,8 @@ const content = {
       contactSection: {
         eyebrow: 'CONTATTI',
         title: 'Richiedi informazioni o prenota una consulenza',
-        intro: 'È possibile richiedere informazioni riguardo ai percorsi clinici, alle consulenze familiari o ai servizi di psicologia forense attraverso i contatti dello studio. Il primo contatto è semplice e riservato.',
+        intro:
+          'Puoi richiedere informazioni sui percorsi clinici, sulle consulenze familiari o sui servizi di psicologia forense attraverso i contatti dello studio. Il primo contatto avviene in modo semplice, professionale e riservato.',
         form: {
           fullName: 'Nome e Cognome',
           email: 'Email',
@@ -938,6 +944,11 @@ const content = {
         quote: 'Psychotherapy is not about changing who we are, but about understanding with greater clarity how we experience emotions, relationships, and life itself.',
         attribution: '— Dr. Laura Cocozza',
         ariaLabel: 'Editorial quote',
+      },
+      quietEditorial: {
+        ariaLabel: 'Editorial pause',
+        text: 'Every therapeutic journey begins with the experience of being welcomed, heard, and respected.',
+        note: 'A professional and confidential space, shaped with care.',
       },
       whoIsItFor: {
         eyebrow: 'Who it is for',
@@ -2420,7 +2431,7 @@ function WordByWordText({ text, className, as = 'p', delay = 0 }) {
         hidden: {},
         visible: {
           transition: {
-            staggerChildren: reduceMotion ? 0 : 0.045,
+            staggerChildren: reduceMotion ? 0 : 0.06,
             delayChildren: delay,
           },
         },
@@ -2434,7 +2445,7 @@ function WordByWordText({ text, className, as = 'p', delay = 0 }) {
             hidden: reduceMotion ? { opacity: 0, y: 0 } : { opacity: 0, y: 8, filter: 'blur(3px)' },
             visible: reduceMotion
               ? { opacity: 1, y: 0, transition: { duration: 0.01 } }
-              : { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } },
+              : { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
           }}
         >
           {token.value}
@@ -2448,8 +2459,8 @@ function LandingHero({ t }) {
   const reduceMotion = useReducedMotion()
 
   const textVariants = {
-    hidden: { opacity: 0, y: reduceMotion ? 0 : 22 },
-    visible: { opacity: 1, y: 0, transition: { duration: reduceMotion ? 0.3 : 0.7, ease: [0.22, 1, 0.36, 1] } },
+    hidden: { opacity: 0, y: reduceMotion ? 0 : 16 },
+    visible: { opacity: 1, y: 0, transition: { duration: reduceMotion ? 0.3 : 0.95, ease: [0.22, 1, 0.36, 1] } },
   }
 
   return (
@@ -2463,7 +2474,7 @@ function LandingHero({ t }) {
           className="landing-primary"
           initial="hidden"
           animate="visible"
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: reduceMotion ? 0.04 : 0.12, delayChildren: reduceMotion ? 0 : 0.18 } } }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: reduceMotion ? 0.05 : 0.16, delayChildren: reduceMotion ? 0 : 0.24 } } }}
         >
           <motion.p className="landing-eyebrow" variants={textVariants}>
             {t.home.eyebrow}
@@ -2481,7 +2492,7 @@ function LandingHero({ t }) {
           className="landing-secondary"
           initial="hidden"
           animate="visible"
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: reduceMotion ? 0.04 : 0.1, delayChildren: reduceMotion ? 0 : 0.38 } } }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: reduceMotion ? 0.05 : 0.14, delayChildren: reduceMotion ? 0 : 0.48 } } }}
         >
           <WordByWordText text={t.home.title} className="landing-headline" delay={reduceMotion ? 0 : 0.06} />
           <WordByWordText text={t.home.description} className="landing-desc" delay={reduceMotion ? 0 : 0.24} />
@@ -2955,8 +2966,8 @@ function MultidisciplinaryNetworkSection({ t }) {
 
             <motion.div
               className="network-collab-core"
-              animate={reduceMotion ? {} : { scale: [1, 1.04, 1] }}
-              transition={{ duration: 4.3, repeat: Infinity, ease: 'easeInOut' }}
+              animate={reduceMotion ? {} : { scale: [1, 1.02, 1] }}
+              transition={{ duration: 7.5, repeat: Infinity, ease: 'easeInOut' }}
             >
               {network.centerLabel}
             </motion.div>
@@ -2976,8 +2987,8 @@ function MultidisciplinaryNetworkSection({ t }) {
                     type="button"
                     className="network-collab-node"
                     aria-label={node.title}
-                    animate={reduceMotion ? {} : { y: [0, -2, 0] }}
-                    transition={{ duration: 5.4 + i * 0.35, repeat: Infinity, ease: 'easeInOut' }}
+                    animate={reduceMotion ? {} : { y: [0, -1.25, 0] }}
+                    transition={{ duration: 8.2 + i * 0.45, repeat: Infinity, ease: 'easeInOut' }}
                   >
                     <h3 className="network-collab-node-title">{node.title}</h3>
                     <p className="network-collab-node-desc">{node.description}</p>
@@ -3001,8 +3012,8 @@ function MultidisciplinaryNetworkSection({ t }) {
                     type="button"
                     className="network-collab-node"
                     aria-label={node.title}
-                    animate={reduceMotion ? {} : { y: [0, -2, 0] }}
-                    transition={{ duration: 5.6 + i * 0.35, repeat: Infinity, ease: 'easeInOut' }}
+                    animate={reduceMotion ? {} : { y: [0, -1.25, 0] }}
+                    transition={{ duration: 8.4 + i * 0.45, repeat: Infinity, ease: 'easeInOut' }}
                   >
                     <h3 className="network-collab-node-title">{node.title}</h3>
                     <p className="network-collab-node-desc">{node.description}</p>
@@ -3262,14 +3273,14 @@ function EditorialQuoteStripSection({ t }) {
         <>
           <motion.div
             className="eq-orb eq-orb--1"
-            animate={{ x: [0, 18, 0], y: [0, -12, 0] }}
-            transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
+            animate={{ x: [0, 12, 0], y: [0, -8, 0] }}
+            transition={{ duration: 24, repeat: Infinity, ease: 'easeInOut' }}
             aria-hidden="true"
           />
           <motion.div
             className="eq-orb eq-orb--2"
-            animate={{ x: [0, -14, 0], y: [0, 16, 0] }}
-            transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut', delay: 3 }}
+            animate={{ x: [0, -10, 0], y: [0, 12, 0] }}
+            transition={{ duration: 30, repeat: Infinity, ease: 'easeInOut', delay: 4 }}
             aria-hidden="true"
           />
         </>
@@ -3295,6 +3306,19 @@ function EditorialQuoteStripSection({ t }) {
             {eq.attribution}
           </motion.footer>
         </motion.blockquote>
+      </div>
+    </section>
+  )
+}
+
+function QuietEditorialPauseSection({ t }) {
+  const quiet = t.home.quietEditorial
+
+  return (
+    <section className="quiet-editorial-section" aria-label={quiet.ariaLabel}>
+      <div className="quiet-editorial-inner">
+        <p className="quiet-editorial-text">{quiet.text}</p>
+        <p className="quiet-editorial-note">{quiet.note}</p>
       </div>
     </section>
   )
@@ -4179,6 +4203,7 @@ function Home({ t }) {
         <ClinicalFamily t={t} />
         <MultidisciplinaryNetworkSection t={t} />
         <AboutDrLauraSection t={t} />
+        <QuietEditorialPauseSection t={t} />
         <FaqSection t={t} />
         <HomepageContactSection t={t} />
       </div>
