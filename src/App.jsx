@@ -13,6 +13,7 @@ import {
   HeartHandshake,
   Landmark,
   Mail,
+  MessageCircle,
   MapPin,
   Network,
   Phone,
@@ -66,7 +67,7 @@ const content = {
         identityName: 'Dr Laura Cocozza',
         identitySubtitle: 'Studio di Psicoterapia e Psicologia Forense',
         positioning:
-          'Helping people rebuild emotional balance through structured, evidence-based psychological support and forensic expertise when needed.',
+          'Aiutare le persone a ricostruire il proprio equilibrio emotivo attraverso un supporto psicologico strutturato, fondato sull\'evidenza scientifica e con competenza forense quando necessaria.',
         roleTitle: 'Competenza, Metodo e Cura',
         roleDetails:
           'Psicologa • Psicoterapeuta Cognitivo Comportamentale • Consulente in Psicologia Forense (CTU & CTP)',
@@ -378,7 +379,7 @@ const content = {
           { q: 'Come si svolgono le consulenze in psicologia forense?', a: 'Le consulenze forensi possono essere richieste da privati, avvocati o tribunali. Includono valutazioni psicologiche, redazione di perizie, attività di CTU/CTP e supporto in procedimenti di diritto di famiglia.' },
           { q: 'Collabora con altri professionisti?', a: 'Sì. Lo studio opera attraverso una rete multidisciplinare che include psichiatri, neuropsichiatri infantili, psicoterapeuti dell\'età evolutiva e avvocati specializzati in diritto di famiglia, per offrire un supporto integrato e continuativo.' },
           { q: 'Posso richiedere supporto durante processi di separazione o affidamento?', a: 'Sì. Lo studio offre consulenze specifiche per famiglie in fase di separazione, con attenzione alla genitorialità, al benessere dei figli e alla gestione emotiva dei passaggi più delicati.' },
-          { q: 'Come posso prenotare un appuntamento o richiedere informazioni?', a: 'È possibile contattare lo studio via email a laura.cocozza@gmail.com o info@psylexitalia.com, oppure telefonicamente al 339366980. Il primo contatto avviene solitamente tramite una breve call conoscitiva.' },
+          { q: 'Come posso prenotare un appuntamento o richiedere informazioni?', a: 'È possibile contattare lo studio via email a laura.cocozza.893@psypec.it o info@psylexitalia.com, oppure telefonicamente al +39 339 366 980. Il primo contatto avviene solitamente tramite una breve call conoscitiva.' },
         ],
       },
       contactSection: {
@@ -402,8 +403,10 @@ const content = {
           phoneTitle: 'Telefono',
           locationTitle: 'Sede',
           consultationsTitle: 'Consulenze',
-          emails: ['laura.cocozza@gmail.com', 'laura.cocozza.893@psypec.it', 'info@psylexitalia.com'],
-          phone: '339 366 980',
+          emails: ['laura.cocozza.893@psypec.it', 'info@psylexitalia.com'],
+          phone: '+39 339 366 980',
+          whatsapp: 'https://wa.me/39339366980',
+          whatsappLabel: 'Scrivici su WhatsApp',
           address: 'Via Generale Baldissera 14 — Udine',
           consultations: 'Colloqui online e in presenza',
         },
@@ -435,6 +438,9 @@ const content = {
       logoAriaLabel: 'Home — Laura Cocozza',
       navAriaLabel: 'Navigazione footer',
       copyright: '© 2026 Laura Cocozza — Tutti i diritti riservati.',
+      email: 'laura.cocozza.893@psypec.it',
+      phone: '+39 339 366 980',
+      address: 'Via Generale Baldissera 14 — Udine',
     },
     clinicalPage: {
       hero: {
@@ -1092,7 +1098,7 @@ const content = {
           { q: 'How are forensic psychology consultations conducted?', a: 'Forensic consultations can be requested by private individuals, lawyers, or courts. They include psychological assessments, expert reports, CTU/CTP activities, and support in family law proceedings.' },
           { q: 'Do you collaborate with other professionals?', a: 'Yes. The practice works through a multidisciplinary network that includes psychiatrists, child neuropsychiatrists, developmental psychotherapists, and family law attorneys, offering integrated and continuous support.' },
           { q: 'Can I request support during family or separation processes?', a: 'Yes. The practice offers specific consultations for families navigating separation, with attention to parenting, children\'s wellbeing, and emotional management through critical transitions.' },
-          { q: 'How can I book an appointment or request information?', a: 'You can contact the practice via email at laura.cocozza@gmail.com or info@psylexitalia.com, or by phone at +39 339 366 980. First contact usually takes the form of a brief introductory call.' },
+          { q: 'How can I book an appointment or request information?', a: 'You can contact the practice via email at laura.cocozza.893@psypec.it or info@psylexitalia.com, or by phone at +39 339 366 980. First contact usually takes the form of a brief introductory call.' },
         ],
       },
       contactSection: {
@@ -1116,8 +1122,10 @@ const content = {
           phoneTitle: 'Phone',
           locationTitle: 'Location',
           consultationsTitle: 'Consultations',
-          emails: ['laura.cocozza@gmail.com', 'laura.cocozza.893@psypec.it', 'info@psylexitalia.com'],
+          emails: ['laura.cocozza.893@psypec.it', 'info@psylexitalia.com'],
           phone: '+39 339 366 980',
+          whatsapp: 'https://wa.me/39339366980',
+          whatsappLabel: 'Message us on WhatsApp',
           address: 'Via Generale Baldissera 14 — Udine',
           consultations: 'Online and in-person consultations',
         },
@@ -1149,6 +1157,9 @@ const content = {
       logoAriaLabel: 'Home — Laura Cocozza',
       navAriaLabel: 'Footer navigation',
       copyright: '© 2026 Laura Cocozza — All rights reserved.',
+      email: 'laura.cocozza.893@psypec.it',
+      phone: '+39 339 366 980',
+      address: 'Via Generale Baldissera 14 — Udine',
     },
     clinicalPage: {
       hero: {
@@ -2107,7 +2118,7 @@ const CLINICAL_NETWORK_ICONS = {
 }
 
 function getClinicalPageContent(t) {
-  return t.nav.home === 'Home' ? CLINICAL_PAGE_CONTENT.en : CLINICAL_PAGE_CONTENT.it
+  return t.nav.about === 'About' ? CLINICAL_PAGE_CONTENT.en : CLINICAL_PAGE_CONTENT.it
 }
 
 const fadeUp = {
@@ -3895,7 +3906,7 @@ function HomepageContactSection({ t }) {
     const mailtoBody = encodeURIComponent(
       `${cs.form.mailtoName}: ${formState.fullName}\n${cs.form.mailtoEmail}: ${formState.email}\n${cs.form.mailtoPhone}: ${formState.phone}\n${cs.form.mailtoMessage}:\n${formState.message}`
     )
-    window.location.href = `mailto:laura.cocozza@gmail.com?subject=${encodeURIComponent(formState.subject || cs.form.subject)}&body=${mailtoBody}`
+    window.location.href = `mailto:laura.cocozza.893@psypec.it?subject=${encodeURIComponent(formState.subject || cs.form.subject)}&body=${mailtoBody}`
   }
 
   return (
@@ -4020,6 +4031,15 @@ function HomepageContactSection({ t }) {
                 <a href={`tel:${cs.info.phone.replace(/\s/g, '')}`} className="hp-contact-info-value hp-contact-info-link">{cs.info.phone}</a>
               </div>
             </div>
+            {cs.info.whatsapp && (
+              <div className="hp-contact-info-block">
+                <span className="hp-contact-info-icon" aria-hidden="true"><MessageCircle size={18} /></span>
+                <div>
+                  <p className="hp-contact-info-title">WhatsApp</p>
+                  <a href={cs.info.whatsapp} target="_blank" rel="noopener noreferrer" className="hp-contact-info-value hp-contact-info-link">{cs.info.whatsappLabel}</a>
+                </div>
+              </div>
+            )}
             <div className="hp-contact-info-block">
               <span className="hp-contact-info-icon" aria-hidden="true"><MapPin size={18} /></span>
               <div>
@@ -4049,8 +4069,9 @@ function SiteFooter({ t, branding }) {
   return (
     <footer className={`site-footer${branding ? ' site-footer--branded' : ''}`}>
       <div className="site-footer-top-rule" aria-hidden="true" />
+
       <div className="site-footer-inner">
-        {/* Left — logo & brand */}
+        {/* Brand column */}
         <div className="site-footer-brand">
           <Link to="/home" className="site-footer-logo-link" aria-label={f.logoAriaLabel}>
             <img src="/logo-or-icon.png" alt="" className="site-footer-logo-img" aria-hidden="true" />
@@ -4062,18 +4083,37 @@ function SiteFooter({ t, branding }) {
           </div>
         </div>
 
-        {/* Center — nav */}
-        <nav className="site-footer-nav" aria-label={f.navAriaLabel}>
-          {f.nav.map((label, i) => (
-            <Link key={label} to={f.navLinks[i]} className="site-footer-nav-link">{label}</Link>
-          ))}
-        </nav>
+        {/* Navigation column */}
+        <div className="site-footer-nav-col">
+          <p className="site-footer-col-heading">{t.nav.about === 'About' ? 'Navigation' : 'Navigazione'}</p>
+          <nav className="site-footer-nav" aria-label={f.navAriaLabel}>
+            {f.nav.map((label, i) => (
+              <Link key={label} to={f.navLinks[i]} className="site-footer-nav-link">{label}</Link>
+            ))}
+          </nav>
+        </div>
 
-        {/* Right — contact microcopy */}
-        <div className="site-footer-contact">
-          <a href="mailto:laura.cocozza@gmail.com" className="site-footer-contact-item">laura.cocozza@gmail.com</a>
-          <a href="tel:+39339366980" className="site-footer-contact-item">+39 339 366 980</a>
-          <p className="site-footer-contact-item">Via Generale Baldissera 14 — Udine</p>
+        {/* Contact column */}
+        <div className="site-footer-contact-col">
+          <p className="site-footer-col-heading">{t.nav.about === 'About' ? 'Contact' : 'Contatti'}</p>
+          <div className="site-footer-contact">
+            <a href={`mailto:${f.email}`} className="site-footer-contact-item site-footer-contact-item--link">
+              <Mail size={14} aria-hidden="true" />
+              <span>{f.email}</span>
+            </a>
+            <a href={`tel:${f.phone.replace(/\s/g, '')}`} className="site-footer-contact-item site-footer-contact-item--link">
+              <Phone size={14} aria-hidden="true" />
+              <span>{f.phone}</span>
+            </a>
+            <a href="https://wa.me/39339366980" target="_blank" rel="noopener noreferrer" className="site-footer-contact-item site-footer-contact-item--link">
+              <MessageCircle size={14} aria-hidden="true" />
+              <span>WhatsApp</span>
+            </a>
+            <p className="site-footer-contact-item">
+              <MapPin size={14} aria-hidden="true" />
+              <span>{f.address}</span>
+            </p>
+          </div>
         </div>
 
         {branding && (
@@ -4969,7 +5009,7 @@ const FORENSIC_PAGE_CONTENT = {
       title: 'Richiedi una consulenza forense',
       intro:
         'Per richieste di consulenza tecnica, supporto in procedimenti forensi o informazioni sui servizi, è possibile contattare lo studio attraverso i canali ufficiali.',
-      emails: ['laura.cocozza@gmail.com', 'laura.cocozza.893@psypec.it', 'info@psylexitalia.com'],
+      emails: ['laura.cocozza.893@psypec.it', 'info@psylexitalia.com'],
       phone: '+39 339 366 980',
       address: 'Via Generale Baldissera 14 — Udine',
       consultations: 'Colloqui online e in presenza',
@@ -5139,7 +5179,7 @@ const FORENSIC_PAGE_CONTENT = {
       title: 'Request a forensic consultation',
       intro:
         'For technical consultation requests, support in forensic proceedings, or information about services, the practice can be contacted through the official channels below.',
-      emails: ['laura.cocozza@gmail.com', 'laura.cocozza.893@psypec.it', 'info@psylexitalia.com'],
+      emails: ['laura.cocozza.893@psypec.it', 'info@psylexitalia.com'],
       phone: '+39 339 366 980',
       address: 'Via Generale Baldissera 14 — Udine',
       consultations: 'Online and in-person consultations',
@@ -5156,81 +5196,81 @@ const FORENSIC_PAGE_CONTENT = {
 const ABOUT_PAGE_CONTENT = {
   it: {
     hero: {
-      eyebrow: 'ABOUT',
-      title: 'Dr. Laura Cocozza',
-      subtitle: 'Psychotherapist and Forensic Psychologist',
+      eyebrow: 'CHI SONO',
+      title: 'Dott.ssa Laura Cocozza',
+      subtitle: 'Psicoterapeuta e Psicologa Forense',
       philosophy:
         'La pratica professionale nasce dall\'integrazione tra competenza clinica, ascolto autentico e responsabilità professionale. Ogni percorso viene costruito con attenzione alla storia personale, al contesto relazionale e alla qualità dell\'alleanza terapeutica.',
       methodology:
         'L\'intervento si fonda su psicoterapia evidence-based, valutazione accurata e obiettivi condivisi. Terapia Cognitivo-Comportamentale, ACT e collaborazione multidisciplinare vengono utilizzate in modo rigoroso e personalizzato, con una doppia competenza clinica e forense.',
-      primaryCta: 'Explore Clinical Area',
-      secondaryCta: 'View Forensic Expertise',
+      primaryCta: 'Esplora l\'Area Clinica',
+      secondaryCta: 'Scopri la Competenza Forense',
       imageSrc: '/dr-laura-cocozza-professional-headshot.png',
-      imageAlt: 'Dr. Laura Cocozza professional portrait',
+      imageAlt: 'Dott.ssa Laura Cocozza ritratto professionale',
     },
     philosophy: {
-      eyebrow: 'PROFESSIONAL PHILOSOPHY',
+      eyebrow: 'FILOSOFIA PROFESSIONALE',
       title: 'Un approccio clinico fondato su metodo, cura e chiarezza professionale',
       intro:
         'La relazione terapeutica resta centrale, ma è sempre sostenuta da una struttura di lavoro chiara, monitorabile e scientificamente orientata.',
       cards: [
         {
           iconKey: 'brain',
-          title: 'Evidence-based psychotherapy',
+          title: 'Psicoterapia evidence-based',
           text: 'Ogni intervento è guidato da modelli clinici validati e da strumenti coerenti con la complessità del caso.',
         },
         {
           iconKey: 'heart',
-          title: 'Integrated human-centred care',
+          title: 'Cura integrata e centrata sulla persona',
           text: 'L\'attenzione alla persona, al contesto e alla qualità della relazione rimane il punto di partenza di ogni decisione clinica.',
         },
         {
           iconKey: 'target',
-          title: 'Structured therapeutic pathways',
+          title: 'Percorsi terapeutici strutturati',
           text: 'La presa in carico procede attraverso valutazione, obiettivi condivisi e verifiche regolari del percorso terapeutico.',
         },
       ],
     },
     profile: {
-      eyebrow: 'PROFESSIONAL PROFILE',
+      eyebrow: 'PROFILO PROFESSIONALE',
       title: 'Profilo professionale',
       intro:
         'Una pratica che unisce psicoterapia clinica, psicologia forense e collaborazione interdisciplinare in un assetto coerente e affidabile.',
       rows: [
-        { label: 'Name', value: 'Dr. Laura Cocozza' },
-        { label: 'Title', value: 'Psychologist · Cognitive-Behavioral Psychotherapist · Forensic Psychologist' },
+        { label: 'Nome', value: 'Dott.ssa Laura Cocozza' },
+        { label: 'Titolo', value: 'Psicologa · Psicoterapeuta Cognitivo-Comportamentale · Psicologa Forense' },
         {
-          label: 'Specializations',
-          value: 'CBT, ACT, family support, forensic assessment, CTU/CTP consultation, psychological damage evaluation',
+          label: 'Specializzazioni',
+          value: 'CBT, ACT, supporto familiare, valutazione forense, consulenza CTU/CTP, valutazione del danno psicologico',
         },
         {
-          label: 'Dual clinical + forensic role',
-          value: 'Clinical care focused on emotional wellbeing, together with structured forensic expertise for family, civil, and legal contexts.',
+          label: 'Doppia competenza clinica + forense',
+          value: 'Cura clinica orientata al benessere emotivo, insieme a una competenza forense strutturata per contesti familiari, civili e legali.',
         },
       ],
     },
     values: {
-      eyebrow: 'APPROACH & VALUES',
+      eyebrow: 'APPROCCIO & VALORI',
       title: 'Valori che orientano ogni percorso',
       cards: [
         {
           iconKey: 'shield',
-          title: 'Clinical integrity',
+          title: 'Integrità clinica',
           text: 'Scelte cliniche trasparenti, responsabilità professionale e attenzione costante alla tutela della persona.',
         },
         {
           iconKey: 'target',
-          title: 'Structured methodology',
+          title: 'Metodologia strutturata',
           text: 'Percorsi definiti da valutazione iniziale, obiettivi concreti e lettura continua dell\'evoluzione terapeutica.',
         },
         {
           iconKey: 'users',
-          title: 'Interdisciplinary collaboration',
+          title: 'Collaborazione interdisciplinare',
           text: 'Quando necessario, il lavoro clinico si integra con specialisti in area psichiatrica, neuropsichiatrica e legale.',
         },
         {
           iconKey: 'sparkles',
-          title: 'Long-term wellbeing focus',
+          title: 'Focus sul benessere duraturo',
           text: 'L\'obiettivo non è la sola gestione del sintomo, ma la costruzione di equilibrio, consapevolezza e continuità nel tempo.',
         },
       ],
@@ -5323,48 +5363,56 @@ const ABOUT_PAGE_CONTENT = {
 const CONTACT_PAGE_CONTENT = {
   it: {
     hero: {
+      eyebrow: 'CONTATTI',
       title: 'Richiedi supporto e orientamento',
-      subtitle: 'Clinical and forensic consultations available',
+      subtitle: 'Consulenze cliniche e forensi disponibili',
       intro:
         'Uno spazio di contatto chiaro e riservato per richieste cliniche, consulenze forensi e orientamento familiare o legale.',
     },
     methods: {
-      eyebrow: 'CONTACT OPTIONS',
+      eyebrow: 'MODALITÀ DI CONTATTO',
       title: 'Modalità di contatto e orientamento iniziale',
       cards: [
         {
           iconKey: 'mail',
           title: 'Email',
-          items: ['laura.cocozza@gmail.com', 'laura.cocozza.893@psypec.it', 'info@psylexitalia.com'],
+          items: ['laura.cocozza.893@psypec.it', 'info@psylexitalia.com'],
+        },
+        {
+          iconKey: 'phone',
+          title: 'Telefono & WhatsApp',
+          items: ['+39 339 366 980'],
+          phone: '+39 339 366 980',
+          whatsapp: 'https://wa.me/39339366980',
         },
         {
           iconKey: 'book',
-          title: 'Consultation Types',
-          items: ['Clinical', 'Forensic', 'Family/legal consultation'],
+          title: 'Tipologie di consulenza',
+          items: ['Clinica', 'Forense', 'Consulenza familiare/legale'],
         },
         {
           iconKey: 'refresh',
-          title: 'Availability / Response',
+          title: 'Disponibilità & Risposta',
           items: ['Risposta generalmente entro 1–2 giorni lavorativi', 'Primo orientamento via email o breve call conoscitiva'],
         },
       ],
     },
     cta: {
-      eyebrow: 'REQUEST A CONSULTATION',
+      eyebrow: 'RICHIEDI UNA CONSULENZA',
       title: 'Un punto di accesso semplice, professionale e diretto',
       intro:
         'Se desideri un primo orientamento o vuoi richiedere una consulenza, puoi usare i pulsanti qui sotto oppure inviare direttamente un messaggio.',
-      primary: 'Request Consultation',
-      secondary: 'Send Inquiry',
+      primary: 'Richiedi Consulenza',
+      secondary: 'Invia Richiesta',
     },
     form: {
-      eyebrow: 'FORM',
+      eyebrow: 'MODULO DI CONTATTO',
       title: 'Invia un messaggio',
       intro: 'Compila il form essenziale qui sotto. Nome, email e messaggio sono sufficienti per un primo contatto.',
-      name: 'Name',
+      name: 'Nome',
       email: 'Email',
-      message: 'Message',
-      send: 'Send Inquiry',
+      message: 'Messaggio',
+      send: 'Invia Richiesta',
       subject: 'Richiesta di consulenza dal sito web',
       mailtoName: 'Nome',
       mailtoEmail: 'Email',
@@ -5373,6 +5421,7 @@ const CONTACT_PAGE_CONTENT = {
   },
   en: {
     hero: {
+      eyebrow: 'CONTACT',
       title: 'Reach Out for Support',
       subtitle: 'Clinical and forensic consultations available',
       intro:
@@ -5385,7 +5434,14 @@ const CONTACT_PAGE_CONTENT = {
         {
           iconKey: 'mail',
           title: 'Email',
-          items: ['laura.cocozza@gmail.com', 'laura.cocozza.893@psypec.it', 'info@psylexitalia.com'],
+          items: ['laura.cocozza.893@psypec.it', 'info@psylexitalia.com'],
+        },
+        {
+          iconKey: 'phone',
+          title: 'Phone & WhatsApp',
+          items: ['+39 339 366 980'],
+          phone: '+39 339 366 980',
+          whatsapp: 'https://wa.me/39339366980',
         },
         {
           iconKey: 'book',
@@ -5441,15 +5497,15 @@ const FORENSIC_SERVICE_ICONS = {
 }
 
 function getForensicPageContent(t) {
-  return t.nav.home === 'Home' ? FORENSIC_PAGE_CONTENT.en : FORENSIC_PAGE_CONTENT.it
+  return t.nav.about === 'About' ? FORENSIC_PAGE_CONTENT.en : FORENSIC_PAGE_CONTENT.it
 }
 
 function getAboutPageContent(t) {
-  return t.nav.home === 'Home' ? ABOUT_PAGE_CONTENT.en : ABOUT_PAGE_CONTENT.it
+  return t.nav.about === 'About' ? ABOUT_PAGE_CONTENT.en : ABOUT_PAGE_CONTENT.it
 }
 
 function getContactPageContent(t) {
-  return t.nav.home === 'Home' ? CONTACT_PAGE_CONTENT.en : CONTACT_PAGE_CONTENT.it
+  return t.nav.about === 'About' ? CONTACT_PAGE_CONTENT.en : CONTACT_PAGE_CONTENT.it
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -5925,6 +5981,7 @@ const ABOUT_PAGE_ICONS = {
 
 const CONTACT_PAGE_ICONS = {
   mail: Mail,
+  phone: Phone,
   book: BookOpen,
   refresh: RefreshCcw,
 }
@@ -6096,7 +6153,7 @@ function ContactPage({ t }) {
     const mailtoBody = encodeURIComponent(
       `${cp.form.mailtoName}: ${formState.name}\n${cp.form.mailtoEmail}: ${formState.email}\n${cp.form.mailtoMessage}:\n${formState.message}`
     )
-    window.location.href = `mailto:laura.cocozza@gmail.com?subject=${encodeURIComponent(cp.form.subject)}&body=${mailtoBody}`
+    window.location.href = `mailto:laura.cocozza.893@psypec.it?subject=${encodeURIComponent(cp.form.subject)}&body=${mailtoBody}`
   }
 
   return (
@@ -6109,7 +6166,7 @@ function ContactPage({ t }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span className="contact-page-eyebrow">CONTACT</span>
+            <span className="contact-page-eyebrow">{cp.hero.eyebrow ?? (t.nav.about === 'About' ? 'CONTACT' : 'CONTATTI')}</span>
             <h1 className="contact-page-hero-title">{cp.hero.title}</h1>
             <p className="contact-page-hero-subtitle">{cp.hero.subtitle}</p>
             <p className="contact-page-hero-intro">{cp.hero.intro}</p>
@@ -6140,9 +6197,25 @@ function ContactPage({ t }) {
                     <span className="contact-page-card-icon">{CardIcon && <CardIcon aria-hidden="true" />}</span>
                     <h3 className="contact-page-card-title">{card.title}</h3>
                     <div className="contact-page-card-items">
-                      {card.items.map((item) => (
-                        <p key={item} className="contact-page-card-item">{item}</p>
-                      ))}
+                      {card.items.map((item) => {
+                        if (card.iconKey === 'mail') {
+                          return <a key={item} href={`mailto:${item}`} className="contact-page-card-item contact-page-card-item--link">{item}</a>
+                        }
+                        if (card.iconKey === 'phone') {
+                          return (
+                            <span key={item} className="contact-page-card-phone-group">
+                              <a href={`tel:${item.replace(/\s/g, '')}`} className="contact-page-card-item contact-page-card-item--link">{item}</a>
+                              {card.whatsapp && (
+                                <a href={card.whatsapp} target="_blank" rel="noopener noreferrer" className="contact-page-card-item contact-page-card-item--link contact-page-card-item--whatsapp">
+                                  <MessageCircle size={14} aria-hidden="true" />
+                                  {t.nav.about === 'About' ? 'Message on WhatsApp' : 'Scrivici su WhatsApp'}
+                                </a>
+                              )}
+                            </span>
+                          )
+                        }
+                        return <p key={item} className="contact-page-card-item">{item}</p>
+                      })}
                     </div>
                   </motion.article>
                 )
@@ -6166,7 +6239,7 @@ function ContactPage({ t }) {
               <CpPillButton variant="primary" onClick={() => scrollToSection('contact-form-section')}>
                 {cp.cta.primary}
               </CpPillButton>
-              <a href="mailto:laura.cocozza@gmail.com" className="cp-pill-button cp-pill-button--secondary">
+              <a href="mailto:laura.cocozza.893@psypec.it" className="cp-pill-button cp-pill-button--secondary">
                 <span>{cp.cta.secondary}</span>
                 <CpPillArrow />
               </a>
