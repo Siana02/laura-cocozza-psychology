@@ -12,11 +12,13 @@ import {
   Mail,
   MapPin,
   Phone,
+  RefreshCcw,
   Scale,
   Send,
   ShieldCheck,
   Sparkles,
   Stethoscope,
+  Target,
   UserStar,
   Users,
   Video,
@@ -1457,17 +1459,663 @@ const content = {
   },
 }
 
+const CLINICAL_PAGE_CONTENT = {
+  it: {
+    hero: {
+      eyebrow: 'Area Clinica',
+      title: 'Area Clinica',
+      subtitle: 'Psicoterapia strutturata per adolescenti, adulti e famiglie',
+      supporting:
+        'Un percorso clinico guidato, chiaro e personalizzato che integra valutazione, metodo e continuità di cura in presenza e online.',
+      primaryCta: 'Prenota un Colloquio Clinico',
+      secondaryCta: 'Esplora i Percorsi',
+      imageSrc: '/laura-cocozza-hero-image.jpg',
+      imageAlt: 'Ambiente clinico calmo e professionale della Dott.ssa Laura Cocozza',
+    },
+    navigation: [
+      { id: 'clinical-pathways', label: 'Percorso' },
+      { id: 'clinical-methods', label: 'Metodi' },
+      { id: 'clinical-audiences', label: 'Per chi è' },
+      { id: 'clinical-conditions', label: 'Condizioni' },
+      { id: 'clinical-network', label: 'Rete di cura' },
+    ],
+    pathway: {
+      id: 'clinical-pathways',
+      eyebrow: 'Modello Clinico',
+      title: 'Un percorso clinico guidato in quattro passaggi',
+      intro:
+        'Tutte le spiegazioni sul processo clinico convergono qui: una sequenza essenziale, leggibile e orientata alla decisione.',
+      steps: [
+        {
+          iconKey: 'assessment',
+          step: '01',
+          title: 'Assessment',
+          description:
+            'Valutazione iniziale accurata per comprendere storia clinica, bisogni attuali e priorità terapeutiche.',
+        },
+        {
+          iconKey: 'goals',
+          step: '02',
+          title: 'Definizione degli obiettivi',
+          description:
+            'Obiettivi condivisi, realistici e misurabili per costruire un piano terapeutico realmente personalizzato.',
+        },
+        {
+          iconKey: 'intervention',
+          step: '03',
+          title: 'Intervento',
+          description:
+            'Applicazione di strumenti evidence-based scelti in base alla persona, al contesto e alla complessità clinica.',
+        },
+        {
+          iconKey: 'consolidation',
+          step: '04',
+          title: 'Consolidamento',
+          description:
+            'Verifica dei progressi, prevenzione della ricaduta e costruzione di un equilibrio psicologico più stabile.',
+        },
+      ],
+    },
+    methods: {
+      id: 'clinical-methods',
+      eyebrow: 'Libreria dei Metodi',
+      title: 'Metodi clinici chiari, senza ripetizioni',
+      intro:
+        'Ogni metodo compare una sola volta: da qui in avanti il resto della pagina fa riferimento a questa libreria, evitando duplicazioni.',
+      techniqueLabel: 'Tecniche chiave',
+      conditionsLabel: 'Indicazioni',
+      cards: [
+        {
+          code: 'CBT',
+          title: 'CBT · Terapia Cognitivo Comportamentale',
+          description:
+            'Approccio strutturato orientato alla relazione tra pensieri, emozioni e comportamenti, utile quando serve lavorare con obiettivi chiari e strumenti pratici.',
+          techniques: ['Ristrutturazione cognitiva', 'Esposizione graduale', 'Problem solving'],
+          conditions: ['Ansia', 'Umore', 'Fobie', 'Difficoltà relazionali'],
+        },
+        {
+          code: 'ACT',
+          title: 'ACT · Acceptance & Commitment Therapy',
+          description:
+            'Metodo focalizzato su flessibilità psicologica, valori personali e capacità di restare presenti anche in condizioni emotivamente complesse.',
+          techniques: ['Mindfulness', 'Defusione cognitiva', 'Lavoro sui valori'],
+          conditions: ['Stress cronico', 'Regolazione emotiva', 'Burnout', 'Transizioni di vita'],
+        },
+        {
+          code: 'VR',
+          title: 'VR Therapy',
+          description:
+            'Supporto immersivo integrato ai protocolli clinici per creare esperienze controllate, graduali e monitorate in sicurezza.',
+          techniques: ['Esposizione assistita', 'Simulazioni guidate', 'Desensibilizzazione'],
+          conditions: ['Fobie', 'Ansia sociale', 'PTSD', 'Ansia da prestazione'],
+        },
+        {
+          code: 'ERP',
+          title: 'ERP · Esposizione con Prevenzione della Risposta',
+          description:
+            'Protocollo specifico per pensieri intrusivi e compulsioni, centrato sulla riduzione dei rituali e sull’aumento della tolleranza all’incertezza.',
+          techniques: ['Esposizione mirata', 'Prevenzione dei rituali', 'Tolleranza all’incertezza'],
+          conditions: ['DOC', 'Pensieri intrusivi', 'Compulsioni', 'Evitamento'],
+        },
+      ],
+    },
+    audiences: {
+      id: 'clinical-audiences',
+      eyebrow: 'Per Chi È',
+      title: 'Tre percorsi costruiti su fase di vita e sistema relazionale',
+      intro:
+        'Ogni percorso clinico cambia linguaggio, obiettivi e ritmo in base alla persona o al nucleo familiare coinvolto.',
+      focusLabel: 'Aree di focus',
+      challengesLabel: 'Sfide frequenti',
+      approachLabel: 'Sintesi dell’approccio',
+      cards: [
+        {
+          title: 'Adolescenti',
+          age: '14+',
+          focus: ['Identità e autostima', 'Regolazione emotiva', 'Relazioni e scuola'],
+          challenges: ['Ansia scolastica', 'Ritiro sociale', 'Conflitti familiari'],
+          approach:
+            'Percorso strutturato ma rispettoso dell’autonomia, con coinvolgimento familiare quando utile alla stabilità del sistema.',
+        },
+        {
+          title: 'Adulti',
+          age: '18+',
+          focus: ['Stress e burnout', 'Umore e ansia', 'Transizioni personali'],
+          challenges: ['Blocchi decisionali', 'Relazioni complesse', 'Sovraccarico emotivo'],
+          approach:
+            'Intervento focalizzato su chiarezza clinica, strumenti concreti e rilettura dei pattern che mantengono la sofferenza.',
+        },
+        {
+          title: 'Famiglie',
+          age: 'Sistema familiare',
+          focus: ['Comunicazione', 'Ruoli e confini', 'Momenti di transizione'],
+          challenges: ['Genitorialità complessa', 'Separazione', 'Conflitti ricorrenti'],
+          approach:
+            'Lettura sistemica delle dinamiche familiari per ridefinire equilibrio, collaborazione e continuità di cura.',
+        },
+      ],
+    },
+    conditions: {
+      id: 'clinical-conditions',
+      eyebrow: 'Condizioni e Focus di Trattamento',
+      title: 'Le principali aree cliniche, organizzate per priorità di lettura',
+      intro:
+        'Ogni area mostra subito un orientamento sintetico; il dettaglio si apre solo quando serve, riducendo il carico cognitivo.',
+      approachLabel: 'Approccio',
+      outcomesLabel: 'Esiti attesi',
+      items: [
+        {
+          title: 'Disturbi d’Ansia',
+          summary: 'Percorsi per ansia generalizzata, panico, fobie e vissuti di allerta persistente.',
+          approach:
+            'CBT e, quando indicato, VR Therapy per esposizione graduale, ristrutturazione cognitiva e recupero della libertà di movimento.',
+          outcomes:
+            'Riduzione dell’evitamento, maggiore senso di controllo e capacità di affrontare situazioni precedentemente bloccanti.',
+        },
+        {
+          title: 'Disturbi dell’Umore',
+          summary: 'Interventi per abbassamento del tono dell’umore, perdita di energia e senso di direzione.',
+          approach:
+            'CBT e ACT per attivazione comportamentale, lavoro sui pensieri disfunzionali e recupero del contatto con i propri valori.',
+          outcomes:
+            'Maggiore stabilità emotiva, recupero della motivazione e prevenzione delle ricadute con strumenti concreti.',
+        },
+        {
+          title: 'DOC e Pensieri Intrusivi',
+          summary: 'Percorsi mirati per ossessioni, rituali e bisogno di controllo che consumano tempo e risorse mentali.',
+          approach:
+            'ERP come riferimento centrale, integrata con interventi cognitivi per aumentare tolleranza all’incertezza e flessibilità.',
+          outcomes:
+            'Riduzione delle compulsioni, minore impatto dei pensieri intrusivi e ritorno a un funzionamento quotidiano più libero.',
+        },
+        {
+          title: 'Regolazione Emotiva',
+          summary: 'Supporto per reattività elevata, blocco emotivo, stress cronico e difficoltà nel ritrovare equilibrio.',
+          approach:
+            'ACT, mindfulness e strategie di regolazione per riconoscere gli stati interni e rispondere con maggiore stabilità.',
+          outcomes:
+            'Più consapevolezza, meno impulsività e una gestione più sostenibile delle pressioni quotidiane.',
+        },
+        {
+          title: 'Difficoltà Relazionali',
+          summary: 'Interventi per conflitti ricorrenti, dipendenze emotive, comunicazione inefficace e schemi relazionali ripetitivi.',
+          approach:
+            'Lavoro sui pattern cognitivi e comunicativi che mantengono il disagio, con attenzione a confini, attaccamento e assertività.',
+          outcomes:
+            'Relazioni più leggibili, comunicazione più chiara e maggiore capacità di stare nei legami senza disorganizzazione.',
+        },
+      ],
+    },
+    family: {
+      id: 'clinical-family',
+      eyebrow: 'Coppia e Sistemi Familiari',
+      title: 'Quattro aree relazionali affrontate con una struttura dedicata',
+      intro:
+        'La sezione relazionale è stata ricomposta in un sistema a griglia, più chiaro da leggere e più coerente con bisogni di coppia e famiglia.',
+      cards: [
+        {
+          title: 'Rotture Comunicative',
+          text:
+            'Si lavora su escalation, silenzi prolungati e pattern attacco-difesa per ristabilire ascolto e comprensione reciproca.',
+          points: ['Ascolto strutturato', 'Riduzione dell’escalation', 'Nuovi pattern comunicativi'],
+        },
+        {
+          title: 'Supporto nella Separazione',
+          text:
+            'Accompagnamento psicologico nelle transizioni familiari ad alta intensità emotiva, con attenzione al benessere dei figli.',
+          points: ['Protezione del sistema familiare', 'Gestione dei passaggi', 'Co-genitorialità'],
+        },
+        {
+          title: 'Sfide Genitoriali',
+          text:
+            'Supporto per definire confini, coerenza educativa e strategie più efficaci nelle diverse fasi evolutive.',
+          points: ['Confini e regole', 'Lettura del comportamento', 'Coerenza educativa'],
+        },
+        {
+          title: 'Conflitti Sistemici Familiari',
+          text:
+            'Intervento sulle regole implicite e sulle dinamiche ricorrenti che mantengono la tensione all’interno del nucleo.',
+          points: ['Ruoli e triangolazioni', 'Nuovi equilibri', 'Maggiore stabilità relazionale'],
+        },
+      ],
+    },
+    support: {
+      id: 'clinical-support',
+      eyebrow: 'Aree di Supporto',
+      title: 'Supporti mirati che rimandano ai metodi già definiti',
+      intro:
+        'Qui compaiono le principali aree di supporto in formato compatto: niente spiegazioni duplicate dei metodi, solo orientamento clinico e rinvio alla libreria.',
+      methodsLabel: 'Metodi di riferimento',
+      cards: [
+        {
+          title: 'Ansia e Stress',
+          summary: 'Percorsi per sovraccarico, anticipazione, evitamento e perdita di libertà nelle attività quotidiane.',
+          methods: ['CBT', 'VR Therapy'],
+        },
+        {
+          title: 'Difficoltà dell’Umore',
+          summary: 'Supporto quando prevalgono ritiro, demotivazione, tristezza persistente e difficoltà nel riattivarsi.',
+          methods: ['CBT', 'ACT'],
+        },
+        {
+          title: 'Pensieri Intrusivi',
+          summary: 'Interventi per ridurre rituali, controllo mentale e impatto dei contenuti ossessivi sul funzionamento quotidiano.',
+          methods: ['ERP', 'CBT'],
+        },
+        {
+          title: 'Regolazione Emotiva',
+          summary: 'Lavoro su intensità emotiva, fatica a calmarsi, impulsività o blocco nelle situazioni di pressione.',
+          methods: ['ACT', 'CBT'],
+        },
+        {
+          title: 'Difficoltà Relazionali',
+          summary: 'Percorsi per migliorare lettura dei pattern, confini, espressione dei bisogni e qualità delle relazioni.',
+          methods: ['CBT', 'ACT'],
+        },
+      ],
+    },
+    network: {
+      id: 'clinical-network',
+      eyebrow: 'Lavoro in Rete',
+      title: 'Cura integrata attivata quando la complessità lo richiede',
+      intro:
+        'La rete multidisciplinare resta chiara, leggibile e distribuita in una griglia visivamente ordinata.',
+      whyLabel: 'Perché conta',
+      roleLabel: 'Ruolo',
+      items: [
+        {
+          title: 'Psichiatria',
+          iconKey: 'psychiatry',
+          why: 'Utile quando i sintomi richiedono una valutazione integrata tra psicoterapia e supporto farmacologico.',
+          role: 'Valutazione clinica, monitoraggio terapeutico e coordinamento sul piano di cura.',
+        },
+        {
+          title: 'Neuropsichiatria infantile',
+          iconKey: 'child',
+          why: 'Fondamentale nei quadri evolutivi o adolescenziali che richiedono una lettura neuropsichiatrica dedicata.',
+          role: 'Diagnosi differenziale, orientamento clinico e raccordo con famiglia e contesti educativi.',
+        },
+        {
+          title: 'Psicoterapia dell’età evolutiva',
+          iconKey: 'developmental',
+          why: 'Aiuta a integrare il lavoro con minori e genitori mantenendo coerenza nella traiettoria clinica.',
+          role: 'Supporto specialistico su sviluppo, relazione genitore-figlio e bisogni evolutivi.',
+        },
+        {
+          title: 'Diritto di famiglia',
+          iconKey: 'law',
+          why: 'È rilevante quando il percorso clinico si intreccia con separazioni, affidamento o scelte legali sensibili.',
+          role: 'Allineamento tra tutela relazionale, passaggi giuridici e benessere del minore.',
+        },
+        {
+          title: 'Psicologia forense',
+          iconKey: 'forensic',
+          why: 'Garantisce continuità tecnica quando emergono valutazioni, relazioni o contesti giudiziari collegati.',
+          role: 'Interfaccia tra area clinica e forense con rigore metodologico e coerenza documentale.',
+        },
+      ],
+    },
+    finalCta: {
+      eyebrow: 'Scegli il tuo percorso',
+      title: 'Scegli il tuo percorso',
+      intro:
+        'Se desideri un primo orientamento clinico, il passo successivo è una consulenza strutturata. Se vuoi esplorare prima le aree di intervento, puoi continuare il percorso dalla sezione servizi.',
+      primaryButton: 'Prenota un Colloquio Clinico',
+      secondaryButton: 'Esplora i Servizi',
+      primaryLink: '/contact',
+      secondaryTarget: 'clinical-support',
+    },
+  },
+  en: {
+    hero: {
+      eyebrow: 'Clinical Area',
+      title: 'Clinical Area',
+      subtitle: 'Structured psychotherapy for adolescents, adults, and families',
+      supporting:
+        'A guided clinical pathway that combines assessment, method, and continuity of care through a calm, highly readable experience.',
+      primaryCta: 'Book Clinical Consultation',
+      secondaryCta: 'Explore Pathways',
+      imageSrc: '/laura-cocozza-hero-image.jpg',
+      imageAlt: 'Calm and professional therapy environment from Laura Cocozza’s practice',
+    },
+    navigation: [
+      { id: 'clinical-pathways', label: 'Pathway' },
+      { id: 'clinical-methods', label: 'Methods' },
+      { id: 'clinical-audiences', label: 'Who it is for' },
+      { id: 'clinical-conditions', label: 'Conditions' },
+      { id: 'clinical-network', label: 'Network care' },
+    ],
+    pathway: {
+      id: 'clinical-pathways',
+      eyebrow: 'Clinical Pathway',
+      title: 'A guided clinical model in four clear steps',
+      intro:
+        'All process explanations now live in one place: a lean sequence designed to feel like a guided clinical journey rather than a long article.',
+      steps: [
+        {
+          iconKey: 'assessment',
+          step: '01',
+          title: 'Assessment',
+          description:
+            'An initial clinical reading of history, current symptoms, context, and priorities to define the therapeutic starting point.',
+        },
+        {
+          iconKey: 'goals',
+          step: '02',
+          title: 'Goal Setting',
+          description:
+            'Shared and realistic goals shape a pathway that is measurable, personalised, and clear from the beginning.',
+        },
+        {
+          iconKey: 'intervention',
+          step: '03',
+          title: 'Intervention',
+          description:
+            'Evidence-based methods are selected according to the person, the difficulty presented, and the level of complexity.',
+        },
+        {
+          iconKey: 'consolidation',
+          step: '04',
+          title: 'Consolidation',
+          description:
+            'Progress is reviewed, relapse prevention is strengthened, and emotional autonomy becomes more stable over time.',
+        },
+      ],
+    },
+    methods: {
+      id: 'clinical-methods',
+      eyebrow: 'Methods Library',
+      title: 'Clinical methods, explained once and referenced clearly',
+      intro:
+        'Every method appears here only once. The rest of the page references this library instead of repeating the same explanations.',
+      techniqueLabel: 'Key techniques',
+      conditionsLabel: 'Applied to',
+      cards: [
+        {
+          code: 'CBT',
+          title: 'CBT · Cognitive Behavioral Therapy',
+          description:
+            'A structured approach focused on the relationship between thoughts, emotions, and behaviors, especially useful when a pathway needs clarity and practical tools.',
+          techniques: ['Cognitive restructuring', 'Graded exposure', 'Problem solving'],
+          conditions: ['Anxiety', 'Mood', 'Phobias', 'Relational difficulties'],
+        },
+        {
+          code: 'ACT',
+          title: 'ACT · Acceptance & Commitment Therapy',
+          description:
+            'A method centred on psychological flexibility, personal values, and the ability to stay present even when emotional intensity remains high.',
+          techniques: ['Mindfulness', 'Cognitive defusion', 'Values work'],
+          conditions: ['Chronic stress', 'Emotional regulation', 'Burnout', 'Life transitions'],
+        },
+        {
+          code: 'VR',
+          title: 'VR Therapy',
+          description:
+            'An immersive clinical support used within structured protocols to create safe, controlled, and gradual therapeutic experiences.',
+          techniques: ['Assisted exposure', 'Guided simulations', 'Desensitisation'],
+          conditions: ['Phobias', 'Social anxiety', 'PTSD', 'Performance anxiety'],
+        },
+        {
+          code: 'ERP',
+          title: 'ERP · Exposure and Response Prevention',
+          description:
+            'A dedicated protocol for intrusive thoughts and compulsions, focused on reducing rituals and increasing tolerance of uncertainty.',
+          techniques: ['Targeted exposure', 'Ritual prevention', 'Uncertainty tolerance'],
+          conditions: ['OCD', 'Intrusive thoughts', 'Compulsions', 'Avoidance'],
+        },
+      ],
+    },
+    audiences: {
+      id: 'clinical-audiences',
+      eyebrow: 'Who It Is For',
+      title: 'Three pathways shaped by life stage and relational system',
+      intro:
+        'The clinical experience changes language, pace, and therapeutic priorities according to the person or family system involved.',
+      focusLabel: 'Focus areas',
+      challengesLabel: 'Common challenges',
+      approachLabel: 'Approach summary',
+      cards: [
+        {
+          title: 'Adolescents',
+          age: '14+',
+          focus: ['Identity and self-esteem', 'Emotional regulation', 'Peers and school life'],
+          challenges: ['School anxiety', 'Social withdrawal', 'Family conflict'],
+          approach:
+            'A structured pathway that respects autonomy while involving the family whenever system stability benefits from it.',
+        },
+        {
+          title: 'Adults',
+          age: '18+',
+          focus: ['Stress and burnout', 'Mood and anxiety', 'Life transitions'],
+          challenges: ['Decision blocks', 'Complex relationships', 'Emotional overload'],
+          approach:
+            'Goal-focused work that combines clinical clarity, practical tools, and a deeper reading of patterns that maintain distress.',
+        },
+        {
+          title: 'Families',
+          age: 'Family system',
+          focus: ['Communication', 'Roles and boundaries', 'Transition periods'],
+          challenges: ['Complex parenting', 'Separation', 'Recurring conflict'],
+          approach:
+            'A systemic reading of family dynamics designed to rebuild balance, collaboration, and continuity of care.',
+        },
+      ],
+    },
+    conditions: {
+      id: 'clinical-conditions',
+      eyebrow: 'Conditions & Treatment Focus',
+      title: 'The main clinical priorities, organised for fast reading',
+      intro:
+        'Each item stays compact by default and opens only when deeper detail is useful, reducing cognitive overload.',
+      approachLabel: 'Approach',
+      outcomesLabel: 'Outcomes',
+      items: [
+        {
+          title: 'Anxiety Disorders',
+          summary: 'Pathways for generalised anxiety, panic, phobias, and persistent states of threat or anticipation.',
+          approach:
+            'CBT and, where indicated, VR Therapy for graded exposure, cognitive restructuring, and a safer return to feared situations.',
+          outcomes:
+            'Less avoidance, stronger self-regulation, and greater freedom in situations that previously felt blocked.',
+        },
+        {
+          title: 'Mood Disorders',
+          summary: 'Support for low mood, reduced energy, loss of motivation, and emotional heaviness that affects daily life.',
+          approach:
+            'CBT and ACT to combine behavioural activation, work on unhelpful thought patterns, and reconnection with personal values.',
+          outcomes:
+            'Greater emotional stability, improved motivation, and stronger relapse prevention through practical tools.',
+        },
+        {
+          title: 'OCD & Intrusive Thoughts',
+          summary: 'Targeted work for obsessions, rituals, control strategies, and the mental exhaustion they generate.',
+          approach:
+            'ERP as the central reference, supported by cognitive work that increases tolerance of uncertainty and flexibility.',
+          outcomes:
+            'Reduced compulsions, lower impact of intrusive thoughts, and a freer daily rhythm with less time consumed by symptoms.',
+        },
+        {
+          title: 'Emotional Regulation',
+          summary: 'Support for high emotional intensity, shutdown responses, chronic stress, and difficulty returning to equilibrium.',
+          approach:
+            'ACT, mindfulness, and regulation strategies that help recognise internal states and respond more steadily under pressure.',
+          outcomes:
+            'More awareness, less impulsivity, and a more sustainable way of handling emotionally loaded situations.',
+        },
+        {
+          title: 'Relational Difficulties',
+          summary: 'Work for recurring conflict, emotional dependency, ineffective communication, and repetitive relationship patterns.',
+          approach:
+            'A focus on cognitive and communication patterns that maintain distress, with attention to attachment, boundaries, and assertiveness.',
+          outcomes:
+            'Clearer relationships, more direct communication, and a stronger ability to stay connected without disorganisation.',
+        },
+      ],
+    },
+    family: {
+      id: 'clinical-family',
+      eyebrow: 'Couple & Family Systems',
+      title: 'Four relational themes addressed through a cleaner grid system',
+      intro:
+        'The relational area has been rebuilt into a clear grid, making couple and family support easier to scan and compare.',
+      cards: [
+        {
+          title: 'Communication Breakdowns',
+          text:
+            'Work focuses on escalation, prolonged silence, and attack-defend loops to rebuild listening and mutual understanding.',
+          points: ['Structured listening', 'De-escalation', 'New communication patterns'],
+        },
+        {
+          title: 'Separation Support',
+          text:
+            'Psychological support for high-intensity family transitions, with specific attention to children’s emotional protection.',
+          points: ['Family system protection', 'Transition guidance', 'Co-parenting support'],
+        },
+        {
+          title: 'Parenting Challenges',
+          text:
+            'Support for boundaries, educational consistency, and more effective responses across different developmental phases.',
+          points: ['Boundaries and rules', 'Behaviour reading', 'Parental alignment'],
+        },
+        {
+          title: 'Systemic Family Conflicts',
+          text:
+            'Intervention on implicit rules and recurring dynamics that keep tension active inside the family system.',
+          points: ['Roles and triangulation', 'New balance', 'Relational stability'],
+        },
+      ],
+    },
+    support: {
+      id: 'clinical-support',
+      eyebrow: 'Support Areas',
+      title: 'Targeted support cards that point back to the methods library',
+      intro:
+        'This section stays intentionally compact: it shows where support is focused without repeating full methodological explanations.',
+      methodsLabel: 'Reference methods',
+      cards: [
+        {
+          title: 'Anxiety & Stress',
+          summary: 'Support for overload, anticipation, avoidance, and loss of freedom in everyday situations.',
+          methods: ['CBT', 'VR Therapy'],
+        },
+        {
+          title: 'Mood Difficulties',
+          summary: 'Support when withdrawal, low motivation, and persistent heaviness make activation harder to sustain.',
+          methods: ['CBT', 'ACT'],
+        },
+        {
+          title: 'Intrusive Thoughts',
+          summary: 'Pathways that reduce rituals, control behaviours, and the impact of obsessive content on daily functioning.',
+          methods: ['ERP', 'CBT'],
+        },
+        {
+          title: 'Emotional Regulation',
+          summary: 'Work on intensity, difficulty calming down, impulsive reactions, or emotional shutdown under pressure.',
+          methods: ['ACT', 'CBT'],
+        },
+        {
+          title: 'Relational Difficulties',
+          summary: 'Support to improve pattern awareness, boundaries, expression of needs, and the quality of relationships.',
+          methods: ['CBT', 'ACT'],
+        },
+      ],
+    },
+    network: {
+      id: 'clinical-network',
+      eyebrow: 'Network-Based Care',
+      title: 'Integrated care activated when complexity requires more than one lens',
+      intro:
+        'The multidisciplinary network remains central, but now appears as a cleaner icon-grid with a stronger reading hierarchy.',
+      whyLabel: 'Why it matters',
+      roleLabel: 'Role summary',
+      items: [
+        {
+          title: 'Psychiatry',
+          iconKey: 'psychiatry',
+          why: 'Useful when psychotherapy benefits from integrated psychiatric assessment and medication review.',
+          role: 'Clinical evaluation, treatment monitoring, and coordinated decision-making within the care plan.',
+        },
+        {
+          title: 'Child Neuropsychiatry',
+          iconKey: 'child',
+          why: 'Important in adolescent or developmental presentations that require a dedicated neuropsychiatric reading.',
+          role: 'Differential diagnosis, developmental framing, and coordination with family and educational settings.',
+        },
+        {
+          title: 'Developmental Psychotherapy',
+          iconKey: 'developmental',
+          why: 'Strengthens work with minors and parents while keeping the overall pathway coherent across professionals.',
+          role: 'Specialist support for development, parent-child relationships, and age-specific therapeutic needs.',
+        },
+        {
+          title: 'Family Law',
+          iconKey: 'law',
+          why: 'Relevant when clinical work intersects with separation, custody, or legally sensitive family decisions.',
+          role: 'Alignment between relational protection, legal steps, and the wellbeing of children involved.',
+        },
+        {
+          title: 'Forensic Psychology',
+          iconKey: 'forensic',
+          why: 'Provides continuity when clinical work overlaps with reports, evaluations, or court-related contexts.',
+          role: 'Technical integration between clinical and forensic domains with methodological consistency.',
+        },
+      ],
+    },
+    finalCta: {
+      eyebrow: 'Choose your pathway',
+      title: 'Choose your pathway',
+      intro:
+        'If you need a first clinical orientation, the next step is a structured consultation. If you prefer to review the support areas first, continue through the services section.',
+      primaryButton: 'Book Clinical Consultation',
+      secondaryButton: 'Explore Services',
+      primaryLink: '/contact',
+      secondaryTarget: 'clinical-support',
+    },
+  },
+}
+
+const CLINICAL_DIVIDER_ICONS = {
+  hero: Sparkles,
+  pathway: Brain,
+  methods: BookOpen,
+  audiences: Users,
+  conditions: ShieldCheck,
+  family: HeartHandshake,
+  support: BriefcaseBusiness,
+  network: Stethoscope,
+  final: ArrowUpRight,
+}
+
+const CLINICAL_PATHWAY_ICONS = {
+  assessment: Brain,
+  goals: Target,
+  intervention: RefreshCcw,
+  consolidation: UserStar,
+}
+
+const CLINICAL_NETWORK_ICONS = {
+  psychiatry: Stethoscope,
+  child: Brain,
+  developmental: UserStar,
+  law: Landmark,
+  forensic: Scale,
+}
+
+function getClinicalPageContent(t) {
+  return t.nav.home === 'Home' ? CLINICAL_PAGE_CONTENT.en : CLINICAL_PAGE_CONTENT.it
+}
+
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0 },
 }
 
-function IconDivider({ icon, className = '' }) {
+function IconDivider({ icon, Icon, className = '' }) {
   return (
     <div className={`icon-divider ${className}`} aria-hidden="true">
       <span className="icon-divider__line icon-divider__line--left" />
       <span className="icon-divider__icon">
-        <span className="icon-divider__material material-symbols-rounded">{icon}</span>
+        {Icon ? <Icon aria-hidden="true" /> : <span className="icon-divider__material material-symbols-rounded">{icon}</span>}
       </span>
       <span className="icon-divider__line icon-divider__line--right" />
     </div>
@@ -3486,20 +4134,20 @@ function PageWrapper({ children, t }) {
 }
 
 function ClinicalPage({ t }) {
-  const cp = t.clinicalPage
+  const cp = getClinicalPageContent(t)
 
   return (
     <>
       <CpHero cp={cp.hero} />
       <div className="cp-page">
-        <CpOverviewSection cp={cp.overview} />
-        <CpCareProcessSection cp={cp.careProcess} />
-        <CpTherapeuticApproachSection cp={cp.therapeuticApproach} />
-        <CpWhoItIsForSection cp={cp.whoItIsFor} />
-        <CpIndividualPsychotherapySection cp={cp.individualPsychotherapy} />
-        <CpCoupleFamilySection cp={cp.coupleFamily} />
-        <CpSupportAreasSection cp={cp.supportAreas} />
-        <CpNetworkWorkSection cp={cp.networkWork} />
+        <CpMiniNav items={cp.navigation} />
+        <CpPathwaySection cp={cp.pathway} />
+        <CpMethodsSection cp={cp.methods} />
+        <CpAudiencesSection cp={cp.audiences} />
+        <CpConditionsSection cp={cp.conditions} />
+        <CpFamilySystemsSection cp={cp.family} />
+        <CpSupportAreasSection cp={cp.support} />
+        <CpNetworkSection cp={cp.network} />
         <CpFinalCtaSection cp={cp.finalCta} />
       </div>
       <SiteFooter t={t} />
@@ -3515,37 +4163,98 @@ function CpHero({ cp }) {
         <div className="cp-hero-orb cp-hero-orb--2" />
       </div>
       <div className="cp-hero-inner">
-        <motion.p
-          className="cp-hero-eyebrow"
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        >
-          {cp.eyebrow}
-        </motion.p>
-        <motion.h1
-          className="cp-hero-title"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-        >
-          {cp.title}
-        </motion.h1>
-        <motion.p
-          className="cp-hero-subtitle"
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.22 }}
-        >
-          {cp.subtitle}
-        </motion.p>
+        <div className="cp-hero-grid">
+          <div className="cp-hero-copy">
+            <motion.p
+              className="cp-hero-eyebrow"
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {cp.eyebrow}
+            </motion.p>
+            <motion.h1
+              className="cp-hero-title"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+            >
+              {cp.title}
+            </motion.h1>
+            <IconDivider Icon={CLINICAL_DIVIDER_ICONS.hero} className="cp-hero-divider" />
+            <motion.p
+              className="cp-hero-subtitle"
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.22 }}
+            >
+              {cp.subtitle}
+            </motion.p>
+            <motion.p
+              className="cp-hero-supporting"
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+            >
+              {cp.supporting}
+            </motion.p>
+            <motion.div
+              className="cp-hero-actions"
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.38 }}
+            >
+              <CpPillButton to="/contact" variant="primary">
+                {cp.primaryCta}
+              </CpPillButton>
+              <CpPillButton variant="secondary" onClick={() => scrollToSection('clinical-pathways')}>
+                {cp.secondaryCta}
+              </CpPillButton>
+            </motion.div>
+          </div>
+          <motion.div
+            className="cp-hero-visual"
+            initial={{ opacity: 0, x: 22 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+          >
+            <div className="cp-hero-image-frame">
+              <img src={cp.imageSrc} alt={cp.imageAlt} className="cp-hero-image" />
+              <div className="cp-hero-image-overlay" aria-hidden="true" />
+            </div>
+          </motion.div>
+        </div>
       </div>
       <div className="cp-hero-rule" aria-hidden="true" />
     </section>
   )
 }
 
-function CpSectionHeader({ eyebrow, title, intro, className = '' }) {
+function scrollToSection(id) {
+  if (typeof document === 'undefined') return
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
+
+function CpMiniNav({ items }) {
+  return (
+    <div className="cp-mini-nav-shell" aria-label="Clinical page navigation">
+      <div className="cp-mini-nav">
+        {items.map((item) => (
+          <button
+            key={item.id}
+            type="button"
+            className="cp-mini-nav-item"
+            onClick={() => scrollToSection(item.id)}
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function CpSectionHeader({ eyebrow, title, intro, dividerIcon, className = '' }) {
   return (
     <motion.div
       className={`cp-section-header ${className}`}
@@ -3556,388 +4265,387 @@ function CpSectionHeader({ eyebrow, title, intro, className = '' }) {
     >
       <span className="cp-eyebrow">{eyebrow}</span>
       <h2 className="cp-section-title">{title}</h2>
+      <IconDivider Icon={dividerIcon} className="cp-section-divider" />
       {intro && <p className="cp-section-intro">{intro}</p>}
     </motion.div>
   )
 }
 
-function CpSectionCta({ to, children }) {
+function CpPillArrow() {
   return (
-    <div className="cp-section-cta-wrap">
-      <Link to={to} className="cp-section-cta">
-        <span>{children}</span>
-        <ArrowRight size={15} aria-hidden="true" />
-      </Link>
-    </div>
+    <span className="cp-pill-arrow" aria-hidden="true">
+      <ArrowRight size={17} className="cp-pill-arrow__icon cp-pill-arrow__icon--first" />
+      <ArrowRight size={17} className="cp-pill-arrow__icon cp-pill-arrow__icon--second" />
+    </span>
   )
 }
 
-// ── Section A — Clinical Overview ──────────────────────────
+function CpPillButton({ to, onClick, variant = 'primary', children }) {
+  const className = `cp-pill-button cp-pill-button--${variant}`
+  const content = (
+    <>
+      <span>{children}</span>
+      <CpPillArrow />
+    </>
+  )
 
-function CpOverviewSection({ cp }) {
+  if (to) {
+    return (
+      <Link to={to} className={className}>
+        {content}
+      </Link>
+    )
+  }
+
   return (
-    <section className="cp-section cp-section--light">
+    <button type="button" className={className} onClick={onClick}>
+      {content}
+    </button>
+  )
+}
+
+function CpPathwaySection({ cp }) {
+  return (
+    <section id={cp.id} className="cp-section cp-section--light">
       <div className="cp-section-inner">
-        <CpSectionHeader eyebrow={cp.eyebrow} title={cp.title} intro={cp.intro} />
-        <div className="cp-block-grid cp-block-grid--2">
-          {cp.blocks.map((block, i) => (
-            <motion.div
-              key={block.title}
-              className="cp-block"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }}
-            >
-              <span className="cp-block-number" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-              <h3 className="cp-block-title">{block.title}</h3>
-              <p className="cp-block-text">{block.text}</p>
-            </motion.div>
-          ))}
+        <CpSectionHeader
+          eyebrow={cp.eyebrow}
+          title={cp.title}
+          intro={cp.intro}
+          dividerIcon={CLINICAL_DIVIDER_ICONS.pathway}
+        />
+        <div className="cp-pathway-grid">
+          {cp.steps.map((step, i) => {
+            const StepIcon = CLINICAL_PATHWAY_ICONS[step.iconKey]
+
+            return (
+              <motion.article
+                key={step.step}
+                className="cp-pathway-card"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }}
+              >
+                <div className="cp-pathway-top">
+                  <span className="cp-pathway-icon">{StepIcon && <StepIcon aria-hidden="true" />}</span>
+                  <span className="cp-pathway-step">{step.step}</span>
+                </div>
+                <h3 className="cp-pathway-title">{step.title}</h3>
+                <p className="cp-pathway-description">{step.description}</p>
+              </motion.article>
+            )
+          })}
         </div>
-        <CpSectionCta to="/contact">{cp.cta}</CpSectionCta>
       </div>
     </section>
   )
 }
 
-// ── Section B — Integrated Care Process ────────────────────
-
-function CpCareProcessSection({ cp }) {
+function CpMethodsSection({ cp }) {
   return (
-    <section className="cp-section cp-section--dark">
+    <section id={cp.id} className="cp-section cp-section--dark">
       <div className="cp-section-inner">
-        <CpSectionHeader eyebrow={cp.eyebrow} title={cp.title} intro={cp.intro} />
-        <div className="cp-steps">
-          {cp.steps.map((step, i) => (
-            <motion.div
-              key={step.number}
-              className="cp-step"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+        <CpSectionHeader
+          eyebrow={cp.eyebrow}
+          title={cp.title}
+          intro={cp.intro}
+          dividerIcon={CLINICAL_DIVIDER_ICONS.methods}
+        />
+        <div className="cp-methods-grid">
+          {cp.cards.map((card, i) => (
+            <motion.article
+              key={card.code}
+              className="cp-method-card"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.18 }}
               transition={{ duration: 0.68, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }}
             >
-              <div className="cp-step-node" aria-hidden="true">
-                <span className="cp-step-number">{step.number}</span>
-                {i < cp.steps.length - 1 && <span className="cp-step-line" />}
-              </div>
-              <div className="cp-step-body">
-                <h3 className="cp-step-title">{step.title}</h3>
-                <p className="cp-step-description">{step.description}</p>
-                <p className="cp-step-detail">{step.detail}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-        <CpSectionCta to="/contact">{cp.cta}</CpSectionCta>
-      </div>
-    </section>
-  )
-}
-
-// ── Section C — Therapeutic Approach ───────────────────────
-
-function CpTherapeuticApproachSection({ cp }) {
-  const [activeApproach, setActiveApproach] = useState(0)
-  const current = cp.approaches[activeApproach]
-
-  return (
-    <section className="cp-section cp-section--light">
-      <div className="cp-section-inner">
-        <CpSectionHeader eyebrow={cp.eyebrow} title={cp.title} intro={cp.intro} />
-        <div className="cp-approach-tabs" role="tablist" aria-label={cp.title}>
-          {cp.approaches.map((approach, i) => (
-            <button
-              key={approach.label}
-              role="tab"
-              aria-selected={activeApproach === i}
-              aria-controls={`cp-approach-panel-${i}`}
-              className={`cp-approach-tab${activeApproach === i ? ' cp-approach-tab--active' : ''}`}
-              onClick={() => setActiveApproach(i)}
-              type="button"
-            >
-              <span className="cp-approach-tab-label">{approach.label}</span>
-              <span className="cp-approach-tab-name">{approach.title}</span>
-            </button>
-          ))}
-        </div>
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeApproach}
-            id={`cp-approach-panel-${activeApproach}`}
-            role="tabpanel"
-            className="cp-approach-panel"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <div className="cp-approach-grid">
-              <div className="cp-approach-col cp-approach-col--main">
-                <h3 className="cp-approach-title">{current.title}</h3>
-                <p className="cp-approach-definition">{current.definition}</p>
-                <div className="cp-approach-subsection">
-                  <h4 className="cp-approach-sub-label">{cp.mechanismLabel}</h4>
-                  <p className="cp-approach-sub-text">{current.mechanism}</p>
-                </div>
-                <div className="cp-approach-subsection">
-                  <h4 className="cp-approach-sub-label">{cp.applicationLabel}</h4>
-                  <p className="cp-approach-sub-text">{current.application}</p>
-                </div>
-              </div>
-              <div className="cp-approach-col cp-approach-col--aside">
-                <div className="cp-approach-targets">
-                  <h4 className="cp-approach-targets-title">{cp.targetsLabel}</h4>
-                  <ul className="cp-approach-targets-list">
-                    {current.targets.map((t) => (
-                      <li key={t}>{t}</li>
+              <span className="cp-method-code">{card.code}</span>
+              <h3 className="cp-method-title">{card.title}</h3>
+              <p className="cp-method-description">{card.description}</p>
+              <div className="cp-method-meta">
+                <div>
+                  <span className="cp-method-label">{cp.techniqueLabel}</span>
+                  <div className="cp-chip-list">
+                    {card.techniques.map((technique) => (
+                      <span key={technique} className="cp-chip">
+                        {technique}
+                      </span>
                     ))}
-                  </ul>
+                  </div>
                 </div>
-                <div className="cp-approach-outcomes">
-                  <h4 className="cp-approach-outcomes-title">{cp.outcomesLabel}</h4>
-                  <p className="cp-approach-outcomes-text">{current.outcomes}</p>
+                <div>
+                  <span className="cp-method-label">{cp.conditionsLabel}</span>
+                  <div className="cp-chip-list">
+                    {card.conditions.map((condition) => (
+                      <span key={condition} className="cp-chip cp-chip--soft">
+                        {condition}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-        <CpSectionCta to="/contact">{cp.cta}</CpSectionCta>
-      </div>
-    </section>
-  )
-}
-
-// ── Section D — Who It Is For ───────────────────────────────
-
-function CpWhoItIsForSection({ cp }) {
-  const [activePopulation, setActivePopulation] = useState(0)
-  const current = cp.populations[activePopulation]
-
-  return (
-    <section className="cp-section cp-section--teal">
-      <div className="cp-section-inner">
-        <CpSectionHeader eyebrow={cp.eyebrow} title={cp.title} intro={cp.intro} />
-        <div className="cp-population-tabs" role="tablist" aria-label={cp.title}>
-          {cp.populations.map((pop, i) => (
-            <button
-              key={pop.title}
-              role="tab"
-              aria-selected={activePopulation === i}
-              aria-controls={`cp-pop-panel-${i}`}
-              className={`cp-population-tab${activePopulation === i ? ' cp-population-tab--active' : ''}`}
-              onClick={() => setActivePopulation(i)}
-              type="button"
-            >
-              <span className="cp-population-tab-title">{pop.title}</span>
-              <span className="cp-population-tab-age">{pop.age}</span>
-            </button>
+            </motion.article>
           ))}
         </div>
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activePopulation}
-            id={`cp-pop-panel-${activePopulation}`}
-            role="tabpanel"
-            className="cp-population-panel"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <div className="cp-population-grid">
-              <div className="cp-population-col">
-                <h3 className="cp-population-title">{current.title}</h3>
-                <div className="cp-population-block">
-                  <h4 className="cp-population-block-label">{cp.clinicalNeedsLabel}</h4>
-                  <p>{current.clinicalNeeds}</p>
-                </div>
-                <div className="cp-population-block">
-                  <h4 className="cp-population-block-label">{cp.therapeuticFocusLabel}</h4>
-                  <p>{current.therapeuticFocus}</p>
-                </div>
-                <div className="cp-population-block">
-                  <h4 className="cp-population-block-label">{cp.approachLabel}</h4>
-                  <p>{current.approach}</p>
-                </div>
-              </div>
-              <div className="cp-population-col cp-population-col--issues">
-                <h4 className="cp-population-block-label">{cp.presentingIssuesLabel}</h4>
-                <ul className="cp-population-issues">
-                  {current.presentingIssues.map((issue) => (
-                    <li key={issue}>{issue}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-        <CpSectionCta to="/contact">{cp.cta}</CpSectionCta>
       </div>
     </section>
   )
 }
 
-// ── Section E — Individual Psychotherapy ───────────────────
-
-function CpIndividualPsychotherapySection({ cp }) {
+function CpAudiencesSection({ cp }) {
   return (
-    <section className="cp-section cp-section--light">
+    <section id={cp.id} className="cp-section cp-section--teal">
       <div className="cp-section-inner">
-        <CpSectionHeader eyebrow={cp.eyebrow} title={cp.title} intro={cp.intro} />
-        <div className="cp-conditions">
-          {cp.conditions.map((condition, i) => (
+        <CpSectionHeader
+          eyebrow={cp.eyebrow}
+          title={cp.title}
+          intro={cp.intro}
+          dividerIcon={CLINICAL_DIVIDER_ICONS.audiences}
+        />
+        <div className="cp-audience-grid">
+          {cp.cards.map((card, i) => (
             <motion.article
-              key={condition.title}
-              className="cp-condition"
+              key={card.title}
+              className="cp-audience-card"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.18 }}
+              transition={{ duration: 0.68, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }}
+            >
+              <div className="cp-audience-head">
+                <h3 className="cp-audience-title">{card.title}</h3>
+                <span className="cp-audience-age">{card.age}</span>
+              </div>
+              <div className="cp-audience-block">
+                <span className="cp-audience-label">{cp.focusLabel}</span>
+                <div className="cp-chip-list">
+                  {card.focus.map((item) => (
+                    <span key={item} className="cp-chip cp-chip--light">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="cp-audience-block">
+                <span className="cp-audience-label">{cp.challengesLabel}</span>
+                <div className="cp-chip-list">
+                  {card.challenges.map((item) => (
+                    <span key={item} className="cp-chip cp-chip--light">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="cp-audience-block">
+                <span className="cp-audience-label">{cp.approachLabel}</span>
+                <p className="cp-audience-text">{card.approach}</p>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function CpConditionsSection({ cp }) {
+  const [openIndex, setOpenIndex] = useState(0)
+
+  return (
+    <section id={cp.id} className="cp-section cp-section--light">
+      <div className="cp-section-inner">
+        <CpSectionHeader
+          eyebrow={cp.eyebrow}
+          title={cp.title}
+          intro={cp.intro}
+          dividerIcon={CLINICAL_DIVIDER_ICONS.conditions}
+        />
+        <div className="cp-accordion">
+          {cp.items.map((item, i) => {
+            const isOpen = i === openIndex
+
+            return (
+              <motion.article
+                key={item.title}
+                className={`cp-accordion-item${isOpen ? ' is-open' : ''}`}
+                initial={{ opacity: 0, y: 22 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: i * 0.08 }}
+              >
+                <button
+                  type="button"
+                  className="cp-accordion-trigger"
+                  onClick={() => setOpenIndex(isOpen ? -1 : i)}
+                  aria-expanded={isOpen}
+                >
+                  <div>
+                    <h3 className="cp-accordion-title">{item.title}</h3>
+                    <p className="cp-accordion-summary">{item.summary}</p>
+                  </div>
+                  <ChevronDown className="cp-accordion-chevron" aria-hidden="true" />
+                </button>
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      className="cp-accordion-panel"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                      <div className="cp-accordion-panel-inner">
+                        <div>
+                          <span className="cp-accordion-label">{cp.approachLabel}</span>
+                          <p>{item.approach}</p>
+                        </div>
+                        <div>
+                          <span className="cp-accordion-label">{cp.outcomesLabel}</span>
+                          <p>{item.outcomes}</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.article>
+            )
+          })}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function CpFamilySystemsSection({ cp }) {
+  return (
+    <section id={cp.id} className="cp-section cp-section--dark">
+      <div className="cp-section-inner">
+        <CpSectionHeader
+          eyebrow={cp.eyebrow}
+          title={cp.title}
+          intro={cp.intro}
+          dividerIcon={CLINICAL_DIVIDER_ICONS.family}
+        />
+        <div className="cp-family-grid">
+          {cp.cards.map((card, i) => (
+            <motion.article
+              key={card.title}
+              className="cp-family-card"
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: i * 0.08 }}
             >
-              <div className="cp-condition-icon-wrap" aria-hidden="true">
-                <img src={condition.icon} alt="" className="cp-condition-icon" />
-              </div>
-              <div className="cp-condition-body">
-                <h3 className="cp-condition-title">{condition.title}</h3>
-                <p className="cp-condition-description">{condition.description}</p>
-                <div className="cp-condition-meta">
-                  <div className="cp-condition-meta-item">
-                    <span className="cp-condition-meta-label">{cp.approachLabel}</span>
-                    <p>{condition.approach}</p>
-                  </div>
-                  <div className="cp-condition-meta-item">
-                    <span className="cp-condition-meta-label">{cp.outcomesLabel}</span>
-                    <p>{condition.outcomes}</p>
-                  </div>
-                </div>
+              <h3 className="cp-family-title">{card.title}</h3>
+              <p className="cp-family-text">{card.text}</p>
+              <div className="cp-chip-list">
+                {card.points.map((point) => (
+                  <span key={point} className="cp-chip cp-chip--light">
+                    {point}
+                  </span>
+                ))}
               </div>
             </motion.article>
           ))}
         </div>
-        <CpSectionCta to="/contact">{cp.cta}</CpSectionCta>
       </div>
     </section>
   )
 }
-
-// ── Section F — Couple & Family Support ────────────────────
-
-function CpCoupleFamilySection({ cp }) {
-  return (
-    <section className="cp-section cp-section--dark">
-      <div className="cp-section-inner">
-        <CpSectionHeader eyebrow={cp.eyebrow} title={cp.title} intro={cp.intro} />
-        <div className="cp-block-grid cp-block-grid--2">
-          {cp.areas.map((area, i) => (
-            <motion.div
-              key={area.title}
-              className="cp-block cp-block--relational"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.18 }}
-              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }}
-            >
-              <h3 className="cp-block-title">{area.title}</h3>
-              <p className="cp-block-text">{area.description}</p>
-              <div className="cp-block-intervention">
-                <span className="cp-block-intervention-label">{cp.interventionLabel}</span>
-                <p className="cp-block-intervention-text">{area.intervention}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-        <CpSectionCta to="/contact">{cp.cta}</CpSectionCta>
-      </div>
-    </section>
-  )
-}
-
-// ── Section G — Areas of Support ───────────────────────────
 
 function CpSupportAreasSection({ cp }) {
   return (
-    <section className="cp-section cp-section--light">
+    <section id={cp.id} className="cp-section cp-section--light">
       <div className="cp-section-inner">
-        <CpSectionHeader eyebrow={cp.eyebrow} title={cp.title} intro={cp.intro} />
-        <div className="cp-support-areas">
-          {cp.areas.map((area, i) => (
+        <CpSectionHeader
+          eyebrow={cp.eyebrow}
+          title={cp.title}
+          intro={cp.intro}
+          dividerIcon={CLINICAL_DIVIDER_ICONS.support}
+        />
+        <div className="cp-support-grid">
+          {cp.cards.map((area, i) => (
             <motion.article
-              key={area.key}
-              className="cp-support-area"
-              initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              key={area.title}
+              className="cp-support-card"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 0.68, ease: [0.22, 1, 0.36, 1], delay: i * 0.08 }}
             >
-              <div className="cp-support-area-icon-col" aria-hidden="true">
-                <img src={area.icon} alt="" className="cp-support-area-icon" />
-              </div>
-              <div className="cp-support-area-body">
-                <h3 className="cp-support-area-title">{area.title}</h3>
-                <p className="cp-support-area-clinical">{area.clinical}</p>
-                <div className="cp-support-area-meta">
-                  <div>
-                    <span className="cp-support-area-meta-label">{cp.approachLabel}</span>
-                    <p>{area.approach}</p>
-                  </div>
-                  <div>
-                    <span className="cp-support-area-meta-label">{cp.outcomesLabel}</span>
-                    <p>{area.outcomes}</p>
-                  </div>
+              <h3 className="cp-support-title">{area.title}</h3>
+              <p className="cp-support-summary">{area.summary}</p>
+              <div className="cp-support-methods">
+                <span className="cp-support-methods-label">{cp.methodsLabel}</span>
+                <div className="cp-chip-list">
+                  {area.methods.map((method) => (
+                    <button
+                      key={method}
+                      type="button"
+                      className="cp-chip cp-chip--interactive"
+                      onClick={() => scrollToSection('clinical-methods')}
+                    >
+                      {method}
+                    </button>
+                  ))}
                 </div>
               </div>
             </motion.article>
           ))}
         </div>
-        <CpSectionCta to="/contact">{cp.cta}</CpSectionCta>
       </div>
     </section>
   )
 }
 
-// ── Section H — Network-Based Work ─────────────────────────
-
-function CpNetworkWorkSection({ cp }) {
+function CpNetworkSection({ cp }) {
   return (
-    <section className="cp-section cp-section--teal">
+    <section id={cp.id} className="cp-section cp-section--teal">
       <div className="cp-section-inner">
-        <CpSectionHeader eyebrow={cp.eyebrow} title={cp.title} intro={cp.intro} />
-        <div className="cp-network-list">
-          {cp.collaborators.map((collab, i) => (
-            <motion.article
-              key={collab.title}
-              className="cp-network-item"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.18 }}
-              transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1], delay: i * 0.09 }}
-            >
-              <div className="cp-network-item-header">
-                <span className="cp-network-item-icon material-symbols-rounded" aria-hidden="true">{collab.icon}</span>
-                <h3 className="cp-network-item-title">{collab.title}</h3>
-              </div>
-              <div className="cp-network-item-body">
-                <div className="cp-network-item-why">
-                  <span className="cp-network-item-label">{cp.whyLabel}</span>
-                  <p>{collab.why}</p>
+        <CpSectionHeader
+          eyebrow={cp.eyebrow}
+          title={cp.title}
+          intro={cp.intro}
+          dividerIcon={CLINICAL_DIVIDER_ICONS.network}
+        />
+        <div className="cp-network-grid">
+          {cp.items.map((item, i) => {
+            const NetworkIcon = CLINICAL_NETWORK_ICONS[item.iconKey]
+
+            return (
+              <motion.article
+                key={item.title}
+                className="cp-network-card"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.18 }}
+                transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1], delay: i * 0.09 }}
+              >
+                <div className="cp-network-head">
+                  <span className="cp-network-icon">{NetworkIcon && <NetworkIcon aria-hidden="true" />}</span>
+                  <h3 className="cp-network-title">{item.title}</h3>
                 </div>
-                <div className="cp-network-item-role">
-                  <span className="cp-network-item-label">{cp.roleLabel}</span>
-                  <p>{collab.role}</p>
+                <div className="cp-network-copy">
+                  <div>
+                    <span className="cp-network-label">{cp.whyLabel}</span>
+                    <p>{item.why}</p>
+                  </div>
+                  <div>
+                    <span className="cp-network-label">{cp.roleLabel}</span>
+                    <p>{item.role}</p>
+                  </div>
                 </div>
-              </div>
-            </motion.article>
-          ))}
+              </motion.article>
+            )
+          })}
         </div>
-        <CpSectionCta to="/contact">{cp.cta}</CpSectionCta>
       </div>
     </section>
   )
 }
-
-// ── Section I — Final CTA ───────────────────────────────────
 
 function CpFinalCtaSection({ cp }) {
   return (
@@ -3955,16 +4663,15 @@ function CpFinalCtaSection({ cp }) {
       >
         <span className="cp-eyebrow cp-eyebrow--light">{cp.eyebrow}</span>
         <h2 className="cp-final-cta-title">{cp.title}</h2>
+        <IconDivider Icon={CLINICAL_DIVIDER_ICONS.final} className="cp-final-cta-divider" />
         <p className="cp-final-cta-intro">{cp.intro}</p>
         <div className="cp-final-cta-buttons">
-          <Link to={cp.primaryLink} className="cp-final-cta-btn cp-final-cta-btn--primary">
+          <CpPillButton to={cp.primaryLink} variant="primary">
             {cp.primaryButton}
-            <ArrowUpRight size={18} aria-hidden="true" />
-          </Link>
-          <Link to={cp.secondaryLink} className="cp-final-cta-btn cp-final-cta-btn--secondary">
+          </CpPillButton>
+          <CpPillButton variant="secondary" onClick={() => scrollToSection(cp.secondaryTarget)}>
             {cp.secondaryButton}
-            <ArrowRight size={18} aria-hidden="true" />
-          </Link>
+          </CpPillButton>
         </div>
       </motion.div>
     </section>
