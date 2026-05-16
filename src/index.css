@@ -5491,3 +5491,1051 @@ a.site-footer-contact-item:hover {
     overflow-x: hidden;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   CLINICAL PAGE — cp-* namespace
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── Page wrapper ──────────────────────────────────────────────────────────── */
+
+.cp-page {
+  background: var(--color-ivory);
+}
+
+/* ── Shared eyebrow / title / intro ────────────────────────────────────────── */
+
+.cp-eyebrow {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  opacity: 0.72;
+  margin-bottom: 1rem;
+}
+
+.cp-eyebrow--light {
+  color: rgba(183, 244, 255, 0.8);
+}
+
+.cp-section-title {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-size: clamp(1.85rem, 3.2vw, 2.6rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: inherit;
+  margin: 0 0 1.25rem;
+  white-space: pre-line;
+}
+
+.cp-section-intro {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+  line-height: 1.75;
+  max-width: 720px;
+  opacity: 0.82;
+  margin: 0;
+}
+
+/* ── Section base ──────────────────────────────────────────────────────────── */
+
+.cp-section {
+  padding: clamp(3.5rem, 7vw, 5.5rem) 0;
+}
+
+.cp-section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 5vw, 3rem);
+}
+
+.cp-section-header {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+/* ── Light variant ─────────────────────────────────────────────────────────── */
+
+.cp-section--light {
+  background: var(--color-ivory);
+  color: var(--color-text);
+}
+
+.cp-section--light .cp-section-title {
+  color: var(--color-primary-dark);
+}
+
+/* ── Dark variant ──────────────────────────────────────────────────────────── */
+
+.cp-section--dark {
+  background: var(--color-primary-dark);
+  color: var(--color-ivory);
+}
+
+.cp-section--dark .cp-eyebrow {
+  color: rgba(183, 244, 255, 0.75);
+  opacity: 1;
+}
+
+.cp-section--dark .cp-section-title {
+  color: var(--color-ivory);
+}
+
+.cp-section--dark .cp-section-intro {
+  color: rgba(247, 243, 238, 0.78);
+}
+
+/* ── Teal variant ──────────────────────────────────────────────────────────── */
+
+.cp-section--teal {
+  background: var(--color-primary);
+  color: var(--color-ivory);
+}
+
+.cp-section--teal .cp-eyebrow {
+  color: rgba(183, 244, 255, 0.8);
+  opacity: 1;
+}
+
+.cp-section--teal .cp-section-title {
+  color: var(--color-ivory);
+}
+
+.cp-section--teal .cp-section-intro {
+  color: rgba(247, 243, 238, 0.8);
+}
+
+/* ── Section CTA ───────────────────────────────────────────────────────────── */
+
+.cp-section-cta-wrap {
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.cp-section-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-primary);
+  border-bottom: 1.5px solid currentColor;
+  padding-bottom: 0.15em;
+  transition: opacity 0.2s, gap 0.2s;
+  text-decoration: none;
+}
+
+.cp-section--dark .cp-section-cta,
+.cp-section--teal .cp-section-cta {
+  color: rgba(183, 244, 255, 0.9);
+}
+
+.cp-section-cta:hover {
+  opacity: 0.7;
+  gap: 0.8rem;
+}
+
+/* ─── HERO ──────────────────────────────────────────────────────────────────── */
+
+.cp-hero {
+  position: relative;
+  background: var(--color-primary-dark);
+  color: var(--color-ivory);
+  padding: clamp(5rem, 10vw, 8rem) 0 clamp(3.5rem, 6vw, 5rem);
+  overflow: hidden;
+}
+
+.cp-hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.cp-hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.18;
+}
+
+.cp-hero-orb--1 {
+  width: 480px;
+  height: 480px;
+  background: var(--color-primary);
+  top: -100px;
+  right: 5%;
+}
+
+.cp-hero-orb--2 {
+  width: 320px;
+  height: 320px;
+  background: rgba(183, 244, 255, 0.5);
+  bottom: -60px;
+  left: 8%;
+}
+
+.cp-hero-inner {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 5vw, 3rem);
+}
+
+.cp-hero-eyebrow {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(183, 244, 255, 0.75);
+  margin-bottom: 1.25rem;
+}
+
+.cp-hero-title {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 600;
+  line-height: 1.12;
+  color: var(--color-ivory);
+  margin: 0 0 1.5rem;
+  white-space: pre-line;
+  max-width: 780px;
+}
+
+.cp-hero-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  line-height: 1.7;
+  color: rgba(247, 243, 238, 0.75);
+  max-width: 620px;
+  margin: 0;
+}
+
+.cp-hero-rule {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(183, 244, 255, 0.2), transparent);
+}
+
+/* ─── SECTION A — OVERVIEW BLOCKS ──────────────────────────────────────────── */
+
+.cp-block-grid {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.cp-block-grid--2 {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 460px), 1fr));
+}
+
+.cp-block {
+  background: rgba(15, 76, 92, 0.05);
+  border: 1px solid rgba(15, 76, 92, 0.1);
+  border-radius: var(--radius-medium);
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  position: relative;
+}
+
+.cp-section--dark .cp-block {
+  background: rgba(247, 243, 238, 0.05);
+  border-color: rgba(247, 243, 238, 0.1);
+}
+
+.cp-block--relational {
+  background: rgba(183, 244, 255, 0.06);
+  border-color: rgba(183, 244, 255, 0.15);
+}
+
+.cp-block-number {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--color-primary);
+  opacity: 0.18;
+  margin-bottom: 0.5rem;
+}
+
+.cp-section--dark .cp-block-number {
+  color: var(--color-ivory);
+}
+
+.cp-block-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  font-weight: 600;
+  color: inherit;
+  margin: 0 0 0.6rem;
+}
+
+.cp-block-text {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  opacity: 0.8;
+  margin: 0;
+}
+
+.cp-block-intervention {
+  margin-top: 0.9rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(183, 244, 255, 0.18);
+}
+
+.cp-block-intervention-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(183, 244, 255, 0.7);
+  margin-bottom: 0.35rem;
+}
+
+.cp-block-intervention-text {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* ─── SECTION B — CARE PROCESS STEPS ───────────────────────────────────────── */
+
+.cp-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.cp-step {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 0 1.5rem;
+  padding-bottom: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.cp-step:last-child {
+  padding-bottom: 0;
+}
+
+.cp-step-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cp-step-number {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(183, 244, 255, 0.12);
+  border: 1.5px solid rgba(183, 244, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(183, 244, 255, 0.9);
+  flex-shrink: 0;
+}
+
+.cp-step-line {
+  flex: 1;
+  width: 1.5px;
+  background: linear-gradient(to bottom, rgba(183, 244, 255, 0.25), rgba(183, 244, 255, 0.05));
+  margin-top: 0.5rem;
+  min-height: 2rem;
+}
+
+.cp-step-body {
+  padding-top: 0.55rem;
+}
+
+.cp-step-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.1rem, 1.7vw, 1.3rem);
+  font-weight: 600;
+  color: var(--color-ivory);
+  margin: 0 0 0.5rem;
+}
+
+.cp-step-description {
+  font-size: 0.93rem;
+  line-height: 1.72;
+  color: rgba(247, 243, 238, 0.82);
+  margin: 0 0 0.75rem;
+}
+
+.cp-step-detail {
+  font-size: 0.87rem;
+  line-height: 1.7;
+  color: rgba(183, 244, 255, 0.7);
+  border-left: 2px solid rgba(183, 244, 255, 0.2);
+  padding-left: 0.85rem;
+  margin: 0;
+}
+
+/* ─── SECTION C — THERAPEUTIC APPROACH TABS ────────────────────────────────── */
+
+.cp-approach-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  flex-wrap: wrap;
+}
+
+.cp-approach-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  padding: 0.75rem 1.25rem;
+  border: 1.5px solid rgba(15, 76, 92, 0.15);
+  border-radius: var(--radius-small);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  text-align: left;
+}
+
+.cp-approach-tab:hover {
+  background: rgba(15, 76, 92, 0.06);
+  border-color: rgba(15, 76, 92, 0.25);
+}
+
+.cp-approach-tab--active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.cp-approach-tab-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.cp-approach-tab--active .cp-approach-tab-label {
+  color: rgba(183, 244, 255, 0.8);
+}
+
+.cp-approach-tab-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: 1.3;
+}
+
+.cp-approach-tab--active .cp-approach-tab-name {
+  color: var(--color-ivory);
+}
+
+.cp-approach-panel {
+  background: rgba(15, 76, 92, 0.04);
+  border: 1px solid rgba(15, 76, 92, 0.1);
+  border-radius: var(--radius-medium);
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.cp-approach-grid {
+  display: grid;
+  grid-template-columns: 1fr minmax(220px, 300px);
+  gap: 2rem;
+}
+
+.cp-approach-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  margin: 0 0 0.9rem;
+}
+
+.cp-approach-definition {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--color-text);
+  margin: 0 0 1.25rem;
+}
+
+.cp-approach-subsection {
+  margin-bottom: 1rem;
+}
+
+.cp-approach-sub-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin: 0 0 0.35rem;
+}
+
+.cp-approach-sub-text {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  opacity: 0.82;
+  margin: 0;
+}
+
+.cp-approach-targets,
+.cp-approach-outcomes {
+  background: rgba(15, 76, 92, 0.06);
+  border-radius: var(--radius-small);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.cp-approach-targets:last-child,
+.cp-approach-outcomes:last-child {
+  margin-bottom: 0;
+}
+
+.cp-approach-targets-title,
+.cp-approach-outcomes-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin: 0 0 0.6rem;
+}
+
+.cp-approach-targets-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.cp-approach-targets-list li {
+  font-size: 0.87rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  padding-left: 1rem;
+  position: relative;
+}
+
+.cp-approach-targets-list li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+  opacity: 0.6;
+}
+
+.cp-approach-outcomes-text {
+  font-size: 0.87rem;
+  line-height: 1.65;
+  color: var(--color-text);
+  opacity: 0.82;
+  margin: 0;
+}
+
+@media (max-width: 680px) {
+  .cp-approach-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── SECTION D — WHO IT IS FOR TABS ───────────────────────────────────────── */
+
+.cp-population-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  flex-wrap: wrap;
+}
+
+.cp-population-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  padding: 0.75rem 1.25rem;
+  border: 1.5px solid rgba(183, 244, 255, 0.2);
+  border-radius: var(--radius-small);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  text-align: left;
+}
+
+.cp-population-tab:hover {
+  background: rgba(183, 244, 255, 0.06);
+  border-color: rgba(183, 244, 255, 0.35);
+}
+
+.cp-population-tab--active {
+  background: rgba(183, 244, 255, 0.12);
+  border-color: rgba(183, 244, 255, 0.5);
+}
+
+.cp-population-tab-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-ivory);
+}
+
+.cp-population-tab-age {
+  font-size: 0.72rem;
+  color: rgba(183, 244, 255, 0.65);
+}
+
+.cp-population-panel {
+  background: rgba(183, 244, 255, 0.06);
+  border: 1px solid rgba(183, 244, 255, 0.14);
+  border-radius: var(--radius-medium);
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.cp-population-grid {
+  display: grid;
+  grid-template-columns: 1fr minmax(200px, 280px);
+  gap: 2rem;
+}
+
+.cp-population-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.25rem, 2vw, 1.7rem);
+  font-weight: 600;
+  color: var(--color-ivory);
+  margin: 0 0 1.25rem;
+}
+
+.cp-population-block {
+  margin-bottom: 1rem;
+}
+
+.cp-population-block-label {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(183, 244, 255, 0.75);
+  margin-bottom: 0.35rem;
+}
+
+.cp-population-block p {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: rgba(247, 243, 238, 0.82);
+  margin: 0;
+}
+
+.cp-population-col--issues .cp-population-block-label {
+  margin-bottom: 0.8rem;
+}
+
+.cp-population-issues {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.cp-population-issues li {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: rgba(247, 243, 238, 0.82);
+  padding-left: 1rem;
+  position: relative;
+}
+
+.cp-population-issues li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: rgba(183, 244, 255, 0.6);
+}
+
+@media (max-width: 680px) {
+  .cp-population-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── SECTION E — INDIVIDUAL PSYCHOTHERAPY CONDITIONS ───────────────────────── */
+
+.cp-conditions {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.cp-condition {
+  display: grid;
+  grid-template-columns: 68px 1fr;
+  gap: 1.5rem;
+  background: rgba(15, 76, 92, 0.04);
+  border: 1px solid rgba(15, 76, 92, 0.1);
+  border-radius: var(--radius-medium);
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  align-items: flex-start;
+}
+
+.cp-condition-icon-wrap {
+  width: 56px;
+  height: 56px;
+  background: rgba(15, 76, 92, 0.08);
+  border-radius: var(--radius-small);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.cp-condition-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  opacity: 0.8;
+}
+
+.cp-condition-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  margin: 0 0 0.55rem;
+}
+
+.cp-condition-description {
+  font-size: 0.92rem;
+  line-height: 1.72;
+  color: var(--color-text);
+  opacity: 0.82;
+  margin: 0 0 1rem;
+}
+
+.cp-condition-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.cp-condition-meta-label {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 0.3rem;
+}
+
+.cp-condition-meta-item p {
+  font-size: 0.87rem;
+  line-height: 1.65;
+  color: var(--color-text);
+  opacity: 0.78;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .cp-condition {
+    grid-template-columns: 1fr;
+  }
+  .cp-condition-icon-wrap {
+    width: 48px;
+    height: 48px;
+  }
+  .cp-condition-meta {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── SECTION G — SUPPORT AREAS ─────────────────────────────────────────────── */
+
+.cp-support-areas {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.cp-support-area {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 1.5rem;
+  align-items: flex-start;
+  background: rgba(15, 76, 92, 0.04);
+  border: 1px solid rgba(15, 76, 92, 0.1);
+  border-radius: var(--radius-medium);
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.cp-support-area-icon-col {
+  width: 60px;
+  height: 60px;
+  background: rgba(15, 76, 92, 0.08);
+  border-radius: var(--radius-small);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.cp-support-area-icon {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  opacity: 0.78;
+}
+
+.cp-support-area-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  margin: 0 0 0.5rem;
+}
+
+.cp-support-area-clinical {
+  font-size: 0.92rem;
+  line-height: 1.72;
+  color: var(--color-text);
+  opacity: 0.82;
+  margin: 0 0 1rem;
+}
+
+.cp-support-area-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.cp-support-area-meta-label {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 0.3rem;
+}
+
+.cp-support-area-meta p {
+  font-size: 0.87rem;
+  line-height: 1.65;
+  color: var(--color-text);
+  opacity: 0.78;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .cp-support-area {
+    grid-template-columns: 1fr;
+  }
+  .cp-support-area-meta {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── SECTION H — NETWORK WORK ───────────────────────────────────────────────── */
+
+.cp-network-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.cp-network-item {
+  background: rgba(183, 244, 255, 0.06);
+  border: 1px solid rgba(183, 244, 255, 0.15);
+  border-radius: var(--radius-medium);
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.cp-network-item-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.cp-network-item-icon {
+  font-size: 1.4rem;
+  color: rgba(183, 244, 255, 0.8);
+  flex-shrink: 0;
+}
+
+.cp-network-item-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.1rem, 1.7vw, 1.35rem);
+  font-weight: 600;
+  color: var(--color-ivory);
+  margin: 0;
+}
+
+.cp-network-item-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.cp-network-item-label {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(183, 244, 255, 0.7);
+  margin-bottom: 0.35rem;
+}
+
+.cp-network-item-why p,
+.cp-network-item-role p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(247, 243, 238, 0.8);
+  margin: 0;
+}
+
+@media (max-width: 680px) {
+  .cp-network-item-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── SECTION I — FINAL CTA ──────────────────────────────────────────────────── */
+
+.cp-final-cta {
+  position: relative;
+  background: var(--color-deep-teal);
+  color: var(--color-ivory);
+  padding: clamp(4.5rem, 9vw, 7rem) 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+.cp-final-cta-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.cp-final-cta-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.16;
+}
+
+.cp-final-cta-orb--1 {
+  width: 500px;
+  height: 500px;
+  background: var(--color-primary);
+  top: -120px;
+  left: 10%;
+}
+
+.cp-final-cta-orb--2 {
+  width: 350px;
+  height: 350px;
+  background: rgba(183, 244, 255, 0.5);
+  bottom: -80px;
+  right: 8%;
+}
+
+.cp-final-cta-inner {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 5vw, 3rem);
+}
+
+.cp-final-cta-title {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--color-ivory);
+  margin: 0 0 1.25rem;
+  white-space: pre-line;
+}
+
+.cp-final-cta-intro {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.92rem, 1.4vw, 1rem);
+  line-height: 1.75;
+  color: rgba(247, 243, 238, 0.72);
+  margin: 0 0 2.5rem;
+}
+
+.cp-final-cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.cp-final-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: 100px;
+  padding: 0.85rem 1.75rem;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.18s;
+}
+
+.cp-final-cta-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+}
+
+.cp-final-cta-btn--primary {
+  background: var(--color-primary);
+  color: var(--color-ivory);
+  border: 1.5px solid var(--color-primary);
+}
+
+.cp-final-cta-btn--secondary {
+  background: transparent;
+  color: rgba(247, 243, 238, 0.88);
+  border: 1.5px solid rgba(183, 244, 255, 0.35);
+}
+
+.cp-final-cta-btn--secondary:hover {
+  border-color: rgba(183, 244, 255, 0.6);
+}
+
+@media (max-width: 480px) {
+  .cp-final-cta-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .cp-final-cta-btn {
+    justify-content: center;
+  }
+}
