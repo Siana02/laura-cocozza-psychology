@@ -1,16 +1,20 @@
 import { useEffect, useMemo, useState, useSyncExternalStore } from 'react'
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from 'framer-motion'
 import {
+  AlertTriangle,
   ArrowRight,
   ArrowUpRight,
   BookOpen,
   Brain,
   BriefcaseBusiness,
   ChevronDown,
+  FileText,
+  Gavel,
   HeartHandshake,
   Landmark,
   Mail,
   MapPin,
+  Network,
   Phone,
   RefreshCcw,
   Scale,
@@ -4783,19 +4787,794 @@ function ClinicalNetwork() {
   )
 }
 
-function Forensic({ t }) {
+// ─────────────────────────────────────────────────────────────────────────────
+// FORENSIC PAGE — DATA
+// ─────────────────────────────────────────────────────────────────────────────
+
+const FORENSIC_PAGE_CONTENT = {
+  it: {
+    hero: {
+      eyebrow: 'AREA FORENSE',
+      title: 'Psicologia Giuridica e Forense',
+      subtitle: 'Consulenza tecnica d\'ufficio in procedimenti civili, familiari e di valutazione del danno psicologico.',
+      description:
+        'Psicologa forense, consulente tecnica d\'ufficio (CTU) e di parte (CTP) con esperienza in psicologia giuridica, procedimenti familiari e valutazione del danno psicologico. Collaborazione con i principali Tribunali del Friuli Venezia Giulia e con studi legali su tutto il territorio nazionale.',
+      primaryCta: 'Richiedi Consulenza Forense',
+      secondaryCta: 'Esplora i Servizi',
+      imageSrc: '/laura-cocozza-hero-image.jpg',
+      imageAlt: 'Psicologia forense e consulenza tecnica — Dott.ssa Laura Cocozza',
+    },
+    navigation: [
+      { id: 'forensic-profile', label: 'Profilo' },
+      { id: 'forensic-services', label: 'Servizi' },
+      { id: 'forensic-domains', label: 'Ambiti' },
+      { id: 'forensic-psylex', label: 'PsyLex' },
+      { id: 'forensic-contact', label: 'Contatti' },
+    ],
+    profile: {
+      eyebrow: 'PROFILO PROFESSIONALE',
+      title: 'Competenza istituzionale al servizio del procedimento',
+      intro:
+        'Psicologa iscritta all\'Ordine degli Psicologi, specializzata in psicologia forense e giuridica. Esperienza documentata in perizie, valutazioni e consulenze per Tribunali e studi legali del territorio nazionale.',
+      credentials: [
+        {
+          code: 'CTU',
+          title: 'Consulente Tecnico d\'Ufficio',
+          description:
+            'Incarichi giudiziali in procedimenti civili e di diritto di famiglia presso i Tribunali del Friuli Venezia Giulia.',
+        },
+        {
+          code: 'CTP',
+          title: 'Consulente Tecnico di Parte',
+          description:
+            'Supporto tecnico specialistico nell\'interesse di parti private in procedimenti civili e familiari su scala nazionale.',
+        },
+        {
+          code: 'LEG',
+          title: 'Psicologia Giuridica',
+          description:
+            'Specializzazione nell\'intersezione tra psicologia clinica e diritto, con attenzione alla tutela del minore e alla valutazione del danno psicologico.',
+        },
+      ],
+    },
+    services: {
+      id: 'forensic-services',
+      eyebrow: 'SERVIZI FORENSI',
+      title: 'Servizi specializzati per il procedimento giudiziario',
+      intro:
+        'Attività tecniche e consulenziali a supporto di procedimenti civili, familiari e di valutazione del danno psicologico.',
+      cards: [
+        {
+          iconKey: 'scale',
+          title: 'CTU e CTP',
+          description:
+            'Attività di consulenza tecnica d\'ufficio e di parte in procedimenti civili e familiari.',
+        },
+        {
+          iconKey: 'family',
+          title: 'Area Familiare',
+          description:
+            'Consulenze psicologiche forensi in contesti di separazione, affidamento, responsabilità genitoriale e dinamiche familiari complesse.',
+        },
+        {
+          iconKey: 'coordination',
+          title: 'Coordinazione Genitoriale',
+          description:
+            'Interventi dedicati ai genitori in situazioni di alto conflitto, finalizzati al supporto di una gestione più funzionale della co-genitorialità.',
+        },
+        {
+          iconKey: 'damage',
+          title: 'Danno Psicologico',
+          description:
+            'Valutazioni psicologiche nell\'ambito di richieste risarcitorie e di danno psicologico da lavoro.',
+        },
+        {
+          iconKey: 'support',
+          title: 'Supporto Tecnico per Avvocati',
+          description:
+            'Consulenze psicologiche forensi e supporto tecnico specialistico in procedimenti familiari e civili.',
+        },
+      ],
+    },
+    domains: {
+      id: 'forensic-domains',
+      eyebrow: 'AMBITI SPECIALIZZATI',
+      title: 'Aree di competenza tecnica approfondita',
+      intro:
+        'Ogni ambito rappresenta un percorso metodologico strutturato, con procedure codificate e documentazione tecnica certificata.',
+      approachLabel: 'Metodologia',
+      outcomesLabel: 'Documentazione prodotta',
+      items: [
+        {
+          title: 'Procedure CTU/CTP',
+          summary:
+            'Il processo tecnico dalla nomina alla deposizione, con garanzie di rigore metodologico.',
+          approach:
+            'Raccolta documentale, colloqui clinici strutturati, somministrazione di strumenti psicometrici validati, redazione dell\'elaborato peritale secondo gli standard scientifici e normativi vigenti.',
+          outcomes:
+            'Perizia psicologica, consulenza tecnica scritta, documentazione integrativa per udienza.',
+        },
+        {
+          title: 'Valutazioni Familiari e Affidamento',
+          summary:
+            'Assessment delle competenze genitoriali e del funzionamento relazionale familiare.',
+          approach:
+            'Osservazioni strutturate, colloqui con genitori e minori, valutazione delle dinamiche di attaccamento, assessment delle competenze genitoriali con strumenti psicometrici specifici.',
+          outcomes:
+            'Relazione tecnica sull\'idoneità genitoriale, valutazione del superiore interesse del minore, raccomandazioni su affidamento e frequentazione.',
+        },
+        {
+          title: 'Valutazione del Danno Psicologico',
+          summary:
+            'Quantificazione e qualificazione del danno psichico in contesti risarcitori e occupazionali.',
+          approach:
+            'Raccolta anamnestica, diagnosi clinica secondo i sistemi nosografici vigenti (DSM-5/ICD-11), valutazione dell\'impatto sul funzionamento globale, applicazione di criteri medico-legali per la quantificazione del danno.',
+          outcomes:
+            'Perizia medico-legale psicologica, stima percentuale del danno biologico, documentazione per contenzioso civile e lavorativo.',
+        },
+        {
+          title: 'Metodologia di Consulenza Legale',
+          summary: 'Struttura e standard della collaborazione con avvocati e studi legali.',
+          approach:
+            'Definizione dell\'incarico tecnico, briefing con il difensore, impostazione della strategia peritale di parte, verifica critica delle perizie avversarie, preparazione per la conferenza dei consulenti.',
+          outcomes:
+            'Note tecniche per il difensore, pareri scritti, supporto alla preparazione dell\'udienza.',
+        },
+      ],
+    },
+    psylex: {
+      id: 'forensic-psylex',
+      eyebrow: 'ECOSISTEMA IN SVILUPPO',
+      title: 'PsyLex',
+      subtitle: 'Un ecosistema collaborativo di psicologia giuridica in fase di sviluppo',
+      description:
+        'PsyLex è una piattaforma professionale emergente che integra psicologia giuridica, consulenza forense e collaborazione interdisciplinare tra psicologi e avvocati.',
+      features: [
+        'Connessione di professionisti forensi in flussi di lavoro strutturati',
+        'Miglioramento del coordinamento in procedimenti familiari e civili',
+        'Standardizzazione dei processi di documentazione psicologico-legale',
+        'Facilitazione della collaborazione avvocato–psicologo',
+      ],
+      status: 'In sviluppo — piattaforma concettuale',
+      expandTitle: 'Visione del Progetto',
+      expandContent:
+        'PsyLex nasce dall\'esigenza concreta di strutturare la collaborazione tra il mondo giuridico e quello psicologico. L\'obiettivo è costruire un\'infrastruttura professionale che standardizzi i flussi documentali, migliori la qualità delle comunicazioni tecniche tra consulenti e avvocati, e renda il lavoro forense più efficiente, trasparente e misurabile. Il progetto è attualmente in fase concettuale e di sviluppo architetturale.',
+      primaryCta: 'Anteprima Concept PsyLex',
+      secondaryCta: 'Collaborazione Forense',
+    },
+    contact: {
+      id: 'forensic-contact',
+      eyebrow: 'CONTATTI',
+      title: 'Richiedi una consulenza forense',
+      intro:
+        'Per richieste di consulenza tecnica, supporto in procedimenti forensi o informazioni sui servizi, è possibile contattare lo studio attraverso i canali ufficiali.',
+      emails: ['laura.cocozza@gmail.com', 'laura.cocozza.893@psypec.it', 'info@psylexitalia.com'],
+      phone: '+39 339 366 980',
+      address: 'Via Generale Baldissera 14 — Udine',
+      consultations: 'Colloqui online e in presenza',
+      cta: 'Richiedi Informazioni',
+    },
+  },
+  en: {
+    hero: {
+      eyebrow: 'FORENSIC AREA',
+      title: 'Legal and Forensic Psychology',
+      subtitle:
+        'Court-appointed expertise in civil, family, and psychological damage assessment proceedings.',
+      description:
+        'Forensic psychologist, court-appointed expert (CTU) and party consultant (CTP) with experience in legal psychology, family proceedings, and psychological damage evaluation. Collaboration with Courts of Friuli Venezia Giulia and law firms across Italy.',
+      primaryCta: 'Request Forensic Consultation',
+      secondaryCta: 'Explore Services',
+      imageSrc: '/laura-cocozza-hero-image.jpg',
+      imageAlt: 'Forensic psychology and technical consultation — Dr. Laura Cocozza',
+    },
+    navigation: [
+      { id: 'forensic-profile', label: 'Profile' },
+      { id: 'forensic-services', label: 'Services' },
+      { id: 'forensic-domains', label: 'Domains' },
+      { id: 'forensic-psylex', label: 'PsyLex' },
+      { id: 'forensic-contact', label: 'Contacts' },
+    ],
+    profile: {
+      eyebrow: 'PROFESSIONAL PROFILE',
+      title: 'Institutional expertise in service of the proceeding',
+      intro:
+        'Registered psychologist specialised in forensic and legal psychology. Documented experience in expert reports, assessments, and consultancy for courts and law firms across Italy.',
+      credentials: [
+        {
+          code: 'CTU',
+          title: 'Court-Appointed Expert',
+          description:
+            'Judicial appointments in civil and family law proceedings at the Courts of Friuli Venezia Giulia.',
+        },
+        {
+          code: 'CTP',
+          title: 'Party-Appointed Consultant',
+          description:
+            'Specialised technical support for private parties in civil and family proceedings across Italy.',
+        },
+        {
+          code: 'LEG',
+          title: 'Legal Psychology',
+          description:
+            'Specialisation at the intersection of clinical psychology and law, with a focus on child protection and psychological damage assessment.',
+        },
+      ],
+    },
+    services: {
+      id: 'forensic-services',
+      eyebrow: 'FORENSIC SERVICES',
+      title: 'Specialised services for judicial proceedings',
+      intro:
+        'Technical and consultancy activities supporting civil, family, and psychological damage assessment proceedings.',
+      cards: [
+        {
+          iconKey: 'scale',
+          title: 'CTU and CTP',
+          description:
+            'Court-appointed and party-appointed psychological consulting activities within civil and family proceedings.',
+        },
+        {
+          iconKey: 'family',
+          title: 'Family Area',
+          description:
+            'Forensic psychological consultations in the context of separation, child custody, parental responsibility, and complex family dynamics.',
+        },
+        {
+          iconKey: 'coordination',
+          title: 'Parenting Coordination',
+          description:
+            'Interventions dedicated to parents experiencing high-conflict situations, aimed at supporting more functional co-parenting management.',
+        },
+        {
+          iconKey: 'damage',
+          title: 'Psychological Damage',
+          description:
+            'Psychological evaluations within the context of compensation claims and work-related psychological damage.',
+        },
+        {
+          iconKey: 'support',
+          title: 'Legal Technical Support',
+          description:
+            'Forensic psychological consultancy and specialised technical support for attorneys in family and civil proceedings.',
+        },
+      ],
+    },
+    domains: {
+      id: 'forensic-domains',
+      eyebrow: 'SPECIALISED DOMAINS',
+      title: 'Areas of in-depth technical expertise',
+      intro:
+        'Each domain represents a structured methodological pathway with codified procedures and certified technical documentation.',
+      approachLabel: 'Methodology',
+      outcomesLabel: 'Documentation produced',
+      items: [
+        {
+          title: 'CTU/CTP Procedures',
+          summary:
+            'The technical process from appointment to deposition, with guarantees of methodological rigour.',
+          approach:
+            'Documentary collection, structured clinical interviews, administration of validated psychometric tools, drafting of the expert report according to current scientific and regulatory standards.',
+          outcomes:
+            'Psychological expert report, written technical consultation, supplementary documentation for court hearings.',
+        },
+        {
+          title: 'Family and Custody Evaluations',
+          summary:
+            'Assessment of parental competencies and family relational functioning.',
+          approach:
+            'Structured observations, interviews with parents and children, attachment dynamics evaluation, parental competency assessment with specific psychometric instruments.',
+          outcomes:
+            'Technical report on parental suitability, evaluation of the child\'s best interest, recommendations on custody and visitation arrangements.',
+        },
+        {
+          title: 'Psychological Damage Assessment',
+          summary:
+            'Quantification and qualification of psychological harm in compensation and occupational contexts.',
+          approach:
+            'Anamnestic collection, clinical diagnosis according to current nosographic systems (DSM-5/ICD-11), assessment of impact on global functioning, application of medico-legal criteria for damage quantification.',
+          outcomes:
+            'Psychological medico-legal expert report, percentage estimate of biological damage, documentation for civil and employment litigation.',
+        },
+        {
+          title: 'Legal Consultation Methodology',
+          summary: 'Structure and standards of collaboration with attorneys and law firms.',
+          approach:
+            'Technical assignment definition, briefing with counsel, party-expert strategy formulation, critical review of opposing expert reports, preparation for the experts\' conference.',
+          outcomes:
+            'Technical notes for counsel, written opinions, support for hearing preparation.',
+        },
+      ],
+    },
+    psylex: {
+      id: 'forensic-psylex',
+      eyebrow: 'EMERGING ECOSYSTEM',
+      title: 'PsyLex',
+      subtitle: 'A collaborative legal-psychology ecosystem under development',
+      description:
+        'PsyLex is an emerging professional platform integrating legal psychology, forensic consultation, and interdisciplinary collaboration between psychologists and attorneys.',
+      features: [
+        'Connect forensic professionals in structured workflows',
+        'Improve coordination in family and civil proceedings',
+        'Standardise psychological-legal documentation processes',
+        'Facilitate attorney–psychologist collaboration',
+      ],
+      status: 'Under development — conceptual platform',
+      expandTitle: 'Project Vision',
+      expandContent:
+        'PsyLex arises from the concrete need to structure collaboration between the legal and psychological worlds. The objective is to build a professional infrastructure that standardises documentary workflows, improves the quality of technical communications between consultants and attorneys, and makes forensic work more efficient, transparent, and measurable. The project is currently in the conceptual and architectural design phase.',
+      primaryCta: 'Preview PsyLex Concept',
+      secondaryCta: 'Forensic Collaboration',
+    },
+    contact: {
+      id: 'forensic-contact',
+      eyebrow: 'CONTACTS',
+      title: 'Request a forensic consultation',
+      intro:
+        'For technical consultation requests, support in forensic proceedings, or information about services, the practice can be contacted through the official channels below.',
+      emails: ['laura.cocozza@gmail.com', 'laura.cocozza.893@psypec.it', 'info@psylexitalia.com'],
+      phone: '+39 339 366 980',
+      address: 'Via Generale Baldissera 14 — Udine',
+      consultations: 'Online and in-person consultations',
+      cta: 'Request Information',
+    },
+  },
+}
+
+const FORENSIC_DIVIDER_ICONS = {
+  hero: Scale,
+  profile: Gavel,
+  services: BriefcaseBusiness,
+  domains: FileText,
+  psylex: Network,
+  contact: Mail,
+}
+
+const FORENSIC_SERVICE_ICONS = {
+  scale: Scale,
+  family: Users,
+  coordination: RefreshCcw,
+  damage: AlertTriangle,
+  support: FileText,
+}
+
+function getForensicPageContent(t) {
+  return t.nav.home === 'Home' ? FORENSIC_PAGE_CONTENT.en : FORENSIC_PAGE_CONTENT.it
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// FORENSIC PAGE — SHARED HELPERS
+// ─────────────────────────────────────────────────────────────────────────────
+
+function FpPillArrow() {
   return (
-    <Section
-      title={t.pages.forensicHero}
-      subtitle="Structured, credible, legally aligned psychological expertise."
-      items={[
-        { icon: Scale, title: 'Forensic Services', text: 'CTU, CTP, family proceedings, parenting coordination.', to: '/forensic/services' },
-        { icon: Landmark, title: 'Court & Legal Context', text: 'Family law, civil proceedings, expert psychological consultancy.' },
-        { icon: BriefcaseBusiness, title: 'PsyLex Integration', text: 'A collaborative legal-psychology ecosystem.', to: '/forensic/psylex' },
-        { icon: Phone, title: 'Forensic Contact', text: 'Dedicated request channel for legal professionals and institutions.', to: '/contact' },
-      ]}
-    />
+    <span className="fp-pill-arrow" aria-hidden="true">
+      <ArrowRight size={17} className="fp-pill-arrow__icon fp-pill-arrow__icon--first" />
+      <ArrowRight size={17} className="fp-pill-arrow__icon fp-pill-arrow__icon--second" />
+    </span>
   )
+}
+
+function FpPillButton({ to, onClick, variant = 'primary', children }) {
+  const cls = `fp-pill-button fp-pill-button--${variant}`
+  const inner = (
+    <>
+      <span>{children}</span>
+      <FpPillArrow />
+    </>
+  )
+  if (to) return <Link to={to} className={cls}>{inner}</Link>
+  return (
+    <button type="button" className={cls} onClick={onClick}>
+      {inner}
+    </button>
+  )
+}
+
+function FpSectionHeader({ eyebrow, title, intro, dividerIcon, className = '' }) {
+  return (
+    <motion.div
+      className={`fp-section-header ${className}`}
+      initial={{ opacity: 0, y: 22 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.78, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <span className="fp-eyebrow">{eyebrow}</span>
+      <h2 className="fp-section-title">{title}</h2>
+      <IconDivider Icon={dividerIcon} className="fp-section-divider" />
+      {intro && <p className="fp-section-intro">{intro}</p>}
+    </motion.div>
+  )
+}
+
+function FpMiniNav({ items }) {
+  return (
+    <div className="fp-mini-nav-shell" aria-label="Forensic page navigation">
+      <div className="fp-mini-nav">
+        {items.map((item) => (
+          <button
+            key={item.id}
+            type="button"
+            className="fp-mini-nav-item"
+            onClick={() => scrollToSection(item.id)}
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// FORENSIC PAGE — SECTIONS
+// ─────────────────────────────────────────────────────────────────────────────
+
+function FpHero({ fp }) {
+  return (
+    <section className="fp-hero">
+      <div className="fp-hero-bg" aria-hidden="true">
+        <div className="fp-hero-orb fp-hero-orb--1" />
+        <div className="fp-hero-orb fp-hero-orb--2" />
+      </div>
+      <div className="fp-hero-inner">
+        <div className="fp-hero-grid">
+          <div className="fp-hero-copy">
+            <motion.p
+              className="fp-hero-eyebrow"
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {fp.eyebrow}
+            </motion.p>
+            <motion.h1
+              className="fp-hero-title"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+            >
+              {fp.title}
+            </motion.h1>
+            <IconDivider Icon={FORENSIC_DIVIDER_ICONS.hero} className="fp-hero-divider" />
+            <motion.p
+              className="fp-hero-subtitle"
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.22 }}
+            >
+              {fp.subtitle}
+            </motion.p>
+            <motion.p
+              className="fp-hero-supporting"
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+            >
+              {fp.description}
+            </motion.p>
+            <motion.div
+              className="fp-hero-actions"
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.38 }}
+            >
+              <FpPillButton to="/contact" variant="primary">
+                {fp.primaryCta}
+              </FpPillButton>
+              <FpPillButton variant="secondary" onClick={() => scrollToSection('forensic-services')}>
+                {fp.secondaryCta}
+              </FpPillButton>
+            </motion.div>
+          </div>
+          <motion.div
+            className="fp-hero-visual"
+            initial={{ opacity: 0, x: 22 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+          >
+            <div className="fp-hero-image-frame">
+              <img src={fp.imageSrc} alt={fp.imageAlt} className="fp-hero-image" />
+              <div className="fp-hero-image-overlay" aria-hidden="true" />
+              <div className="fp-hero-emblem" aria-hidden="true">
+                <Scale className="fp-hero-emblem-icon" aria-hidden="true" />
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+      <div className="fp-hero-rule" aria-hidden="true" />
+    </section>
+  )
+}
+
+function FpProfileSection({ fp }) {
+  return (
+    <section id="forensic-profile" className="fp-section fp-section--light">
+      <div className="fp-section-inner">
+        <FpSectionHeader
+          eyebrow={fp.eyebrow}
+          title={fp.title}
+          intro={fp.intro}
+          dividerIcon={FORENSIC_DIVIDER_ICONS.profile}
+        />
+        <div className="fp-credentials-grid">
+          {fp.credentials.map((cred, i) => (
+            <motion.article
+              key={cred.code}
+              className="fp-credential-card"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }}
+            >
+              <span className="fp-credential-code">{cred.code}</span>
+              <h3 className="fp-credential-title">{cred.title}</h3>
+              <p className="fp-credential-description">{cred.description}</p>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function FpServicesSection({ fp }) {
+  return (
+    <section id="forensic-services" className="fp-section fp-section--dark">
+      <div className="fp-section-inner">
+        <FpSectionHeader
+          eyebrow={fp.eyebrow}
+          title={fp.title}
+          intro={fp.intro}
+          dividerIcon={FORENSIC_DIVIDER_ICONS.services}
+        />
+        <div className="fp-services-grid">
+          {fp.cards.map((card, i) => {
+            const ServiceIcon = FORENSIC_SERVICE_ICONS[card.iconKey]
+            return (
+              <motion.article
+                key={card.title}
+                className="fp-service-card"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.18 }}
+                transition={{ duration: 0.68, ease: [0.22, 1, 0.36, 1], delay: i * 0.09 }}
+              >
+                <div className="fp-service-icon">
+                  {ServiceIcon && <ServiceIcon aria-hidden="true" />}
+                </div>
+                <h3 className="fp-service-title">{card.title}</h3>
+                <p className="fp-service-description">{card.description}</p>
+              </motion.article>
+            )
+          })}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function FpDomainsSection({ fp }) {
+  const [openIndex, setOpenIndex] = useState(0)
+
+  return (
+    <section id="forensic-domains" className="fp-section fp-section--slate">
+      <div className="fp-section-inner">
+        <FpSectionHeader
+          eyebrow={fp.eyebrow}
+          title={fp.title}
+          intro={fp.intro}
+          dividerIcon={FORENSIC_DIVIDER_ICONS.domains}
+        />
+        <div className="fp-accordion">
+          {fp.items.map((item, i) => {
+            const isOpen = i === openIndex
+            return (
+              <motion.article
+                key={item.title}
+                className={`fp-accordion-item${isOpen ? ' is-open' : ''}`}
+                initial={{ opacity: 0, y: 22 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: i * 0.08 }}
+              >
+                <button
+                  type="button"
+                  className="fp-accordion-trigger"
+                  onClick={() => setOpenIndex(isOpen ? -1 : i)}
+                  aria-expanded={isOpen}
+                >
+                  <div>
+                    <h3 className="fp-accordion-title">{item.title}</h3>
+                    <p className="fp-accordion-summary">{item.summary}</p>
+                  </div>
+                  <ChevronDown className="fp-accordion-chevron" aria-hidden="true" />
+                </button>
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      className="fp-accordion-panel"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                      <div className="fp-accordion-panel-inner">
+                        <div>
+                          <span className="fp-accordion-label">{fp.approachLabel}</span>
+                          <p>{item.approach}</p>
+                        </div>
+                        <div>
+                          <span className="fp-accordion-label">{fp.outcomesLabel}</span>
+                          <p>{item.outcomes}</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.article>
+            )
+          })}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function FpPsyLexSection({ fp }) {
+  const [expanded, setExpanded] = useState(false)
+
+  return (
+    <section id="forensic-psylex" className="fp-section fp-section--psylex">
+      <div className="fp-section-inner">
+        <motion.div
+          className="fp-psylex-header"
+          initial={{ opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.78, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className="fp-eyebrow fp-eyebrow--light">{fp.eyebrow}</span>
+          <h2 className="fp-psylex-title">{fp.title}</h2>
+          <IconDivider Icon={FORENSIC_DIVIDER_ICONS.psylex} className="fp-section-divider" />
+          <p className="fp-psylex-subtitle">{fp.subtitle}</p>
+          <p className="fp-psylex-description">{fp.description}</p>
+        </motion.div>
+
+        <motion.ul
+          className="fp-psylex-features"
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+        >
+          {fp.features.map((feature) => (
+            <li key={feature} className="fp-psylex-feature">
+              <ArrowRight size={15} aria-hidden="true" className="fp-psylex-feature-icon" />
+              <span>{feature}</span>
+            </li>
+          ))}
+        </motion.ul>
+
+        <motion.p
+          className="fp-psylex-status"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          {fp.status}
+        </motion.p>
+
+        <motion.div
+          className="fp-psylex-actions"
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.22 }}
+        >
+          <FpPillButton variant="primary" onClick={() => setExpanded((v) => !v)}>
+            {fp.primaryCta}
+          </FpPillButton>
+          <FpPillButton variant="secondary" onClick={() => scrollToSection('forensic-contact')}>
+            {fp.secondaryCta}
+          </FpPillButton>
+        </motion.div>
+
+        <AnimatePresence>
+          {expanded && (
+            <motion.div
+              className="fp-psylex-expand"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <div className="fp-psylex-expand-inner">
+                <h3 className="fp-psylex-expand-title">{fp.expandTitle}</h3>
+                <p className="fp-psylex-expand-content">{fp.expandContent}</p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </section>
+  )
+}
+
+function FpContactSection({ fp }) {
+  return (
+    <section id="forensic-contact" className="fp-section fp-section--contact">
+      <div className="fp-section-inner">
+        <motion.div
+          className="fp-contact-inner"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className="fp-eyebrow fp-eyebrow--light">{fp.eyebrow}</span>
+          <h2 className="fp-contact-title">{fp.title}</h2>
+          <IconDivider Icon={FORENSIC_DIVIDER_ICONS.contact} className="fp-section-divider" />
+          <p className="fp-contact-intro">{fp.intro}</p>
+          <div className="fp-contact-chips">
+            {fp.emails.map((email) => (
+              <a key={email} href={`mailto:${email}`} className="fp-contact-chip">
+                <Mail size={13} aria-hidden="true" />
+                {email}
+              </a>
+            ))}
+            <a href={`tel:${fp.phone.replace(/\s/g, '')}`} className="fp-contact-chip">
+              <Phone size={13} aria-hidden="true" />
+              {fp.phone}
+            </a>
+          </div>
+          <div className="fp-contact-meta">
+            <span className="fp-contact-meta-item">
+              <MapPin size={14} aria-hidden="true" />
+              {fp.address}
+            </span>
+            <span className="fp-contact-meta-item">
+              <Video size={14} aria-hidden="true" />
+              {fp.consultations}
+            </span>
+          </div>
+          <FpPillButton to="/contact" variant="primary">
+            {fp.cta}
+          </FpPillButton>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// FORENSIC PAGE — SHELL
+// ─────────────────────────────────────────────────────────────────────────────
+
+function ForensicPage({ t }) {
+  const fp = getForensicPageContent(t)
+
+  return (
+    <>
+      <FpHero fp={fp.hero} />
+      <div className="fp-page">
+        <FpMiniNav items={fp.navigation} />
+        <FpProfileSection fp={fp.profile} />
+        <FpServicesSection fp={fp.services} />
+        <FpDomainsSection fp={fp.domains} />
+        <FpPsyLexSection fp={fp.psylex} />
+        <FpContactSection fp={fp.contact} />
+      </div>
+      <SiteFooter t={t} />
+    </>
+  )
+}
+
+function Forensic({ t }) {
+  return <ForensicPage t={t} />
 }
 
 function ForensicServices() {
@@ -4813,18 +5592,7 @@ function ForensicServices() {
 }
 
 function PsyLexPreview() {
-  return (
-    <Section
-      title="PsyLex Preview"
-      subtitle="A future standalone platform connecting psychology and legal expertise."
-      items={[
-        { icon: BriefcaseBusiness, title: 'Mission', text: 'Bridge mental health and legal practice with rigor and clarity.' },
-        { icon: Scale, title: 'Legal Psychology Network', text: 'Collaborations with attorneys and forensic professionals.' },
-        { icon: Sparkles, title: 'Platform Preview', text: 'A premium interface for multidisciplinary workflow and referrals.' },
-        { icon: ArrowRight, title: 'External Redirect CTA', text: 'Coming soon: dedicated PsyLex platform experience.' },
-      ]}
-    />
-  )
+  return <Navigate to="/forensic" replace />
 }
 
 function About({ t }) {
