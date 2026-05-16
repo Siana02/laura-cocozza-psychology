@@ -7783,3 +7783,220 @@ h6 {
 [class*='eyebrow'] {
   font-weight: 750;
 }
+
+/* ── Final premium refinement pass (rhythm + CTA + motion + mobile polish) ── */
+
+:root {
+  --premium-heading-leading: 1.18;
+  --premium-body-leading: 1.76;
+  --premium-cta-radius: 999px;
+  --premium-cta-timing: 340ms cubic-bezier(0.22, 1, 0.36, 1);
+  --premium-cta-shadow: 0 12px 28px rgba(7, 26, 34, 0.14);
+  --premium-cta-shadow-hover: 0 16px 34px rgba(7, 26, 34, 0.2);
+}
+
+.app-shell--home > section,
+.cp-section,
+.fp-section,
+.about-page-section,
+.contact-page-section,
+.contact-page-cta-section {
+  scroll-margin-top: calc(var(--header-height) + 18px);
+}
+
+.app-shell--home > section + section {
+  margin-top: clamp(0.4rem, 1.3vw, 0.95rem);
+}
+
+.landing-headline,
+.landing-name,
+.cp-hero-title,
+.fp-hero-title,
+.cp-section-title,
+.fp-section-title,
+.faq-title,
+.hp-contact-title,
+.about-page-title,
+.about-page-hero-title,
+.contact-page-hero-title {
+  line-height: var(--premium-heading-leading);
+  margin-bottom: clamp(0.5rem, 1.2vw, 0.95rem);
+}
+
+.landing-desc,
+.faq-intro,
+.hp-contact-intro,
+.cp-section-intro,
+.fp-section-intro,
+.about-page-hero-paragraph,
+.contact-page-hero-intro,
+.about-page-intro,
+.contact-page-cta-intro {
+  line-height: var(--premium-body-leading);
+}
+
+.cp-section-header,
+.fp-section-header,
+.faq-header,
+.hp-contact-header,
+.therapeutic-approach-header,
+.support-areas-header,
+.about-section-header {
+  row-gap: clamp(0.65rem, 1.25vw, 1.05rem);
+}
+
+.trust-intro-cards,
+.therapeutic-panels-grid,
+.support-story-panels,
+.family-support-grid,
+.cp-pathway-grid,
+.cp-methods-grid,
+.cp-audience-grid,
+.cp-support-grid,
+.cp-network-grid,
+.fp-credentials-grid,
+.fp-services-grid {
+  gap: clamp(1rem, 2.1vw, 1.7rem);
+}
+
+.header-book-btn,
+.book-pill,
+.section-cta,
+.network-collab-cta-button,
+.cp-pill-button,
+.fp-pill-button,
+.clinical-transition-cta,
+.contact-page-form-submit {
+  border-radius: var(--premium-cta-radius);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: 0.015em;
+  transition:
+    transform var(--premium-cta-timing),
+    box-shadow var(--premium-cta-timing),
+    filter var(--premium-cta-timing),
+    background var(--premium-cta-timing),
+    border-color var(--premium-cta-timing),
+    color var(--premium-cta-timing);
+  box-shadow: var(--premium-cta-shadow);
+}
+
+.header-book-btn:hover,
+.book-pill:hover,
+.section-cta:hover,
+.section-cta:focus-visible,
+.network-collab-cta-button:is(:hover, :focus-visible),
+.cp-pill-button:hover,
+.cp-pill-button:focus-visible,
+.fp-pill-button:hover,
+.fp-pill-button:focus-visible,
+.clinical-transition-cta:hover,
+.contact-page-form-submit:hover,
+.contact-page-form-submit:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: var(--premium-cta-shadow-hover);
+}
+
+.book-pill-icon,
+.cp-pill-arrow__icon,
+.fp-pill-arrow__icon,
+.network-collab-cta-button svg {
+  transition-duration: var(--premium-cta-timing);
+}
+
+.landing-section::before {
+  content: '';
+  position: absolute;
+  inset: -8% -14%;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 22% 26%, rgba(183, 244, 255, 0.13), transparent 42%),
+    radial-gradient(circle at 74% 68%, rgba(247, 243, 238, 0.09), transparent 46%);
+  animation: hero-ambient-drift 36s ease-in-out infinite alternate;
+}
+
+@keyframes hero-ambient-drift {
+  0% {
+    transform: translate3d(-1.5%, -1%, 0) scale(1);
+    opacity: 0.42;
+  }
+  100% {
+    transform: translate3d(1.5%, 1%, 0) scale(1.03);
+    opacity: 0.62;
+  }
+}
+
+.quiet-editorial-section {
+  padding: clamp(2.8rem, 7vw, 4.4rem) 0;
+  background: linear-gradient(180deg, #f7f4ef 0%, #f3eee7 100%);
+}
+
+.quiet-editorial-inner {
+  width: min(760px, calc(100% - 2.5rem));
+  margin: 0 auto;
+  text-align: center;
+  border-top: 1px solid rgba(15, 76, 92, 0.14);
+  border-bottom: 1px solid rgba(15, 76, 92, 0.14);
+  padding: clamp(1.8rem, 4vw, 2.8rem) clamp(1rem, 2vw, 1.8rem);
+}
+
+.quiet-editorial-text {
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.45rem, 2.6vw, 2.15rem);
+  line-height: 1.5;
+  color: rgba(11, 39, 48, 0.9);
+}
+
+.quiet-editorial-note {
+  margin: 0.85rem 0 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.86rem, 1.05vw, 0.95rem);
+  line-height: 1.7;
+  color: rgba(15, 76, 92, 0.68);
+}
+
+@media (max-width: 767px) {
+  .app-shell--home > section + section {
+    margin-top: clamp(0.55rem, 2.8vw, 0.95rem);
+  }
+
+  .book-pill,
+  .header-book-btn,
+  .section-cta,
+  .network-collab-cta-button,
+  .cp-pill-button,
+  .fp-pill-button,
+  .contact-page-form-submit {
+    min-height: 48px;
+  }
+
+  .section-cta,
+  .cp-pill-button,
+  .fp-pill-button,
+  .network-collab-cta-button {
+    padding-inline: clamp(1.1rem, 5.2vw, 1.45rem);
+  }
+
+  .section-cta,
+  .network-collab-cta-button,
+  .fp-pill-button--primary,
+  .cp-pill-button--primary,
+  .book-pill {
+    box-shadow: 0 8px 18px rgba(7, 26, 34, 0.12);
+  }
+
+  .trust-intro-cards,
+  .therapeutic-panels-grid,
+  .support-story-panels,
+  .family-support-grid,
+  .cp-pathway-grid,
+  .cp-methods-grid,
+  .cp-audience-grid,
+  .cp-support-grid,
+  .cp-network-grid,
+  .fp-credentials-grid,
+  .fp-services-grid {
+    gap: 1rem;
+  }
+}
