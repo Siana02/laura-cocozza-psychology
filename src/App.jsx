@@ -2800,7 +2800,7 @@ function ClinicalAreaIntroductionSection({ t }) {
             transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="clinical-intro-image-wrap">
-              <img src="/laura-cocozza-hero-image.jpg" alt={ci.imageAlt} className="clinical-intro-image" />
+              <img src="/clinical-area-homepage-preview-section.jpeg" alt={ci.imageAlt} className="clinical-intro-image" />
             </div>
           </motion.div>
 
