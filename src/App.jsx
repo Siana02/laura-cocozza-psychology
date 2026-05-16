@@ -65,6 +65,7 @@ const content = {
       trust: ['Terapia Cognitivo Comportamentale', 'Approccio Integrato', 'Online & in Presenza', 'Supporto Multidisciplinare'],
       trustSection: {
         identityName: 'Dr Laura Cocozza',
+        imageAlt: 'Ritratto professionale della Dott.ssa Laura Cocozza',
         identitySubtitle: 'Studio di Psicoterapia e Psicologia Forense',
         positioning:
           'Aiutare le persone a ricostruire il proprio equilibrio emotivo attraverso un supporto psicologico strutturato, fondato sull\'evidenza scientifica e con competenza forense quando necessaria.',
@@ -784,6 +785,7 @@ const content = {
       trust: ['Cognitive Behavioral Therapy', 'Integrated Approach', 'Online & In-Person', 'Multidisciplinary Support'],
       trustSection: {
         identityName: 'Dr Laura Cocozza',
+        imageAlt: 'Professional portrait of Dr Laura Cocozza',
         identitySubtitle: 'Psychotherapy and Forensic Psychology Practice',
         positioning:
           'Helping people rebuild emotional balance through structured, evidence-based psychological support and forensic expertise when needed.',
@@ -2508,7 +2510,7 @@ function TrustBuildingSection({ t }) {
       <div className="trust-intro-top">
         <div className="trust-intro-identity">
           <div className="trust-intro-photo-wrap">
-            <img src="/dr-laura-cocozza-professional-headshot.png" alt={`${t.home.trustSection.identityName} professional headshot`} className="trust-intro-photo" />
+            <img src="/dr-laura-cocozza-professional-headshot.png" alt={t.home.trustSection.imageAlt} className="trust-intro-photo" />
           </div>
           <div className="trust-intro-identity-copy">
             <p>{t.home.trustSection.identityName}</p>
