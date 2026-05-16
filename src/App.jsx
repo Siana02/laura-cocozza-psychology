@@ -143,9 +143,9 @@ const content = {
         nodeKicker: 'Nodo di cura specialistica',
         nodes: [
           {
-            title: 'Psicoterapeuti dell’età evolutiva',
+            title: 'Psicoterapeuti dell\'età evolutiva',
             description:
-              'Supporto integrato all’interno delle traiettorie evolutive e delle dinamiche familiari complesse.',
+              'Supporto integrato all\'interno delle traiettorie evolutive e delle dinamiche familiari complesse.',
           },
           {
             title: 'Neuropsichiatri',
@@ -254,12 +254,12 @@ const content = {
             icon: '/anxiety.png',
             title: 'Ansia e gestione dello stress',
             description:
-              'Percorsi di supporto dedicati alla gestione dell’ansia, dello stress emotivo, delle paure persistenti e del sovraccarico mentale.',
+              'Percorsi di supporto dedicati alla gestione dell\'ansia, dello stress emotivo, delle paure persistenti e del sovraccarico mentale.',
           },
           {
             key: 'mood',
             icon: '/emotion.png',
-            title: 'Difficoltà emotive e dell’umore',
+            title: 'Difficoltà emotive e dell\'umore',
             description:
               'Supporto psicologico per periodi di vulnerabilità emotiva, demotivazione, tristezza persistente e difficoltà nel mantenere equilibrio emotivo.',
           },
@@ -268,14 +268,14 @@ const content = {
             icon: '/ocd.png',
             title: 'Pensieri intrusivi e comportamenti compulsivi',
             description:
-              'Interventi orientati alla gestione di pensieri ricorrenti, compulsioni, controllo dell’ansia e rigidità cognitive.',
+              'Interventi orientati alla gestione di pensieri ricorrenti, compulsioni, controllo dell\'ansia e rigidità cognitive.',
           },
           {
             key: 'regulation',
             icon: '/fear.png',
             title: 'Regolazione emotiva',
             description:
-              'Percorsi focalizzati sullo sviluppo della consapevolezza emotiva, della gestione dello stress e dell’equilibrio psicologico quotidiano.',
+              'Percorsi focalizzati sullo sviluppo della consapevolezza emotiva, della gestione dello stress e dell\'equilibrio psicologico quotidiano.',
           },
           {
             key: 'relational',
@@ -303,7 +303,7 @@ const content = {
               'Riconnessione emotiva',
               'Gestione dei conflitti',
               'Transizioni nella relazione',
-              'Recupero dell’equilibrio di coppia',
+              'Recupero dell\'equilibrio di coppia',
             ],
           },
           {
@@ -429,6 +429,316 @@ const content = {
       navAriaLabel: 'Navigazione footer',
       copyright: '© 2026 Laura Cocozza — Tutti i diritti riservati.',
     },
+    clinicalPage: {
+      hero: {
+        eyebrow: 'Area Clinica',
+        title: 'Psicoterapia strutturata,\npersonalizzata e fondata\nsull\'evidenza scientifica',
+        subtitle: 'Un sistema clinico integrato per adolescenti, adulti e famiglie, costruito attorno alla persona e orientato al benessere psicologico duraturo.',
+      },
+      overview: {
+        eyebrow: 'Panoramica Clinica',
+        title: 'Un approccio clinico che integra\nmetodo, ascolto e cura della persona',
+        intro: 'La pratica clinica offre percorsi di psicoterapia evidence-based costruiti sulla comprensione profonda della storia individuale, delle difficoltà emotive e del contesto relazionale di ciascuna persona. L\'approccio integra strumenti clinici validati con una presenza umana autentica.',
+        blocks: [
+          {
+            title: 'Valutazione clinica iniziale',
+            text: 'Ogni percorso inizia da una valutazione accurata della situazione presentata: storia emotiva, difficoltà attuali, risorse personali e obiettivi terapeutici. Questo consente di definire un piano di intervento mirato e realistico.',
+          },
+          {
+            title: 'Percorso strutturato e monitorato',
+            text: 'L\'intervento terapeutico segue una struttura chiara, con obiettivi condivisi e verifiche periodiche dei progressi. Ogni fase viene adattata all\'evoluzione del percorso e ai bisogni emergenti della persona.',
+          },
+          {
+            title: 'Approccio integrato e multidisciplinare',
+            text: 'Quando utile al benessere complessivo, il percorso si avvale di una rete di specialisti: psichiatri, neuropsichiatri, psicoterapeuti dell\'età evolutiva e professionisti legali. La collaborazione è sempre coordinata e orientata alla persona.',
+          },
+          {
+            title: 'Orientamento al benessere duraturo',
+            text: 'L\'obiettivo non è la gestione dei sintomi ma la costruzione di un equilibrio psicologico stabile e sostenibile nel tempo. I percorsi mirano a sviluppare consapevolezza, risorse interne e strumenti concreti per affrontare le difficoltà della vita.',
+          },
+        ],
+        cta: 'Voglio sapere di più sull\'approccio clinico',
+      },
+      careProcess: {
+        eyebrow: 'Come Funziona',
+        title: 'Il Percorso di Cura Integrato',
+        intro: 'Ogni percorso terapeutico segue una logica strutturata che si adatta alle esigenze individuali. La chiarezza del metodo non riduce la flessibilità: ogni fase viene ricalibrata in base all\'evoluzione della persona e agli obiettivi condivisi.',
+        steps: [
+          {
+            number: '01',
+            title: 'Primo contatto e comprensione della situazione',
+            description: 'Il percorso inizia da un incontro conoscitivo nel quale vengono esplorati la storia personale, le difficoltà presentate, il contesto relazionale e familiare e le aspettative della persona. Questo momento serve a costruire un\'alleanza terapeutica autentica.',
+            detail: 'La valutazione iniziale non è solo diagnostica: è il fondamento della relazione terapeutica. Si raccoglie una storia clinica completa e si definiscono le priorità insieme alla persona.',
+          },
+          {
+            number: '02',
+            title: 'Definizione degli obiettivi e costruzione del percorso',
+            description: 'Sulla base della valutazione iniziale, viene costruito un piano terapeutico personalizzato con obiettivi chiari e condivisi. Gli strumenti clinici vengono scelti in base alle esigenze specifiche: CBT, ACT, tecnologie VR o combinazioni integrate.',
+            detail: 'Il piano terapeutico è un documento vivo: viene rivisto e aggiornato nel corso del percorso, in base ai progressi e ai cambiamenti nelle esigenze della persona.',
+          },
+          {
+            number: '03',
+            title: 'Intervento terapeutico e collaborazione specialistica',
+            description: 'L\'intervento si svolge attraverso sedute regolari con tecniche specifiche calibrate sugli obiettivi. Quando necessario, si attiva la rete multidisciplinare: psichiatri, neuropsichiatri, terapisti dell\'età evolutiva o professionisti legali.',
+            detail: 'La collaborazione con altri specialisti non sostituisce la relazione terapeutica primaria, ma la arricchisce. Ogni contributo esterno viene integrato in modo coerente con il percorso individuale.',
+          },
+          {
+            number: '04',
+            title: 'Consolidamento, verifica e supporto continuativo',
+            description: 'Nelle fasi conclusive del percorso, l\'attenzione si sposta sul consolidamento dei progressi, sulla prevenzione della ricaduta e sull\'autonomia emotiva. Il supporto post-terapia rimane disponibile per il mantenimento del benessere.',
+            detail: 'Il termine del percorso formale non è una fine: è l\'inizio di un equilibrio autonomo. La persona acquisisce strumenti e consapevolezza che la accompagnano nel tempo.',
+          },
+        ],
+        cta: 'Voglio capire come funziona il percorso',
+      },
+      therapeuticApproach: {
+        eyebrow: 'Approccio Terapeutico',
+        title: 'Metodi Clinici Basati sull\'Evidenza',
+        intro: 'Ogni approccio terapeutico utilizzato è scientificamente validato e adattato alle esigenze individuali. La scelta del metodo non è rigida: dipende dalla natura delle difficoltà, dalla storia della persona e dagli obiettivi del percorso.',
+        mechanismLabel: 'Come funziona',
+        applicationLabel: 'Applicazione clinica',
+        targetsLabel: 'Indicazioni principali',
+        outcomesLabel: 'Risultati attesi',
+        approaches: [
+          {
+            title: 'Psicoterapia Cognitivo-Comportamentale',
+            definition: 'La TCC è uno dei modelli psicoterapeutici più studiati e validati. Si basa sulla comprensione della relazione tra pensieri, emozioni e comportamenti: cambiare i pattern cognitivi disfunzionali consente di modificare le risposte emotive e comportamentali.',
+            mechanism: 'Il ciclo pensiero–emozione–comportamento è al centro dell\'intervento: identificare i pensieri automatici negativi, comprenderne l\'impatto emotivo e sostituirli con pattern più funzionali è il processo fondamentale del cambiamento terapeutico.',
+            application: 'Si lavora attraverso tecniche strutturate: ristrutturazione cognitiva, esposizione graduale, training di rilassamento, problem solving e diari emotivi. Ogni tecnica è adattata al profilo individuale.',
+            targets: ['Disturbi d\'ansia e fobie', 'Depressione e umore', 'DOC e pensieri intrusivi', 'Disturbi alimentari', 'Gestione dello stress', 'Difficoltà relazionali'],
+            outcomes: 'Riduzione dei sintomi, maggiore consapevolezza emotiva, strumenti concreti per gestire le difficoltà, prevenzione della ricaduta.',
+          },
+          {
+            label: 'ACT',
+            title: 'Acceptance and Commitment Therapy',
+            definition: 'L\'ACT è un approccio di terza generazione della terapia cognitivo-comportamentale. Non si concentra sull\'eliminazione del dolore o dei pensieri negativi, ma sull\'accettazione dell\'esperienza interiore e sull\'azione orientata ai valori personali.',
+            mechanism: 'Il cambiamento avviene attraverso sei processi fondamentali: accettazione, defusione cognitiva, essere presenti nel momento, sé osservante, valori e azione impegnata. La flessibilità psicologica è l\'obiettivo centrale.',
+            application: 'Si lavora con esercizi di mindfulness, metafore terapeutiche, chiarificazione dei valori e tecniche di defusione cognitiva. L\'attenzione si sposta dal controllo dei sintomi al vivere una vita ricca e significativa.',
+            targets: ['Regolazione emotiva', 'Ansia generalizzata', 'Burnout e stress cronico', 'Dolore cronico', 'Difficoltà esistenziali', 'Transizioni di vita'],
+            outcomes: 'Maggiore flessibilità psicologica, riduzione della rigidità cognitiva, capacità di agire in linea con i propri valori nonostante le difficoltà.',
+          },
+          {
+            label: 'VR',
+            title: 'Terapia con Realtà Virtuale',
+            definition: 'La realtà virtuale viene utilizzata come strumento clinico avanzato all\'interno di protocolli terapeutici strutturati. Non sostituisce la psicoterapia tradizionale, ma ne potenzia l\'efficacia in contesti specifici.',
+            mechanism: 'L\'immersione in ambienti virtuali controllati consente di simulare situazioni clinicamente rilevanti in sicurezza: la persona può esporsi gradualmente a stimoli ansiogeni in un contesto protetto, con piena supervisione terapeutica.',
+            application: 'Utilizzata principalmente nei protocolli di esposizione graduata per fobie specifiche, disturbi d\'ansia, PTSD e situazioni di elevata attivazione emotiva. Supporta anche tecniche di rilassamento e visualizzazione guidata.',
+            targets: ['Fobie specifiche', 'Disturbo d\'ansia sociale', 'PTSD', 'Agorafobia', 'Ansia da prestazione', 'Desensibilizzazione sistematica'],
+            outcomes: 'Riduzione rapida dei comportamenti evitanti, desensibilizzazione efficace, trasferimento delle competenze apprese all\'ambiente reale.',
+          },
+        ],
+        cta: 'Voglio esplorare l\'approccio più adatto a me',
+      },
+      whoItIsFor: {
+        eyebrow: 'Per Chi È',
+        title: 'Popolazioni Cliniche\ne Focus Terapeutico',
+        intro: 'L\'approccio clinico si adatta alle caratteristiche evolutive, emotive e contestuali di ciascun gruppo di persone. La struttura del percorso, le tecniche utilizzate e gli obiettivi variano significativamente in base all\'età e alla natura delle difficoltà presentate.',
+        clinicalNeedsLabel: 'Bisogni clinici',
+        therapeuticFocusLabel: 'Focus terapeutico',
+        approachLabel: 'Approccio',
+        presentingIssuesLabel: 'Presentazioni frequenti',
+        populations: [
+          {
+            title: 'Adolescenti',
+            age: 'Dai 14 anni',
+            clinicalNeeds: 'L\'adolescenza è una fase di profondo cambiamento identitario, relazionale e neurobiologico. Le difficoltà che emergono in questa fase richiedono un approccio che rispetti il processo evolutivo e la costruzione dell\'autonomia.',
+            therapeuticFocus: 'Sviluppo dell\'identità e autostima, gestione delle emozioni, navigazione delle relazioni tra pari, difficoltà scolastiche, rapporto con il corpo e l\'immagine di sé.',
+            presentingIssues: ['Ansia scolastica e da prestazione', 'Difficoltà relazionali e isolamento', 'Comportamenti autolesivi', 'Disturbi alimentari emergenti', 'Umore depresso e apatia', 'Conflitti familiari e ribellione'],
+            approach: 'Approccio direttivo ma rispettoso dell\'autonomia, con forte attenzione alla relazione terapeutica. Tecniche CBT adattate all\'età evolutiva, lavoro sulle emozioni e coinvolgimento familiare quando utile.',
+          },
+          {
+            title: 'Adulti',
+            age: 'Dai 18 anni',
+            clinicalNeeds: 'Gli adulti portano in terapia una varietà di difficoltà: stress cronico, crisi esistenziali, difficoltà relazionali, sintomi ansiosi o depressivi, traumi passati o presenti. Ogni percorso parte da una valutazione approfondita del contesto di vita.',
+            therapeuticFocus: 'Gestione dello stress e del burnout, difficoltà emotive e relazionali, elaborazione di eventi traumatici, transizioni di vita significative, ricerca di maggiore autenticità e benessere.',
+            presentingIssues: ['Disturbi d\'ansia e attacchi di panico', 'Depressione e umore depresso', 'Burnout lavorativo', 'Crisi di coppia e separazione', 'Elaborazione del lutto', 'Difficoltà identitarie e di senso'],
+            approach: 'Approccio collaborativo e focalizzato sugli obiettivi. Utilizzo flessibile di CBT, ACT e tecniche integrate, con attenzione alla storia personale e al contesto relazionale attuale.',
+          },
+          {
+            title: 'Famiglie',
+            age: 'Nuclei familiari',
+            clinicalNeeds: 'La famiglia come sistema porta dinamiche complesse che richiedono un approccio capace di leggere le relazioni, i ruoli e i pattern comunicativi. Le difficoltà raramente appartengono a una sola persona: coinvolgono l\'intero sistema familiare.',
+            therapeuticFocus: 'Miglioramento della comunicazione, gestione dei conflitti, supporto nelle transizioni familiari (separazione, genitorialità, lutti), ridefinizione dei ruoli e delle dinamiche di potere.',
+            presentingIssues: ['Conflitti genitori-figli', 'Difficoltà comunicative cronicizzate', 'Separazione e riorganizzazione familiare', 'Genitorialità complessa', 'Dolore familiare condiviso', 'Dinamiche disfunzionali radicate'],
+            approach: 'Approccio sistemico integrato: lettura delle dinamiche relazionali, lavoro sulle regole implicite del sistema familiare, supporto alla costruzione di nuovi pattern comunicativi e relazionali.',
+          },
+        ],
+        cta: 'Voglio trovare il percorso più adatto alla mia situazione',
+      },
+      individualPsychotherapy: {
+        eyebrow: 'Psicoterapia Individuale',
+        title: 'Condizioni Cliniche\ne Focus del Trattamento',
+        intro: 'La psicoterapia individuale affronta un\'ampia gamma di difficoltà psicologiche con protocolli specifici e approcci calibrati sulla natura del disturbo e sulla storia individuale. Ogni trattamento è costruito attorno alla persona, non alla diagnosi.',
+        approachLabel: 'Approccio terapeutico',
+        outcomesLabel: 'Risultati attesi',
+        conditions: [
+          {
+            title: 'Disturbi d\'Ansia',
+            icon: '/anxiety.png',
+            description: 'I disturbi d\'ansia includono ansia generalizzata, disturbo da panico, fobie specifiche, ansia sociale e disturbo ossessivo-compulsivo. Sono tra le condizioni più diffuse e rispondono bene a interventi psicoterapeutici strutturati.',
+            approach: 'CBT con tecniche di esposizione graduale, ristrutturazione cognitiva e training di rilassamento. Nei casi più complessi, integrazione con tecnologie VR per l\'esposizione controllata.',
+            outcomes: 'Riduzione significativa dei sintomi ansiosi, superamento dei comportamenti evitanti, maggiore capacità di gestire situazioni difficili.',
+          },
+          {
+            title: 'Disturbi dell\'Umore',
+            icon: '/emotion.png',
+            description: 'La depressione, la distimia e i disturbi dell\'umore sono caratterizzati da tristezza persistente, perdita di interesse, stanchezza e difficoltà cognitive. Richiedono un approccio che combini comprensione emotiva e attivazione comportamentale.',
+            approach: 'CBT focalizzata sull\'attivazione comportamentale e la ristrutturazione cognitiva. ACT per sviluppare accettazione e azione orientata ai valori nonostante la sofferenza emotiva.',
+            outcomes: 'Riduzione dei sintomi depressivi, recupero della motivazione e del senso di direzione, costruzione di risorse per la prevenzione della ricaduta.',
+          },
+          {
+            title: 'DOC e Pensieri Intrusivi',
+            icon: '/ocd.png',
+            description: 'Il disturbo ossessivo-compulsivo è caratterizzato da pensieri intrusivi ricorrenti e comportamenti compulsivi che ne riducono temporaneamente l\'ansia. È una condizione trattabile con protocolli specifici basati sull\'evidenza.',
+            approach: 'ERP (Esposizione con Prevenzione della Risposta), tecnica gold standard per il DOC. Integrazione con strategie cognitive per ridurre la credenza nei pensieri ossessivi.',
+            outcomes: 'Riduzione significativa delle compulsioni, maggiore tolleranza all\'incertezza, autonomia nelle situazioni precedentemente evitate.',
+          },
+          {
+            title: 'Regolazione Emotiva e Stress',
+            icon: '/fear.png',
+            description: 'Le difficoltà di regolazione emotiva si manifestano con reazioni sproporzionate, difficoltà a calmarsi, impulsività o al contrario eccessiva inibizione emotiva. Il burnout e lo stress cronico rientrano spesso in questa area.',
+            approach: 'ACT per sviluppare flessibilità psicologica e consapevolezza emotiva. Tecniche di mindfulness, strategie di defusione cognitiva e lavoro sui valori personali.',
+            outcomes: 'Maggiore consapevolezza emotiva, capacità di rispondere invece di reagire, riduzione del burnout e migliore qualità di vita quotidiana.',
+          },
+          {
+            title: 'Difficoltà Relazionali',
+            icon: '/conflict.png',
+            description: 'Le difficoltà relazionali includono pattern ripetitivi nei rapporti interpersonali, difficoltà comunicative, conflitti ricorrenti, solitudine relazionale e dipendenza emotiva. Spesso riflettono pattern appresi nell\'infanzia.',
+            approach: 'CBT con focus sui pattern cognitivi relazionali. Lavoro sullo stile di attaccamento, sulle aspettative implicite nelle relazioni e sullo sviluppo di competenze comunicative assertive.',
+            outcomes: 'Maggiore comprensione dei propri pattern relazionali, miglioramento delle competenze comunicative, relazioni più autentiche e soddisfacenti.',
+          },
+        ],
+        cta: 'Voglio iniziare un percorso individuale',
+      },
+      coupleFamily: {
+        eyebrow: 'Supporto per Coppie e Famiglie',
+        title: 'Interventi Relazionali\ne Sistemici',
+        intro: 'Le difficoltà relazionali e familiari richiedono un approccio che lavori sul sistema nel suo insieme, non solo sugli individui che lo compongono. La terapia interviene a livello della comunicazione, delle dinamiche di potere e dei pattern disfunzionali condivisi.',
+        interventionLabel: 'Intervento terapeutico',
+        areas: [
+          {
+            title: 'Rotture Comunicative',
+            description: 'La comunicazione disfunzionale è spesso alla radice dei conflitti relazionali: malintesi cronici, schemi di attacco-difesa, silenzi protratti. Il lavoro terapeutico analizza i pattern comunicativi e introduce modalità più funzionali.',
+            intervention: 'Si lavora sull\'identificazione dei pattern comunicativi disfunzionali, sulla costruzione di spazi di ascolto autentico e sullo sviluppo di strategie di comunicazione non-violenta e assertiva.',
+          },
+          {
+            title: 'Supporto nella Separazione',
+            description: 'La separazione è una delle transizioni più complesse della vita familiare, con impatti profondi su tutti i membri del sistema, specialmente i figli. Il supporto psicologico accompagna questo processo riducendo il conflitto e proteggendo il benessere di tutti.',
+            intervention: 'Sostegno emotivo individuale e di coppia durante la separazione. Orientamento sulla genitorialità condivisa, supporto alla comunicazione post-separazione e tutela del benessere dei figli.',
+          },
+          {
+            title: 'Sfide Genitoriali',
+            description: 'La genitorialità porta sfide diverse in ogni fase evolutiva del figlio. Comportamenti difficili, difficoltà scolastiche, adolescenza turbolenta, comunicazione interrotta: ogni situazione richiede una lettura contestuale e strategie specifiche.',
+            intervention: 'Psicoeducazione sullo sviluppo evolutivo, lavoro sugli stili genitoriali, costruzione di strategie educative coerenti e adeguate all\'età. Coinvolgimento del figlio quando clinicamente indicato.',
+          },
+          {
+            title: 'Conflitti Familiari Sistemici',
+            description: 'I conflitti familiari cronicizzati spesso riflettono dinamiche sistemiche profonde: regole implicite, ruoli rigidi, triangolazioni, deleghe invisibili. L\'approccio sistemico lavora sul sistema nel suo complesso per produrre cambiamenti duraturi.',
+            intervention: 'Lettura delle dinamiche sistemiche, lavoro sulle regole implicite del sistema familiare, interventi sulle triangolazioni e supporto alla costruzione di nuovi equilibri relazionali.',
+          },
+        ],
+        cta: 'Voglio supporto per la mia situazione relazionale',
+      },
+      supportAreas: {
+        eyebrow: 'Aree di Supporto',
+        title: 'Difficoltà Emotive, Relazionali\ne Personali',
+        intro: 'Le aree di supporto psicologico coprono uno spettro ampio di difficoltà che le persone portano in terapia. Ogni area ha caratteristiche cliniche specifiche e risponde a interventi mirati e personalizzati.',
+        approachLabel: 'Approccio terapeutico',
+        outcomesLabel: 'Risultati attesi',
+        areas: [
+          {
+            key: 'anxiety',
+            icon: '/anxiety.png',
+            title: 'Ansia e Gestione dello Stress',
+            clinical: 'L\'ansia è una risposta adattiva che diventa problematica quando è sproporzionata, persistente e interferisce con il funzionamento quotidiano. Include disturbo d\'ansia generalizzata, attacchi di panico, fobie e ansia sociale.',
+            approach: 'Protocolli CBT specifici per ogni tipo di disturbo ansioso. Tecniche di esposizione graduale, ristrutturazione cognitiva, training di rilassamento e, dove indicato, integrazione con realtà virtuale.',
+            outcomes: 'Riduzione dell\'ansia anticipatoria, superamento dei comportamenti evitanti, recupero della libertà di movimento nelle aree precedentemente bloccate.',
+          },
+          {
+            key: 'mood',
+            icon: '/emotion.png',
+            title: 'Difficoltà Emotive e dell\'Umore',
+            clinical: 'I disturbi dell\'umore comprendono la depressione maggiore, la distimia e i disturbi bipolari. Si manifestano con tristezza pervasiva, perdita di interesse, stanchezza, difficoltà cognitive e, nei casi gravi, ideazione suicidaria.',
+            approach: 'CBT con attivazione comportamentale e ristrutturazione cognitiva. ACT per sviluppare accettazione e azione orientata ai valori. Coordinamento con psichiatri quando indicato farmacologicamente.',
+            outcomes: 'Riduzione dei sintomi depressivi, recupero dell\'energia e della motivazione, prevenzione della ricaduta attraverso strumenti di self-monitoring.',
+          },
+          {
+            key: 'ocd',
+            icon: '/ocd.png',
+            title: 'Pensieri Intrusivi e Comportamenti Compulsivi',
+            clinical: 'Il disturbo ossessivo-compulsivo è caratterizzato da ossessioni (pensieri intrusivi egodistonici) e compulsioni (comportamenti rituali per ridurre l\'ansia). Cause e meccanismi sono ben noti e il disturbo risponde a trattamenti specifici.',
+            approach: 'ERP come tecnica principale, integrata con interventi cognitivi per ridurre le credenze ossessive. Lavoro sulla tolleranza all\'incertezza e sulla prevenzione del rimuginio.',
+            outcomes: 'Riduzione drastica del tempo dedicato a ossessioni e compulsioni, miglioramento del funzionamento quotidiano, autonomia nelle situazioni precedentemente evitate.',
+          },
+          {
+            key: 'regulation',
+            icon: '/fear.png',
+            title: 'Regolazione Emotiva',
+            clinical: 'Le difficoltà di regolazione emotiva si manifestano come reattività eccessiva, difficoltà a calmarsi, impulsività, blocco emotivo o iperemotività. Spesso correlano con esperienze di sviluppo precoci e stili di attaccamento insicuri.',
+            approach: 'ACT per la flessibilità psicologica. Tecniche di mindfulness per lo sviluppo della consapevolezza emotiva. Strategie DBT-ispirate per la gestione delle emozioni intense.',
+            outcomes: 'Maggiore stabilità emotiva, capacità di riconoscere e nominare le emozioni, risposta regolata alle situazioni stressanti.',
+          },
+          {
+            key: 'relational',
+            icon: '/conflict.png',
+            title: 'Difficoltà Relazionali',
+            clinical: 'I problemi relazionali ricorrenti riflettono spesso schemi di attaccamento disadattativi, aspettative implicite non soddisfatte, difficoltà comunicative o scarsa capacità empatica. Colpiscono le relazioni intime, familiari e professionali.',
+            approach: 'Lavoro sui pattern cognitivi relazionali, stile di attaccamento e competenze comunicative. Tecniche assertive e role-playing per sviluppare nuove modalità relazionali.',
+            outcomes: 'Maggiore comprensione dei propri schemi relazionali, miglioramento delle competenze comunicative, relazioni più autentiche e meno conflittuali.',
+          },
+        ],
+        cta: 'Voglio supporto per le mie difficoltà',
+      },
+      networkWork: {
+        eyebrow: 'Lavoro in Rete',
+        title: 'Collaborazione Interdisciplinare\nper una Cura Integrata',
+        intro: 'La complessità di alcune situazioni cliniche va oltre le competenze di un singolo professionista. La rete interdisciplinare non è un\'aggiunta opzionale: è parte integrante del modello di cura, attivata con precisione quando il benessere della persona lo richiede.',
+        whyLabel: 'Perché è importante',
+        roleLabel: 'Ruolo nella rete di cura',
+        collaborators: [
+          {
+            title: 'Psichiatri',
+            icon: 'psychiatry',
+            why: 'Quando i sintomi hanno una componente biologica rilevante — come nei disturbi depressivi gravi, bipolari o psicotici — la collaborazione con lo psichiatra è fondamentale. Il coordinamento tra psicoterapia e farmacoterapia produce risultati superiori alla sola terapia farmacologica.',
+            role: 'Valutazione psichiatrica, prescrizione farmacologica, monitoraggio degli effetti della terapia. La comunicazione tra psicoterapeuta e psichiatra garantisce coerenza e continuità del percorso.',
+          },
+          {
+            title: 'Neuropsichiatri infantili',
+            icon: 'child_care',
+            why: 'Nei percorsi che coinvolgono adolescenti con difficoltà complesse — ADHD, disturbi del neurosviluppo, disturbi del comportamento — la valutazione neuropsichiatrica fornisce una comprensione più completa delle basi neurologiche delle difficoltà.',
+            role: 'Diagnosi differenziale, valutazione neuropsichiatrica, supporto farmacologico quando indicato. Coordinamento con la famiglia e con il contesto scolastico.',
+          },
+          {
+            title: 'Psicoterapeuti dell\'età evolutiva',
+            icon: 'escalator_warning',
+            why: 'Nelle famiglie in cui un figlio presenta difficoltà significative, la collaborazione con uno psicoterapeuta specializzato nell\'età evolutiva consente di supportare il bambino o l\'adolescente in modo specifico, mantenendo la coerenza con il lavoro familiare.',
+            role: 'Psicoterapia individuale del minore, valutazione delle dinamiche evolutive, supporto alla genitorialità in coordinamento con il lavoro familiare.',
+          },
+          {
+            title: 'Avvocati di diritto di famiglia',
+            icon: 'gavel',
+            why: 'In situazioni di separazione conflittuale, affidamento conteso o situazioni ad alta complessità legale, la comunicazione tra psicologo e avvocato è essenziale per proteggere il benessere dei figli e garantire coerenza tra il piano psicologico e le decisioni legali.',
+            role: 'Coordinamento nei casi di separazione, supporto nelle valutazioni di affidamento, comunicazione tecnica per la tutela del minore. La collaborazione segue sempre un codice etico preciso.',
+          },
+          {
+            title: 'Psicologi forensi',
+            icon: 'balance',
+            why: 'Quando un percorso clinico si intreccia con procedimenti giudiziari — valutazioni di capacità genitoriale, CTU/CTP, perizie psicologiche — la collaborazione con professionisti forensi specializzati garantisce rigore tecnico e coerenza tra i due ambiti.',
+            role: 'Valutazioni psicologiche forensi, redazione di perizie, supporto in procedimenti civili. La Dott.ssa Cocozza opera in entrambi i domini, garantendo continuità e integrazione.',
+          },
+        ],
+        cta: 'Voglio sapere di più sulla rete di collaborazione',
+      },
+      finalCta: {
+        eyebrow: 'Naviga i Percorsi',
+        title: 'Scegli il tuo\npercorso di cura',
+        intro: 'L\'Area Clinica offre percorsi di psicoterapia strutturati e personalizzati. Per le esigenze che si intrecciano con contesti legali e forensi, l\'Area Forense offre competenze specializzate e integrate.',
+        primaryButton: 'Prenota un Colloquio Clinico',
+        secondaryButton: 'Esplora i Servizi di Psicologia Forense',
+        primaryLink: '/contact',
+        secondaryLink: '/forensic',
+      },
+    },
   },
   en: {
     brand: 'Psychotherapy and Forensic Psychology Practice',
@@ -484,7 +794,7 @@ const content = {
           },
           {
             title: 'Individualized Treatment',
-            text: 'Tailored psychological pathways based on each person’s emotional, relational, and contextual needs.',
+            text: 'Tailored psychological pathways based on each person\'s emotional, relational, and contextual needs.',
           },
         ],
       },
@@ -651,7 +961,7 @@ const content = {
         eyebrow: 'Support Areas',
         title: 'Therapeutic support\nfor emotional,\nrelational, and personal challenges',
         subtext:
-          'Each pathway is adapted to each person’s specific needs through a structured, gradual, and personalized therapeutic approach.',
+          'Each pathway is adapted to each person\'s specific needs through a structured, gradual, and personalized therapeutic approach.',
         panels: [
           {
             key: 'anxiety',
@@ -832,6 +1142,317 @@ const content = {
       logoAriaLabel: 'Home — Laura Cocozza',
       navAriaLabel: 'Footer navigation',
       copyright: '© 2026 Laura Cocozza — All rights reserved.',
+    },
+    clinicalPage: {
+      hero: {
+        eyebrow: 'Clinical Area',
+        title: 'Structured, personalised\nand evidence-based\npsychotherapy',
+        subtitle: 'An integrated clinical system for adolescents, adults, and families, built around the person and oriented toward lasting psychological wellbeing.',
+      },
+      overview: {
+        eyebrow: 'Clinical Overview',
+        title: 'A clinical approach that integrates\nmethod, listening, and human care',
+        intro: 'The clinical practice offers evidence-based psychotherapy pathways built on a deep understanding of each person\'s individual history, emotional difficulties, and relational context. The approach integrates validated clinical tools with authentic human presence.',
+        blocks: [
+          {
+            title: 'Initial clinical assessment',
+            text: 'Every pathway begins with a thorough assessment of the presenting situation: emotional history, current difficulties, personal resources, and therapeutic goals. This allows the definition of a targeted and realistic intervention plan.',
+          },
+          {
+            title: 'Structured and monitored pathway',
+            text: 'The therapeutic intervention follows a clear structure, with shared objectives and regular progress reviews. Each phase is adapted to the evolution of the pathway and to the person\'s emerging needs.',
+          },
+          {
+            title: 'Integrated and multidisciplinary approach',
+            text: 'When useful for overall wellbeing, the pathway draws on a network of specialists: psychiatrists, neuropsychiatrists, developmental psychotherapists, and legal professionals. Collaboration is always coordinated and person-centred.',
+          },
+          {
+            title: 'Orientation toward lasting wellbeing',
+            text: 'The goal is not symptom management but the construction of a stable and sustainable psychological balance over time. Pathways aim to develop awareness, internal resources, and concrete tools for navigating life\'s difficulties.',
+          },
+        ],
+        cta: 'I want to learn more about the clinical approach',
+      },
+      careProcess: {
+        eyebrow: 'How It Works',
+        title: 'The Integrated Care Process',
+        intro: 'Every therapeutic pathway follows a structured logic that adapts to individual needs. Methodological clarity does not reduce flexibility: each phase is recalibrated based on the person\'s evolution and shared objectives.',
+        steps: [
+          {
+            number: '01',
+            title: 'First contact and situational understanding',
+            description: 'The pathway begins with an introductory meeting in which personal history, presenting difficulties, relational and family context, and the person\'s expectations are explored. This moment serves to build an authentic therapeutic alliance.',
+            detail: 'The initial assessment is not only diagnostic: it is the foundation of the therapeutic relationship. A complete clinical history is gathered and priorities are defined collaboratively with the person.',
+          },
+          {
+            number: '02',
+            title: 'Goal-setting and pathway construction',
+            description: 'Based on the initial assessment, a personalised therapeutic plan is built with clear and shared objectives. Clinical tools are selected according to specific needs: CBT, ACT, VR technologies, or integrated combinations.',
+            detail: 'The therapeutic plan is a living document: it is reviewed and updated throughout the pathway, in response to progress and shifts in the person\'s needs.',
+          },
+          {
+            number: '03',
+            title: 'Therapeutic intervention and specialist collaboration',
+            description: 'The intervention takes place through regular sessions using specific techniques calibrated to the objectives. When necessary, the multidisciplinary network is activated: psychiatrists, neuropsychiatrists, developmental therapists, or legal professionals.',
+            detail: 'Collaboration with other specialists does not replace the primary therapeutic relationship, but enriches it. Every external contribution is integrated coherently within the individual pathway.',
+          },
+          {
+            number: '04',
+            title: 'Consolidation, review and ongoing support',
+            description: 'In the concluding phases, attention shifts to consolidating progress, preventing relapse, and building emotional autonomy. Post-therapy support remains available to maintain wellbeing.',
+            detail: 'The end of the formal pathway is not a conclusion: it is the beginning of autonomous equilibrium. The person acquires tools and awareness that accompany them over time.',
+          },
+        ],
+        cta: 'I want to understand how the pathway works',
+      },
+      therapeuticApproach: {
+        eyebrow: 'Therapeutic Approach',
+        title: 'Evidence-Based Clinical Methods',
+        intro: 'Every therapeutic approach used is scientifically validated and adapted to individual needs. The choice of method is not rigid: it depends on the nature of the difficulties, the person\'s history, and the goals of the pathway.',
+        mechanismLabel: 'How it works',
+        applicationLabel: 'Clinical application',
+        targetsLabel: 'Primary indications',
+        outcomesLabel: 'Expected outcomes',
+        approaches: [
+          {
+            label: 'CBT',
+            title: 'Cognitive Behavioral Therapy',
+            definition: 'CBT is one of the most studied and validated psychotherapeutic models. It is based on understanding the relationship between thoughts, emotions, and behaviors: changing dysfunctional cognitive patterns allows emotional and behavioral responses to shift.',
+            mechanism: 'The thought–emotion–behavior cycle is at the centre of the intervention: identifying negative automatic thoughts, understanding their emotional impact, and replacing them with more functional patterns is the fundamental process of therapeutic change.',
+            application: 'Work proceeds through structured techniques: cognitive restructuring, graded exposure, relaxation training, problem solving, and emotional diaries. Each technique is adapted to the individual profile.',
+            targets: ['Anxiety disorders and phobias', 'Depression and mood difficulties', 'OCD and intrusive thoughts', 'Eating disorders', 'Stress management', 'Relational difficulties'],
+            outcomes: 'Significant reduction of symptoms, greater emotional awareness, concrete tools for managing difficulties, relapse prevention.',
+          },
+          {
+            label: 'ACT',
+            title: 'Acceptance and Commitment Therapy',
+            definition: 'ACT is a third-generation cognitive-behavioral approach. It does not focus on eliminating pain or negative thoughts, but on accepting inner experience and taking action oriented toward personal values.',
+            mechanism: 'Change occurs through six core processes: acceptance, cognitive defusion, present-moment awareness, the observing self, values, and committed action. Psychological flexibility is the central goal.',
+            application: 'Work uses mindfulness exercises, therapeutic metaphors, values clarification, and cognitive defusion techniques. Attention shifts from symptom control to living a rich and meaningful life.',
+            targets: ['Emotional regulation', 'Generalised anxiety', 'Burnout and chronic stress', 'Chronic pain', 'Existential difficulties', 'Life transitions'],
+            outcomes: 'Greater psychological flexibility, reduced cognitive rigidity, ability to act in line with one\'s values despite difficulties.',
+          },
+          {
+            label: 'VR',
+            title: 'Virtual Reality Therapy',
+            definition: 'Virtual reality is used as an advanced clinical tool within structured therapeutic protocols. It does not replace traditional psychotherapy, but enhances its effectiveness in specific contexts.',
+            mechanism: 'Immersion in controlled virtual environments allows clinically relevant situations to be simulated safely: the person can be gradually exposed to anxiety-provoking stimuli in a protected context, with full therapeutic supervision.',
+            application: 'Used primarily in graded exposure protocols for specific phobias, anxiety disorders, PTSD, and situations of high emotional activation. Also supports relaxation techniques and guided visualisation.',
+            targets: ['Specific phobias', 'Social anxiety disorder', 'PTSD', 'Agoraphobia', 'Performance anxiety', 'Systematic desensitisation'],
+            outcomes: 'Rapid reduction of avoidant behaviors, effective desensitisation, transfer of learned skills to real-world environments.',
+          },
+        ],
+        cta: 'I want to explore the approach that fits me best',
+      },
+      whoItIsFor: {
+        eyebrow: 'Who It Is For',
+        title: 'Clinical Populations\nand Therapeutic Focus',
+        intro: 'The clinical approach adapts to the developmental, emotional, and contextual characteristics of each group of people. The pathway structure, techniques used, and objectives vary significantly depending on age and the nature of presenting difficulties.',
+        clinicalNeedsLabel: 'Clinical needs',
+        therapeuticFocusLabel: 'Therapeutic focus',
+        approachLabel: 'Approach',
+        presentingIssuesLabel: 'Common presenting issues',
+        populations: [
+          {
+            title: 'Adolescents',
+            age: 'From 14 years',
+            clinicalNeeds: 'Adolescence is a phase of profound identity, relational, and neurobiological change. Difficulties that emerge during this phase require an approach that respects the developmental process and the construction of autonomy.',
+            therapeuticFocus: 'Identity development and self-esteem, emotional management, peer relationship navigation, academic difficulties, relationship with body and self-image.',
+            presentingIssues: ['Academic and performance anxiety', 'Relational difficulties and isolation', 'Self-harming behaviors', 'Emerging eating disorders', 'Depressed mood and apathy', 'Family conflicts and rebellion'],
+            approach: 'Directive yet autonomy-respecting approach, with strong attention to the therapeutic relationship. Age-adapted CBT techniques, emotional work, and family involvement when useful.',
+          },
+          {
+            title: 'Adults',
+            age: 'From 18 years',
+            clinicalNeeds: 'Adults bring a wide variety of difficulties to therapy: chronic stress, existential crises, relational difficulties, anxious or depressive symptoms, past or present traumas. Every pathway begins with an in-depth assessment of life context.',
+            therapeuticFocus: 'Stress and burnout management, emotional and relational difficulties, processing of traumatic events, significant life transitions, search for greater authenticity and wellbeing.',
+            presentingIssues: ['Anxiety disorders and panic attacks', 'Depression and depressed mood', 'Occupational burnout', 'Relationship crises and separation', 'Grief processing', 'Identity and meaning difficulties'],
+            approach: 'Collaborative, goal-focused approach. Flexible use of CBT, ACT, and integrated techniques, with attention to personal history and current relational context.',
+          },
+          {
+            title: 'Families',
+            age: 'Family systems',
+            clinicalNeeds: 'The family as a system brings complex dynamics that require an approach capable of reading relationships, roles, and communication patterns. Difficulties rarely belong to a single person: they involve the entire family system.',
+            therapeuticFocus: 'Communication improvement, conflict management, support through family transitions (separation, parenthood, bereavement), redefinition of roles and power dynamics.',
+            presentingIssues: ['Parent-child conflicts', 'Chronically dysfunctional communication', 'Separation and family reorganisation', 'Complex parenthood', 'Shared family grief', 'Entrenched dysfunctional dynamics'],
+            approach: 'Integrated systemic approach: reading relational dynamics, working on the family system\'s implicit rules, supporting the construction of new communication and relational patterns.',
+          },
+        ],
+        cta: 'I want to find the pathway that best fits my situation',
+      },
+      individualPsychotherapy: {
+        eyebrow: 'Individual Psychotherapy',
+        title: 'Clinical Conditions\nand Treatment Focus',
+        intro: 'Individual psychotherapy addresses a wide range of psychological difficulties with specific protocols and approaches calibrated to the nature of the disorder and individual history. Every treatment is built around the person, not the diagnosis.',
+        approachLabel: 'Therapeutic approach',
+        outcomesLabel: 'Expected outcomes',
+        conditions: [
+          {
+            title: 'Anxiety Disorders',
+            icon: '/anxiety.png',
+            description: 'Anxiety disorders include generalised anxiety, panic disorder, specific phobias, social anxiety, and obsessive-compulsive disorder. They are among the most prevalent conditions and respond well to structured psychotherapeutic interventions.',
+            approach: 'CBT with graded exposure techniques, cognitive restructuring, and relaxation training. In more complex cases, integration with VR technologies for controlled exposure.',
+            outcomes: 'Significant reduction of anxious symptoms, overcoming avoidant behaviors, greater capacity to manage difficult situations.',
+          },
+          {
+            title: 'Mood Disorders',
+            icon: '/emotion.png',
+            description: 'Depression, dysthymia, and mood disorders are characterised by persistent sadness, loss of interest, fatigue, and cognitive difficulties. They require an approach that combines emotional understanding with behavioral activation.',
+            approach: 'CBT focused on behavioral activation and cognitive restructuring. ACT to develop acceptance and values-oriented action despite emotional suffering.',
+            outcomes: 'Reduction of depressive symptoms, recovery of motivation and sense of direction, building resources for relapse prevention.',
+          },
+          {
+            title: 'OCD and Intrusive Thoughts',
+            icon: '/ocd.png',
+            description: 'Obsessive-compulsive disorder is characterised by intrusive, ego-dystonic thoughts and compulsive behaviors that temporarily reduce anxiety. It is a treatable condition with specific evidence-based protocols.',
+            approach: 'ERP (Exposure and Response Prevention), the gold standard technique for OCD. Integration with cognitive strategies to reduce belief in obsessive thoughts.',
+            outcomes: 'Significant reduction in time spent on obsessions and compulsions, improved daily functioning, autonomy in previously avoided situations.',
+          },
+          {
+            title: 'Emotional Regulation and Stress',
+            icon: '/fear.png',
+            description: 'Emotional regulation difficulties manifest as disproportionate reactions, difficulty calming down, impulsivity, or conversely excessive emotional inhibition. Burnout and chronic stress frequently fall within this area.',
+            approach: 'ACT to develop psychological flexibility and emotional awareness. Mindfulness techniques, cognitive defusion strategies, and work on personal values.',
+            outcomes: 'Greater emotional stability, ability to recognise and name emotions, regulated response to stressful situations.',
+          },
+          {
+            title: 'Relational Difficulties',
+            icon: '/conflict.png',
+            description: 'Recurring relational problems often reflect maladaptive attachment patterns, unmet implicit expectations, communication difficulties, or limited empathic capacity. They affect intimate, family, and professional relationships.',
+            approach: 'Work on relational cognitive patterns, attachment style, and communication skills. Assertiveness techniques and role-play to develop new relational modes.',
+            outcomes: 'Greater understanding of one\'s own relational patterns, improved communication skills, more authentic and less conflictual relationships.',
+          },
+        ],
+        cta: 'I want to begin an individual pathway',
+      },
+      coupleFamily: {
+        eyebrow: 'Couple & Family Support',
+        title: 'Relational and Systemic\nInterventions',
+        intro: 'Relational and family difficulties require an approach that works on the system as a whole, not only on the individuals that compose it. Therapy intervenes at the level of communication, power dynamics, and shared dysfunctional patterns.',
+        interventionLabel: 'Therapeutic intervention',
+        areas: [
+          {
+            title: 'Communication Breakdowns',
+            description: 'Dysfunctional communication is often at the root of relational conflict: chronic misunderstandings, attack-defend patterns, prolonged silences. Therapeutic work analyses communication patterns and introduces more functional modes.',
+            intervention: 'Work on identifying dysfunctional communication patterns, building spaces for authentic listening, and developing non-violent and assertive communication strategies.',
+          },
+          {
+            title: 'Separation Support',
+            description: 'Separation is one of the most complex family transitions, with deep impacts on all members of the system, especially children. Psychological support accompanies this process by reducing conflict and protecting the wellbeing of all involved.',
+            intervention: 'Individual and couple emotional support during separation. Guidance on shared parenting, support for post-separation communication, and safeguarding children\'s wellbeing.',
+          },
+          {
+            title: 'Parenting Challenges',
+            description: 'Parenthood brings different challenges at every developmental stage of the child. Difficult behaviors, academic difficulties, turbulent adolescence, broken communication: each situation requires contextual reading and specific strategies.',
+            intervention: 'Psychoeducation on developmental stages, work on parenting styles, building consistent and age-appropriate educational strategies. Child involvement when clinically indicated.',
+          },
+          {
+            title: 'Systemic Family Conflicts',
+            description: 'Chronically entrenched family conflicts often reflect deep systemic dynamics: implicit rules, rigid roles, triangulations, invisible delegations. The systemic approach works on the system as a whole to produce lasting change.',
+            intervention: 'Reading of systemic dynamics, work on the family\'s implicit rules, interventions on triangulations, and support in building new relational equilibria.',
+          },
+        ],
+        cta: 'I want support for my relational situation',
+      },
+      supportAreas: {
+        eyebrow: 'Areas of Support',
+        title: 'Emotional, Relational\nand Personal Difficulties',
+        intro: 'The areas of psychological support cover a broad spectrum of difficulties that people bring to therapy. Each area has specific clinical characteristics and responds to targeted and personalised interventions.',
+        approachLabel: 'Therapeutic approach',
+        outcomesLabel: 'Expected outcomes',
+        areas: [
+          {
+            key: 'anxiety',
+            icon: '/anxiety.png',
+            title: 'Anxiety and Stress Management',
+            clinical: 'Anxiety is an adaptive response that becomes problematic when disproportionate, persistent, and interfering with daily functioning. It includes generalised anxiety disorder, panic attacks, phobias, and social anxiety.',
+            approach: 'Specific CBT protocols for each type of anxiety disorder. Graded exposure techniques, cognitive restructuring, relaxation training, and where indicated, integration with virtual reality.',
+            outcomes: 'Reduction of anticipatory anxiety, overcoming avoidant behaviors, recovery of freedom of movement in previously blocked areas.',
+          },
+          {
+            key: 'mood',
+            icon: '/emotion.png',
+            title: 'Emotional and Mood Difficulties',
+            clinical: 'Mood disorders include major depression, dysthymia, and bipolar disorders. They manifest with pervasive sadness, loss of interest, fatigue, cognitive difficulties, and in severe cases, suicidal ideation.',
+            approach: 'CBT with behavioral activation and cognitive restructuring. ACT to develop acceptance and values-oriented action. Coordination with psychiatrists when pharmacological intervention is indicated.',
+            outcomes: 'Reduction of depressive symptoms, recovery of energy and motivation, relapse prevention through self-monitoring tools.',
+          },
+          {
+            key: 'ocd',
+            icon: '/ocd.png',
+            title: 'Intrusive Thoughts and Compulsive Behaviors',
+            clinical: 'Obsessive-compulsive disorder is characterised by obsessions (ego-dystonic intrusive thoughts) and compulsions (ritual behaviors to reduce anxiety). Causes and mechanisms are well understood and the disorder responds to specific treatments.',
+            approach: 'ERP as the primary technique, integrated with cognitive interventions to reduce obsessive beliefs. Work on uncertainty tolerance and rumination prevention.',
+            outcomes: 'Drastic reduction in time spent on obsessions and compulsions, improved daily functioning, autonomy in previously avoided situations.',
+          },
+          {
+            key: 'regulation',
+            icon: '/fear.png',
+            title: 'Emotional Regulation',
+            clinical: 'Emotional regulation difficulties manifest as excessive reactivity, difficulty calming down, impulsivity, emotional blocking, or hyperemotionality. They frequently correlate with early developmental experiences and insecure attachment styles.',
+            approach: 'ACT for psychological flexibility. Mindfulness techniques for emotional awareness development. DBT-informed strategies for managing intense emotions.',
+            outcomes: 'Greater emotional stability, ability to recognise and name emotions, regulated response to stressful situations.',
+          },
+          {
+            key: 'relational',
+            icon: '/conflict.png',
+            title: 'Relational Difficulties',
+            clinical: 'Recurring relational problems often reflect maladaptive attachment schemas, unmet implicit expectations, communication difficulties, or limited empathic capacity. They affect intimate, family, and professional relationships.',
+            approach: 'Work on relational cognitive patterns, attachment style, and communication skills. Assertiveness techniques and role-play to develop new relational modes.',
+            outcomes: 'Greater understanding of relational patterns, improved communication skills, more authentic and less conflictual relationships.',
+          },
+        ],
+        cta: 'I want support for my difficulties',
+      },
+      networkWork: {
+        eyebrow: 'Network-Based Work',
+        title: 'Interdisciplinary Collaboration\nfor Integrated Care',
+        intro: 'The complexity of some clinical situations goes beyond the competencies of a single professional. The interdisciplinary network is not an optional addition: it is an integral part of the care model, activated with precision when the person\'s wellbeing requires it.',
+        whyLabel: 'Why it matters clinically',
+        roleLabel: 'Role in the care network',
+        collaborators: [
+          {
+            title: 'Psychiatrists',
+            icon: 'psychiatry',
+            why: 'When symptoms have a significant biological component — as in severe depressive, bipolar, or psychotic disorders — collaboration with the psychiatrist is fundamental. Coordination between psychotherapy and pharmacotherapy produces superior results to pharmacological therapy alone.',
+            role: 'Psychiatric assessment, pharmacological prescription, therapy effect monitoring. Communication between psychotherapist and psychiatrist ensures coherence and continuity of the pathway.',
+          },
+          {
+            title: 'Child Neuropsychiatrists',
+            icon: 'child_care',
+            why: 'In pathways involving adolescents with complex difficulties — ADHD, neurodevelopmental disorders, behavioral disorders — neuropsychiatric assessment provides a more complete understanding of the neurological bases of the difficulties.',
+            role: 'Differential diagnosis, neuropsychiatric assessment, pharmacological support when indicated. Coordination with the family and school context.',
+          },
+          {
+            title: 'Developmental Psychotherapists',
+            icon: 'escalator_warning',
+            why: 'In families where a child presents significant difficulties, collaboration with a developmental specialist allows the child or adolescent to be supported in a specific way, while maintaining coherence with the family work.',
+            role: 'Individual psychotherapy of the minor, assessment of developmental dynamics, parenting support coordinated with family work.',
+          },
+          {
+            title: 'Family Law Attorneys',
+            icon: 'gavel',
+            why: 'In situations of conflictual separation, contested custody, or high legal complexity, communication between psychologist and attorney is essential to protect children\'s wellbeing and ensure coherence between the psychological plan and legal decisions.',
+            role: 'Coordination in separation cases, support in custody assessments, technical communication for the protection of the minor. Collaboration always follows a precise ethical code.',
+          },
+          {
+            title: 'Forensic Psychologists',
+            icon: 'balance',
+            why: 'When a clinical pathway intersects with legal proceedings — parental capacity assessments, CTU/CTP, psychological reports — collaboration with specialised forensic professionals ensures technical rigour and coherence between the two domains.',
+            role: 'Forensic psychological assessments, expert report preparation, support in civil proceedings. Dr Cocozza operates in both domains, ensuring continuity and integration.',
+          },
+        ],
+        cta: 'I want to learn more about the collaborative network',
+      },
+      finalCta: {
+        eyebrow: 'Explore Pathways',
+        title: 'Choose your\ncare pathway',
+        intro: 'The Clinical Area offers structured and personalised psychotherapy pathways. For needs that intersect with legal and forensic contexts, the Forensic Area offers specialised and integrated expertise.',
+        primaryButton: 'Book a Clinical Consultation',
+        secondaryButton: 'Explore Forensic Psychology Services',
+        primaryLink: '/contact',
+        secondaryLink: '/forensic',
+      },
     },
   },
 }
@@ -2864,21 +3485,497 @@ function PageWrapper({ children, t }) {
   )
 }
 
-function Clinical({ t }) {
+function ClinicalPage({ t }) {
+  const cp = t.clinicalPage
+
   return (
-    <Section
-      title={t.pages.clinicalHero}
-      subtitle="Warm, safe, and elegant pathways for adolescents, adults, families, and couples."
-      items={[
-        { icon: Brain, title: 'Therapeutic Approach', text: 'CBT, ACT, VR integration, personalized treatments.', to: '/clinical/approach' },
-        { icon: Users, title: 'Who It Is For', text: 'Adolescents, adults, families, and relationship support.' },
-        { icon: HeartHandshake, title: 'Individual Psychotherapy', text: 'Anxiety, mood, OCD, emotional regulation, stress management.', to: '/clinical/individual-psychotherapy' },
-        { icon: Sparkles, title: 'Couple & Family Support', text: 'Counseling, separation support, parenting and consultations.', to: '/clinical/family-support' },
-        { icon: Stethoscope, title: 'Network-Based Work', text: 'Coordination with psychiatrists, child psychotherapists, and attorneys.', to: '/clinical/network' },
-      ]}
-    />
+    <>
+      <CpHero cp={cp.hero} />
+      <div className="cp-page">
+        <CpOverviewSection cp={cp.overview} />
+        <CpCareProcessSection cp={cp.careProcess} />
+        <CpTherapeuticApproachSection cp={cp.therapeuticApproach} />
+        <CpWhoItIsForSection cp={cp.whoItIsFor} />
+        <CpIndividualPsychotherapySection cp={cp.individualPsychotherapy} />
+        <CpCoupleFamilySection cp={cp.coupleFamily} />
+        <CpSupportAreasSection cp={cp.supportAreas} />
+        <CpNetworkWorkSection cp={cp.networkWork} />
+        <CpFinalCtaSection cp={cp.finalCta} />
+      </div>
+      <SiteFooter t={t} />
+    </>
   )
 }
+
+function CpHero({ cp }) {
+  return (
+    <section className="cp-hero">
+      <div className="cp-hero-bg" aria-hidden="true">
+        <div className="cp-hero-orb cp-hero-orb--1" />
+        <div className="cp-hero-orb cp-hero-orb--2" />
+      </div>
+      <div className="cp-hero-inner">
+        <motion.p
+          className="cp-hero-eyebrow"
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        >
+          {cp.eyebrow}
+        </motion.p>
+        <motion.h1
+          className="cp-hero-title"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+        >
+          {cp.title}
+        </motion.h1>
+        <motion.p
+          className="cp-hero-subtitle"
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.22 }}
+        >
+          {cp.subtitle}
+        </motion.p>
+      </div>
+      <div className="cp-hero-rule" aria-hidden="true" />
+    </section>
+  )
+}
+
+function CpSectionHeader({ eyebrow, title, intro, className = '' }) {
+  return (
+    <motion.div
+      className={`cp-section-header ${className}`}
+      initial={{ opacity: 0, y: 22 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.78, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <span className="cp-eyebrow">{eyebrow}</span>
+      <h2 className="cp-section-title">{title}</h2>
+      {intro && <p className="cp-section-intro">{intro}</p>}
+    </motion.div>
+  )
+}
+
+function CpSectionCta({ to, children }) {
+  return (
+    <div className="cp-section-cta-wrap">
+      <Link to={to} className="cp-section-cta">
+        <span>{children}</span>
+        <ArrowRight size={15} aria-hidden="true" />
+      </Link>
+    </div>
+  )
+}
+
+// ── Section A — Clinical Overview ──────────────────────────
+
+function CpOverviewSection({ cp }) {
+  return (
+    <section className="cp-section cp-section--light">
+      <div className="cp-section-inner">
+        <CpSectionHeader eyebrow={cp.eyebrow} title={cp.title} intro={cp.intro} />
+        <div className="cp-block-grid cp-block-grid--2">
+          {cp.blocks.map((block, i) => (
+            <motion.div
+              key={block.title}
+              className="cp-block"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }}
+            >
+              <span className="cp-block-number" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <h3 className="cp-block-title">{block.title}</h3>
+              <p className="cp-block-text">{block.text}</p>
+            </motion.div>
+          ))}
+        </div>
+        <CpSectionCta to="/contact">{cp.cta}</CpSectionCta>
+      </div>
+    </section>
+  )
+}
+
+// ── Section B — Integrated Care Process ────────────────────
+
+function CpCareProcessSection({ cp }) {
+  return (
+    <section className="cp-section cp-section--dark">
+      <div className="cp-section-inner">
+        <CpSectionHeader eyebrow={cp.eyebrow} title={cp.title} intro={cp.intro} />
+        <div className="cp-steps">
+          {cp.steps.map((step, i) => (
+            <motion.div
+              key={step.number}
+              className="cp-step"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.18 }}
+              transition={{ duration: 0.68, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }}
+            >
+              <div className="cp-step-node" aria-hidden="true">
+                <span className="cp-step-number">{step.number}</span>
+                {i < cp.steps.length - 1 && <span className="cp-step-line" />}
+              </div>
+              <div className="cp-step-body">
+                <h3 className="cp-step-title">{step.title}</h3>
+                <p className="cp-step-description">{step.description}</p>
+                <p className="cp-step-detail">{step.detail}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+        <CpSectionCta to="/contact">{cp.cta}</CpSectionCta>
+      </div>
+    </section>
+  )
+}
+
+// ── Section C — Therapeutic Approach ───────────────────────
+
+function CpTherapeuticApproachSection({ cp }) {
+  const [activeApproach, setActiveApproach] = useState(0)
+  const current = cp.approaches[activeApproach]
+
+  return (
+    <section className="cp-section cp-section--light">
+      <div className="cp-section-inner">
+        <CpSectionHeader eyebrow={cp.eyebrow} title={cp.title} intro={cp.intro} />
+        <div className="cp-approach-tabs" role="tablist" aria-label={cp.title}>
+          {cp.approaches.map((approach, i) => (
+            <button
+              key={approach.label}
+              role="tab"
+              aria-selected={activeApproach === i}
+              aria-controls={`cp-approach-panel-${i}`}
+              className={`cp-approach-tab${activeApproach === i ? ' cp-approach-tab--active' : ''}`}
+              onClick={() => setActiveApproach(i)}
+              type="button"
+            >
+              <span className="cp-approach-tab-label">{approach.label}</span>
+              <span className="cp-approach-tab-name">{approach.title}</span>
+            </button>
+          ))}
+        </div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeApproach}
+            id={`cp-approach-panel-${activeApproach}`}
+            role="tabpanel"
+            className="cp-approach-panel"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="cp-approach-grid">
+              <div className="cp-approach-col cp-approach-col--main">
+                <h3 className="cp-approach-title">{current.title}</h3>
+                <p className="cp-approach-definition">{current.definition}</p>
+                <div className="cp-approach-subsection">
+                  <h4 className="cp-approach-sub-label">{cp.mechanismLabel}</h4>
+                  <p className="cp-approach-sub-text">{current.mechanism}</p>
+                </div>
+                <div className="cp-approach-subsection">
+                  <h4 className="cp-approach-sub-label">{cp.applicationLabel}</h4>
+                  <p className="cp-approach-sub-text">{current.application}</p>
+                </div>
+              </div>
+              <div className="cp-approach-col cp-approach-col--aside">
+                <div className="cp-approach-targets">
+                  <h4 className="cp-approach-targets-title">{cp.targetsLabel}</h4>
+                  <ul className="cp-approach-targets-list">
+                    {current.targets.map((t) => (
+                      <li key={t}>{t}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="cp-approach-outcomes">
+                  <h4 className="cp-approach-outcomes-title">{cp.outcomesLabel}</h4>
+                  <p className="cp-approach-outcomes-text">{current.outcomes}</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+        <CpSectionCta to="/contact">{cp.cta}</CpSectionCta>
+      </div>
+    </section>
+  )
+}
+
+// ── Section D — Who It Is For ───────────────────────────────
+
+function CpWhoItIsForSection({ cp }) {
+  const [activePopulation, setActivePopulation] = useState(0)
+  const current = cp.populations[activePopulation]
+
+  return (
+    <section className="cp-section cp-section--teal">
+      <div className="cp-section-inner">
+        <CpSectionHeader eyebrow={cp.eyebrow} title={cp.title} intro={cp.intro} />
+        <div className="cp-population-tabs" role="tablist" aria-label={cp.title}>
+          {cp.populations.map((pop, i) => (
+            <button
+              key={pop.title}
+              role="tab"
+              aria-selected={activePopulation === i}
+              aria-controls={`cp-pop-panel-${i}`}
+              className={`cp-population-tab${activePopulation === i ? ' cp-population-tab--active' : ''}`}
+              onClick={() => setActivePopulation(i)}
+              type="button"
+            >
+              <span className="cp-population-tab-title">{pop.title}</span>
+              <span className="cp-population-tab-age">{pop.age}</span>
+            </button>
+          ))}
+        </div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activePopulation}
+            id={`cp-pop-panel-${activePopulation}`}
+            role="tabpanel"
+            className="cp-population-panel"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="cp-population-grid">
+              <div className="cp-population-col">
+                <h3 className="cp-population-title">{current.title}</h3>
+                <div className="cp-population-block">
+                  <h4 className="cp-population-block-label">{cp.clinicalNeedsLabel}</h4>
+                  <p>{current.clinicalNeeds}</p>
+                </div>
+                <div className="cp-population-block">
+                  <h4 className="cp-population-block-label">{cp.therapeuticFocusLabel}</h4>
+                  <p>{current.therapeuticFocus}</p>
+                </div>
+                <div className="cp-population-block">
+                  <h4 className="cp-population-block-label">{cp.approachLabel}</h4>
+                  <p>{current.approach}</p>
+                </div>
+              </div>
+              <div className="cp-population-col cp-population-col--issues">
+                <h4 className="cp-population-block-label">{cp.presentingIssuesLabel}</h4>
+                <ul className="cp-population-issues">
+                  {current.presentingIssues.map((issue) => (
+                    <li key={issue}>{issue}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+        <CpSectionCta to="/contact">{cp.cta}</CpSectionCta>
+      </div>
+    </section>
+  )
+}
+
+// ── Section E — Individual Psychotherapy ───────────────────
+
+function CpIndividualPsychotherapySection({ cp }) {
+  return (
+    <section className="cp-section cp-section--light">
+      <div className="cp-section-inner">
+        <CpSectionHeader eyebrow={cp.eyebrow} title={cp.title} intro={cp.intro} />
+        <div className="cp-conditions">
+          {cp.conditions.map((condition, i) => (
+            <motion.article
+              key={condition.title}
+              className="cp-condition"
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: i * 0.08 }}
+            >
+              <div className="cp-condition-icon-wrap" aria-hidden="true">
+                <img src={condition.icon} alt="" className="cp-condition-icon" />
+              </div>
+              <div className="cp-condition-body">
+                <h3 className="cp-condition-title">{condition.title}</h3>
+                <p className="cp-condition-description">{condition.description}</p>
+                <div className="cp-condition-meta">
+                  <div className="cp-condition-meta-item">
+                    <span className="cp-condition-meta-label">{cp.approachLabel}</span>
+                    <p>{condition.approach}</p>
+                  </div>
+                  <div className="cp-condition-meta-item">
+                    <span className="cp-condition-meta-label">{cp.outcomesLabel}</span>
+                    <p>{condition.outcomes}</p>
+                  </div>
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+        <CpSectionCta to="/contact">{cp.cta}</CpSectionCta>
+      </div>
+    </section>
+  )
+}
+
+// ── Section F — Couple & Family Support ────────────────────
+
+function CpCoupleFamilySection({ cp }) {
+  return (
+    <section className="cp-section cp-section--dark">
+      <div className="cp-section-inner">
+        <CpSectionHeader eyebrow={cp.eyebrow} title={cp.title} intro={cp.intro} />
+        <div className="cp-block-grid cp-block-grid--2">
+          {cp.areas.map((area, i) => (
+            <motion.div
+              key={area.title}
+              className="cp-block cp-block--relational"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.18 }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }}
+            >
+              <h3 className="cp-block-title">{area.title}</h3>
+              <p className="cp-block-text">{area.description}</p>
+              <div className="cp-block-intervention">
+                <span className="cp-block-intervention-label">{cp.interventionLabel}</span>
+                <p className="cp-block-intervention-text">{area.intervention}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+        <CpSectionCta to="/contact">{cp.cta}</CpSectionCta>
+      </div>
+    </section>
+  )
+}
+
+// ── Section G — Areas of Support ───────────────────────────
+
+function CpSupportAreasSection({ cp }) {
+  return (
+    <section className="cp-section cp-section--light">
+      <div className="cp-section-inner">
+        <CpSectionHeader eyebrow={cp.eyebrow} title={cp.title} intro={cp.intro} />
+        <div className="cp-support-areas">
+          {cp.areas.map((area, i) => (
+            <motion.article
+              key={area.key}
+              className="cp-support-area"
+              initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.68, ease: [0.22, 1, 0.36, 1], delay: i * 0.08 }}
+            >
+              <div className="cp-support-area-icon-col" aria-hidden="true">
+                <img src={area.icon} alt="" className="cp-support-area-icon" />
+              </div>
+              <div className="cp-support-area-body">
+                <h3 className="cp-support-area-title">{area.title}</h3>
+                <p className="cp-support-area-clinical">{area.clinical}</p>
+                <div className="cp-support-area-meta">
+                  <div>
+                    <span className="cp-support-area-meta-label">{cp.approachLabel}</span>
+                    <p>{area.approach}</p>
+                  </div>
+                  <div>
+                    <span className="cp-support-area-meta-label">{cp.outcomesLabel}</span>
+                    <p>{area.outcomes}</p>
+                  </div>
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+        <CpSectionCta to="/contact">{cp.cta}</CpSectionCta>
+      </div>
+    </section>
+  )
+}
+
+// ── Section H — Network-Based Work ─────────────────────────
+
+function CpNetworkWorkSection({ cp }) {
+  return (
+    <section className="cp-section cp-section--teal">
+      <div className="cp-section-inner">
+        <CpSectionHeader eyebrow={cp.eyebrow} title={cp.title} intro={cp.intro} />
+        <div className="cp-network-list">
+          {cp.collaborators.map((collab, i) => (
+            <motion.article
+              key={collab.title}
+              className="cp-network-item"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.18 }}
+              transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1], delay: i * 0.09 }}
+            >
+              <div className="cp-network-item-header">
+                <span className="cp-network-item-icon material-symbols-rounded" aria-hidden="true">{collab.icon}</span>
+                <h3 className="cp-network-item-title">{collab.title}</h3>
+              </div>
+              <div className="cp-network-item-body">
+                <div className="cp-network-item-why">
+                  <span className="cp-network-item-label">{cp.whyLabel}</span>
+                  <p>{collab.why}</p>
+                </div>
+                <div className="cp-network-item-role">
+                  <span className="cp-network-item-label">{cp.roleLabel}</span>
+                  <p>{collab.role}</p>
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+        <CpSectionCta to="/contact">{cp.cta}</CpSectionCta>
+      </div>
+    </section>
+  )
+}
+
+// ── Section I — Final CTA ───────────────────────────────────
+
+function CpFinalCtaSection({ cp }) {
+  return (
+    <section className="cp-final-cta">
+      <div className="cp-final-cta-bg" aria-hidden="true">
+        <div className="cp-final-cta-orb cp-final-cta-orb--1" />
+        <div className="cp-final-cta-orb cp-final-cta-orb--2" />
+      </div>
+      <motion.div
+        className="cp-final-cta-inner"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.35 }}
+        transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <span className="cp-eyebrow cp-eyebrow--light">{cp.eyebrow}</span>
+        <h2 className="cp-final-cta-title">{cp.title}</h2>
+        <p className="cp-final-cta-intro">{cp.intro}</p>
+        <div className="cp-final-cta-buttons">
+          <Link to={cp.primaryLink} className="cp-final-cta-btn cp-final-cta-btn--primary">
+            {cp.primaryButton}
+            <ArrowUpRight size={18} aria-hidden="true" />
+          </Link>
+          <Link to={cp.secondaryLink} className="cp-final-cta-btn cp-final-cta-btn--secondary">
+            {cp.secondaryButton}
+            <ArrowRight size={18} aria-hidden="true" />
+          </Link>
+        </div>
+      </motion.div>
+    </section>
+  )
+}
+
+function Clinical({ t }) {
+  return <ClinicalPage t={t} />
+}
+
+
 
 function ClinicalApproach() {
   return (
@@ -3148,7 +4245,7 @@ function AppShell() {
             <Routes location={location}>
               <Route path="/" element={<Navigate to="/home" replace />} />
               <Route path="/home" element={<Home t={t} />} />
-              <Route path="/clinical" element={<PageWrapper t={t}><Clinical t={t} /></PageWrapper>} />
+              <Route path="/clinical" element={<Clinical t={t} />} />
               <Route path="/clinical/approach" element={<PageWrapper t={t}><ClinicalApproach /></PageWrapper>} />
               <Route path="/clinical/individual-psychotherapy" element={<PageWrapper t={t}><ClinicalIndividual /></PageWrapper>} />
               <Route path="/clinical/family-support" element={<PageWrapper t={t}><ClinicalFamily t={t} /></PageWrapper>} />
