@@ -7545,13 +7545,13 @@ a.site-footer-contact-item:hover {
 
 .contact-page-card-item--link {
   text-decoration: none;
-  color: rgba(193, 246, 255, 0.72);
+  color: var(--color-primary);
   transition: color 0.22s ease;
   word-break: break-all;
 }
 
 .contact-page-card-item--link:hover {
-  color: rgba(193, 246, 255, 1);
+  color: var(--color-primary-dark);
 }
 
 .contact-page-card-item--whatsapp {
@@ -7691,9 +7691,12 @@ a.site-footer-contact-item:hover {
   .about-page-hero-grid,
   .about-page-card-grid,
   .about-page-card-grid--values,
-  .contact-page-card-grid,
   .contact-page-form {
     grid-template-columns: 1fr;
+  }
+
+  .contact-page-card-grid {
+    grid-template-columns: 1fr 1fr;
   }
 
   .about-page-hero-copy,

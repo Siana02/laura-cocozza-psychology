@@ -2118,7 +2118,7 @@ const CLINICAL_NETWORK_ICONS = {
 }
 
 function getClinicalPageContent(t) {
-  return t.nav.home === 'Home' ? CLINICAL_PAGE_CONTENT.en : CLINICAL_PAGE_CONTENT.it
+  return t.nav.about === 'About' ? CLINICAL_PAGE_CONTENT.en : CLINICAL_PAGE_CONTENT.it
 }
 
 const fadeUp = {
@@ -4085,7 +4085,7 @@ function SiteFooter({ t, branding }) {
 
         {/* Navigation column */}
         <div className="site-footer-nav-col">
-          <p className="site-footer-col-heading">{t.nav.home === 'Home' ? 'Navigation' : 'Navigazione'}</p>
+          <p className="site-footer-col-heading">{t.nav.about === 'About' ? 'Navigation' : 'Navigazione'}</p>
           <nav className="site-footer-nav" aria-label={f.navAriaLabel}>
             {f.nav.map((label, i) => (
               <Link key={label} to={f.navLinks[i]} className="site-footer-nav-link">{label}</Link>
@@ -4095,7 +4095,7 @@ function SiteFooter({ t, branding }) {
 
         {/* Contact column */}
         <div className="site-footer-contact-col">
-          <p className="site-footer-col-heading">{t.nav.home === 'Home' ? 'Contact' : 'Contatti'}</p>
+          <p className="site-footer-col-heading">{t.nav.about === 'About' ? 'Contact' : 'Contatti'}</p>
           <div className="site-footer-contact">
             <a href={`mailto:${f.email}`} className="site-footer-contact-item site-footer-contact-item--link">
               <Mail size={14} aria-hidden="true" />
@@ -5497,15 +5497,15 @@ const FORENSIC_SERVICE_ICONS = {
 }
 
 function getForensicPageContent(t) {
-  return t.nav.home === 'Home' ? FORENSIC_PAGE_CONTENT.en : FORENSIC_PAGE_CONTENT.it
+  return t.nav.about === 'About' ? FORENSIC_PAGE_CONTENT.en : FORENSIC_PAGE_CONTENT.it
 }
 
 function getAboutPageContent(t) {
-  return t.nav.home === 'Home' ? ABOUT_PAGE_CONTENT.en : ABOUT_PAGE_CONTENT.it
+  return t.nav.about === 'About' ? ABOUT_PAGE_CONTENT.en : ABOUT_PAGE_CONTENT.it
 }
 
 function getContactPageContent(t) {
-  return t.nav.home === 'Home' ? CONTACT_PAGE_CONTENT.en : CONTACT_PAGE_CONTENT.it
+  return t.nav.about === 'About' ? CONTACT_PAGE_CONTENT.en : CONTACT_PAGE_CONTENT.it
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -6166,7 +6166,7 @@ function ContactPage({ t }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span className="contact-page-eyebrow">{cp.hero.eyebrow ?? (t.nav.home === 'Home' ? 'CONTACT' : 'CONTATTI')}</span>
+            <span className="contact-page-eyebrow">{cp.hero.eyebrow ?? (t.nav.about === 'About' ? 'CONTACT' : 'CONTATTI')}</span>
             <h1 className="contact-page-hero-title">{cp.hero.title}</h1>
             <p className="contact-page-hero-subtitle">{cp.hero.subtitle}</p>
             <p className="contact-page-hero-intro">{cp.hero.intro}</p>
@@ -6208,7 +6208,7 @@ function ContactPage({ t }) {
                               {card.whatsapp && (
                                 <a href={card.whatsapp} target="_blank" rel="noopener noreferrer" className="contact-page-card-item contact-page-card-item--link contact-page-card-item--whatsapp">
                                   <MessageCircle size={14} aria-hidden="true" />
-                                  {t.nav.home === 'Home' ? 'Message on WhatsApp' : 'Scrivici su WhatsApp'}
+                                  {t.nav.about === 'About' ? 'Message on WhatsApp' : 'Scrivici su WhatsApp'}
                                 </a>
                               )}
                             </span>
