@@ -7488,7 +7488,7 @@ a.site-footer-contact-item:hover {
 .about-page-card-grid,
 .contact-page-card-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(1rem, 2vw, 1.5rem);
 }
 
@@ -7675,8 +7675,7 @@ a.site-footer-contact-item:hover {
   }
 
   .about-page-hero-grid,
-  .about-page-card-grid,
-  .contact-page-card-grid {
+  .about-page-card-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
