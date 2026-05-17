@@ -97,11 +97,11 @@ const content = {
         eyebrow: 'Ambito Clinico',
         title: 'Psicoterapia cognitivo-comportamentale\nper adolescenti, adulti e famiglie',
         paragraph1:
-          'La pratica offre percorsi di psicoterapia, supporto psicologico e accompagnamento rivolti a persone che affrontano difficoltà emotive, relazionali e familiari.',
+          'Psicologa e psicoterapeuta cognitivo-comportamentale.',
         paragraph2:
-          'Ogni percorso viene costruito attraverso un approccio integrato e multidisciplinare, con l\'obiettivo di offrire un supporto personalizzato, strutturato e profondamente umano.',
+          'Mi occupo di psicoterapia, supporto psicologico e sostegno alla persona nei momenti di difficoltà emotiva, relazionale e familiare.',
         secondary:
-          'Uno spazio di ascolto e comprensione, dedicato a costruire un equilibrio psicologico solido e duraturo.',
+          'Lo studio lavora secondo un modello integrato e multidisciplinare, in rete con professionisti specializzati, con l\'obiettivo di offrire percorsi personalizzati e una presa in carico completa della persona e della famiglia.',
         highlights: [
           'Valutazione iniziale accurata per definire priorità e obiettivi realistici.',
           'Percorso strutturato con monitoraggio continuo dei progressi clinici.',
@@ -145,7 +145,7 @@ const content = {
         eyebrow: 'Rete Multidisciplinare',
         title: 'Supporto integrato attraverso una rete di specialisti',
         intro:
-          'La pratica opera attraverso una rete collaborativa di specialisti, permettendo a ogni percorso terapeutico di essere sostenuto da un approccio integrato e multidisciplinare costruito sui bisogni individuali e familiari.',
+          'Lo studio opera in rete con diversi professionisti, per offrire una presa in carico integrata e multidisciplinare.',
         centerLabel: 'Modello di Cura Integrata',
         desktopCenterLabel: 'Modello di Cura Integrata',
         desktopSpineTitle: 'Modello di Cura Integrata',
@@ -167,12 +167,12 @@ const content = {
               'Integrazione psichiatrica e psicologica per continuità terapeutica nei percorsi più complessi.',
           },
           {
-            title: 'Avvocati di diritto di famiglia',
+            title: 'Avvocati specializzati in diritto civile, penale e di famiglia',
             description:
               'Collaborazione legale nelle situazioni familiari ad alta complessità e nei passaggi decisionali delicati.',
           },
           {
-            title: 'Professionisti di psicologia forense',
+            title: 'Professionisti dell\'area psicoforense',
             description:
               'Supporto interdisciplinare per valutazioni tecniche, contesti giudiziari e lavoro psicologico-forense.',
           },
@@ -200,17 +200,20 @@ const content = {
           {
             label: 'TCC / CBT',
             title: 'Psicoterapia Cognitivo-Comportamentale (TCC)',
-            description: 'Un approccio terapeutico basato sull\'evidenza, orientato alla comprensione della relazione tra pensieri, emozioni e comportamenti.',
+            description:
+              'La psicoterapia cognitivo-comportamentale aiuta la persona a comprendere il legame tra pensieri, emozioni e comportamenti, favorendo strumenti concreti per affrontare difficoltà emotive, relazionali e comportamentali.',
           },
           {
             label: 'ACT',
             title: 'Acceptance and Commitment Therapy (ACT)',
-            description: 'Un approccio focalizzato sullo sviluppo della flessibilità psicologica e dell\'equilibrio emotivo.',
+            description:
+              'L\'Acceptance and Commitment Therapy lavora sullo sviluppo della flessibilità psicologica, aiutando la persona a gestire emozioni e pensieri difficili, orientandosi verso una vita più coerente con i propri valori personali.',
           },
           {
             label: 'VR',
-            title: 'Realtà Virtuale',
-            description: 'Tecnologie immersive che affiancano i percorsi terapeutici e aiutano nella gestione di difficoltà emotive e comportamentali.',
+            title: 'Realtà virtuale',
+            description:
+              'Lo studio utilizza anche strumenti innovativi, come la realtà virtuale, come supporto nella gestione di specifiche problematiche cliniche e nel trattamento di difficoltà emotive e comportamentali.',
           },
         ],
       },
@@ -233,20 +236,23 @@ const content = {
           {
             key: 'adolescents',
             icon: '/youth.png',
-            title: 'Adolescenti',
-            description: 'Percorsi dedicati agli adolescenti che affrontano cambiamenti emotivi, difficoltà relazionali, ansia, stress o fasi di crescita complesse.',
+            title: 'Adolescente',
+            description:
+              'Percorsi di supporto psicologico e psicoterapia rivolti agli adolescenti nelle fasi di crescita, cambiamento e difficoltà emotiva.',
           },
           {
             key: 'adults',
             icon: '/plus-18-movie.png',
-            title: 'Adulti',
-            description: 'Supporto psicologico e psicoterapia per affrontare stress, ansia, difficoltà emotive, relazionali e momenti di transizione personale.',
+            title: 'Adulto',
+            description:
+              'Percorsi di psicoterapia e consulenza psicologica per affrontare ansia, stress, difficoltà relazionali, disagio emotivo e momenti critici della vita.',
           },
           {
             key: 'families',
             icon: '/family.png',
-            title: 'Famiglie',
-            description: 'Consulenze e percorsi di supporto per dinamiche familiari complesse, genitorialità e momenti di cambiamento.',
+            title: 'Famiglia',
+            description:
+              'Supporto alla genitorialità, consulenze familiari e accompagnamento nelle fasi di cambiamento e riorganizzazione familiare.',
           },
         ],
       },
@@ -266,30 +272,30 @@ const content = {
           {
             key: 'anxiety',
             icon: '/anxiety.png',
-            title: 'Ansia e gestione dello stress',
+            title: 'Disturbi d’ansia',
             description:
-              'Percorsi di supporto dedicati alla gestione dell\'ansia, dello stress emotivo, delle paure persistenti e del sovraccarico mentale.',
+              'Percorsi di supporto e psicoterapia per la gestione di ansia, stress, paure, attacchi di panico e difficoltà emotive.',
           },
           {
             key: 'mood',
             icon: '/emotion.png',
-            title: 'Difficoltà emotive e dell\'umore',
+            title: 'Disturbi dell’umore',
             description:
-              'Supporto psicologico per periodi di vulnerabilità emotiva, demotivazione, tristezza persistente e difficoltà nel mantenere equilibrio emotivo.',
+              'Supporto psicologico nei momenti di fragilità emotiva, tristezza persistente, demotivazione e difficoltà depressive.',
           },
           {
             key: 'ocd',
             icon: '/ocd.png',
-            title: 'Pensieri intrusivi e comportamenti compulsivi',
+            title: 'Disturbo ossessivo-compulsivo',
             description:
-              'Interventi orientati alla gestione di pensieri ricorrenti, compulsioni, controllo dell\'ansia e rigidità cognitive.',
+              'Interventi rivolti alla gestione di pensieri intrusivi, compulsioni e difficoltà nel controllo dell\'ansia.',
           },
           {
             key: 'regulation',
             icon: '/fear.png',
-            title: 'Regolazione emotiva',
+            title: 'Stress e regolazione emotiva',
             description:
-              'Percorsi focalizzati sullo sviluppo della consapevolezza emotiva, della gestione dello stress e dell\'equilibrio psicologico quotidiano.',
+              'Percorsi finalizzati a migliorare la gestione delle emozioni, dello stress e delle difficoltà quotidiane.',
           },
           {
             key: 'relational',
@@ -301,16 +307,17 @@ const content = {
         ],
       },
       familySupport: {
-        eyebrow: 'Dove le relazioni ritrovano equilibrio',
+        eyebrow: 'Coppia e famiglia',
         title: 'Supporto per coppie e famiglie',
         intro:
-          'Una sezione dedicata a coppie, genitori e famiglie che cercano un supporto psicologico strutturato nelle fasi di conflitto, transizione e cambiamento relazionale.',
+          'Percorsi di supporto psicologico rivolti a coppie, genitori e famiglie nelle fasi di conflitto, cambiamento e riorganizzazione relazionale.',
         sectionCta: 'Voglio ricostruire equilibrio nelle mie relazioni',
         panels: [
           {
             icon: '/relationship.png',
             title: 'Percorsi di Coppia',
-            intro: 'Percorsi dedicati a migliorare la comunicazione, affrontare i conflitti e ritrovare la comprensione emotiva.',
+            intro:
+              'Spazi di consulenza e supporto per affrontare difficoltà comunicative, conflitti e momenti di cambiamento nella relazione.',
             cta: 'Voglio migliorare la comunicazione di coppia',
             highlights: [
               'Difficoltà comunicative',
@@ -322,8 +329,9 @@ const content = {
           },
           {
             icon: '/separated.png',
-            title: 'Supporto nella Separazione',
-            intro: 'Sostegno psicologico nei momenti emotivamente complessi di separazione e transizione familiare.',
+            title: 'Accompagnamento alla Separazione',
+            intro:
+              'Supporto psicologico nelle fasi di separazione, con attenzione agli aspetti emotivi, relazionali e genitoriali.',
             cta: 'Voglio supporto per affrontare la separazione',
             highlights: [
               'Stabilizzazione emotiva',
@@ -336,7 +344,8 @@ const content = {
           {
             icon: '/parental-guidance.png',
             title: 'Sostegno alla Genitorialità',
-            intro: 'Percorsi dedicati ai genitori che affrontano sfide educative, emotive e relazionali.',
+            intro:
+              'Percorsi rivolti ai genitori per affrontare difficoltà educative, relazionali e familiari.',
             cta: 'Voglio una guida per la mia genitorialità',
             highlights: [
               'Guida alla genitorialità',
@@ -349,7 +358,8 @@ const content = {
           {
             icon: '/family-consultation.png',
             title: 'Consulenze Familiari',
-            intro: 'Interventi di supporto per situazioni familiari complesse, gestione dei conflitti ed equilibrio relazionale.',
+            intro:
+              'Interventi di supporto nelle situazioni familiari complesse o conflittuali.',
             cta: 'Voglio orientamento per la mia situazione familiare',
             highlights: [
               'Situazioni familiari complesse',
@@ -385,7 +395,7 @@ const content = {
           { q: 'Come si svolgono le consulenze in psicologia forense?', a: 'Le consulenze forensi possono essere richieste da privati, avvocati o tribunali. Includono valutazioni psicologiche, redazione di perizie, attività di CTU/CTP e supporto in procedimenti di diritto di famiglia.' },
           { q: 'Collabora con altri professionisti?', a: 'Sì. Lo studio opera attraverso una rete multidisciplinare che include psichiatri, neuropsichiatri infantili, psicoterapeuti dell\'età evolutiva e avvocati specializzati in diritto di famiglia, per offrire un supporto integrato e continuativo.' },
           { q: 'Posso richiedere supporto durante processi di separazione o affidamento?', a: 'Sì. Lo studio offre consulenze specifiche per famiglie in fase di separazione, con attenzione alla genitorialità, al benessere dei figli e alla gestione emotiva dei passaggi più delicati.' },
-          { q: 'Come posso prenotare un appuntamento o richiedere informazioni?', a: 'È possibile contattare lo studio via email a laura.cocozza.893@psypec.it o info@psylexitalia.com, oppure telefonicamente al +39 339 366 980. Il primo contatto avviene solitamente tramite una breve call conoscitiva.' },
+          { q: 'Come posso prenotare un appuntamento o richiedere informazioni?', a: 'È possibile contattare lo studio via email a laura.cocozza@gmail.com, laura.cocozza.893@psypec.it o info@psylexitalia.com, oppure telefonicamente al +39 339 366 980. Il primo contatto avviene solitamente tramite una breve call conoscitiva.' },
         ],
       },
       contactSection: {
@@ -410,7 +420,7 @@ const content = {
           phoneTitle: 'Telefono',
           locationTitle: 'Sede',
           consultationsTitle: 'Consulenze',
-          emails: ['laura.cocozza.893@psypec.it', 'info@psylexitalia.com'],
+          emails: ['laura.cocozza@gmail.com', 'laura.cocozza.893@psypec.it', 'info@psylexitalia.com'],
           phone: '+39 339 366 980',
           whatsapp: 'https://wa.me/39339366980',
           whatsappLabel: 'Scrivici su WhatsApp',
@@ -1492,7 +1502,7 @@ const CLINICAL_PAGE_CONTENT = {
   it: {
     hero: {
       eyebrow: 'Area Clinica',
-      title: 'Area Clinica',
+      title: 'Psicoterapia cognitivo-comportamentale per adolescenti, adulti e famiglie',
       subtitle: 'Psicoterapia strutturata per adolescenti, adulti e famiglie',
       supporting:
         'Un percorso clinico guidato, chiaro e personalizzato che integra valutazione, metodo e continuità di cura in presenza e online.',
@@ -1572,9 +1582,9 @@ const CLINICAL_PAGE_CONTENT = {
         },
         {
           code: 'VR',
-          title: 'VR Therapy',
+          title: 'Realtà virtuale',
           description:
-            'Supporto immersivo integrato ai protocolli clinici per creare esperienze controllate, graduali e monitorate in sicurezza.',
+            'Lo studio utilizza anche strumenti innovativi, come la realtà virtuale, come supporto nella gestione di specifiche problematiche cliniche e nel trattamento di difficoltà emotive e comportamentali.',
           techniques: ['Esposizione assistita', 'Simulazioni guidate', 'Desensibilizzazione'],
           conditions: ['Fobie', 'Ansia sociale', 'PTSD', 'Ansia da prestazione'],
         },
@@ -1637,7 +1647,7 @@ const CLINICAL_PAGE_CONTENT = {
           title: 'Disturbi d’Ansia',
           summary: 'Percorsi per ansia generalizzata, panico, fobie e vissuti di allerta persistente.',
           approach:
-            'CBT e, quando indicato, VR Therapy per esposizione graduale, ristrutturazione cognitiva e recupero della libertà di movimento.',
+            'CBT e, quando indicato, realtà virtuale per esposizione graduale, ristrutturazione cognitiva e recupero della libertà di movimento.',
           outcomes:
             'Riduzione dell’evitamento, maggiore senso di controllo e capacità di affrontare situazioni precedentemente bloccanti.',
         },
@@ -1683,27 +1693,27 @@ const CLINICAL_PAGE_CONTENT = {
         'La sezione relazionale è stata ricomposta in un sistema a griglia, più chiaro da leggere e più coerente con bisogni di coppia e famiglia.',
       cards: [
         {
-          title: 'Rotture Comunicative',
+          title: 'Percorsi di coppia',
           text:
-            'Si lavora su escalation, silenzi prolungati e pattern attacco-difesa per ristabilire ascolto e comprensione reciproca.',
+            'Spazi di consulenza e supporto per affrontare difficoltà comunicative, conflitti e momenti di cambiamento nella relazione.',
           points: ['Ascolto strutturato', 'Riduzione dell’escalation', 'Nuovi pattern comunicativi'],
         },
         {
-          title: 'Supporto nella Separazione',
+          title: 'Accompagnamento alla separazione',
           text:
-            'Accompagnamento psicologico nelle transizioni familiari ad alta intensità emotiva, con attenzione al benessere dei figli.',
+            'Supporto psicologico nelle fasi di separazione, con attenzione agli aspetti emotivi, relazionali e genitoriali.',
           points: ['Protezione del sistema familiare', 'Gestione dei passaggi', 'Co-genitorialità'],
         },
         {
-          title: 'Sfide Genitoriali',
+          title: 'Sostegno alla genitorialità',
           text:
-            'Supporto per definire confini, coerenza educativa e strategie più efficaci nelle diverse fasi evolutive.',
+            'Percorsi rivolti ai genitori per affrontare difficoltà educative, relazionali e familiari.',
           points: ['Confini e regole', 'Lettura del comportamento', 'Coerenza educativa'],
         },
         {
-          title: 'Conflitti Sistemici Familiari',
+          title: 'Consulenze familiari',
           text:
-            'Intervento sulle regole implicite e sulle dinamiche ricorrenti che mantengono la tensione all’interno del nucleo.',
+            'Interventi di supporto nelle situazioni familiari complesse o conflittuali.',
           points: ['Ruoli e triangolazioni', 'Nuovi equilibri', 'Maggiore stabilità relazionale'],
         },
       ],
@@ -1719,7 +1729,7 @@ const CLINICAL_PAGE_CONTENT = {
         {
           title: 'Ansia e Stress',
           summary: 'Percorsi per sovraccarico, anticipazione, evitamento e perdita di libertà nelle attività quotidiane.',
-          methods: ['CBT', 'VR Therapy'],
+          methods: ['CBT', 'Realtà virtuale'],
         },
         {
           title: 'Difficoltà dell’Umore',
@@ -1748,7 +1758,7 @@ const CLINICAL_PAGE_CONTENT = {
       eyebrow: 'Lavoro in Rete',
       title: 'Cura integrata attivata quando la complessità lo richiede',
       intro:
-        'La rete multidisciplinare resta chiara, leggibile e distribuita in una griglia visivamente ordinata.',
+        'Lo studio opera in rete con diversi professionisti, per offrire una presa in carico integrata e multidisciplinare.',
       whyLabel: 'Perché conta',
       roleLabel: 'Ruolo',
       items: [
@@ -1771,13 +1781,13 @@ const CLINICAL_PAGE_CONTENT = {
           role: 'Supporto specialistico su sviluppo, relazione genitore-figlio e bisogni evolutivi.',
         },
         {
-          title: 'Diritto di famiglia',
+          title: 'Avvocati specializzati in diritto civile, penale e di famiglia',
           iconKey: 'law',
           why: 'È rilevante quando il percorso clinico si intreccia con separazioni, affidamento o scelte legali sensibili.',
           role: 'Allineamento tra tutela relazionale, passaggi giuridici e benessere del minore.',
         },
         {
-          title: 'Psicologia forense',
+          title: 'Professionisti dell’area psicoforense',
           iconKey: 'forensic',
           why: 'Garantisce continuità tecnica quando emergono valutazioni, relazioni o contesti giudiziari collegati.',
           role: 'Interfaccia tra area clinica e forense con rigore metodologico e coerenza documentale.',
@@ -1785,7 +1795,7 @@ const CLINICAL_PAGE_CONTENT = {
       ],
     },
     finalCta: {
-      eyebrow: 'Scegli il tuo percorso',
+      eyebrow: 'Prossimo passo',
       title: 'Scegli il tuo percorso',
       intro:
         'Se desideri un primo orientamento clinico, il passo successivo è una consulenza strutturata. Se vuoi esplorare prima le aree di intervento, puoi continuare il percorso dalla sezione servizi.',
@@ -1798,7 +1808,7 @@ const CLINICAL_PAGE_CONTENT = {
   en: {
     hero: {
       eyebrow: 'Clinical Area',
-      title: 'Clinical Area',
+      title: 'Clinical Psychotherapy Pathways',
       subtitle: 'Structured psychotherapy for adolescents, adults, and families',
       supporting:
         'A guided clinical pathway that combines assessment, method, and continuity of care through a calm, highly readable experience.',
@@ -2091,7 +2101,7 @@ const CLINICAL_PAGE_CONTENT = {
       ],
     },
     finalCta: {
-      eyebrow: 'Choose your pathway',
+      eyebrow: 'Next step',
       title: 'Choose your pathway',
       intro:
         'If you need a first clinical orientation, the next step is a structured consultation. If you prefer to review the support areas first, continue through the services section.',
@@ -4882,10 +4892,10 @@ const FORENSIC_PAGE_CONTENT = {
   it: {
     hero: {
       eyebrow: 'AREA FORENSE',
-      title: 'Psicologia Giuridica e Forense',
-      subtitle: 'Consulenza tecnica d\'ufficio in procedimenti civili, familiari e di valutazione del danno psicologico.',
+      title: 'Psicologia giuridica e psicoforense',
+      subtitle: 'Psicologa forense, CTU e CTP, con esperienza nell\'ambito della psicologia giuridica, familiare e del risarcimento del danno.',
       description:
-        'Psicologa forense, consulente tecnica d\'ufficio (CTU) e di parte (CTP) con esperienza in psicologia giuridica, procedimenti familiari e valutazione del danno psicologico. Collaborazione con i principali Tribunali del Friuli Venezia Giulia e con studi legali su tutto il territorio nazionale.',
+        'Collaboro con i principali Tribunali del Friuli Venezia Giulia e con studi legali su tutto il territorio nazionale.',
       primaryCta: 'Richiedi Consulenza Forense',
       secondaryCta: 'Esplora i Servizi',
       imageSrc: '/laura-cocozza-hero-image.jpg',
@@ -4926,7 +4936,7 @@ const FORENSIC_PAGE_CONTENT = {
     },
     services: {
       id: 'forensic-services',
-      eyebrow: 'SERVIZI FORENSI',
+      eyebrow: 'SERVIZI PSICOFORENSI',
       title: 'Servizi specializzati per il procedimento giudiziario',
       intro:
         'Attività tecniche e consulenziali a supporto di procedimenti civili, familiari e di valutazione del danno psicologico.',
@@ -4939,27 +4949,27 @@ const FORENSIC_PAGE_CONTENT = {
         },
         {
           iconKey: 'family',
-          title: 'Area Familiare',
+          title: 'Area famiglia',
           description:
-            'Consulenze psicologiche forensi in contesti di separazione, affidamento, responsabilità genitoriale e dinamiche familiari complesse.',
+            'Consulenze psicoforensi nell\'ambito della separazione, dell\'affidamento, della responsabilità genitoriale e delle dinamiche familiari complesse.',
         },
         {
           iconKey: 'coordination',
           title: 'Coordinazione Genitoriale',
           description:
-            'Interventi dedicati ai genitori in situazioni di alto conflitto, finalizzati al supporto di una gestione più funzionale della co-genitorialità.',
+            'Interventi rivolti a genitori in situazione di elevata conflittualità, finalizzati a sostenere una gestione più funzionale della genitorialità condivisa.',
         },
         {
           iconKey: 'damage',
-          title: 'Danno Psicologico',
+          title: 'Danno psichico',
           description:
-            'Valutazioni psicologiche nell\'ambito di richieste risarcitorie e di danno psicologico da lavoro.',
+            'Valutazioni psicologiche nell\'ambito del risarcimento del danno e dello stress lavoro-correlato.',
         },
         {
           iconKey: 'support',
-          title: 'Supporto Tecnico per Avvocati',
+          title: 'Supporto tecnico ad avvocati e studi legali',
           description:
-            'Consulenze psicologiche forensi e supporto tecnico specialistico in procedimenti familiari e civili.',
+            'Consulenze psicoforensi e supporto tecnico specialistico in procedimenti familiari e civili.',
         },
       ],
     },
@@ -5014,9 +5024,9 @@ const FORENSIC_PAGE_CONTENT = {
       eyebrow: 'ECOSISTEMA IN SVILUPPO',
       title: 'PsyLex',
       logoAlt: 'Logo PsyLex Italia',
-      subtitle: 'Un ecosistema collaborativo di psicologia giuridica in fase di sviluppo',
+      subtitle: 'PsyLex è un progetto professionale dedicato alla psicologia giuridica, nato per integrare competenze psicologiche e legali all\'interno di una rete strutturata di professionisti.',
       description:
-        'PsyLex è una piattaforma professionale emergente che integra psicologia giuridica, consulenza forense e collaborazione interdisciplinare tra psicologi e avvocati.',
+        'Il progetto si sviluppa come piattaforma e spazio di collaborazione tra psicologi, consulenti forensi e avvocati, con l\'obiettivo di rendere più chiaro, organizzato e professionale il lavoro nei procedimenti familiari e psicoforensi.',
       previewImageSrc: '/psylex-italia-image-with-content.jpeg',
       previewImageAlt: 'Anteprima grafica del progetto PsyLex Italia',
       features: [
@@ -5037,8 +5047,8 @@ const FORENSIC_PAGE_CONTENT = {
       eyebrow: 'CONTATTI',
       title: 'Richiedi una consulenza forense',
       intro:
-        'Per richieste di consulenza tecnica, supporto in procedimenti forensi o informazioni sui servizi, è possibile contattare lo studio attraverso i canali ufficiali.',
-      emails: ['laura.cocozza.893@psypec.it', 'info@psylexitalia.com'],
+        'È possibile richiedere informazioni sui percorsi clinici, sulle consulenze familiari o sull\'attività psicoforense attraverso i contatti dello studio.',
+      emails: ['laura.cocozza@gmail.com', 'laura.cocozza.893@psypec.it', 'info@psylexitalia.com'],
       phone: '+39 339 366 980',
       address: 'Via Generale Baldissera 14 — Udine',
       consultations: 'Colloqui online e in presenza',
@@ -5407,7 +5417,7 @@ const CONTACT_PAGE_CONTENT = {
         {
           iconKey: 'mail',
           title: 'Email',
-          items: ['laura.cocozza.893@psypec.it', 'info@psylexitalia.com'],
+          items: ['laura.cocozza@gmail.com', 'laura.cocozza.893@psypec.it', 'info@psylexitalia.com'],
         },
         {
           iconKey: 'phone',
