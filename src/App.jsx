@@ -6780,10 +6780,6 @@ function LegalPage({ t, pageKey }) {
   const page = legal[pageKey]
   const [openSection, setOpenSection] = useState(page.sections[0]?.id ?? null)
 
-  useEffect(() => {
-    setOpenSection(page.sections[0]?.id ?? null)
-  }, [pageKey, t.nav.about, page.sections])
-
   return (
     <>
       <section className="legal-page-hero">
