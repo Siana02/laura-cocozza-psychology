@@ -3215,6 +3215,11 @@ h3 {
   .clinical-intro-title {
     font-size: clamp(1.9rem, 8.5vw, 2.5rem);
   }
+
+  .clinical-intro-image {
+    height: clamp(220px, 58vw, 310px);
+    object-fit: contain;
+  }
 }
 
 
@@ -5972,7 +5977,7 @@ a.site-footer-contact-item:hover {
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(15, 76, 92, 0.52);
+  color: rgba(10, 59, 73, 0.78);
 }
 
 .cp-pathway-title,
@@ -6044,13 +6049,14 @@ a.site-footer-contact-item:hover {
 }
 
 .cp-method-code {
-  background: rgba(183, 244, 255, 0.1);
-  color: rgba(183, 244, 255, 0.92);
+  background: rgba(183, 244, 255, 0.18);
+  color: rgba(244, 252, 255, 0.98);
+  border: 1px solid rgba(183, 244, 255, 0.32);
 }
 
 .cp-method-label,
 .cp-network-label {
-  color: rgba(183, 244, 255, 0.74);
+  color: rgba(214, 246, 252, 0.94);
 }
 
 .cp-audience-label {
@@ -6133,7 +6139,7 @@ a.site-footer-contact-item:hover {
 
 .cp-audience-label,
 .cp-accordion-label {
-  color: rgba(15, 76, 92, 0.62);
+  color: rgba(10, 59, 73, 0.78);
 }
 
 .cp-audience-block + .cp-audience-block {
@@ -6211,7 +6217,7 @@ a.site-footer-contact-item:hover {
 }
 
 .cp-support-methods-label {
-  color: rgba(15, 76, 92, 0.58);
+  color: rgba(10, 59, 73, 0.82);
 }
 
 .cp-network-icon {
