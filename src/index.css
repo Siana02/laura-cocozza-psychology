@@ -5692,6 +5692,8 @@ a.site-footer-contact-item:hover {
 .cp-hero-title {
   font-size: clamp(2.8rem, 7vw, 5.1rem);
   margin-top: 0.25rem;
+  color: #ffffff;
+  font-weight: 700;
 }
 
 .cp-hero-divider {
