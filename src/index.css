@@ -5605,7 +5605,7 @@ a.site-footer-contact-item:hover {
 .cp-final-cta-title,
 .cp-hero-title {
   font-family: 'Cormorant Garamond', 'Playfair Display', serif;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.1;
   margin: 0;
   text-wrap: balance;
@@ -5984,8 +5984,15 @@ a.site-footer-contact-item:hover {
 .cp-network-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(1.22rem, 2vw, 1.55rem);
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.01em;
   margin: 1rem 0 0.55rem;
+}
+
+.cp-method-title,
+.cp-family-title {
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.35;
 }
 
 .cp-pathway-description,
@@ -6044,6 +6051,12 @@ a.site-footer-contact-item:hover {
 .cp-method-label,
 .cp-network-label {
   color: rgba(183, 244, 255, 0.74);
+}
+
+.cp-audience-label {
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: rgba(247, 243, 238, 0.94);
 }
 
 .cp-method-meta {

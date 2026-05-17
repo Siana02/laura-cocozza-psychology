@@ -1492,7 +1492,7 @@ const CLINICAL_PAGE_CONTENT = {
   it: {
     hero: {
       eyebrow: 'Area Clinica',
-      title: 'Area Clinica',
+      title: 'Percorsi Clinici di Psicoterapia',
       subtitle: 'Psicoterapia strutturata per adolescenti, adulti e famiglie',
       supporting:
         'Un percorso clinico guidato, chiaro e personalizzato che integra valutazione, metodo e continuità di cura in presenza e online.',
@@ -1785,7 +1785,7 @@ const CLINICAL_PAGE_CONTENT = {
       ],
     },
     finalCta: {
-      eyebrow: 'Scegli il tuo percorso',
+      eyebrow: 'Prossimo passo',
       title: 'Scegli il tuo percorso',
       intro:
         'Se desideri un primo orientamento clinico, il passo successivo è una consulenza strutturata. Se vuoi esplorare prima le aree di intervento, puoi continuare il percorso dalla sezione servizi.',
@@ -1798,7 +1798,7 @@ const CLINICAL_PAGE_CONTENT = {
   en: {
     hero: {
       eyebrow: 'Clinical Area',
-      title: 'Clinical Area',
+      title: 'Clinical Psychotherapy Pathways',
       subtitle: 'Structured psychotherapy for adolescents, adults, and families',
       supporting:
         'A guided clinical pathway that combines assessment, method, and continuity of care through a calm, highly readable experience.',
@@ -2091,7 +2091,7 @@ const CLINICAL_PAGE_CONTENT = {
       ],
     },
     finalCta: {
-      eyebrow: 'Choose your pathway',
+      eyebrow: 'Next step',
       title: 'Choose your pathway',
       intro:
         'If you need a first clinical orientation, the next step is a structured consultation. If you prefer to review the support areas first, continue through the services section.',
