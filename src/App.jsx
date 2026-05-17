@@ -64,7 +64,7 @@ const content = {
       ctaSecondary: 'Scelgo il mio percorso clinico',
       trust: ['Terapia Cognitivo Comportamentale', 'Approccio Integrato', 'Online & in Presenza', 'Supporto Multidisciplinare'],
       trustSection: {
-        identityName: 'Dr Laura Cocozza',
+        identityName: 'Dott.ssa Laura Cocozza',
         imageAlt: 'Ritratto professionale della Dott.ssa Laura Cocozza',
         identitySubtitle: 'Studio di Psicoterapia e Psicologia Forense',
         positioning:
@@ -450,8 +450,8 @@ const content = {
       brand: 'Studio di Psicoterapia e Psicologia Forense',
       doctor: 'Dott.ssa Laura Cocozza',
       tagline: 'Consulenze online e in presenza disponibili.',
-      nav: ['Home', 'Area Clinica', 'Psicologia Forense', 'Contatti', 'FAQ'],
-      navLinks: ['/home', '/clinical', '/forensic', '/contact', '/home'],
+      nav: ['Home', 'Area Clinica', 'Psicologia Forense', 'Contatti', 'Informativa sulla Privacy', 'Termini di Servizio'],
+      navLinks: ['/home', '/clinical', '/forensic', '/contact', '/privacy-policy', '/terms-of-service'],
       logoAriaLabel: 'Home — Laura Cocozza',
       navAriaLabel: 'Navigazione footer',
       copyright: '© 2026 Laura Cocozza — Tutti i diritti riservati.',
@@ -1175,8 +1175,8 @@ const content = {
       brand: 'Psychotherapy and Forensic Psychology Practice',
       doctor: 'Dr. Laura Cocozza',
       tagline: 'Online and in-person consultations available.',
-      nav: ['Home', 'Clinical Area', 'Forensic Psychology', 'Contacts', 'FAQ'],
-      navLinks: ['/home', '/clinical', '/forensic', '/contact', '/home'],
+      nav: ['Home', 'Clinical Area', 'Forensic Psychology', 'Contacts', 'Privacy Policy', 'Terms of Service'],
+      navLinks: ['/home', '/clinical', '/forensic', '/contact', '/privacy-policy', '/terms-of-service'],
       logoAriaLabel: 'Home — Laura Cocozza',
       navAriaLabel: 'Footer navigation',
       copyright: '© 2026 Laura Cocozza — All rights reserved.',
@@ -5057,7 +5057,7 @@ const FORENSIC_PAGE_CONTENT = {
     footerBranding: {
       href: PSYLEX_SECTION_PATH,
       alt: 'Logo PsyLex Italia',
-      label: 'PsyLex Italia – Emerging Legal Psychology Network',
+      label: 'PsyLex Italia – Rete emergente di psicologia giuridica',
     },
   },
   en: {
@@ -5316,6 +5316,13 @@ const ABOUT_PAGE_CONTENT = {
         },
       ],
     },
+    legalCta: {
+      eyebrow: 'Informazioni Legali',
+      title: 'Trasparenza e tutela delle informazioni',
+      text: 'Per garantire chiarezza, riservatezza e trasparenza professionale, è possibile consultare le nostre informative legali relative alla privacy e all’utilizzo del sito.',
+      privacy: 'Informativa sulla Privacy',
+      terms: 'Termini di Servizio',
+    },
   },
   en: {
     hero: {
@@ -5397,6 +5404,13 @@ const ABOUT_PAGE_CONTENT = {
           text: 'The objective is not only symptom management, but durable balance, awareness, and psychological continuity over time.',
         },
       ],
+    },
+    legalCta: {
+      eyebrow: 'Legal Information',
+      title: 'Transparency and information protection',
+      text: 'To ensure clarity, confidentiality, and professional transparency, you can review our legal notices related to privacy and website use.',
+      privacy: 'Informativa sulla Privacy',
+      terms: 'Terms of Service',
     },
   },
 }
@@ -5520,6 +5534,347 @@ const CONTACT_PAGE_CONTENT = {
   },
 }
 
+const LEGAL_PAGE_CONTENT = {
+  it: {
+    cta: {
+      eyebrow: 'Supporto Informativo',
+      title: 'Per chiarimenti specifici sul trattamento dei dati o sull’uso dei servizi, è possibile contattare direttamente lo studio.',
+      privacy: 'Informativa sulla Privacy',
+      terms: 'Termini di Servizio',
+      contact: 'Contatti',
+    },
+    privacy: {
+      hero: {
+        eyebrow: 'Tutela dei Dati',
+        title: 'Informativa sulla Privacy',
+        intro: 'Informazioni sulla gestione dei dati personali, della riservatezza e dell’utilizzo dei servizi offerti dallo studio.',
+      },
+      sections: [
+        {
+          id: 'privacy-introduzione',
+          iconKey: 'shield',
+          title: 'Introduzione',
+          summary: 'Principi generali sulla tutela della riservatezza e sulla trasparenza professionale.',
+          body: 'Questa informativa descrive in modo chiaro come vengono trattati i dati personali forniti attraverso il sito. L’obiettivo è garantire un uso corretto, proporzionato e coerente con la natura clinica e forense delle attività svolte.',
+        },
+        {
+          id: 'privacy-dati',
+          iconKey: 'data',
+          title: 'Dati Raccolti',
+          summary: 'Quali dati possono essere forniti durante la navigazione o il contatto.',
+          points: ['Dati identificativi inseriti nei moduli di contatto (nome, email, contenuto del messaggio).', 'Dati tecnici di navigazione raccolti in forma aggregata per sicurezza e funzionamento del sito.', 'Eventuali informazioni volontarie condivise via email o canali di contatto professionali.'],
+        },
+        {
+          id: 'privacy-utilizzo',
+          iconKey: 'target',
+          title: 'Utilizzo delle Informazioni',
+          summary: 'Finalità del trattamento dei dati raccolti.',
+          points: ['Gestione delle richieste informative e di primo orientamento.', 'Organizzazione dei contatti professionali relativi ai servizi clinici e forensi.', 'Adempimento di obblighi normativi e tutela professionale in caso di necessità.'],
+        },
+        {
+          id: 'privacy-conservazione',
+          iconKey: 'archive',
+          title: 'Conservazione dei Dati',
+          summary: 'Tempi e criteri di conservazione.',
+          body: 'I dati vengono conservati per il tempo strettamente necessario alla gestione delle richieste e secondo criteri di pertinenza, minimizzazione e responsabilità professionale. Quando non più necessari, i dati vengono cancellati o resi non identificabili.',
+        },
+        {
+          id: 'privacy-cookie',
+          iconKey: 'sparkles',
+          title: 'Cookie e Tecnologie Simili',
+          summary: 'Uso di strumenti tecnici per prestazioni e stabilità del sito.',
+          body: 'Il sito utilizza cookie tecnici e strumenti analoghi necessari al corretto funzionamento e alla sicurezza della navigazione. Eventuali strumenti aggiuntivi vengono valutati nel rispetto della trasparenza e della normativa vigente.',
+        },
+        {
+          id: 'privacy-sicurezza',
+          iconKey: 'lock',
+          title: 'Sicurezza dei Dati',
+          summary: 'Misure organizzative e tecniche adottate.',
+          points: ['Accesso ai dati limitato ai soli contesti professionali pertinenti.', 'Canali di comunicazione e gestione dei contenuti orientati alla riservatezza.', 'Monitoraggio periodico delle misure di protezione applicate al sito.'],
+        },
+        {
+          id: 'privacy-terze-parti',
+          iconKey: 'network',
+          title: 'Servizi di Terze Parti',
+          summary: 'Eventuale coinvolgimento di fornitori esterni.',
+          body: 'Alcune funzionalità tecniche possono coinvolgere fornitori esterni per hosting, comunicazione o continuità operativa. Tali soggetti agiscono nel rispetto di standard adeguati di sicurezza e riservatezza.',
+        },
+        {
+          id: 'privacy-diritti',
+          iconKey: 'scale',
+          title: 'Diritti dell’Utente',
+          summary: 'Diritti di accesso, rettifica e gestione dei propri dati.',
+          points: ['Richiedere conferma sull’esistenza dei dati personali trattati.', 'Richiedere aggiornamento, rettifica o cancellazione quando applicabile.', 'Opporsi al trattamento o richiederne la limitazione nei casi previsti dalla normativa.'],
+        },
+        {
+          id: 'privacy-contatti',
+          iconKey: 'mail',
+          title: 'Contatti',
+          summary: 'Canali disponibili per richieste relative alla privacy.',
+          points: ['Email: laura.cocozza.893@psypec.it', 'Email: info@psylexitalia.com', 'Sede professionale: Via Generale Baldissera 14 — Udine'],
+        },
+        {
+          id: 'privacy-aggiornamenti',
+          iconKey: 'refresh',
+          title: 'Aggiornamenti dell’Informativa sulla Privacy',
+          summary: 'Come vengono comunicate eventuali revisioni del documento.',
+          body: 'La presente informativa può essere aggiornata per adeguamenti normativi, evoluzioni dei servizi o miglioramenti organizzativi. Le modifiche rilevanti vengono pubblicate su questa pagina con data di aggiornamento.',
+          note: 'Ultimo aggiornamento: 17 maggio 2026.',
+        },
+      ],
+    },
+    terms: {
+      hero: {
+        eyebrow: 'Condizioni di Utilizzo',
+        title: 'Terms of Service',
+        intro: 'Linee guida relative all’utilizzo del sito, alle consulenze professionali e ai servizi informativi offerti.',
+      },
+      sections: [
+        {
+          id: 'terms-introduzione',
+          iconKey: 'file',
+          title: 'Introduzione',
+          summary: 'Ambito di applicazione delle presenti condizioni.',
+          body: 'Le presenti condizioni regolano la consultazione del sito e l’accesso ai contenuti informativi pubblicati dallo studio. L’uso del sito implica accettazione delle regole qui indicate.',
+        },
+        {
+          id: 'terms-utilizzo',
+          iconKey: 'gavel',
+          title: 'Utilizzo del Sito',
+          summary: 'Uso corretto dei contenuti e delle funzionalità disponibili.',
+          points: ['Il sito è destinato a finalità informative e di orientamento professionale.', 'Non è consentito un utilizzo improprio dei contenuti, dei form o dei recapiti pubblicati.', 'L’utente si impegna a fornire informazioni corrette nelle richieste di contatto.'],
+        },
+        {
+          id: 'terms-professionali',
+          iconKey: 'user',
+          title: 'Informazioni Professionali',
+          summary: 'Distinzione tra contenuti informativi e relazione professionale.',
+          body: 'I contenuti del sito non sostituiscono una valutazione clinica o forense personalizzata. Eventuali consulenze vengono definite solo attraverso contatto diretto e accordi professionali specifici.',
+        },
+        {
+          id: 'terms-responsabilita',
+          iconKey: 'alert',
+          title: 'Limitazione di Responsabilità',
+          summary: 'Limiti relativi all’uso delle informazioni pubblicate.',
+          body: 'Lo studio adotta criteri di accuratezza e aggiornamento, ma non può garantire l’assenza assoluta di errori, interruzioni o utilizzi impropri da parte di terzi. L’utente è responsabile delle decisioni assunte sulla base dei contenuti consultati.',
+        },
+        {
+          id: 'terms-intellettuale',
+          iconKey: 'book',
+          title: 'Proprietà Intellettuale',
+          summary: 'Tutela di testi, struttura editoriale, elementi grafici e contenuti.',
+          body: 'Testi, impostazione editoriale, marchi, materiali visivi e contenuti professionali presenti nel sito sono tutelati. Non è consentita la riproduzione non autorizzata, totale o parziale, salvo consenso scritto.',
+        },
+        {
+          id: 'terms-link-esterni',
+          iconKey: 'link',
+          title: 'Collegamenti Esterni',
+          summary: 'Rinvii a servizi o siti terzi.',
+          body: 'Il sito può contenere collegamenti a risorse esterne utili all’utente. Lo studio non controlla in modo continuativo tali contenuti e non risponde delle relative politiche o aggiornamenti.',
+        },
+        {
+          id: 'terms-modifiche',
+          iconKey: 'refresh',
+          title: 'Modifiche ai Contenuti',
+          summary: 'Aggiornamento editoriale e organizzativo del sito.',
+          body: 'Struttura, testi e sezioni del sito possono essere aggiornati per migliorare chiarezza informativa, coerenza professionale o adeguamento normativo, senza obbligo di preavviso individuale.',
+        },
+        {
+          id: 'terms-contatti-uso',
+          iconKey: 'mail',
+          title: 'Utilizzo dei Contatti',
+          summary: 'Modalità corrette per richieste via email o telefono.',
+          points: ['I recapiti pubblicati sono destinati a richieste professionali pertinenti.', 'Non è consentito l’uso dei contatti per finalità promozionali non autorizzate.', 'Le comunicazioni devono rispettare riservatezza, correttezza e buon uso dei canali.'],
+        },
+        {
+          id: 'terms-legge',
+          iconKey: 'landmark',
+          title: 'Legge Applicabile',
+          summary: 'Riferimento normativo e foro competente secondo la legge italiana.',
+          body: 'Le presenti condizioni sono disciplinate dalla normativa italiana vigente. Eventuali controversie saranno gestite secondo i criteri di competenza previsti dalla legge applicabile.',
+        },
+        {
+          id: 'terms-contatti',
+          iconKey: 'phone',
+          title: 'Informazioni di Contatto',
+          summary: 'Recapiti ufficiali dello studio per chiarimenti sui termini.',
+          points: ['Email: laura.cocozza.893@psypec.it', 'Telefono: +39 339 366 980', 'Sede: Via Generale Baldissera 14 — Udine'],
+          note: 'Ultimo aggiornamento: 17 maggio 2026.',
+        },
+      ],
+    },
+  },
+  en: {
+    cta: {
+      eyebrow: 'Information Support',
+      title: 'For specific clarification on data handling or service use, you can contact the practice directly.',
+      privacy: 'Privacy Policy',
+      terms: 'Terms of Service',
+      contact: 'Contact',
+    },
+    privacy: {
+      hero: {
+        eyebrow: 'Data Protection',
+        title: 'Privacy Policy',
+        intro: 'Information about personal data management, confidentiality, and the use of services provided by the practice.',
+      },
+      sections: [
+        {
+          id: 'privacy-introduction',
+          iconKey: 'shield',
+          title: 'Introduction',
+          summary: 'General principles on confidentiality and professional transparency.',
+          body: 'This notice explains how personal data submitted through the website is handled. The aim is to ensure fair, proportionate, and professionally consistent use of information in both clinical and forensic contexts.',
+        },
+        {
+          id: 'privacy-data-collected',
+          iconKey: 'data',
+          title: 'Data Collected',
+          summary: 'What information may be provided during browsing or contact.',
+          points: ['Identification details provided in contact forms (name, email, message content).', 'Technical navigation data collected in aggregate form for security and website operation.', 'Any voluntary information shared through email or professional communication channels.'],
+        },
+        {
+          id: 'privacy-use',
+          iconKey: 'target',
+          title: 'Use of Information',
+          summary: 'Purposes for which collected data is processed.',
+          points: ['Managing information requests and initial guidance messages.', 'Organising professional contacts related to clinical and forensic services.', 'Complying with legal obligations and professional protection needs where required.'],
+        },
+        {
+          id: 'privacy-retention',
+          iconKey: 'archive',
+          title: 'Data Retention',
+          summary: 'Retention periods and criteria.',
+          body: 'Data is retained only for the time strictly necessary to manage requests, according to relevance, minimisation, and professional accountability criteria. When no longer needed, data is deleted or anonymised.',
+        },
+        {
+          id: 'privacy-cookies',
+          iconKey: 'sparkles',
+          title: 'Cookies and Similar Technologies',
+          summary: 'Use of technical tools for performance and website stability.',
+          body: 'The website uses technical cookies and similar tools necessary for proper operation and secure browsing. Any additional tools are evaluated with transparency and in line with applicable regulations.',
+        },
+        {
+          id: 'privacy-security',
+          iconKey: 'lock',
+          title: 'Data Security',
+          summary: 'Organisational and technical safeguards in place.',
+          points: ['Data access is limited to relevant professional contexts only.', 'Communication channels and content handling are managed with confidentiality in mind.', 'Protection measures applied to the website are periodically reviewed.'],
+        },
+        {
+          id: 'privacy-third-party',
+          iconKey: 'network',
+          title: 'Third-Party Services',
+          summary: 'Possible involvement of external service providers.',
+          body: 'Some technical functions may involve external providers for hosting, communication, or operational continuity. These providers are selected with adequate confidentiality and security standards.',
+        },
+        {
+          id: 'privacy-rights',
+          iconKey: 'scale',
+          title: 'User Rights',
+          summary: 'Rights of access, correction, and control over personal data.',
+          points: ['Request confirmation of whether personal data is being processed.', 'Request updates, corrections, or deletion where applicable.', 'Object to processing or request restriction when provided by law.'],
+        },
+        {
+          id: 'privacy-contacts',
+          iconKey: 'mail',
+          title: 'Contacts',
+          summary: 'Available channels for privacy-related requests.',
+          points: ['Email: laura.cocozza.893@psypec.it', 'Email: info@psylexitalia.com', 'Professional office: Via Generale Baldissera 14 — Udine'],
+        },
+        {
+          id: 'privacy-updates',
+          iconKey: 'refresh',
+          title: 'Privacy Policy Updates',
+          summary: 'How updates to this notice are communicated.',
+          body: 'This notice may be updated due to legal changes, service evolution, or organisational improvements. Relevant updates are published on this page with an update date.',
+          note: 'Last updated: May 17, 2026.',
+        },
+      ],
+    },
+    terms: {
+      hero: {
+        eyebrow: 'Terms of Use',
+        title: 'Terms of Service',
+        intro: 'Guidelines related to website use, professional consultations, and informational services provided.',
+      },
+      sections: [
+        {
+          id: 'terms-introduction',
+          iconKey: 'file',
+          title: 'Introduction',
+          summary: 'Scope and applicability of these terms.',
+          body: 'These terms regulate website consultation and access to informational content published by the practice. Using the website implies acceptance of the rules set out below.',
+        },
+        {
+          id: 'terms-site-use',
+          iconKey: 'gavel',
+          title: 'Use of the Website',
+          summary: 'Proper use of available content and features.',
+          points: ['The website is intended for informational and professional orientation purposes.', 'Improper use of content, forms, or published contacts is not permitted.', 'Users undertake to provide accurate information when submitting requests.'],
+        },
+        {
+          id: 'terms-professional-info',
+          iconKey: 'user',
+          title: 'Professional Information',
+          summary: 'Difference between informational content and a professional relationship.',
+          body: 'Website content does not replace personalised clinical or forensic assessment. Professional consultations are defined only through direct contact and specific professional agreements.',
+        },
+        {
+          id: 'terms-liability',
+          iconKey: 'alert',
+          title: 'Limitation of Liability',
+          summary: 'Limits related to the use of published information.',
+          body: 'The practice follows standards of accuracy and updates, but cannot guarantee the absolute absence of errors, interruptions, or improper third-party use. Users remain responsible for decisions made on the basis of consulted content.',
+        },
+        {
+          id: 'terms-ip',
+          iconKey: 'book',
+          title: 'Intellectual Property',
+          summary: 'Protection of texts, editorial structure, visual identity, and content.',
+          body: 'Texts, editorial structure, trademarks, visual materials, and professional content on this website are protected. Unauthorised full or partial reproduction is not allowed without written permission.',
+        },
+        {
+          id: 'terms-external-links',
+          iconKey: 'link',
+          title: 'External Links',
+          summary: 'References to third-party websites or services.',
+          body: 'The website may include links to external resources useful to visitors. The practice does not continuously control such content and is not responsible for external policies or updates.',
+        },
+        {
+          id: 'terms-content-changes',
+          iconKey: 'refresh',
+          title: 'Content Changes',
+          summary: 'Editorial and structural updates to website content.',
+          body: 'Website structure, text, and sections may be updated to improve clarity, professional consistency, or legal compliance, without individual prior notice.',
+        },
+        {
+          id: 'terms-contact-use',
+          iconKey: 'mail',
+          title: 'Use of Contact Channels',
+          summary: 'Appropriate use of published email and phone contacts.',
+          points: ['Published contacts are intended for relevant professional requests.', 'Contacts may not be used for unauthorised promotional purposes.', 'Communications should respect confidentiality, fairness, and proper channel use.'],
+        },
+        {
+          id: 'terms-law',
+          iconKey: 'landmark',
+          title: 'Applicable Law',
+          summary: 'Legal framework and jurisdiction under Italian law.',
+          body: 'These terms are governed by applicable Italian law. Any disputes are handled according to jurisdictional criteria established by law.',
+        },
+        {
+          id: 'terms-contact-info',
+          iconKey: 'phone',
+          title: 'Contact Information',
+          summary: 'Official practice contacts for questions regarding these terms.',
+          points: ['Email: laura.cocozza.893@psypec.it', 'Phone: +39 339 366 980', 'Office: Via Generale Baldissera 14 — Udine'],
+          note: 'Last updated: May 17, 2026.',
+        },
+      ],
+    },
+  },
+}
+
 const FORENSIC_DIVIDER_ICONS = {
   hero: Scale,
   profile: Gavel,
@@ -5547,6 +5902,31 @@ function getAboutPageContent(t) {
 
 function getContactPageContent(t) {
   return t.nav.about === 'About' ? CONTACT_PAGE_CONTENT.en : CONTACT_PAGE_CONTENT.it
+}
+
+function getLegalPageContent(t) {
+  return t.nav.about === 'About' ? LEGAL_PAGE_CONTENT.en : LEGAL_PAGE_CONTENT.it
+}
+
+const LEGAL_SECTION_ICONS = {
+  shield: ShieldCheck,
+  data: FileText,
+  target: Target,
+  archive: Landmark,
+  sparkles: Sparkles,
+  lock: ShieldCheck,
+  network: Network,
+  scale: Scale,
+  mail: Mail,
+  refresh: RefreshCcw,
+  file: FileText,
+  gavel: Gavel,
+  user: UserStar,
+  alert: AlertTriangle,
+  book: BookOpen,
+  link: ArrowUpRight,
+  landmark: Landmark,
+  phone: Phone,
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -5661,19 +6041,6 @@ function FpHero({ fp }) {
             >
               {fp.description}
             </motion.p>
-            <motion.div
-              className="fp-hero-actions"
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.38 }}
-            >
-              <FpPillButton to="/contact" variant="primary">
-                {fp.primaryCta}
-              </FpPillButton>
-              <FpPillButton variant="secondary" onClick={() => scrollToSection('forensic-services')}>
-                {fp.secondaryCta}
-              </FpPillButton>
-            </motion.div>
           </div>
           <motion.div
             className="fp-hero-visual"
@@ -5688,6 +6055,19 @@ function FpHero({ fp }) {
                 <Scale className="fp-hero-emblem-icon" aria-hidden="true" />
               </div>
             </div>
+          </motion.div>
+          <motion.div
+            className="fp-hero-actions"
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.38 }}
+          >
+            <FpPillButton to="/contact" variant="primary">
+              {fp.primaryCta}
+            </FpPillButton>
+            <FpPillButton variant="secondary" onClick={() => scrollToSection('forensic-services')}>
+              {fp.secondaryCta}
+            </FpPillButton>
           </motion.div>
         </div>
       </div>
@@ -6183,6 +6563,31 @@ function AboutPage({ t }) {
             </div>
           </div>
         </section>
+
+        <section className="about-page-section about-page-section--legal-cta">
+          <div className="about-page-shell">
+            <motion.div
+              className="about-page-legal-cta"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <span className="about-page-eyebrow">{ap.legalCta.eyebrow}</span>
+              <h2 className="about-page-title">{ap.legalCta.title}</h2>
+              <IconDivider Icon={FileText} className="about-page-divider" />
+              <p className="about-page-intro">{ap.legalCta.text}</p>
+              <div className="about-page-hero-actions about-page-legal-cta-actions">
+                <CpPillButton to="/privacy-policy" variant="primary">
+                  {ap.legalCta.privacy}
+                </CpPillButton>
+                <CpPillButton to="/terms-of-service" variant="secondary">
+                  {ap.legalCta.terms}
+                </CpPillButton>
+              </div>
+            </motion.div>
+          </div>
+        </section>
       </div>
 
       <SiteFooter t={t} />
@@ -6370,6 +6775,134 @@ function Contact({ t }) {
   return <ContactPage t={t} />
 }
 
+function LegalPage({ t, pageKey }) {
+  const legal = getLegalPageContent(t)
+  const page = legal[pageKey]
+  const [openSection, setOpenSection] = useState(page.sections[0]?.id ?? null)
+
+  return (
+    <>
+      <section className="legal-page-hero">
+        <div className="legal-page-shell">
+          <motion.div
+            className="legal-page-hero-copy"
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <span className="legal-page-eyebrow">{page.hero.eyebrow}</span>
+            <h1 className="legal-page-title">{page.hero.title}</h1>
+            <IconDivider Icon={FileText} className="legal-page-divider" />
+            <p className="legal-page-intro">{page.hero.intro}</p>
+          </motion.div>
+        </div>
+      </section>
+
+      <div className="legal-page">
+        <section className="legal-page-section">
+          <div className="legal-page-shell">
+            <div className="legal-page-cards">
+              {page.sections.map((section, index) => {
+                const Icon = LEGAL_SECTION_ICONS[section.iconKey] ?? FileText
+                const isOpen = openSection === section.id
+
+                return (
+                  <motion.article
+                    key={section.id}
+                    className={`legal-page-card${isOpen ? ' is-open' : ''}`}
+                    initial={{ opacity: 0, y: 22 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1], delay: index * 0.04 }}
+                  >
+                    <button
+                      type="button"
+                      className="legal-page-card-trigger"
+                      aria-expanded={isOpen}
+                      onClick={() => setOpenSection((prev) => (prev === section.id ? null : section.id))}
+                    >
+                      <span className="legal-page-card-icon"><Icon aria-hidden="true" /></span>
+                      <span className="legal-page-card-heading">
+                        <span className="legal-page-card-title">{section.title}</span>
+                        <span className="legal-page-card-summary">{section.summary}</span>
+                      </span>
+                      <ChevronDown className="legal-page-card-chevron" aria-hidden="true" />
+                    </button>
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          className="legal-page-card-panel"
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                        >
+                          <div className="legal-page-card-content">
+                            {section.body && <p>{section.body}</p>}
+                            {section.points && (
+                              <ul>
+                                {section.points.map((point) => (
+                                  <li key={point}>{point}</li>
+                                ))}
+                              </ul>
+                            )}
+                            {section.note && (
+                              <p className="legal-page-note">
+                                <AlertTriangle size={15} aria-hidden="true" />
+                                <span>{section.note}</span>
+                              </p>
+                            )}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.article>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section className="legal-page-cta-section">
+          <div className="legal-page-shell">
+            <motion.div
+              className="legal-page-cta"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <span className="legal-page-eyebrow">{legal.cta.eyebrow}</span>
+              <p className="legal-page-cta-text">{legal.cta.title}</p>
+              <div className="legal-page-cta-actions">
+                <CpPillButton to="/privacy-policy" variant={pageKey === 'privacy' ? 'secondary' : 'primary'}>
+                  {legal.cta.privacy}
+                </CpPillButton>
+                <CpPillButton to="/terms-of-service" variant={pageKey === 'terms' ? 'secondary' : 'primary'}>
+                  {legal.cta.terms}
+                </CpPillButton>
+                <CpPillButton to="/contact" variant="secondary">
+                  {legal.cta.contact}
+                </CpPillButton>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      </div>
+
+      <SiteFooter t={t} />
+    </>
+  )
+}
+
+function PrivacyPolicy({ t }) {
+  return <LegalPage t={t} pageKey="privacy" />
+}
+
+function TermsOfService({ t }) {
+  return <LegalPage t={t} pageKey="terms" />
+}
+
 function Footer({ t }) {
   return (
     <footer className="footer">
@@ -6476,6 +7009,8 @@ function AppShell() {
               <Route path="/forensic/psylex" element={<PsyLexPreview />} />
               <Route path="/about" element={<About t={t} />} />
               <Route path="/contact" element={<Contact t={t} />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy t={t} />} />
+              <Route path="/terms-of-service" element={<TermsOfService t={t} />} />
               <Route path="*" element={<Navigate to="/home" replace />} />
             </Routes>
           </motion.div>
