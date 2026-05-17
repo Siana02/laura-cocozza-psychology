@@ -450,7 +450,7 @@ const content = {
       brand: 'Studio di Psicoterapia e Psicologia Forense',
       doctor: 'Dott.ssa Laura Cocozza',
       tagline: 'Consulenze online e in presenza disponibili.',
-      nav: ['Home', 'Area Clinica', 'Psicologia Forense', 'Contatti', 'Privacy Policy', 'Termini di Servizio'],
+      nav: ['Home', 'Area Clinica', 'Psicologia Forense', 'Contatti', 'Informativa sulla Privacy', 'Termini di Servizio'],
       navLinks: ['/home', '/clinical', '/forensic', '/contact', '/privacy-policy', '/terms-of-service'],
       logoAriaLabel: 'Home — Laura Cocozza',
       navAriaLabel: 'Navigazione footer',
@@ -5320,7 +5320,7 @@ const ABOUT_PAGE_CONTENT = {
       eyebrow: 'Informazioni Legali',
       title: 'Trasparenza e tutela delle informazioni',
       text: 'Per garantire chiarezza, riservatezza e trasparenza professionale, è possibile consultare le nostre informative legali relative alla privacy e all’utilizzo del sito.',
-      privacy: 'Privacy Policy',
+      privacy: 'Informativa sulla Privacy',
       terms: 'Termini di Servizio',
     },
   },
@@ -5409,7 +5409,7 @@ const ABOUT_PAGE_CONTENT = {
       eyebrow: 'Legal Information',
       title: 'Transparency and information protection',
       text: 'To ensure clarity, confidentiality, and professional transparency, you can review our legal notices related to privacy and website use.',
-      privacy: 'Privacy Policy',
+      privacy: 'Informativa sulla Privacy',
       terms: 'Terms of Service',
     },
   },
@@ -5539,14 +5539,14 @@ const LEGAL_PAGE_CONTENT = {
     cta: {
       eyebrow: 'Supporto Informativo',
       title: 'Per chiarimenti specifici sul trattamento dei dati o sull’uso dei servizi, è possibile contattare direttamente lo studio.',
-      privacy: 'Privacy Policy',
+      privacy: 'Informativa sulla Privacy',
       terms: 'Termini di Servizio',
       contact: 'Contatti',
     },
     privacy: {
       hero: {
         eyebrow: 'Tutela dei Dati',
-        title: 'Privacy Policy',
+        title: 'Informativa sulla Privacy',
         intro: 'Informazioni sulla gestione dei dati personali, della riservatezza e dell’utilizzo dei servizi offerti dallo studio.',
       },
       sections: [
@@ -5616,7 +5616,7 @@ const LEGAL_PAGE_CONTENT = {
         {
           id: 'privacy-aggiornamenti',
           iconKey: 'refresh',
-          title: 'Aggiornamenti della Privacy Policy',
+          title: 'Aggiornamenti dell’Informativa sulla Privacy',
           summary: 'Come vengono comunicate eventuali revisioni del documento.',
           body: 'La presente informativa può essere aggiornata per adeguamenti normativi, evoluzioni dei servizi o miglioramenti organizzativi. Le modifiche rilevanti vengono pubblicate su questa pagina con data di aggiornamento.',
           note: 'Ultimo aggiornamento: 17 maggio 2026.',
